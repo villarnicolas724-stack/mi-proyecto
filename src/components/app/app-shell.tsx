@@ -6,6 +6,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   Bell,
   Calculator,
+  FileSpreadsheet,
   GraduationCap,
   LayoutDashboard,
   Megaphone,
@@ -25,6 +26,7 @@ import { completeStep, countryStore, useCountry, useName, useWatchlist } from "@
 
 const NAV = [
   { href: "/app", label: "Inicio", icon: LayoutDashboard },
+  { href: "/app/mis-productos", label: "Mis productos", icon: FileSpreadsheet },
   { href: "/app/mercado-libre", label: "Mercado Libre", icon: ShoppingBag },
   { href: "/app/productos", label: "Productos", icon: Search },
   { href: "/app/anuncios", label: "Anuncios", icon: Megaphone },
@@ -80,8 +82,10 @@ function NavLinks({ onNavigate, alertCount }: { onNavigate?: () => void; alertCo
       >
         <Icon size={18} aria-hidden />
         <span className="flex-1">{label}</span>
-        {href === "/app/mercado-libre" ? (
-          <span className="rounded-full bg-success-soft px-1.5 text-[11px] font-bold text-success">REAL</span>
+        {href === "/app/mercado-libre" || href === "/app/mis-productos" ? (
+          <span className="rounded-full bg-success-soft px-1.5 text-[11px] font-bold text-success">
+            {href === "/app/mercado-libre" ? "REAL" : "TUYO"}
+          </span>
         ) : null}
         {badge ? (
           <span className="tabular rounded-full bg-danger px-1.5 text-xs font-bold text-white" aria-label={`${badge} alertas`}>
@@ -120,7 +124,7 @@ function UserBox() {
 
 function DataBanner() {
   const pathname = usePathname();
-  if (pathname.startsWith("/app/mercado-libre") || pathname.startsWith("/app/calculadora") || pathname.startsWith("/app/ajustes") || pathname.startsWith("/app/guia")) {
+  if (pathname.startsWith("/app/mercado-libre") || pathname.startsWith("/app/calculadora") || pathname.startsWith("/app/mis-productos") || pathname.startsWith("/app/ajustes") || pathname.startsWith("/app/guia")) {
     return (
       <div className="border-b border-border bg-success-soft px-4 py-2 text-center text-xs font-medium text-text-2 sm:text-sm">
         {pathname.startsWith("/app/mercado-libre") ? (

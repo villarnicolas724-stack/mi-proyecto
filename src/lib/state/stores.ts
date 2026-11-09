@@ -7,6 +7,7 @@
 import { useSyncExternalStore } from "react";
 import { DEFAULT_RULES, type AlertRules, type WatchItem } from "@/lib/data/alerts";
 import type { CountryCode } from "@/lib/data/types";
+import type { MyProduct } from "@/lib/my-products/parse";
 
 interface LocalStore<T> {
   get: () => T;
@@ -110,6 +111,29 @@ export function updateRules(listingId: string, rules: Partial<AlertRules>) {
   watchStore.set((items) =>
     items.map((i) => (i.listingId === listingId ? { ...i, rules: { ...i.rules, ...rules } } : i)),
   );
+}
+
+// ---- Mis productos (importados de Excel/CSV o añadidos a mano) ----
+export const myProductsStore = createLocalStore<MyProduct[]>("veta:mis-productos", []);
+export const useMyProducts = () => useStore(myProductsStore);
+
+/** Añade o actualiza (mismo nombre y país) y devuelve cuántos son nuevos y cuántos se actualizaron. */
+export function upsertMyProducts(incoming: MyProduct[]): { added: number; updated: number } {
+  const current = myProductsStore.get();
+  const byId = new Map(current.map((p) => [p.id, p]));
+  let added = 0;
+  let updated = 0;
+  for (const p of incoming) {
+    if (byId.has(p.id)) updated++;
+    else added++;
+    byId.set(p.id, p);
+  }
+  myProductsStore.set([...byId.values()]);
+  return { added, updated };
+}
+
+export function removeMyProduct(id: string) {
+  myProductsStore.set((list) => list.filter((p) => p.id !== id));
 }
 
 // ---- Ruta guiada ----

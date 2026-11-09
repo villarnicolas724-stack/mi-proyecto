@@ -23,20 +23,9 @@ import { Badge, Button, ButtonLink, Card, CardHeader, StatTile } from "@/compone
 import { CATEGORY_ANGLES, COUNTRY_BY_CODE, PLATFORM_NAME } from "@/lib/data/catalog";
 import { formatShortDate } from "@/lib/data/dates";
 import { getAdsForGroup, getGroupCountrySummary, getGroupListings, getListing, getSupplier } from "@/lib/data";
+import { metaAdLibraryUrl } from "@/lib/links";
 import { cn, formatCompact, formatInt, formatMoney, formatUsd } from "@/lib/format";
 import { completeStep, isWatched, toggleWatch, useWatchlist } from "@/lib/state/stores";
-
-/** Búsqueda pública en la Biblioteca de anuncios de Meta (se abre en su web, con tu sesión). */
-function metaAdLibraryUrl(query: string, country: string) {
-  const params = new URLSearchParams({
-    active_status: "active",
-    ad_type: "all",
-    country,
-    q: query,
-    search_type: "keyword_unordered",
-  });
-  return `https://www.facebook.com/ads/library/?${params.toString()}`;
-}
 
 const STATUS: Record<string, { label: string; tone: "success" | "warning" | "danger" | "neutral" | "info" }> = {
   vendiendo: { label: "Vendiendo", tone: "info" },

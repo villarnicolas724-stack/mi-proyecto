@@ -31,6 +31,7 @@ Sin `APP_PASSWORD` la app queda abierta a cualquiera que tenga el enlace: no te 
 | Pantalla | Ruta | Qué hace |
 |---|---|---|
 | Acceso | `/acceso` | Contraseña, solo si `APP_PASSWORD` está definida |
+| Mis productos | `/app/mis-productos` | **Tus datos reales** (todos los países, España incluida): importa Excel (.xlsx) o CSV, o añade a mano; utilidad por pedido, margen, stock en días, calculadora, anuncios en Meta y exportar |
 | Mercado Libre | `/app/mercado-libre` | **Datos reales**: más vendidos por categoría, buscador, búsquedas en alza y calculadora con el precio real (CO, MX, CL, PE, EC, GT, PA) |
 | Inicio | `/app` | KPIs del país, mejor puntuados, en alza, oportunidades entre países, alertas, ruta guiada |
 | Productos | `/app/productos` | Buscador con filtros, atajos («Ganadores probados»…), vista tarjetas/tabla, exportar CSV |

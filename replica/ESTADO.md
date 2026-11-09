@@ -52,3 +52,10 @@
 - Autenticación con `client_credentials` (App ID + clave secreta de una app del usuario). Comprobado: Mercado Libre acepta ese tipo de acceso y rechaza credenciales falsas.
 - **Sin probar con credenciales reales**: si alguna consulta devuelve 403 para apps nuevas, la pantalla lo muestra y habrá que ajustar.
 - España: sin Mercado Libre. Opciones: API de afiliados de AliExpress o importar Excel/CSV.
+
+## Mis productos: importación de Excel/CSV (2026-11-09)
+
+- Pantalla `/app/mis-productos`: importa .xlsx (librería `read-excel-file`, en el navegador) o CSV (`;` o `,`), con columnas en cualquier orden y nombres flexibles; añade a mano; exporta.
+- Números en formato español y latinoamericano (`12,50 €`, `$ 59.900`, `1.234,56`). Errores fila a fila sin bloquear el resto.
+- Es la fuente de datos reales para España. Se guarda en `localStorage`.
+- Probado con Playwright: importar Excel y CSV, mezcla de países, persistencia al recargar, alta manual.
