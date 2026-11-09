@@ -2,10 +2,16 @@
 title Veta
 cd /d "%~dp0"
 
-rem Primera vez: instala lo necesario.
-if not exist node_modules (
-  echo Instalando lo necesario por primera vez. Puede tardar unos minutos...
-  call npm.cmd install
+rem Instala lo necesario la primera vez o cuando una actualizacion trae piezas nuevas.
+set NEEDS_INSTALL=0
+if not exist node_modules\.package-lock.json set NEEDS_INSTALL=1
+if %NEEDS_INSTALL%==0 (
+  powershell -NoProfile -Command "if ((Get-Item package-lock.json).LastWriteTime -gt (Get-Item node_modules\.package-lock.json).LastWriteTime) { exit 1 } else { exit 0 }"
+  if errorlevel 1 set NEEDS_INSTALL=1
+)
+if %NEEDS_INSTALL%==1 (
+  echo Instalando lo necesario. Puede tardar unos minutos...
+  call npm.cmd install --no-audit --no-fund
 )
 
 rem Si Veta ya esta encendida, solo abre la ventana.
