@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+/* El modo oscuro sigue al sistema salvo que el usuario elija uno en Ajustes (data-theme). */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+}
+
+/* ===== Tokens de diseño de Veta =====
+   Contraste comprobado con código (WCAG AA): texto ≥ 4,5:1 sobre superficie en claro y oscuro. */
+:root {
+  color-scheme: light;
+  --bg: #f5f7f6;
+  --surface: #ffffff;
+  --surface-2: #eef2f0;
+  --border: #dfe5e2;
+  --border-strong: #c5cfcb;
+  --text: #0f1a17;
+  --text-2: #44524d;
+  --muted: #5f6d68;
+  --primary: #0f766e;
+  --primary-hover: #0b5f58;
+  --primary-fg: #ffffff;
+  --primary-soft: #e3f3f0;
+  --primary-ink: #0b5a54;
+  --accent: #a34d06;
+  --accent-soft: #fdf0dc;
+  --success: #15803d;
+  --success-soft: #def7e6;
+  --warning: #a34d06;
+  --warning-soft: #fdf0dc;
+  --danger: #b91c1c;
+  --danger-soft: #fde4e4;
+  --info: #1d4ed8;
+  --info-soft: #e0e9ff;
+  /* Gráficos (paleta validada de referencia) */
+  --series-1: #2a78d6;
+  --series-2: #6250d6;
+  --grid: #e6ebe9;
+  --shadow: 0 1px 2px rgb(15 26 23 / 0.05), 0 4px 16px rgb(15 26 23 / 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0b1110;
+    --surface: #121a18;
+    --surface-2: #19231f;
+    --border: #24302c;
+    --border-strong: #34433e;
+    --text: #e7eeeb;
+    --text-2: #b3c1bc;
+    --muted: #8d9c97;
+    --primary: #2dd4bf;
+    --primary-hover: #5eead4;
+    --primary-fg: #032320;
+    --primary-soft: #0e2e2a;
+    --primary-ink: #7fe6d6;
+    --accent: #f6b73c;
+    --accent-soft: #33260c;
+    --success: #4ade80;
+    --success-soft: #0f2a19;
+    --warning: #f6b73c;
+    --warning-soft: #33260c;
+    --danger: #f87171;
+    --danger-soft: #3a1515;
+    --info: #7aa7ff;
+    --info-soft: #14213d;
+    --series-1: #3987e5;
+    --series-2: #9085e9;
+    --grid: #22302b;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1110;
+  --surface: #121a18;
+  --surface-2: #19231f;
+  --border: #24302c;
+  --border-strong: #34433e;
+  --text: #e7eeeb;
+  --text-2: #b3c1bc;
+  --muted: #8d9c97;
+  --primary: #2dd4bf;
+  --primary-hover: #5eead4;
+  --primary-fg: #032320;
+  --primary-soft: #0e2e2a;
+  --primary-ink: #7fe6d6;
+  --accent: #f6b73c;
+  --accent-soft: #33260c;
+  --success: #4ade80;
+  --success-soft: #0f2a19;
+  --warning: #f6b73c;
+  --warning-soft: #33260c;
+  --danger: #f87171;
+  --danger-soft: #3a1515;
+  --info: #7aa7ff;
+  --info-soft: #14213d;
+  --series-1: #3987e5;
+  --series-2: #9085e9;
+  --grid: #22302b;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-ink: var(--primary-ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-grid: var(--grid);
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --shadow-card: var(--shadow);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "cv11";
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  accent-color: var(--primary);
+}
