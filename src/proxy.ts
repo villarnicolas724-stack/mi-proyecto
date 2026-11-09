@@ -15,5 +15,5 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   // Todo menos la página de acceso, su API y los archivos estáticos.
-  matcher: ["/((?!acceso|api/acceso|_next/static|_next/image|icon.svg).*)"],
+  matcher: ["/((?!acceso|api/acceso|_next/static|_next/image|icon.svg|apple-icon.png|manifest.webmanifest|icon-192.png|icon-512.png|icon-maskable-512.png).*)"],
 };

@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   },
   description:
     "Encuentra productos ganadores para dropshipping contra entrega en Latinoamérica y calcula cuánto ganas por pedido entregado antes de invertir en publicidad.",
+  applicationName: "Veta",
+  appleWebApp: { capable: true, title: "Veta", statusBarStyle: "default" },
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
