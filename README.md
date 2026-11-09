@@ -31,6 +31,7 @@ Sin `APP_PASSWORD` la app queda abierta a cualquiera que tenga el enlace: no te 
 | Pantalla | Ruta | Qué hace |
 |---|---|---|
 | Acceso | `/acceso` | Contraseña, solo si `APP_PASSWORD` está definida |
+| Mercado Libre | `/app/mercado-libre` | **Datos reales**: más vendidos por categoría, buscador, búsquedas en alza y calculadora con el precio real (CO, MX, CL, PE, EC, GT, PA) |
 | Inicio | `/app` | KPIs del país, mejor puntuados, en alza, oportunidades entre países, alertas, ruta guiada |
 | Productos | `/app/productos` | Buscador con filtros, atajos («Ganadores probados»…), vista tarjetas/tabla, exportar CSV |
 | Detalle | `/app/productos/[id]` | Ventas y stock de 30 días, puntuación explicada, calculadora contra entrega, comparador de proveedores, dónde venderlo, anuncios, ángulos de venta |
@@ -51,6 +52,14 @@ Sin `APP_PASSWORD` la app queda abierta a cualquiera que tenga el enlace: no te 
 6. **Ruta guiada y recursos visibles** para quien empieza.
 7. **Enlace directo a la Biblioteca de anuncios de Meta** desde cada producto, para ver los anuncios reales.
 
+## Datos reales de Mercado Libre
+
+1. Crea una app gratis en el Centro de desarrolladores de Mercado Libre (los pasos salen en la pantalla **Mercado Libre**).
+2. Pega el **App ID** y la **Clave secreta** en esa pantalla y pulsa **Conectar**.
+3. Las claves se guardan solo en `.veta/mercadolibre.json` (ignorado por git). También puedes usar las variables `ML_CLIENT_ID` y `ML_CLIENT_SECRET`.
+
+España no tiene Mercado Libre.
+
 ## Estructura
 
 - `src/app/` — rutas (App Router).
@@ -58,6 +67,7 @@ Sin `APP_PASSWORD` la app queda abierta a cualquiera que tenga el enlace: no te 
 - `src/components/ui/`, `product/`, `charts/` — componentes reutilizables.
 - `src/lib/data/` — capa de datos. **Las pantallas solo leen de aquí**; el backend real sustituirá `generate.ts` por consultas a Supabase sin tocar pantallas.
 - `src/lib/state/stores.ts` — tu estado (país, seguimiento, guía) en `localStorage` del navegador.
+- `src/lib/ml/` y `src/app/api/ml/` — conexión con la API oficial de Mercado Libre (solo en el servidor).
 - `src/proxy.ts` y `src/lib/auth.ts` — contraseña opcional (`APP_PASSWORD`).
 - `replica/` — investigación, arquitectura, esquema SQL y plan.
 

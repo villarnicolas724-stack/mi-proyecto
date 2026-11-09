@@ -12,6 +12,7 @@ import {
   Menu,
   Search,
   Settings,
+  ShoppingBag,
   Store,
   X,
 } from "lucide-react";
@@ -24,6 +25,7 @@ import { completeStep, countryStore, useCountry, useName, useWatchlist } from "@
 
 const NAV = [
   { href: "/app", label: "Inicio", icon: LayoutDashboard },
+  { href: "/app/mercado-libre", label: "Mercado Libre", icon: ShoppingBag },
   { href: "/app/productos", label: "Productos", icon: Search },
   { href: "/app/anuncios", label: "Anuncios", icon: Megaphone },
   { href: "/app/tiendas", label: "Tiendas", icon: Store },
@@ -78,6 +80,9 @@ function NavLinks({ onNavigate, alertCount }: { onNavigate?: () => void; alertCo
       >
         <Icon size={18} aria-hidden />
         <span className="flex-1">{label}</span>
+        {href === "/app/mercado-libre" ? (
+          <span className="rounded-full bg-success-soft px-1.5 text-[11px] font-bold text-success">REAL</span>
+        ) : null}
         {badge ? (
           <span className="tabular rounded-full bg-danger px-1.5 text-xs font-bold text-white" aria-label={`${badge} alertas`}>
             {badge}
@@ -109,6 +114,31 @@ function UserBox() {
           Uso personal · ajustes
         </Link>
       </div>
+    </div>
+  );
+}
+
+function DataBanner() {
+  const pathname = usePathname();
+  if (pathname.startsWith("/app/mercado-libre") || pathname.startsWith("/app/calculadora") || pathname.startsWith("/app/ajustes") || pathname.startsWith("/app/guia")) {
+    return (
+      <div className="border-b border-border bg-success-soft px-4 py-2 text-center text-xs font-medium text-text-2 sm:text-sm">
+        {pathname.startsWith("/app/mercado-libre") ? (
+          <>
+            <strong className="font-bold text-text">Datos reales</strong> de la API oficial de Mercado Libre.
+          </>
+        ) : (
+          <>Esta pantalla trabaja con tus propios datos.</>
+        )}
+      </div>
+    );
+  }
+  return (
+    <div className="border-b border-border bg-accent-soft px-4 py-2 text-center text-xs font-medium text-text-2 sm:text-sm">
+      Esta pantalla usa <strong className="font-bold text-text">datos de ejemplo</strong>.{" "}
+      <Link href="/app/mercado-libre" className="font-semibold text-primary-ink underline">
+        Ver datos reales en Mercado Libre
+      </Link>
     </div>
   );
 }
@@ -172,10 +202,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       ) : null}
 
       <div className="min-w-0 flex-1">
-        <div className="border-b border-border bg-accent-soft px-4 py-2 text-center text-xs font-medium text-text-2 sm:text-sm">
-          Estás viendo <strong className="font-bold text-text">datos de demostración</strong>. Las cifras son de ejemplo
-          hasta conectar las fuentes reales.
-        </div>
+        <DataBanner />
         <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">{children}</main>
       </div>
     </div>

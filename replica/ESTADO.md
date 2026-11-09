@@ -45,3 +45,10 @@
 - **Ventas de todo el mercado en Dropi:** no hay API pública documentada. El token de Dropi («Mis tiendas») sirve para integrar tu propia tienda (productos, stock y pedidos tuyos), no para ver lo que venden los demás. Sacar esos datos raspando la web de Dropi incumpliría sus condiciones probablemente: **no se hace**. Siguiente paso: pedir a soporte de Dropi la documentación de su API y qué permite.
 - **Anuncios de Meta:** la API oficial de la Biblioteca de anuncios solo devuelve anuncios comerciales en la UE y Reino Unido; en Latinoamérica, solo políticos. Por eso, de momento, el botón abre la búsqueda pública en la web de Meta.
 - **Alternativa realista:** importar tus propios datos (CSV o pegando desde tu panel) y conectar el token de tu tienda Dropi cuando tengamos su documentación.
+
+## Mercado Libre conectado (2026-11-09)
+
+- Pantalla `/app/mercado-libre` con la API oficial: más vendidos por categoría (`/highlights`), buscador (`/sites/{site}/search`), búsquedas en alza (`/trends`) y calculadora con el precio real.
+- Autenticación con `client_credentials` (App ID + clave secreta de una app del usuario). Comprobado: Mercado Libre acepta ese tipo de acceso y rechaza credenciales falsas.
+- **Sin probar con credenciales reales**: si alguna consulta devuelve 403 para apps nuevas, la pantalla lo muestra y habrá que ajustar.
+- España: sin Mercado Libre. Opciones: API de afiliados de AliExpress o importar Excel/CSV.
