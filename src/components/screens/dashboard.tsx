@@ -11,13 +11,13 @@ import { evaluateAlerts } from "@/lib/data/alerts";
 import { COUNTRY_BY_CODE } from "@/lib/data/catalog";
 import { getBestListing, getDashboard } from "@/lib/data";
 import { formatCompact, formatInt, formatPct } from "@/lib/format";
-import { GUIDE_STEPS, completeStep, useCountry, useGuide, useSession, useWatchlist } from "@/lib/state/stores";
+import { GUIDE_STEPS, completeStep, useCountry, useGuide, useName, useWatchlist } from "@/lib/state/stores";
 
 const NETWORK_LABEL = { facebook: "Facebook", instagram: "Instagram", tiktok: "TikTok" } as const;
 
 export function Dashboard() {
   const country = useCountry();
-  const session = useSession();
+  const name = useName();
   const guide = useGuide();
   const watch = useWatchlist();
   const d = useMemo(() => getDashboard(country), [country]);
@@ -30,7 +30,7 @@ export function Dashboard() {
   return (
     <>
       <PageHeader
-        title={session ? `Hola, ${session.name.split(" ")[0]}` : "Hoy en " + countryName}
+        title={name ? `Hola, ${name.split(" ")[0]}` : "Hoy en " + countryName}
         description={`Lo que se está moviendo en ${countryName} esta semana.`}
         actions={
           <ButtonLink href="/app/productos">

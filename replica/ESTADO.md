@@ -6,7 +6,7 @@
 | Nombre provisional | **Veta** («dar con la veta»: encontrar el filón). Pendiente de `/replica-brand` (comprobar marca y dominio) |
 | Plataforma | Web (escritorio y móvil) |
 | Stack | Next.js 16 (App Router) + TypeScript + Tailwind 4 · después Supabase + Stripe + Vercel |
-| Fase en curso | **H2 terminado**: flujo núcleo completo con datos de demostración |
+| Fase en curso | **Uso personal**: sin planes, límites ni registro; contraseña opcional para publicarla. Datos aún de demostración |
 | Fecha | 2026-11-09 |
 
 ## Fases
@@ -33,3 +33,15 @@
 - **Origen de los datos reales**: el original rastrea catálogos de proveedores (Dropi, Aliclick, Mastershop), la Biblioteca de anuncios de Meta y tiendas Shopify. Hay que decidir fuentes legales: APIs oficiales, acuerdos con proveedores o extensión que lee lo que el propio usuario ve. **Nada de APIs privadas ni de saltarse condiciones de uso.**
 - Comprobación legal del nombre «Veta» (OEPM, EUIPO, SIC Colombia, IMPI México) y del dominio.
 - TikTok Shop y extensión de Chrome: fuera del MVP (prioridad Should).
+
+## Cambio de rumbo: uso personal (2026-11-09)
+
+- Quitados: landing, precios, planes, registro y el límite de 3 seguimientos. `/` redirige a `/app`.
+- Añadido: contraseña con `APP_PASSWORD` (`src/proxy.ts`), pensada para publicar en Vercel y entrar desde el móvil.
+- Añadido: botón «Buscar anuncios reales en Meta» en cada producto (abre la Biblioteca de anuncios pública con la búsqueda hecha).
+
+## Datos reales: lo que se puede y lo que no (investigado el 2026-11-09)
+
+- **Ventas de todo el mercado en Dropi:** no hay API pública documentada. El token de Dropi («Mis tiendas») sirve para integrar tu propia tienda (productos, stock y pedidos tuyos), no para ver lo que venden los demás. Sacar esos datos raspando la web de Dropi incumpliría sus condiciones probablemente: **no se hace**. Siguiente paso: pedir a soporte de Dropi la documentación de su API y qué permite.
+- **Anuncios de Meta:** la API oficial de la Biblioteca de anuncios solo devuelve anuncios comerciales en la UE y Reino Unido; en Latinoamérica, solo políticos. Por eso, de momento, el botón abre la búsqueda pública en la web de Meta.
+- **Alternativa realista:** importar tus propios datos (CSV o pegando desde tu panel) y conectar el token de tu tienda Dropi cuando tengamos su documentación.

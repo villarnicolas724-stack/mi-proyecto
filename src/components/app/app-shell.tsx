@@ -6,7 +6,6 @@ import { useMemo, useState, type ReactNode } from "react";
 import {
   Bell,
   Calculator,
-  CreditCard,
   GraduationCap,
   LayoutDashboard,
   Megaphone,
@@ -21,7 +20,7 @@ import { evaluateAlerts } from "@/lib/data/alerts";
 import { COUNTRIES } from "@/lib/data/catalog";
 import type { CountryCode } from "@/lib/data/types";
 import { cn } from "@/lib/format";
-import { completeStep, countryStore, useCountry, usePlan, useSession, useWatchlist } from "@/lib/state/stores";
+import { completeStep, countryStore, useCountry, useName, useWatchlist } from "@/lib/state/stores";
 
 const NAV = [
   { href: "/app", label: "Inicio", icon: LayoutDashboard },
@@ -34,7 +33,6 @@ const NAV = [
 ] as const;
 
 const SECONDARY = [
-  { href: "/app/planes", label: "Planes", icon: CreditCard },
   { href: "/app/ajustes", label: "Ajustes", icon: Settings },
 ] as const;
 
@@ -99,17 +97,16 @@ function NavLinks({ onNavigate, alertCount }: { onNavigate?: () => void; alertCo
 }
 
 function UserBox() {
-  const session = useSession();
-  const plan = usePlan();
+  const name = useName();
   return (
     <div className="flex items-center gap-3 rounded-xl bg-surface-2 p-3">
       <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-fg" aria-hidden>
-        {(session?.name ?? "I").charAt(0).toUpperCase()}
+        {(name || "T").charAt(0).toUpperCase()}
       </div>
       <div className="min-w-0 text-sm">
-        <div className="truncate font-semibold text-text">{session?.name ?? "Invitado"}</div>
-        <Link href="/app/planes" className="text-xs font-semibold text-primary-ink underline-offset-2 hover:underline">
-          Plan {plan === "gratis" ? "Gratis · mejorar" : plan === "pro" ? "Pro" : "Equipo"}
+        <div className="truncate font-semibold text-text">{name || "Tu espacio"}</div>
+        <Link href="/app/ajustes" className="text-xs font-semibold text-primary-ink underline-offset-2 hover:underline">
+          Uso personal · ajustes
         </Link>
       </div>
     </div>

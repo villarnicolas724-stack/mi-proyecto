@@ -9,7 +9,7 @@ import { evaluateAlerts, type Alert, type WatchItem } from "@/lib/data/alerts";
 import { COUNTRY_BY_CODE, PLATFORM_NAME } from "@/lib/data/catalog";
 import { getListing } from "@/lib/data";
 import { cn, formatInt } from "@/lib/format";
-import { FREE_WATCH_LIMIT, toggleWatch, updateRules, usePlan, useWatchlist } from "@/lib/state/stores";
+import { toggleWatch, updateRules, useWatchlist } from "@/lib/state/stores";
 
 const SEVERITY = {
   critica: { tone: "danger" as const, icon: CircleAlert, label: "Urgente" },
@@ -99,7 +99,6 @@ function RulesEditor({ item }: { item: WatchItem }) {
 
 export function Watchlist() {
   const items = useWatchlist();
-  const plan = usePlan();
   const [open, setOpen] = useState<string | null>(null);
   const alerts = useMemo(() => evaluateAlerts(items), [items]);
 
@@ -127,14 +126,6 @@ export function Watchlist() {
       ) : (
         <div className="grid gap-6 xl:grid-cols-[1fr_380px]">
           <section aria-label="Productos seguidos" className="space-y-3">
-            {plan === "gratis" ? (
-              <p className="text-sm text-text-2">
-                Sigues {items.length} de {FREE_WATCH_LIMIT} productos del plan Gratis.{" "}
-                <Link href="/app/planes" className="font-semibold text-primary-ink hover:underline">
-                  Sin límite en Pro
-                </Link>
-              </p>
-            ) : null}
             {items.map((item) => {
               const l = getListing(item.listingId);
               if (!l) return null;
@@ -175,7 +166,7 @@ export function Watchlist() {
                         <BellRing size={16} aria-hidden />
                         <ChevronDown size={14} className={cn("transition-transform", isOpen && "rotate-180")} aria-hidden />
                       </Button>
-                      <Button variant="ghost" size="sm" onClick={() => toggleWatch(l.id, plan)} aria-label={`Dejar de seguir ${l.name}`}>
+                      <Button variant="ghost" size="sm" onClick={() => toggleWatch(l.id)} aria-label={`Dejar de seguir ${l.name}`}>
                         <Trash2 size={16} aria-hidden />
                       </Button>
                     </div>

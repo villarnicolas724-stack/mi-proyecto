@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import {
   ArrowLeft,
   Bell,
   BellOff,
   Clock,
+  ExternalLink,
   Lightbulb,
   Megaphone,
   Package,
@@ -23,7 +24,19 @@ import { CATEGORY_ANGLES, COUNTRY_BY_CODE, PLATFORM_NAME } from "@/lib/data/cata
 import { formatShortDate } from "@/lib/data/dates";
 import { getAdsForGroup, getGroupCountrySummary, getGroupListings, getListing, getSupplier } from "@/lib/data";
 import { cn, formatCompact, formatInt, formatMoney, formatUsd } from "@/lib/format";
-import { completeStep, isWatched, toggleWatch, usePlan, useWatchlist, FREE_WATCH_LIMIT } from "@/lib/state/stores";
+import { completeStep, isWatched, toggleWatch, useWatchlist } from "@/lib/state/stores";
+
+/** Búsqueda pública en la Biblioteca de anuncios de Meta (se abre en su web, con tu sesión). */
+function metaAdLibraryUrl(query: string, country: string) {
+  const params = new URLSearchParams({
+    active_status: "active",
+    ad_type: "all",
+    country,
+    q: query,
+    search_type: "keyword_unordered",
+  });
+  return `https://www.facebook.com/ads/library/?${params.toString()}`;
+}
 
 const STATUS: Record<string, { label: string; tone: "success" | "warning" | "danger" | "neutral" | "info" }> = {
   vendiendo: { label: "Vendiendo", tone: "info" },
@@ -37,9 +50,7 @@ export function ProductDetail({ id }: { id: string }) {
   const supplier = getSupplier(l.supplierId);
   const country = COUNTRY_BY_CODE[l.country];
   const watch = useWatchlist();
-  const plan = usePlan();
   const watched = isWatched(watch, l.id);
-  const [limitHit, setLimitHit] = useState(false);
 
   const alternatives = getGroupListings(l.groupId)
     .filter((x) => x.country === l.country)
@@ -88,10 +99,7 @@ export function ProductDetail({ id }: { id: string }) {
           <div className="mt-4 flex flex-wrap gap-2">
             <Button
               variant={watched ? "secondary" : "primary"}
-              onClick={() => {
-                const ok = toggleWatch(l.id, plan);
-                setLimitHit(!ok);
-              }}
+              onClick={() => toggleWatch(l.id)}
               aria-pressed={watched}
             >
               {watched ? <BellOff size={16} aria-hidden /> : <Bell size={16} aria-hidden />}
@@ -100,16 +108,15 @@ export function ProductDetail({ id }: { id: string }) {
             <ButtonLink href="#calculadora" variant="secondary">
               Calcular utilidad
             </ButtonLink>
+            <a
+              href={metaAdLibraryUrl(l.name, l.country)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-border-strong bg-surface px-4 text-sm font-semibold text-text hover:bg-surface-2"
+            >
+              <ExternalLink size={16} aria-hidden /> Buscar anuncios reales en Meta
+            </a>
           </div>
-          {limitHit ? (
-            <p className="mt-2 text-sm text-warning" role="status">
-              El plan Gratis permite seguir {FREE_WATCH_LIMIT} productos.{" "}
-              <Link href="/app/planes" className="font-semibold underline">
-                Mejora a Pro
-              </Link>{" "}
-              para seguir todos los que quieras.
-            </p>
-          ) : null}
         </div>
         <div className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-4">
           <ScoreRing score={l.score} size={72} />

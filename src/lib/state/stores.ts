@@ -84,19 +84,9 @@ export function applyTheme(choice: ThemeChoice) {
   else document.documentElement.dataset.theme = choice;
 }
 
-// ---- Sesión simulada ----
-export interface Session {
-  name: string;
-  email: string;
-}
-export const sessionStore = createLocalStore<Session | null>("veta:sesion", null);
-export const useSession = () => useStore(sessionStore);
-
-// ---- Plan simulado ----
-export type PlanId = "gratis" | "pro" | "equipo";
-export const planStore = createLocalStore<PlanId>("veta:plan", "gratis");
-export const usePlan = () => useStore(planStore);
-export const FREE_WATCH_LIMIT = 3;
+// ---- Tu nombre (solo para el saludo) ----
+export const nameStore = createLocalStore<string>("veta:nombre", "");
+export const useName = () => useStore(nameStore);
 
 // ---- Seguimiento ----
 export const watchStore = createLocalStore<WatchItem[]>("veta:seguimiento", []);
@@ -106,17 +96,14 @@ export function isWatched(items: WatchItem[], listingId: string) {
   return items.some((i) => i.listingId === listingId);
 }
 
-/** Devuelve false si el plan gratis ya llegó a su límite. */
-export function toggleWatch(listingId: string, plan: PlanId): boolean {
+export function toggleWatch(listingId: string) {
   const items = watchStore.get();
   if (isWatched(items, listingId)) {
     watchStore.set(items.filter((i) => i.listingId !== listingId));
-    return true;
+    return;
   }
-  if (plan === "gratis" && items.length >= FREE_WATCH_LIMIT) return false;
   watchStore.set([...items, { listingId, addedAt: new Date().toISOString(), rules: { ...DEFAULT_RULES } }]);
   completeStep("seguir");
-  return true;
 }
 
 export function updateRules(listingId: string, rules: Partial<AlertRules>) {

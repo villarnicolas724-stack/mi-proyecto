@@ -134,7 +134,7 @@ export function Guide() {
         <CardHeader
           title={
             <span className="flex items-center gap-2">
-              <Gift size={18} className="text-accent" aria-hidden /> Recursos incluidos en tu plan
+              <Gift size={18} className="text-accent" aria-hidden /> Recursos
             </span>
           }
           subtitle="Siempre aquí, a un clic desde el menú."
