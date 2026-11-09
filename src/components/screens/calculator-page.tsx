@@ -10,7 +10,7 @@ export function CalculatorPage() {
   return (
     <>
       <PageHeader
-        title="Calculadora contra entrega"
+        title="Calculadora de rentabilidad"
         description={`Antes de pautar, comprueba cuánto te queda por pedido entregado en ${COUNTRY_BY_CODE[country].name}. Incluye devoluciones, flete de vuelta y publicidad de los pedidos que no se entregan.`}
       />
       <Card className="p-5">

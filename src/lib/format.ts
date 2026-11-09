@@ -6,7 +6,7 @@ const moneyFormatters = new Map<string, Intl.NumberFormat>();
 /** Importe en la moneda local del país: «$ 59.900», «S/ 89,90», «Q 199». */
 export function formatMoney(amount: number, country: CountryCode): string {
   const c = COUNTRY_BY_CODE[country];
-  const decimals = c.currency === "USD" || c.currency === "PEN" ? 2 : 0;
+  const decimals = c.currency === "USD" || c.currency === "PEN" || c.currency === "EUR" ? 2 : 0;
   const key = `${c.locale}|${c.currency}|${decimals}`;
   let f = moneyFormatters.get(key);
   if (!f) {

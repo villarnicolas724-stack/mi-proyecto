@@ -3,14 +3,28 @@ import type { Category, Country, CountryCode, Platform, PlatformId } from "./typ
 /** Fecha fija de los datos de demostración: así servidor y navegador generan lo mismo. */
 export const REFERENCE_DATE = "2026-11-08";
 
+const LATAM_RANGE: [number, number] = [0.62, 0.86];
+const LATAM_HINT = "En contra entrega suele estar entre 65 % y 80 %.";
+
 export const COUNTRIES: Country[] = [
-  { code: "CO", name: "Colombia", currency: "COP", locale: "es-CO", fx: 4100, shipping: 14000 },
-  { code: "MX", name: "México", currency: "MXN", locale: "es-MX", fx: 18.5, shipping: 120 },
-  { code: "EC", name: "Ecuador", currency: "USD", locale: "es-EC", fx: 1, shipping: 5 },
-  { code: "PE", name: "Perú", currency: "PEN", locale: "es-PE", fx: 3.75, shipping: 14 },
-  { code: "CL", name: "Chile", currency: "CLP", locale: "es-CL", fx: 940, shipping: 4500 },
-  { code: "GT", name: "Guatemala", currency: "GTQ", locale: "es-GT", fx: 7.75, shipping: 40 },
-  { code: "PA", name: "Panamá", currency: "USD", locale: "es-PA", fx: 1, shipping: 6 },
+  { code: "CO", name: "Colombia", currency: "COP", locale: "es-CO", fx: 4100, shipping: 14000, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  { code: "MX", name: "México", currency: "MXN", locale: "es-MX", fx: 18.5, shipping: 120, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  { code: "EC", name: "Ecuador", currency: "USD", locale: "es-EC", fx: 1, shipping: 5, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  { code: "PE", name: "Perú", currency: "PEN", locale: "es-PE", fx: 3.75, shipping: 14, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  { code: "CL", name: "Chile", currency: "CLP", locale: "es-CL", fx: 940, shipping: 4500, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  { code: "GT", name: "Guatemala", currency: "GTQ", locale: "es-GT", fx: 7.75, shipping: 40, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  { code: "PA", name: "Panamá", currency: "USD", locale: "es-PA", fx: 1, shipping: 6, deliveryRange: LATAM_RANGE, deliveryHint: LATAM_HINT },
+  {
+    code: "ES",
+    name: "España",
+    currency: "EUR",
+    locale: "es-ES",
+    fx: 0.92,
+    shipping: 5.5,
+    deliveryRange: [0.8, 0.94],
+    deliveryHint:
+      "En España se paga sobre todo con tarjeta y casi todo se entrega (85–95 %). Con contrarreembolso baja: ponlo entre 75 % y 85 %.",
+  },
 ];
 
 export const COUNTRY_BY_CODE = Object.fromEntries(COUNTRIES.map((c) => [c.code, c])) as Record<
@@ -27,12 +41,14 @@ export const COUNTRY_WEIGHT: Record<CountryCode, number> = {
   CL: 0.5,
   GT: 0.42,
   PA: 0.32,
+  ES: 0.55,
 };
 
 export const PLATFORMS: Platform[] = [
   { id: "dropi", name: "Dropi" },
   { id: "aliclick", name: "Aliclick" },
   { id: "mastershop", name: "Mastershop" },
+  { id: "bigbuy", name: "BigBuy" },
 ];
 
 export const PLATFORM_NAME = Object.fromEntries(PLATFORMS.map((p) => [p.id, p.name])) as Record<
@@ -49,6 +65,7 @@ export const PLATFORMS_BY_COUNTRY: Record<CountryCode, PlatformId[]> = {
   CL: ["dropi"],
   GT: ["dropi"],
   PA: ["dropi"],
+  ES: ["bigbuy", "dropi"],
 };
 
 export const CATEGORIES: Category[] = [

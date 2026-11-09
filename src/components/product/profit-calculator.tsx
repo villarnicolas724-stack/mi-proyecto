@@ -12,7 +12,7 @@ import { completeStep } from "@/lib/state/stores";
 /** Redondeo «local» para valores por defecto (100 COP, 10 CLP, 1 MXN, 0,5 USD…). */
 function roundLocal(value: number, country: CountryCode): number {
   const cur = COUNTRY_BY_CODE[country].currency;
-  const step = cur === "COP" ? 100 : cur === "CLP" ? 10 : cur === "USD" || cur === "PEN" ? 0.5 : 1;
+  const step = cur === "COP" ? 100 : cur === "CLP" ? 10 : cur === "USD" || cur === "PEN" || cur === "EUR" ? 0.5 : 1;
   return Math.round(value / step) * step;
 }
 
@@ -27,7 +27,7 @@ export function defaultProfitInput(
     shipping: c.shipping,
     returnShipping: c.shipping,
     cpa: roundLocal(4 * c.fx, country),
-    deliveryRate: partial.deliveryRate ?? 72,
+    deliveryRate: partial.deliveryRate ?? Math.round(((c.deliveryRange[0] + c.deliveryRange[1]) / 2) * 100),
     feePct: 0,
     extraCost: 0,
   };
@@ -146,7 +146,7 @@ export function ProfitCalculator({ country, initial }: { country: CountryCode; i
             aria-describedby="calc-rate-hint"
           />
           <p id="calc-rate-hint" className="text-xs text-muted">
-            De cada 100 pedidos, cuántos se entregan y pagan. En contra entrega suele estar entre 65 % y 80 %.
+            De cada 100 pedidos, cuántos se entregan y pagan. {COUNTRY_BY_CODE[country].deliveryHint}
           </p>
         </div>
         <NumberField

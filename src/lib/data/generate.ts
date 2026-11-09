@@ -78,7 +78,7 @@ function buildSuppliers(rng: Rng): Supplier[] {
   const suppliers: Supplier[] = [];
   for (const country of COUNTRIES) {
     for (const platform of PLATFORMS_BY_COUNTRY[country.code]) {
-      const count = platform === "dropi" ? 4 : 2;
+      const count = platform === "dropi" || platform === "bigbuy" ? 4 : 2;
       for (const name of rng.sample(SUPPLIER_NAMES, count)) {
         suppliers.push({
           id: `s-${country.code.toLowerCase()}-${platform}-${slugify(name)}`,
@@ -86,7 +86,7 @@ function buildSuppliers(rng: Rng): Supplier[] {
           platform,
           country: country.code,
           rating: Math.round(rng.range(3.6, 4.95) * 10) / 10,
-          deliveryRate: Math.round(rng.range(0.62, 0.86) * 100) / 100,
+          deliveryRate: Math.round(rng.range(country.deliveryRange[0], country.deliveryRange[1]) * 100) / 100,
           dispatchHours: rng.pick([12, 24, 24, 36, 48]),
         });
       }
@@ -130,7 +130,7 @@ function buildListings(rng: Rng, suppliers: Supplier[]) {
       const used = new Set<string>();
       for (let k = 0; k < n; k++) {
         const platform = rng.weighted(
-          PLATFORMS_BY_COUNTRY[country.code].map((id) => ({ value: id, weight: id === "dropi" ? 3 : 1 })),
+          PLATFORMS_BY_COUNTRY[country.code].map((id, i) => ({ value: id, weight: i === 0 ? 3 : 1 })),
         ) as PlatformId;
         const options = suppliers.filter(
           (s) => s.country === country.code && s.platform === platform && !used.has(s.id),
@@ -237,7 +237,7 @@ function brandName(rng: Rng, taken: Set<string>): string {
 
 const AD_PREFIX = ["Ofertas", "Mi", "Tu", "Súper", "Todo", "Más"];
 
-const STORES_PER_COUNTRY: Record<CountryCode, number> = { CO: 8, MX: 7, EC: 5, PE: 5, CL: 4, GT: 4, PA: 3 };
+const STORES_PER_COUNTRY: Record<CountryCode, number> = { CO: 8, MX: 7, EC: 5, PE: 5, CL: 4, GT: 4, PA: 3, ES: 5 };
 
 function adCopy(rng: Rng, name: string, pain: string, countryName: string): string {
   const lower = name.charAt(0).toLowerCase() + name.slice(1);

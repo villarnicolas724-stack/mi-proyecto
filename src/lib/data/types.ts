@@ -1,7 +1,7 @@
 // Tipos de la capa de datos. Tienen la misma forma que replica/02-arquitectura/esquema.sql
 // para que el backend real pueda sustituir los datos de demostración sin tocar pantallas.
 
-export type CountryCode = "CO" | "MX" | "EC" | "PE" | "CL" | "GT" | "PA";
+export type CountryCode = "CO" | "MX" | "EC" | "PE" | "CL" | "GT" | "PA" | "ES";
 
 export type Category =
   | "Belleza"
@@ -16,7 +16,7 @@ export type Category =
   | "Accesorios"
   | "Vehículos";
 
-export type PlatformId = "dropi" | "aliclick" | "mastershop";
+export type PlatformId = "dropi" | "aliclick" | "mastershop" | "bigbuy";
 
 export interface Country {
   code: CountryCode;
@@ -27,6 +27,10 @@ export interface Country {
   fx: number;
   /** Flete típico contra entrega en moneda local. */
   shipping: number;
+  /** Rango típico de efectividad de entrega (0..1) para generar proveedores y valores por defecto. */
+  deliveryRange: [number, number];
+  /** Texto de ayuda sobre la efectividad de entrega en este país. */
+  deliveryHint: string;
 }
 
 export interface Platform {
