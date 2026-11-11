@@ -1,0 +1,124 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: var(--paper, #f7f7f4);
+      overflow: hidden;
+    }
+    #hook-panel {
+      position: absolute;
+      left: 900px;
+      top: 96px;
+      width: 924px;
+      height: 888px;
+      border: 8px solid var(--ink, #121212);
+      background: var(--paper, #f7f7f4);
+      overflow: hidden;
+    }
+    #hook-lines {
+      position: absolute;
+      left: -498px;
+      top: -96px;
+      width: 1920px;
+      height: 1080px;
+      z-index: 1;
+    }
+    #hook-pochita {
+      position: absolute;
+      left: 134px;
+      top: 170px;
+      width: 640px;
+      z-index: 2;
+    }
+    #hook-brrr {
+      position: absolute;
+      left: 34px;
+      top: 70px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 80px;
+      z-index: 3;
+      color: var(--ink, #121212);
+      letter-spacing: -0.01em;
+      text-shadow: 0 0 0 #f7f7f4, 6px 0 0 #f7f7f4, -6px 0 0 #f7f7f4, 0 6px 0 #f7f7f4, 0 -6px 0 #f7f7f4,
+        5px 5px 0 #f7f7f4, -5px -5px 0 #f7f7f4, 5px -5px 0 #f7f7f4, -5px 5px 0 #f7f7f4;
+    }
+    #hook-q {
+      position: absolute;
+      left: 110px;
+      top: 292px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 104px;
+      line-height: 1;
+      color: var(--ink, #121212);
+      letter-spacing: -0.01em;
+    }
+    #hook-name {
+      position: absolute;
+      left: 110px;
+      top: 418px;
+      padding: 14px 26px 18px;
+      background: var(--ink, #121212);
+      font-family: "Archivo Black", sans-serif;
+      font-size: 116px;
+      line-height: 1;
+      color: var(--accent, #ff6a13);
+      letter-spacing: -0.01em;
+    }
+    #hook-sub {
+      position: absolute;
+      left: 112px;
+      top: 640px;
+      font-family: "Inter", sans-serif;
+      color: var(--ink, #121212);
+    }
+    #hook-sub .big {
+      display: block;
+      font-weight: 900;
+      font-size: 48px;
+    }
+    #hook-sub .small {
+      display: block;
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 40px;
+    }
+    #hook-sub span span {
+      display: inline-block;
+    }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="hook-panel" class="clip" data-start="0" data-duration="5" data-layout-allow-overflow>
+      <img id="hook-lines" src="assets/speedlines.svg" alt="" data-layout-allow-occlusion />
+      <img id="hook-pochita" src="assets/pochita.svg" alt="Pochita" />
+      <div id="hook-brrr">¡BRRRUM!</div>
+    </div>
+    <div id="hook-q" class="clip" data-start="0" data-duration="5">¿QUIÉN ES</div>
+    <div id="hook-name" class="clip" data-start="0" data-duration="5">POCHITA?</div>
+    <div id="hook-sub" class="clip" data-start="0" data-duration="5">
+      <span class="big"><span>Chainsaw</span> <span>Man</span></span>
+      <span class="small"><span>manga</span> <span>de</span> <span>Tatsuki</span> <span>Fujimoto</span></span>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // El fondo de líneas de velocidad gira despacio (2° por segundo)
+      tl.fromTo("#hook-lines", { rotation: 0 }, { rotation: 10, duration: 5, ease: "none" }, 0);
+      // Sellos del título: escala 1.3 → 1, sin fundido largo
+      tl.fromTo("#hook-q", { opacity: 0, scale: 1.3, transformOrigin: "0% 50%" },
+        { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.15);
+      tl.fromTo("#hook-name", { opacity: 0, scale: 1.3, transformOrigin: "0% 50%" },
+        { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.45);
+      // Subtítulo palabra por palabra
+      tl.fromTo("#hook-sub span span", { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 1.0);
+      // La motosierra acelera: Pochita vibra, las líneas golpean, aparece la onomatopeya
+      tl.fromTo("#hook-pochita", { x: -5 }, { x: 5, duration: 0.04, repeat: 11, yoyo: true, ease: "none" }, 1.6);
+      tl.to("#hook-pochita", { x: 0, duration: 0.04, ease: "none" }, 2.08);
+      tl.fromTo("#hook-brrr", { opacity: 0, scale: 1.4, rotation: -10 },
+        { opacity: 1, scale: 1, rotation: -10, duration: 0.25, ease: "expo.out" }, 1.6);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,151 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    #demonio-page {
+      position: absolute;
+      inset: 0;
+      background: var(--paper, #f7f7f4);
+    }
+    #demonio-floor {
+      position: absolute;
+      left: 0;
+      top: 836px;
+      width: 1920px;
+      height: 244px;
+      border-top: 8px solid var(--ink, #121212);
+      background-image: radial-gradient(circle, #121212 2px, transparent 2.4px);
+      background-size: 12px 12px;
+      background-color: var(--paper, #f7f7f4);
+    }
+    #demonio-pochita {
+      position: absolute;
+      left: 140px;
+      top: 210px;
+      width: 760px;
+    }
+    #demonio-title {
+      position: absolute;
+      left: 960px;
+      top: 150px;
+      color: var(--ink, #121212);
+    }
+    #demonio-title .pre {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      margin-bottom: 10px;
+    }
+    #demonio-title .pre span {
+      display: inline-block;
+    }
+    #demonio-title .big {
+      display: block;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 100px;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      transform-origin: 0% 50%;
+    }
+    .demonio-label {
+      position: absolute;
+      left: 1010px;
+      font-family: "Inter", sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--ink, #121212);
+      background: var(--paper, #f7f7f4);
+      padding: 6px 14px;
+      border: 5px solid var(--ink, #121212);
+    }
+    .demonio-label span {
+      display: inline-block;
+    }
+    #demonio-label1 {
+      top: 556px;
+    }
+    #demonio-label2 {
+      top: 690px;
+    }
+    #demonio-leaders {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #demonio-blade {
+      position: absolute;
+      left: -765px;
+      top: 479px;
+      width: 1300px;
+    }
+  </style>
+  <div id="root" data-composition-id="demonio" data-width="1920" data-height="1080">
+    <div id="demonio-page" class="clip" data-start="0" data-duration="6" data-layout-allow-overflow>
+      <div id="demonio-floor"></div>
+      <div id="demonio-content">
+        <img id="demonio-pochita" src="assets/pochita.svg" alt="Pochita" />
+        <div id="demonio-title">
+          <span class="pre"><span>Es</span> <span>el</span></span>
+          <span class="big" id="demonio-t1">DEMONIO</span>
+          <span class="big" id="demonio-t2">MOTOSIERRA</span>
+        </div>
+        <svg id="demonio-leaders" viewBox="0 0 1920 1080">
+          <line id="demonio-lead1" x1="1010" y1="590" x2="590" y2="392" pathLength="1"
+            stroke="#121212" stroke-width="6" stroke-dasharray="1" stroke-dashoffset="1" />
+          <circle id="demonio-dot1" cx="590" cy="392" r="11" fill="#121212" />
+          <line id="demonio-lead2" x1="1010" y1="724" x2="770" y2="666" pathLength="1"
+            stroke="#121212" stroke-width="6" stroke-dasharray="1" stroke-dashoffset="1" />
+          <circle id="demonio-dot2" cx="770" cy="666" r="11" fill="#121212" />
+        </svg>
+        <div class="demonio-label" id="demonio-label1">
+          <span>una</span> <span>motosierra</span> <span>en</span> <span>la</span> <span>frente</span>
+        </div>
+        <div class="demonio-label" id="demonio-label2">
+          <span>pequeño,</span> <span>como</span> <span>un</span> <span>perro</span>
+        </div>
+      </div>
+    </div>
+    <img id="demonio-blade" class="clip" src="assets/blade.svg" alt="" data-start="0" data-duration="0.5"
+      data-layout-ignore />
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // Corte de motosierra: la hoja cruza en diagonal y la página nueva aparece detrás de ella
+      tl.fromTo("#demonio-page",
+        { clipPath: "polygon(0px 0px, 0px 0px, -230px 1080px, 0px 1080px)" },
+        { clipPath: "polygon(0px 0px, 2300px 0px, 2070px 1080px, 0px 1080px)", duration: 0.4, ease: "power2.in" }, 0);
+      tl.fromTo("#demonio-blade", { x: 0, rotation: 102 },
+        { x: 2300, rotation: 102, duration: 0.4, ease: "power2.in" }, 0);
+      // Título
+      tl.fromTo("#demonio-title .pre span", { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 0.55);
+      tl.fromTo("#demonio-t1", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.7);
+      tl.fromTo("#demonio-t2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.88);
+      // Etiquetas sobre la parte que nombran, con línea guía
+      tl.fromTo("#demonio-lead1", { attr: { "stroke-dashoffset": 1 } },
+        { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 2.0);
+      tl.fromTo("#demonio-dot1", { opacity: 0, scale: 0.2, transformOrigin: "50% 50%" },
+        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 2.25);
+      tl.fromTo("#demonio-label1", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 2.05);
+      tl.fromTo("#demonio-label1 span", { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 2.1);
+      tl.fromTo("#demonio-lead2", { attr: { "stroke-dashoffset": 1 } },
+        { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 3.4);
+      tl.fromTo("#demonio-dot2", { opacity: 0, scale: 0.2, transformOrigin: "50% 50%" },
+        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 3.65);
+      tl.fromTo("#demonio-label2", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 3.45);
+      tl.fromTo("#demonio-label2 span", { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 3.5);
+      // Salida: el contenido se desenfoca, el papel y el suelo se quedan
+      tl.to("#demonio-content", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 5.75);
+      window.__timelines["demonio"] = tl;
+    })();
+  </script>
+</template>

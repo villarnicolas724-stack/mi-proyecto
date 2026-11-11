@@ -1,0 +1,151 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--ink, #121212);
+    }
+    #cs-torso {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #cs-pochita {
+      position: absolute;
+      left: 1210px;
+      top: 690px;
+      width: 280px;
+    }
+    #cs-handle {
+      position: absolute;
+      left: 1275px;
+      top: 856px;
+      width: 150px;
+      height: 44px;
+      border-radius: 22px;
+      background: var(--accent, #ff6a13);
+      border: 6px solid var(--paper, #f7f7f4);
+    }
+    #cs-l1 {
+      position: absolute;
+      left: 140px;
+      top: 300px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 92px;
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      color: var(--paper, #f7f7f4);
+    }
+    #cs-flood {
+      position: absolute;
+      inset: 0;
+      background: var(--accent, #ff6a13);
+    }
+    #cs-lines {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    .cs-blade {
+      position: absolute;
+      left: -340px;
+      width: 2600px;
+      height: 150px;
+    }
+    #cs-blade-top {
+      top: -46px;
+    }
+    #cs-blade-bot {
+      top: 976px;
+    }
+    #cs-title {
+      position: absolute;
+      left: 0;
+      top: 236px;
+      width: 1920px;
+      text-align: center;
+      color: var(--ink, #121212);
+    }
+    #cs-pre {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-weight: 900;
+      font-size: 54px;
+      margin-bottom: 8px;
+    }
+    #cs-pre span {
+      display: inline-block;
+      background: var(--accent, #ff6a13);
+      padding: 0 8px;
+    }
+    .cs-big {
+      display: block;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 236px;
+      line-height: 0.98;
+      letter-spacing: -0.01em;
+      text-shadow: 0 0 0 #ff6a13, 10px 0 0 #ff6a13, -10px 0 0 #ff6a13, 0 10px 0 #ff6a13, 0 -10px 0 #ff6a13,
+        8px 8px 0 #ff6a13, -8px -8px 0 #ff6a13, 8px -8px 0 #ff6a13, -8px 8px 0 #ff6a13;
+    }
+  </style>
+  <div id="root" data-composition-id="chainsaw" data-width="1920" data-height="1080">
+    <div id="cs-before" class="clip" data-start="0" data-duration="2.45" data-layout-allow-overflow>
+      <svg id="cs-torso" viewBox="0 0 1920 1080" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="1350" cy="92" r="72" stroke="#F7F7F4" stroke-width="8" />
+        <path
+          d="M1300 168 L1300 250 Q1300 300 1240 314 L1060 358 Q982 378 972 460 L944 1100 M1400 168 L1400 250 Q1400 300 1460 314 L1640 358 Q1718 378 1728 460 L1756 1100"
+          stroke="#F7F7F4" stroke-width="8" />
+        <circle cx="1350" cy="560" r="120" stroke="#FF6A13" stroke-width="6" />
+        <line id="cs-cord" x1="1350" y1="680" x2="1350" y2="858" stroke="#FF6A13" stroke-width="10" />
+      </svg>
+      <img id="cs-pochita" src="assets/pochita.svg" alt="Pochita" />
+      <div id="cs-handle"></div>
+      <div id="cs-l1">Y CUANDO TIRA<br />DEL CORDÓN…</div>
+    </div>
+    <div id="cs-after" class="clip" data-start="2" data-duration="3.5" data-layout-allow-overflow>
+      <div id="cs-flood"></div>
+      <img id="cs-lines" src="assets/speedlines.svg" alt="" />
+      <img class="cs-blade" id="cs-blade-top" src="assets/blade-long.svg" alt="" />
+      <img class="cs-blade" id="cs-blade-bot" src="assets/blade-long.svg" alt="" />
+      <div id="cs-title">
+        <span id="cs-pre"><span>Denji</span> <span>se</span> <span>convierte</span> <span>en</span></span>
+        <span class="cs-big" id="cs-t1">CHAINSAW</span>
+        <span class="cs-big" id="cs-t2">MAN</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // Estado inicial idéntico al final de la escena anterior (corte por coincidencia)
+      tl.set("#cs-pochita", { y: -260, scale: 0.68 }, 0);
+      tl.fromTo("#cs-l1", { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.2);
+      tl.to("#cs-l1", { opacity: 0, filter: "blur(8px)", duration: 0.12, ease: "power3.in" }, 1.9);
+      // El tirón
+      tl.to("#cs-handle", { y: 220, duration: 0.12, ease: "power4.in" }, 2.0 - 0.12);
+      tl.to("#cs-cord", { attr: { y2: 1078 }, duration: 0.12, ease: "power4.in" }, 2.0 - 0.12);
+      // Inundación naranja desde el mango
+      tl.fromTo("#cs-flood", { clipPath: "circle(0px at 1350px 1100px)" },
+        { clipPath: "circle(2300px at 1350px 1100px)", duration: 0.4, ease: "power2.out" }, 2.0);
+      tl.fromTo("#cs-lines", { opacity: 0, scale: 1.35 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 2.1);
+      tl.to("#cs-lines", { rotation: 8, duration: 3.1, ease: "none" }, 2.4);
+      // La cadena corre por los bordes
+      tl.fromTo("#cs-blade-top", { y: -160 }, { y: 0, duration: 0.3, ease: "expo.out" }, 2.1);
+      tl.fromTo("#cs-blade-bot", { y: 160 }, { y: 0, duration: 0.3, ease: "expo.out" }, 2.1);
+      tl.fromTo("#cs-blade-top", { x: 0 }, { x: -228, duration: 3.4, ease: "none" }, 2.1);
+      tl.fromTo("#cs-blade-bot", { x: -228 }, { x: 0, duration: 3.4, ease: "none" }, 2.1);
+      // CHAINSAW MAN
+      tl.fromTo("#cs-t1", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 2.25);
+      tl.fromTo("#cs-t2", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 2.42);
+      tl.fromTo("#cs-pre span", { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 2.7);
+      window.__timelines["chainsaw"] = tl;
+    })();
+  </script>
+</template>

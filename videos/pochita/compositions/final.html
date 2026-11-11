@@ -1,0 +1,95 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--paper, #f7f7f4);
+    }
+    #fin-floor {
+      position: absolute;
+      left: 0;
+      top: 836px;
+      width: 1920px;
+      height: 244px;
+      border-top: 8px solid var(--ink, #121212);
+      background-image: radial-gradient(circle, #121212 2px, transparent 2.4px);
+      background-size: 12px 12px;
+      background-color: var(--paper, #f7f7f4);
+    }
+    #fin-pochita {
+      position: absolute;
+      left: 170px;
+      top: 307px;
+      width: 640px;
+    }
+    #fin-l1 {
+      position: absolute;
+      left: 900px;
+      top: 200px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 78px;
+      line-height: 1.06;
+      letter-spacing: -0.01em;
+      color: var(--ink, #121212);
+    }
+    #fin-l1 span {
+      display: inline-block;
+    }
+    #fin-l2 {
+      position: absolute;
+      left: 900px;
+      top: 500px;
+      font-family: "Archivo Black", sans-serif;
+      color: var(--ink, #121212);
+    }
+    #fin-l2 .a {
+      display: block;
+      font-size: 112px;
+      line-height: 1;
+      transform-origin: 0% 50%;
+    }
+    #fin-l2 .b {
+      display: block;
+      margin-top: 14px;
+      padding: 10px 26px 16px;
+      background: var(--ink, #121212);
+      color: var(--accent, #ff6a13);
+      font-size: 120px;
+      line-height: 1;
+      transform-origin: 0% 50%;
+    }
+  </style>
+  <div id="root" data-composition-id="final" data-width="1920" data-height="1080">
+    <div id="fin-floor"></div>
+    <div id="fin-content" class="clip" data-start="0" data-duration="5">
+      <img id="fin-pochita" src="assets/pochita.svg" alt="Pochita" />
+      <div id="fin-l1">
+        <span>POCHITA</span> <span>NO</span> <span>ES</span><br />
+        <span>LA</span> <span>MASCOTA</span><br />
+        <span>DE</span> <span>DENJI</span>
+      </div>
+      <div id="fin-l2">
+        <span class="a" id="fin-a">ES SU</span>
+        <span class="b" id="fin-b">CORAZÓN</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo("#fin-pochita", { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 0.05);
+      tl.fromTo("#fin-l1 span", { opacity: 0, filter: "blur(6px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 0.15);
+      // La primera frase pasa a gris cuando llega la respuesta
+      tl.to("#fin-l1 span", { color: "#85857f", duration: 0.2, ease: "power2.inOut" }, 2.55);
+      tl.fromTo("#fin-a", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 2.6);
+      tl.fromTo("#fin-b", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 2.78);
+      // Pochita da un saltito de alegría
+      tl.fromTo("#fin-pochita", { y: 0 }, { y: -40, duration: 0.16, ease: "power2.out" }, 2.8);
+      tl.to("#fin-pochita", { y: 0, duration: 0.45, ease: "back.out(2.2)" }, 2.96);
+      window.__timelines["final"] = tl;
+    })();
+  </script>
+</template>

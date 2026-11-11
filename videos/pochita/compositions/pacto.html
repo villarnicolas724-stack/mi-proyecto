@@ -1,0 +1,127 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--paper, #f7f7f4);
+    }
+    #pacto-floor {
+      position: absolute;
+      left: 0;
+      top: 836px;
+      width: 1920px;
+      height: 244px;
+      border-top: 8px solid var(--ink, #121212);
+      background-image: radial-gradient(circle, #121212 2px, transparent 2.4px);
+      background-size: 12px 12px;
+      background-color: var(--paper, #f7f7f4);
+    }
+    .pacto-line {
+      position: absolute;
+      left: 140px;
+      top: 140px;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 74px;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--ink, #121212);
+    }
+    .pacto-line span {
+      display: inline-block;
+    }
+    #pacto-b {
+      font-size: 66px;
+    }
+    #pacto-pochita {
+      position: absolute;
+      left: 1200px;
+      top: 380px;
+      width: 560px;
+    }
+    #pacto-drop {
+      position: absolute;
+      left: 1450px;
+      top: 315px;
+      width: 60px;
+      height: 90px;
+    }
+    .pacto-stamp {
+      position: absolute;
+      left: 180px;
+      top: 500px;
+      width: 900px;
+      height: 280px;
+      border: 12px solid var(--ink, #121212);
+      background: var(--paper, #f7f7f4);
+      font-family: "Archivo Black", sans-serif;
+      font-size: 220px;
+      line-height: 256px;
+      text-align: center;
+      color: var(--ink, #121212);
+      letter-spacing: 0.02em;
+    }
+    #pacto-stamp-top {
+      clip-path: inset(0px 0px 50% 0px);
+    }
+    #pacto-stamp-bot {
+      clip-path: inset(50% 0px 0px 0px);
+    }
+    #pacto-blade {
+      position: absolute;
+      left: 1920px;
+      top: 580px;
+      width: 1300px;
+    }
+  </style>
+  <div id="root" data-composition-id="pacto" data-width="1920" data-height="1080">
+    <div id="pacto-floor"></div>
+    <div id="pacto-content" class="clip" data-start="0" data-duration="7" data-layout-allow-overflow>
+      <div class="pacto-line" id="pacto-a">
+        <span>DENJI</span> <span>LO</span> <span>ENCONTRÓ</span> <span>HERIDO</span><br />
+        <span>Y</span> <span>LE</span> <span>DIO</span> <span>SU</span> <span>SANGRE</span>
+      </div>
+      <div class="pacto-line" id="pacto-b">
+        <span>JUNTOS</span> <span>CAZABAN</span> <span>DEMONIOS</span><br />
+        <span>PARA</span> <span>PAGAR</span> <span>LA</span> <span>DEUDA</span> <span>DE</span> <span>SU</span> <span>PADRE</span>
+      </div>
+      <div class="pacto-stamp" id="pacto-stamp-top">DEUDA</div>
+      <div class="pacto-stamp" id="pacto-stamp-bot">DEUDA</div>
+      <img id="pacto-pochita" src="assets/pochita.svg" alt="Pochita" />
+      <svg id="pacto-drop" viewBox="0 0 60 90">
+        <path d="M30 0 C30 0 0 44 0 60 A30 30 0 0 0 60 60 C60 44 30 0 30 0 Z" fill="#121212" />
+      </svg>
+      <img id="pacto-blade" src="assets/blade.svg" alt="" data-layout-allow-occlusion />
+    </div>
+  </div>
+  <script>
+    (() => {
+      const tl = gsap.timeline({ paused: true });
+      // Entrada: la línea A llega desenfocada sobre el mismo papel
+      tl.fromTo("#pacto-a", { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.05);
+      // Pochita herido, de lado
+      tl.fromTo("#pacto-pochita", { rotation: 90, y: -25, opacity: 0 },
+        { rotation: 90, y: -25, opacity: 1, duration: 0.18, ease: "power4.out" }, 0.05);
+      // Cae la gota de sangre de Denji
+      tl.fromTo("#pacto-drop", { y: -520, opacity: 1 }, { y: 0, duration: 0.4, ease: "power2.in" }, 1.0);
+      tl.to("#pacto-drop", { scaleX: 2.2, scaleY: 0.2, opacity: 0, transformOrigin: "50% 100%", duration: 0.15, ease: "power2.out" }, 1.4);
+      // Pochita revive de un salto
+      tl.to("#pacto-pochita", { rotation: 0, y: 0, duration: 0.6, ease: "back.out(1.6)" }, 1.5);
+      tl.to("#pacto-a", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 3.2);
+      // Línea B, palabra por palabra de gris a tinta
+      tl.fromTo("#pacto-b span", { opacity: 0, color: "#b9b9b3" },
+        { opacity: 1, color: "#121212", duration: 0.12, stagger: 0.08, ease: "power2.out" }, 3.45);
+      // El sello de la deuda
+      tl.fromTo(["#pacto-stamp-top", "#pacto-stamp-bot"], { opacity: 0, scale: 1.5, rotation: -6 },
+        { opacity: 1, scale: 1, rotation: -6, duration: 0.22, ease: "expo.out" }, 3.9);
+      // Pochita embiste y su motosierra corta la deuda
+      tl.to("#pacto-pochita", { x: -60, duration: 0.15, ease: "power3.in" }, 4.75);
+      tl.to("#pacto-pochita", { x: 0, duration: 0.5, ease: "back.out(1.6)" }, 4.9);
+      tl.fromTo("#pacto-blade", { x: 0 }, { x: -3400, duration: 0.4, ease: "power1.in" }, 4.8);
+      tl.to("#pacto-stamp-bot", { x: 40, y: 60, rotation: 2, duration: 0.35, ease: "expo.out" }, 5.1);
+      tl.to("#pacto-stamp-top", { x: -20, y: -16, rotation: -9, duration: 0.35, ease: "expo.out" }, 5.1);
+      window.__timelines["pacto"] = tl;
+    })();
+  </script>
+</template>
