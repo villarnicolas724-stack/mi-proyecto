@@ -97,6 +97,9 @@
   <script>
     (() => {
       const tl = gsap.timeline({ paused: true });
+      // Coloca cada palabra cuando la voz la dice (tiempos medidos con whisper)
+      const at = (sel, times, from, to) =>
+        document.querySelectorAll(sel).forEach((el, i) => tl.fromTo(el, from, { ...to }, times[i]));
       // Entrada: la línea A llega desenfocada sobre el mismo papel
       tl.fromTo("#pacto-a", { opacity: 0, filter: "blur(8px)" },
         { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0.05);
@@ -104,23 +107,22 @@
       tl.fromTo("#pacto-pochita", { rotation: 90, y: -25, opacity: 0 },
         { rotation: 90, y: -25, opacity: 1, duration: 0.18, ease: "power4.out" }, 0.05);
       // Cae la gota de sangre de Denji
-      tl.fromTo("#pacto-drop", { y: -520, opacity: 1 }, { y: 0, duration: 0.4, ease: "power2.in" }, 1.0);
-      tl.to("#pacto-drop", { scaleX: 2.2, scaleY: 0.2, opacity: 0, transformOrigin: "50% 100%", duration: 0.15, ease: "power2.out" }, 1.4);
+      tl.fromTo("#pacto-drop", { y: -520, opacity: 1 }, { y: 0, duration: 0.4, ease: "power2.in" }, 1.6);
+      tl.to("#pacto-drop", { scaleX: 2.2, scaleY: 0.2, opacity: 0, transformOrigin: "50% 100%", duration: 0.15, ease: "power2.out" }, 2.0);
       // Pochita revive de un salto
-      tl.to("#pacto-pochita", { rotation: 0, y: 0, duration: 0.6, ease: "back.out(1.6)" }, 1.5);
+      tl.to("#pacto-pochita", { rotation: 0, y: 0, duration: 0.6, ease: "back.out(1.6)" }, 2.1);
       tl.to("#pacto-a", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 3.2);
       // Línea B, palabra por palabra de gris a tinta
-      tl.fromTo("#pacto-b span", { opacity: 0, color: "#b9b9b3" },
-        { opacity: 1, color: "#121212", duration: 0.12, stagger: 0.08, ease: "power2.out" }, 3.45);
+      at("#pacto-b span", [3.45, 3.79, 4.21, 4.81, 5.03, 5.27, 5.47, 5.71, 5.83, 5.93], { opacity: 0, color: "#b9b9b3" }, { opacity: 1, color: "#121212", duration: 0.12, ease: "power2.out" });
       // El sello de la deuda
       tl.fromTo(["#pacto-stamp-top", "#pacto-stamp-bot"], { opacity: 0, scale: 1.5, rotation: -6 },
-        { opacity: 1, scale: 1, rotation: -6, duration: 0.22, ease: "expo.out" }, 3.9);
+        { opacity: 1, scale: 1, rotation: -6, duration: 0.22, ease: "expo.out" }, 5.47);
       // Pochita embiste y su motosierra corta la deuda
-      tl.to("#pacto-pochita", { x: -60, duration: 0.15, ease: "power3.in" }, 4.75);
-      tl.to("#pacto-pochita", { x: 0, duration: 0.5, ease: "back.out(1.6)" }, 4.9);
-      tl.fromTo("#pacto-blade", { x: 0 }, { x: -3400, duration: 0.4, ease: "power1.in" }, 4.8);
-      tl.to("#pacto-stamp-bot", { x: 40, y: 60, rotation: 2, duration: 0.35, ease: "expo.out" }, 5.1);
-      tl.to("#pacto-stamp-top", { x: -20, y: -16, rotation: -9, duration: 0.35, ease: "expo.out" }, 5.1);
+      tl.to("#pacto-pochita", { x: -60, duration: 0.15, ease: "power3.in" }, 5.75);
+      tl.to("#pacto-pochita", { x: 0, duration: 0.5, ease: "back.out(1.6)" }, 5.9);
+      tl.fromTo("#pacto-blade", { x: 0 }, { x: -3400, duration: 0.4, ease: "power1.in" }, 5.8);
+      tl.to("#pacto-stamp-bot", { x: 40, y: 60, rotation: 2, duration: 0.35, ease: "expo.out" }, 6.1);
+      tl.to("#pacto-stamp-top", { x: -20, y: -16, rotation: -9, duration: 0.35, ease: "expo.out" }, 6.1);
       window.__timelines["pacto"] = tl;
     })();
   </script>

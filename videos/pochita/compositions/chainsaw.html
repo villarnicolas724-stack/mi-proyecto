@@ -107,7 +107,7 @@
       <div id="cs-handle"></div>
       <div id="cs-l1">Y CUANDO TIRA<br />DEL CORDÓN…</div>
     </div>
-    <div id="cs-after" class="clip" data-start="2" data-duration="3.5" data-layout-allow-overflow>
+    <div id="cs-after" class="clip" data-start="2" data-duration="4" data-layout-allow-overflow>
       <div id="cs-flood"></div>
       <img id="cs-lines" src="assets/speedlines.svg" alt="" />
       <img class="cs-blade" id="cs-blade-top" src="assets/blade-long.svg" alt="" />
@@ -122,6 +122,9 @@
   <script>
     (() => {
       const tl = gsap.timeline({ paused: true });
+      // Coloca cada palabra cuando la voz la dice (tiempos medidos con whisper)
+      const at = (sel, times, from, to) =>
+        document.querySelectorAll(sel).forEach((el, i) => tl.fromTo(el, from, { ...to }, times[i]));
       // Estado inicial idéntico al final de la escena anterior (corte por coincidencia)
       tl.set("#cs-pochita", { y: -260, scale: 0.68 }, 0);
       tl.fromTo("#cs-l1", { opacity: 0, filter: "blur(8px)" },
@@ -134,17 +137,16 @@
       tl.fromTo("#cs-flood", { clipPath: "circle(0px at 1350px 1100px)" },
         { clipPath: "circle(2300px at 1350px 1100px)", duration: 0.4, ease: "power2.out" }, 2.0);
       tl.fromTo("#cs-lines", { opacity: 0, scale: 1.35 }, { opacity: 1, scale: 1, duration: 0.3, ease: "expo.out" }, 2.1);
-      tl.to("#cs-lines", { rotation: 8, duration: 3.1, ease: "none" }, 2.4);
+      tl.to("#cs-lines", { rotation: 9, duration: 3.6, ease: "none" }, 2.4);
       // La cadena corre por los bordes
       tl.fromTo("#cs-blade-top", { y: -160 }, { y: 0, duration: 0.3, ease: "expo.out" }, 2.1);
       tl.fromTo("#cs-blade-bot", { y: 160 }, { y: 0, duration: 0.3, ease: "expo.out" }, 2.1);
-      tl.fromTo("#cs-blade-top", { x: 0 }, { x: -228, duration: 3.4, ease: "none" }, 2.1);
-      tl.fromTo("#cs-blade-bot", { x: -228 }, { x: 0, duration: 3.4, ease: "none" }, 2.1);
+      tl.fromTo("#cs-blade-top", { x: 0 }, { x: -228, duration: 3.9, ease: "none" }, 2.1);
+      tl.fromTo("#cs-blade-bot", { x: -228 }, { x: 0, duration: 3.9, ease: "none" }, 2.1);
       // CHAINSAW MAN
-      tl.fromTo("#cs-t1", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 2.25);
-      tl.fromTo("#cs-t2", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 2.42);
-      tl.fromTo("#cs-pre span", { opacity: 0, filter: "blur(6px)" },
-        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 2.7);
+      tl.fromTo("#cs-t1", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 3.19);
+      tl.fromTo("#cs-t2", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 3.69);
+      at("#cs-pre span", [2.08, 2.41, 2.55, 3.07], { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" });
       window.__timelines["chainsaw"] = tl;
     })();
   </script>

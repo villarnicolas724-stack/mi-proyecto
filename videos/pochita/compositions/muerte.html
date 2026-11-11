@@ -93,15 +93,15 @@
       // Pochita entra en el pecho y se vuelve su corazón
       tl.fromTo("#muerte-l2", { opacity: 0, filter: "blur(8px)" },
         { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 3.0);
-      tl.to("#muerte-pochita", { y: -260, scale: 0.68, duration: 0.7, ease: "power3.inOut" }, 3.0);
-      tl.to("#muerte-slot", { attr: { stroke: "#FF6A13", "stroke-dasharray": "800 0" }, duration: 0.15 }, 3.7);
-      tl.to("#muerte-l2", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power3.in" }, 5.25);
+      tl.to("#muerte-pochita", { y: -260, scale: 0.68, duration: 0.7, ease: "power3.inOut" }, 4.2);
+      tl.to("#muerte-slot", { attr: { stroke: "#FF6A13", "stroke-dasharray": "800 0" }, duration: 0.15 }, 4.9);
+      tl.to("#muerte-l2", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power3.in" }, 5.45);
       // Sale el cordón de arranque
-      tl.to("#muerte-cord", { attr: { "stroke-dashoffset": 0 }, duration: 0.35, ease: "power2.out" }, 4.9);
-      tl.fromTo("#muerte-handle", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.2);
+      tl.to("#muerte-cord", { attr: { "stroke-dashoffset": 0 }, duration: 0.35, ease: "power2.out" }, 5.1);
+      tl.fromTo("#muerte-handle", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 5.4);
       // El trato
       tl.fromTo("#muerte-l3", { opacity: 0, filter: "blur(8px)" },
-        { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 5.5);
+        { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 5.62);
       tl.to("#muerte-l3", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power3.in" }, 7.75);
       window.__timelines["muerte"] = tl;
     })();

@@ -125,24 +125,24 @@
         { x: 2300, rotation: 102, duration: 0.4, ease: "power2.in" }, 0);
       // Título
       tl.fromTo("#demonio-title .pre span", { opacity: 0, filter: "blur(6px)" },
-        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 0.55);
-      tl.fromTo("#demonio-t1", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.7);
-      tl.fromTo("#demonio-t2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.88);
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.16, ease: "power4.out" }, 0.62);
+      tl.fromTo("#demonio-t1", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 0.94);
+      tl.fromTo("#demonio-t2", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out" }, 1.4);
       // Etiquetas sobre la parte que nombran, con línea guía
       tl.fromTo("#demonio-lead1", { attr: { "stroke-dashoffset": 1 } },
-        { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 2.0);
+        { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 2.2);
       tl.fromTo("#demonio-dot1", { opacity: 0, scale: 0.2, transformOrigin: "50% 50%" },
-        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 2.25);
-      tl.fromTo("#demonio-label1", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 2.05);
+        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 2.45);
+      tl.fromTo("#demonio-label1", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 2.25);
       tl.fromTo("#demonio-label1 span", { opacity: 0, filter: "blur(6px)" },
-        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 2.1);
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.14, ease: "power4.out" }, 2.46);
       tl.fromTo("#demonio-lead2", { attr: { "stroke-dashoffset": 1 } },
-        { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 3.4);
+        { attr: { "stroke-dashoffset": 0 }, duration: 0.3, ease: "power2.out" }, 4.1);
       tl.fromTo("#demonio-dot2", { opacity: 0, scale: 0.2, transformOrigin: "50% 50%" },
-        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 3.65);
-      tl.fromTo("#demonio-label2", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 3.45);
+        { opacity: 1, scale: 1, duration: 0.2, ease: "back.out(2)" }, 4.35);
+      tl.fromTo("#demonio-label2", { opacity: 0 }, { opacity: 1, duration: 0.1 }, 4.15);
       tl.fromTo("#demonio-label2 span", { opacity: 0, filter: "blur(6px)" },
-        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.067, ease: "power4.out" }, 3.5);
+        { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.12, ease: "power4.out" }, 4.2);
       // Salida: el contenido se desenfoca, el papel y el suelo se quedan
       tl.to("#demonio-content", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 5.75);
       window.__timelines["demonio"] = tl;

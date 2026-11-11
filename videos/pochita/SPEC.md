@@ -2,7 +2,9 @@
 
 GOAL:    al terminar, el espectador sabe que Pochita es el Demonio Motosierra y que vive dentro de Denji como su corazón.
 OUTPUT:  HyperFrames, 1920 x 1080, 30 fps
-TIME:    40.5 s x 30 = 1215 frames. Sin música (no hay fuente), efectos en acciones visibles.
+TIME:    42.3 s x 30 = 1269 frames. Narrado: la voz es el reloj; cada texto entra con la palabra que lo dice.
+VOICE:   Kokoro "Dora" (ef_dora) local, 1.12x, -16 LUFS por línea; guion en assets/voice/guion.tsv
+         ("Dendyi", "Fuyimoto" y "espóiler" son grafías fonéticas solo para la voz).
 
 LOOK (medio: página de manga impresa):
   - papel: #F7F7F4 liso, sin degradados
@@ -26,10 +28,10 @@ SHOTS:
   1. 0.0–5.0   gancho: Pochita sobre líneas de velocidad; "¿QUIÉN ES / POCHITA?" sellado; "¡BRRRUM!" al acelerar (1.6 s).
   2. 4.6–10.6  corte de motosierra (hoja diagonal) → "ES EL DEMONIO MOTOSIERRA"; etiquetas con línea guía a la motosierra y al cuerpo.
   3. 10.6–17.6 cambio por desenfoque → Pochita herido, cae una gota de sangre, revive; sello "DEUDA" que la motosierra corta.
-  4. 17.2–24.6 inundación de tinta → la yakuza mata a Denji; Pochita entra en su pecho y se vuelve su corazón; sale el cordón; «Muéstrame tus sueños».
-  5. 24.6–30.1 corte por coincidencia → tira del cordón → inundación naranja + líneas de velocidad → "CHAINSAW MAN" (impacto, única vez).
-  6. 29.8–35.7 barrido → "ALERTA DE SPOILER" → "HÉROE DEL INFIERNO" con Pochita en tinta; "DEMONIO" cortado y borrado letra por letra.
-  7. 35.7–40.5 cambio por desenfoque → "Pochita no es la mascota de Denji" → "Es su corazón" (se sostiene 2.4 s).
+  4. 17.2–25.2 inundación de tinta → la yakuza mata a Denji; Pochita entra en su pecho y se vuelve su corazón; sale el cordón; «Muéstrame tus sueños».
+  5. 25.2–31.2 corte por coincidencia → tira del cordón → inundación naranja + líneas de velocidad → "CHAINSAW MAN" (impacto, única vez).
+  6. 30.9–37.3 barrido → "ALERTA DE SPOILER" → "HÉROE DEL INFIERNO" con Pochita en tinta; "DEMONIO" cortado y borrado letra por letra.
+  7. 37.3–42.3 cambio por desenfoque → "Pochita no es la mascota de Denji" → "Es su corazón" (se sostiene 2.4 s).
 
 BANNED: fondo negro vacío con cosas flotando (el negro solo en la escena 4, y lleno); brillo, partículas, degradados morados;
   papel crema + serif + etiquetas mono; todo deslizándose hacia arriba; tres tarjetas en fila; logo en una esquina;
