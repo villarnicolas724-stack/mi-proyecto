@@ -25,7 +25,7 @@ MOTION:
   - resorte de Pochita: back.out(1.6) en posición/rotación, nunca en opacidad
 
 SHOTS:
-  1. 0.0–5.0   gancho: Pochita sobre líneas de velocidad; "¿QUIÉN ES / POCHITA?" sellado; "¡BRRRUM!" al acelerar (1.6 s).
+  1. 0.0–5.0   gancho: Pochita sobre líneas de velocidad; "¿QUIÉN ES / POCHITA?" sellado; "¡BRRRUM!" al acelerar (3.95 s, tras la voz).
   2. 4.6–10.6  corte de motosierra (hoja diagonal) → "ES EL DEMONIO MOTOSIERRA"; etiquetas con línea guía a la motosierra y al cuerpo.
   3. 10.6–17.6 cambio por desenfoque → Pochita herido, cae una gota de sangre, revive; sello "DEUDA" que la motosierra corta.
   4. 17.2–25.2 inundación de tinta → la yakuza mata a Denji; Pochita entra en su pecho y se vuelve su corazón; sale el cordón; «Muéstrame tus sueños».
