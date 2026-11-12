@@ -1,0 +1,57 @@
+<svg class="hana" viewBox="0 0 380 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="ID-clip"><rect x="16" y="16" width="348" height="598" rx="6"/></clipPath>
+    <mask id="ID-paint" maskUnits="userSpaceOnUse" x="0" y="0" width="380" height="630">
+      <rect x="0" y="0" width="380" height="630" fill="black"/>
+      <path class="ID-stroke" d="M-40 120 C 80 60, 260 40, 420 90" stroke="white" stroke-width="190" fill="none" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+      <path class="ID-stroke" d="M420 250 C 300 210, 120 240, -40 300" stroke="white" stroke-width="190" fill="none" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+      <path class="ID-stroke" d="M-40 420 C 100 380, 260 390, 420 450" stroke="white" stroke-width="190" fill="none" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+      <path class="ID-stroke" d="M420 600 C 300 560, 120 560, -40 610" stroke="white" stroke-width="210" fill="none" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+    </mask>
+    <pattern id="ID-needle" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(28)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#16261d" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <!-- canto negro de la carta -->
+  <rect x="0" y="0" width="380" height="630" rx="18" fill="#1b1714"/>
+  <rect x="16" y="16" width="348" height="598" rx="6" fill="#efe5cf"/>
+  <g clip-path="url(#ID-clip)">
+    <!-- capa de pigmento (se revela con pinceladas) -->
+    <g class="ID-color" mask="url(#ID-paint)">
+      <rect x="16" y="16" width="348" height="230" fill="#e9d6b4"/>
+      <circle cx="256" cy="168" r="104" fill="#c23b22"/>
+      <path d="M16 548 C 90 528, 170 560, 250 540 C 300 528, 340 540, 364 532 L364 614 L16 614 Z" fill="#c23b22"/>
+      <path d="M364 600 C 320 520, 300 450, 318 370 C 330 318, 312 270, 290 238" stroke="#3a2a1e" stroke-width="24" fill="none" stroke-linecap="round"/>
+      <g fill="#2f4a3a">
+        <path d="M168 250 q 40 -46 98 -30 q 56 -18 92 26 q -40 22 -96 14 q -54 10 -94 -10 z"/>
+        <path d="M232 340 q 38 -40 88 -24 q 36 -6 60 18 q -36 22 -82 14 q -40 8 -66 -8 z"/>
+        <path d="M196 430 q 36 -34 82 -22 q 40 -10 70 16 q -34 24 -80 14 q -40 8 -72 -8 z"/>
+      </g>
+      <g fill="url(#ID-needle)" opacity="0.8">
+        <path d="M168 250 q 40 -46 98 -30 q 56 -18 92 26 q -40 22 -96 14 q -54 10 -94 -10 z"/>
+        <path d="M232 340 q 38 -40 88 -24 q 36 -6 60 18 q -36 22 -82 14 q -40 8 -66 -8 z"/>
+        <path d="M196 430 q 36 -34 82 -22 q 40 -10 70 16 q -34 24 -80 14 q -40 8 -72 -8 z"/>
+      </g>
+      <!-- grulla -->
+      <path d="M58 470 C 70 410, 150 392, 214 420 C 250 436, 252 470, 222 490 C 180 516, 96 512, 58 470 Z" fill="#fbf8f1"/>
+      <path d="M200 430 C 236 440, 262 470, 270 500 C 246 492, 226 480, 210 470 Z" fill="#1b1714"/>
+      <path d="M86 446 C 72 400, 70 352, 92 318" stroke="#1b1714" stroke-width="16" fill="none" stroke-linecap="round"/>
+      <ellipse cx="98" cy="306" rx="20" ry="15" fill="#fbf8f1"/>
+      <circle cx="100" cy="294" r="8" fill="#c23b22"/>
+    </g>
+    <!-- línea de tinta (siempre visible) -->
+    <g fill="none" stroke="#1b1714" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="256" cy="168" r="104"/>
+      <path d="M16 548 C 90 528, 170 560, 250 540 C 300 528, 340 540, 364 532"/>
+      <path d="M352 600 C 310 520, 290 450, 306 370 C 318 318, 300 272, 280 244"/>
+      <path d="M168 250 q 40 -46 98 -30 q 56 -18 92 26 q -40 22 -96 14 q -54 10 -94 -10 z"/>
+      <path d="M232 340 q 38 -40 88 -24 q 36 -6 60 18 q -36 22 -82 14 q -40 8 -66 -8 z"/>
+      <path d="M196 430 q 36 -34 82 -22 q 40 -10 70 16 q -34 24 -80 14 q -40 8 -72 -8 z"/>
+      <path d="M58 470 C 70 410, 150 392, 214 420 C 250 436, 252 470, 222 490 C 180 516, 96 512, 58 470 Z"/>
+      <path d="M118 440 C 140 456, 170 462, 200 458"/>
+      <path d="M78 300 L 46 318"/>
+      <path d="M128 500 L 120 560 M 160 504 L 170 562 M 120 560 L 104 568 M 170 562 L 186 570"/>
+    </g>
+    <circle cx="92" cy="303" r="3" fill="#1b1714"/>
+  </g>
+</svg>

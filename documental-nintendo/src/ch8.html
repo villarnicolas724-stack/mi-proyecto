@@ -1,0 +1,206 @@
+<template>
+  <style>
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f1e7d6; color: #1b1714; font-family: "Shippori Mincho", serif; }
+    .c8-full { position: absolute; inset: 0; opacity: 0; }
+    .c8-tex { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; z-index: 26; }
+    /* tarjeta */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; background: #f1e7d6; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 16px; background: #1b1714; transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 6px; background: linear-gradient(160deg, #d9b35b, #b8893b); }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #1b1714; }
+    .cc-text { position: absolute; left: 930px; top: 400px; width: 860px; }
+    .cc-num { font-size: 40px; letter-spacing: 0.18em; color: #8a6a26; opacity: 0; }
+    .cc-title { font-size: 104px; line-height: 1.05; margin-top: 12px; opacity: 0; }
+    .cc-year { font-family: "Yuji Syuku", serif; font-size: 64px; margin-top: 18px; color: #c23b22; opacity: 0; }
+    /* Kioto, amanecer */
+    #c8-kyoto { background: linear-gradient(180deg, #f6dfb0 0%, #f3e6cc 55%, #f1e7d6 75%); }
+    #c8-sun { position: absolute; left: 860px; top: 380px; width: 240px; height: 240px; border-radius: 50%; background: #e0702e; }
+    #c8-sky { position: absolute; left: 0; top: 0; width: 2400px; height: 1080px; }
+    #c8-137 { position: absolute; left: 140px; top: 100px; font-family: "Yuji Syuku", serif; font-size: 230px; line-height: 1; opacity: 0; }
+    #c8-137s { position: absolute; left: 150px; top: 340px; font-size: 52px; opacity: 0; }
+    #c8-137y { position: absolute; left: 150px; top: 420px; font-size: 40px; color: #8a6a26; opacity: 0; }
+    /* el camino */
+    #c8-path { background: #f1e7d6; }
+    #c8-psvg { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    .c8-ob { position: absolute; font-family: "Yuji Syuku", serif; font-size: 64px; opacity: 0; color: #6d5a43; }
+    #c8-pend { position: absolute; left: 1360px; top: 200px; width: 440px; font-size: 62px; line-height: 1.15; color: #c23b22; opacity: 0; }
+    /* alineación 3D */
+    #c8-line { background: radial-gradient(ellipse 90% 80% at 50% 45%, #f8f1e4 0%, #eadcc3 70%, #dccaa9 100%); }
+    #c8-cv { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    .c8-tagp { position: absolute; left: 0; top: 0; }
+    .c8-tag { position: relative; font-family: "Inter", sans-serif; font-weight: 700; font-size: 28px; color: #6d5a43; white-space: nowrap; text-align: center; transform: translateX(-50%); }
+    .c8-tag b { display: block; font-size: 34px; color: #1b1714; }
+    #c8-lt { position: absolute; left: 0; right: 0; top: 760px; text-align: center; font-size: 66px; opacity: 0; }
+    #c8-lt span { color: #c23b22; }
+    /* padres e hijos */
+    #c8-fam { background: #f1e7d6; }
+    #c8-sofa { position: absolute; left: 380px; top: 640px; width: 1160px; height: 200px; border-radius: 40px; background: #b8893b; }
+    #c8-sofa::before { content: ""; position: absolute; left: 0; right: 0; top: -150px; height: 170px; border-radius: 40px 40px 0 0; background: #a7782f; }
+    .c8-p { position: absolute; }
+    #c8-pad { position: absolute; left: 0; top: 0; width: 150px; height: 64px; border-radius: 8px; background: #8a8a92; z-index: 4; }
+    #c8-pad::after { content: ""; position: absolute; left: 18px; top: 20px; width: 30px; height: 10px; background: #1b1714; box-shadow: 10px -10px 0 -0px transparent; }
+    #c8-jl, #c8-jr { position: absolute; top: 0; width: 46px; height: 120px; border-radius: 24px; opacity: 0; z-index: 4; }
+    #c8-jl { background: #0ab9e6; } #c8-jr { background: #ff3c28; }
+    #c8-ft { position: absolute; left: 0; right: 0; top: 120px; text-align: center; font-size: 58px; opacity: 0; }
+    /* el reparto */
+    #c8-deal { background: #2a1c13; background-image: radial-gradient(ellipse 60% 60% at 50% 55%, #6b4a33 0%, #3a2618 60%, #1f140d 100%); }
+    #c8-fan { position: absolute; left: 960px; top: 900px; width: 0; height: 0; }
+    .c8-dc { position: absolute; left: -110px; top: -560px; width: 220px; height: 366px; border-radius: 14px; background: #1b1714; transform-origin: 50% 150%; opacity: 0; box-shadow: 0 20px 40px rgba(0,0,0,0.45); }
+    .c8-dc::before { content: ""; position: absolute; inset: 10px; border-radius: 5px; background: var(--f); }
+    .c8-dc span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 130px; color: var(--k, #fff); }
+    #c8-jug { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #f1e7d6; opacity: 0; z-index: 5; }
+    /* final */
+    #c8-end { background: #241811; background-image: radial-gradient(ellipse 50% 60% at 50% 46%, #6b4a33 0%, #3a2618 55%, #170f0a 100%); }
+    #c8-crane { position: absolute; left: 640px; top: 210px; width: 380px; height: 630px; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 70px rgba(0,0,0,0.55); }
+    #c8-crane svg { width: 100%; height: 100%; display: block; }
+    #c8-next { position: absolute; left: 1060px; top: 210px; width: 380px; height: 630px; border-radius: 18px; background: #121214; box-shadow: 0 40px 70px rgba(0,0,0,0.55); opacity: 0; overflow: hidden; }
+    #c8-next::before { content: ""; position: absolute; inset: 18px; border-radius: 6px; border: 2px solid #2a2a2e; }
+    #c8-glint { position: absolute; inset: 0; background: linear-gradient(115deg, transparent 35%, rgba(255,240,210,0.22) 50%, transparent 65%); }
+    #c8-black { position: absolute; inset: 0; background: #ede3cf; opacity: 0; z-index: 40; }
+  </style>
+  <div id="root" data-composition-id="ch8" data-width="1920" data-height="1080">
+    <canvas id="c8-fib" class="c8-tex" width="1920" height="1080"></canvas>
+
+    <div id="c8-kyoto" class="c8-full">
+      <div id="c8-sun"></div>
+      <svg id="c8-sky" viewBox="0 0 2400 1080"><path fill="#b9a98e" opacity="0.6" d="M0 640 C 300 560, 520 600, 760 540 C 980 490, 1200 560, 1440 520 C 1700 480, 1960 560, 2400 500 L2400 1080 L0 1080 Z"/>
+        <g fill="#3b332c" id="c8-pag"></g>
+        <g fill="#2a231e"><rect x="1500" y="560" width="220" height="260"/><rect x="1530" y="600" width="160" height="12" fill="#e9d6b4"/><rect x="1530" y="650" width="160" height="12" fill="#e9d6b4"/><rect x="1530" y="700" width="160" height="12" fill="#e9d6b4"/></g>
+        <rect x="0" y="800" width="2400" height="300" fill="#4a4038"/><g id="c8-roofs"></g></svg>
+      <div id="c8-137">137 años</div>
+      <div id="c8-137s">y Nintendo sigue en Kioto</div>
+      <div id="c8-137y">1889 → 2026</div>
+    </div>
+
+    <div id="c8-path" class="c8-full">
+      <svg id="c8-psvg" viewBox="0 0 1920 1080">
+        <g fill="#d8c8aa"><ellipse cx="560" cy="430" rx="120" ry="80"/><ellipse cx="980" cy="680" rx="130" ry="85"/><ellipse cx="1300" cy="380" rx="120" ry="80"/></g>
+        <path id="c8-trail" d="M120 760 C 300 760, 380 560, 560 560 C 760 560, 700 860, 980 830 C 1220 800, 1120 520, 1300 520 C 1480 520, 1500 640, 1820 600" fill="none" stroke="#1b1714" stroke-width="20" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+      </svg>
+      <div class="c8-ob" id="c8-o1" style="left:470px;top:390px">guerras</div>
+      <div class="c8-ob" id="c8-o2" style="left:900px;top:640px">crisis</div>
+      <div class="c8-ob" id="c8-o3" style="left:1220px;top:340px">fracasos</div>
+      <div id="c8-pend">Hacer algo distinto</div>
+    </div>
+
+    <div id="c8-line" class="c8-full">
+      <canvas id="c8-cv" width="1920" height="1080"></canvas>
+      <div id="c8-tags"></div>
+      <div id="c8-lt">Fáciles de entender, <span>difíciles de olvidar</span></div>
+    </div>
+
+    <div id="c8-fam" class="c8-full">
+      <div id="c8-sofa"></div>
+      <svg class="c8-p" style="left:560px;top:250px" width="300" height="560" viewBox="0 0 300 560"><g fill="#3b332c"><circle cx="150" cy="80" r="62"/><path d="M50 560 L 60 250 C 60 170, 240 170, 240 250 L 250 560 Z"/></g></svg>
+      <svg class="c8-p" style="left:1080px;top:400px" width="220" height="420" viewBox="0 0 220 420"><g fill="#5a4a3e"><circle cx="110" cy="64" r="48"/><path d="M40 420 L 48 190 C 48 130, 172 130, 172 190 L 180 420 Z"/></g></svg>
+      <div id="c8-pad"></div><div id="c8-jl"></div><div id="c8-jr"></div>
+      <div id="c8-ft">De una generación a la siguiente</div>
+    </div>
+
+    <div id="c8-deal" class="c8-full"><div id="c8-fan"></div><div id="c8-jug">¿Jugamos?</div></div>
+
+    <div id="c8-end" class="c8-full">
+      <div id="c8-crane">__INCLUDE(src/svg/crane.svg|c8c)__</div>
+      <div id="c8-next"><div id="c8-glint"></div></div>
+    </div>
+    <div id="c8-black"></div>
+
+    <div id="c8-card" class="cc">
+      <div class="cc-card"><div class="cc-k">八</div></div>
+      <div class="cc-text"><div class="cc-num">__NUM__</div><div class="cc-title">__TITLE__</div><div class="cc-year">__YEARS__</div></div>
+    </div>
+  </div>
+  <script type="module">
+    import { buildConsole, createStage, THREE } from "./assets/lib/consoles.js";
+    const T0 = __T0__, C = __C__;
+    const st = createStage(document.getElementById("c8-cv"), { fov: 26, shadow: 0.3 });
+    const L = [["famicom", "Famicom", 1983], ["gameboy", "Game Boy", 1989], ["superfamicom", "Super Famicom", 1990], ["n64", "Nintendo 64", 1996], ["gba", "GBA", 2001], ["gamecube", "GameCube", 2001], ["ds", "Nintendo DS", 2004], ["wii", "Wii", 2006], ["wiiu", "Wii U", 2012], ["switch", "Switch", 2017], ["switch2", "Switch 2", 2025]];
+    const tags = document.getElementById("c8-tags");
+    const M = L.map(([k, n, y], i) => { const m = buildConsole(k); m.position.set(i * 4.2, 0, 0); m.rotation.y = -0.35;
+      if (k === "ds") m.userData.lid.rotation.x = -1.9; if (k === "switch") m.userData.dock.visible = false;
+      if (k === "switch" || k === "switch2") m.position.y = 0.62;
+      st.scene.add(m);
+      const tp = document.createElement("div"); tp.className = "c8-tagp"; tp.innerHTML = `<div class="c8-tag"><b>${y}</b>${n}</div>`; tags.appendChild(tp); m.userData.tag = tp; return m; });
+    const v = new THREE.Vector3();
+    function renderAt(t) {
+      const l = t - T0, a = C.c8c[0] - 0.1, b = C.c8d[0];
+      const p = Math.max(0, Math.min(1, (l - a) / (b - a)));
+      const e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      const x = -2 + e * 44;
+      st.camera.position.set(x, 3.4, 9.5); st.camera.lookAt(x + 2.2, 0.8, 0);
+      st.camera.updateMatrixWorld();
+      M.forEach(m => { m.updateMatrixWorld(true); v.set(m.position.x, 2.35, 0).project(st.camera);
+        m.userData.tag.style.transform = `translate(${((v.x + 1) / 2) * 1920}px, ${((1 - v.y) / 2) * 1080}px)`;
+        m.userData.tag.style.opacity = Math.abs(v.x) < 1.05 ? 1 : 0; });
+      st.render();
+    }
+    window.addEventListener("hf-seek", e => renderAt(e.detail.time));
+    renderAt(T0);
+  </script>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT, $ = K.$, $$ = K.$$;
+      K.fibers("#c8-fib", { n: 1300, color: "rgba(90,70,45,0.07)" });
+      const NS = "http://www.w3.org/2000/svg";
+      (() => { const g = $("#c8-pag"); let y = 800, w = 260, cx = 1180, d = "";
+        for (let i = 0; i < 5; i++) { const h = 64, rw = w * 0.62; d += `M${cx - rw / 2} ${y} L${cx + rw / 2} ${y} L${cx + rw / 2} ${y - h * 0.55} L${cx - rw / 2} ${y - h * 0.55} Z `; const ey = y - h * 0.55;
+          d += `M${cx - w / 2 - 18} ${ey + 6} Q ${cx - w / 2} ${ey - 4}, ${cx - w * 0.3} ${ey - 22} L ${cx + w * 0.3} ${ey - 22} Q ${cx + w / 2} ${ey - 4}, ${cx + w / 2 + 18} ${ey + 6} Z `; y = ey - 22; w *= 0.86; }
+        d += `M${cx - 5} ${y} L${cx + 5} ${y} L${cx + 3} ${y - 120} L${cx - 3} ${y - 120} Z`; const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); g.appendChild(p);
+        const r = K.rng(11), rg = $("#c8-roofs"); let x = -40, h = "";
+        while (x < 2440) { const w2 = 220 + r() * 160, h2 = 70 + r() * 50, base = 870 + r() * 30; h += `<path d="M${x - 20} ${base} L${x + w2 * 0.12} ${base - h2} L${x + w2 * 0.88} ${base - h2} L${x + w2 + 20} ${base} Z" fill="#2a231e"/><rect x="${x}" y="${base}" width="${w2}" height="240" fill="#1f1915"/>`; x += w2 + 30 + r() * 40; }
+        rg.innerHTML = h; })();
+      const CARDS = [["一", "#c23b22", "#efe5cf"], ["二", "#f2e3c2", "#1e1a17"], ["三", "#07060b", "#3be3ff"], ["四", "#c8102e", "#fff"], ["五", "#e4002b", "#ffc72c"], ["六", "#e9f6fd", "#00a2e8"], ["七", "#ff3c28", "#fff"], ["八", "#d9b35b", "#1b1714"]];
+      CARDS.forEach(([k, f, c], i) => { const d = document.createElement("div"); d.className = "c8-dc"; d.style.setProperty("--f", f); d.style.setProperty("--k", c); d.innerHTML = `<span>${k}</span>`; d.dataset.i = i; d.setAttribute("data-layout-allow-overlap", ""); d.querySelector("span").setAttribute("data-layout-allow-overlap", ""); $("#c8-fan").appendChild(d); });
+
+      const tl = gsap.timeline({ paused: true });
+      const on = (s, t) => tl.set(s, { opacity: 1 }, t), off = (s, t) => tl.set(s, { opacity: 0 }, t);
+      K.chapterCard(tl, "c8", 0, 1.5);
+      // ---- Kioto al amanecer (c8a)
+      const a0 = 2.3; on("#c8-kyoto", a0);
+      tl.fromTo("#c8-sun", { y: 140 }, { y: -40, duration: C.c8b[0] - a0, ease: "power1.out" }, a0);
+      tl.fromTo("#c8-sky", { x: 0 }, { x: -260, duration: C.c8b[0] - a0, ease: "none" }, a0);
+      K.blurIn(tl, "#c8-137", C.c8a[0] + 0.1, 0.6); K.blurIn(tl, "#c8-137s", C.c8a[0] + 1.6, 0.5); K.blurIn(tl, "#c8-137y", C.c8a[0] + 2.2, 0.5);
+      off("#c8-kyoto", C.c8b[0] - 0.05);
+      // ---- el camino que esquiva (c8b)
+      const b0 = C.c8b[0] - 0.05; on("#c8-path", b0);
+      tl.to("#c8-trail", { attr: { "stroke-dashoffset": 0 }, duration: 6.2, ease: "power1.inOut" }, b0 + 0.2);
+      [["#c8-o1", 1.2], ["#c8-o2", 2.0], ["#c8-o3", 2.8]].forEach(([o, dt]) => K.blurIn(tl, o, b0 + dt, 0.5));
+      K.wordsIn(tl, "#c8-pend", C.c8b[0] + 5.4, { gap: 0.12 });
+      off("#c8-path", C.c8c[0] - 0.1);
+      // ---- todas las consolas, de 1983 a 2025 (c8c)
+      on("#c8-line", C.c8c[0] - 0.1);
+      K.wordsIn(tl, "#c8-lt", C.c8c[0] + 4.6, { gap: 0.1 });
+      off("#c8-line", C.c8d[0] - 0.05);
+      // ---- de padres a hijos (c8d)
+      const d0 = C.c8d[0] - 0.05; on("#c8-fam", d0);
+      tl.set("#c8-pad", { x: 720, y: 520 }, d0);
+      tl.to("#c8-pad", { x: 1110, y: 600, duration: 1.4, ease: "power2.inOut" }, d0 + 1.0);
+      tl.to("#c8-pad", { opacity: 0, scale: 0.6, duration: 0.3 }, d0 + 2.3);
+      tl.set(["#c8-jl", "#c8-jr"], { opacity: 1, y: 570 }, d0 + 2.35);
+      tl.fromTo("#c8-jl", { x: 1140 }, { x: 1110, duration: 0.4, ease: "expo.out" }, d0 + 2.35);
+      tl.fromTo("#c8-jr", { x: 1140 }, { x: 1190, duration: 0.4, ease: "expo.out" }, d0 + 2.35);
+      K.blurIn(tl, "#c8-ft", d0 + 0.4, 0.5);
+      off("#c8-fam", C.c8e[0] - 0.05);
+      // ---- repartir las cartas (c8e)
+      const e0 = C.c8e[0] - 0.05; on("#c8-deal", e0);
+      $$("#c8-fan .c8-dc").forEach((c, i) => tl.fromTo(c, { opacity: 0, x: 900, y: 300, rotation: 40 }, { opacity: 1, x: 0, y: 0, rotation: -42 + i * 12, duration: 0.6, ease: "expo.out" }, e0 + 0.3 + i * 0.55));
+      // «¿Jugamos?» (c8f): el abanico se recoge y aparece la pregunta
+      const j0 = C.c8f[0] - 0.3;
+      tl.to("#c8-fan .c8-dc", { rotation: 0, y: 200, opacity: 0.0, duration: 0.5, ease: "power3.in", stagger: 0.02 }, j0);
+      tl.fromTo("#c8-jug", { opacity: 0, filter: "blur(14px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.6, ease: "expo.out" }, C.c8f[0]);
+      tl.to("#c8-jug", { opacity: 0, filter: "blur(10px)", duration: 0.35 }, C.c8g[0] - 0.4);
+      off("#c8-deal", C.c8g[0] - 0.05);
+      // ---- la primera carta… y la próxima (c8g, c8h)
+      const g0 = C.c8g[0] - 0.05; on("#c8-end", g0);
+      tl.set(".c8c-stroke", { attr: { "stroke-dashoffset": 0 } }, g0);
+      tl.fromTo("#c8-crane", { x: 210, scale: 0.9, opacity: 0 }, { x: 210, scale: 1, opacity: 1, duration: 1.2, ease: "power2.out" }, g0);
+      tl.to("#c8-crane", { x: 0, duration: 1.0, ease: "power3.inOut" }, C.c8h[0] - 0.2);
+      tl.fromTo("#c8-next", { opacity: 0, x: 500, rotation: 8 }, { opacity: 1, x: 0, rotation: 0, duration: 1.0, ease: "expo.out" }, C.c8h[0] + 0.1);
+      tl.fromTo("#c8-glint", { x: -500 }, { x: 600, duration: 1.6, ease: "power2.inOut" }, C.c8h[0] + 1.3);
+      tl.to("#c8-black", { opacity: 1, duration: 0.9, ease: "power1.inOut" }, D - 0.95);
+      window.__timelines["ch8"] = tl;
+    })();
+  </script>
+</template>

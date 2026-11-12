@@ -1,0 +1,325 @@
+<template>
+  <style>
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ede3cf; font-family: "Shippori Mincho", serif; color: #1b1714; }
+    .c1-full { position: absolute; inset: 0; }
+    .c1-tex { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+    /* tarjeta de capítulo */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 16px; background: #1b1714; transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 6px; background: #c23b22; }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #efe5cf; }
+    .cc-text { position: absolute; left: 930px; top: 380px; width: 860px; }
+    .cc-num { font-size: 40px; letter-spacing: 0.18em; color: #8a3a26; opacity: 0; }
+    .cc-title { font-size: 92px; line-height: 1.08; margin-top: 14px; opacity: 0; }
+    .cc-year { font-family: "Yuji Syuku", serif; font-size: 64px; margin-top: 18px; color: #c23b22; opacity: 0; }
+    /* Kioto */
+    #c1-kyoto { opacity: 0; }
+    #c1-sky { position: absolute; inset: 0; background: linear-gradient(180deg, #e7c8a0 0%, #ecd8b9 46%, #ede3cf 70%); }
+    #c1-sun { position: absolute; left: 1180px; top: 250px; width: 300px; height: 300px; border-radius: 50%; background: #c23b22; opacity: 0.92; }
+    .c1-layer { position: absolute; left: 0; top: 0; width: 2600px; height: 1080px; }
+    .c1-mist { position: absolute; height: 70px; border-radius: 50%; background: rgba(237, 227, 207, 0.75); filter: blur(14px); }
+    #c1-year { position: absolute; left: 150px; top: 120px; font-family: "Yuji Syuku", serif; font-size: 190px; line-height: 1; opacity: 0; }
+    #c1-kyotoK { position: absolute; left: 160px; top: 340px; font-family: "Yuji Syuku", serif; font-size: 64px; color: #c23b22; writing-mode: vertical-rl; letter-spacing: 0.2em; opacity: 0; }
+    #c1-train { position: absolute; left: 0; top: 560px; width: 520px; height: 90px; opacity: 0; }
+    /* juego en la calle (vista cenital) */
+    #c1-play { opacity: 0; background: #b89a64; }
+    #c1-tatami { position: absolute; inset: -40px; background: repeating-linear-gradient(90deg, #c7ab73 0 6px, #bb9d63 6px 12px); }
+    .c1-tatamiedge { position: absolute; top: -40px; bottom: -40px; width: 46px; background: #2f3a2c; }
+    .c1-mini { position: absolute; width: 150px; height: 248px; border-radius: 9px; background: #1b1714; box-shadow: 0 16px 30px rgba(0,0,0,0.35); }
+    .c1-mini::before { content: ""; position: absolute; inset: 7px; border-radius: 3px; background: var(--f, #c23b22); }
+    .c1-mini span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 74px; color: #efe5cf; }
+    .c1-hand { position: absolute; width: 260px; height: 120px; border-radius: 60px 60px 40px 40px; background: #d6a77f; box-shadow: 0 18px 30px rgba(0,0,0,0.3); }
+    /* taller */
+    #c1-shop { opacity: 0; background: #3a2a1e; }
+    #c1-shopwall { position: absolute; inset: 0; background: linear-gradient(180deg, #4b3626 0%, #3a2a1e 60%, #2b1f16 100%); }
+    .c1-beam { position: absolute; background: #24180f; }
+    #c1-shoji { position: absolute; left: 1080px; top: 90px; width: 700px; height: 560px; background: #e9dcc0;
+      background-image: linear-gradient(#5a4130 6px, transparent 6px), linear-gradient(90deg, #5a4130 6px, transparent 6px); background-size: 140px 140px; border: 14px solid #24180f; }
+    #c1-bench { position: absolute; left: 300px; top: 690px; width: 1000px; height: 70px; background: #6b4a2f; border-radius: 6px; box-shadow: 0 30px 40px rgba(0,0,0,0.4); }
+    #c1-man { position: absolute; left: 170px; top: 300px; width: 520px; height: 520px; }
+    #c1-wcard { position: absolute; left: 760px; top: 560px; width: 120px; height: 200px; transform: rotateX(62deg) rotateZ(-10deg); transform-origin: 50% 100%; }
+    .c1-lower { position: absolute; left: 1090px; top: 712px; opacity: 0; }
+    .c1-lower .n { font-size: 66px; color: #efe5cf; line-height: 1; }
+    .c1-lower .d { font-size: 34px; color: #d8c4a0; margin-top: 10px; letter-spacing: 0.05em; }
+    .c1-lower .k { font-family: "Yuji Syuku", serif; font-size: 44px; color: #e2553a; margin-left: 22px; }
+    /* 12 meses × 4 cartas */
+    #c1-grid { opacity: 0; }
+    .c1-col { position: absolute; top: 160px; width: 120px; }
+    .c1-colh { font-family: "Yuji Syuku", serif; font-size: 34px; text-align: center; height: 56px; opacity: 0; }
+    .c1-g { width: 100px; height: 150px; margin: 0 auto 12px; border-radius: 7px; background: #1b1714; position: relative; opacity: 0; }
+    .c1-g::before { content: ""; position: absolute; inset: 5px; border-radius: 3px; background: var(--f); }
+    .c1-g span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 46px; color: #efe5cf; }
+    #c1-count { position: absolute; left: 0; right: 0; top: 40px; text-align: center; font-size: 60px; opacity: 0; }
+    #c1-count b { font-family: "Yuji Syuku", serif; font-weight: 400; color: #c23b22; font-size: 84px; }
+    /* cartel */
+    #c1-sign { opacity: 0; }
+    #c1-board { position: absolute; left: 770px; top: 90px; width: 380px; height: 820px; border-radius: 10px; background: linear-gradient(90deg, #7a5536, #8e6644 50%, #6d4b2f); box-shadow: 0 40px 70px rgba(0,0,0,0.35); }
+    #c1-board::before { content: ""; position: absolute; inset: 22px; border: 4px solid rgba(30, 18, 10, 0.55); border-radius: 4px; }
+    #c1-boardk { position: absolute; left: 0; right: 0; top: 60px; text-align: center; font-family: "Yuji Syuku", serif; font-size: 124px; color: #1b1714; writing-mode: vertical-rl; margin: 0 auto; height: 700px; letter-spacing: 0.06em; }
+    #c1-rope { position: absolute; left: 950px; top: -20px; width: 20px; height: 120px; background: #a58a5a; }
+    #c1-signlbl { position: absolute; left: 1230px; top: 430px; opacity: 0; }
+    #c1-signlbl .a { font-size: 74px; }
+    #c1-signlbl .b { font-size: 36px; color: #6d5a43; margin-top: 12px; }
+    /* kanji */
+    #c1-kan { opacity: 0; }
+    .c1-kj { position: absolute; top: 210px; width: 460px; text-align: center; opacity: 0; }
+    .c1-kj .g { font-family: "Yuji Syuku", serif; font-size: 300px; line-height: 1; color: #1b1714; }
+    .c1-kj .m { font-size: 44px; margin-top: 18px; color: #6d5a43; }
+    #c1-kjline { position: absolute; left: 0; right: 0; top: 760px; text-align: center; font-size: 58px; opacity: 0; }
+    #c1-kjnote { position: absolute; left: 0; right: 0; top: 842px; text-align: center; font-size: 30px; color: #8b7556; opacity: 0; }
+    /* 1902 */
+    #c1-west { opacity: 0; }
+    #c1-wyear { position: absolute; left: 170px; top: 300px; font-family: "Yuji Syuku", serif; font-size: 240px; line-height: 1; opacity: 0; }
+    #c1-wtxt { position: absolute; left: 180px; top: 580px; width: 640px; font-size: 46px; line-height: 1.3; opacity: 0; }
+    #c1-fan { position: absolute; left: 1290px; top: 560px; width: 0; height: 0; }
+    .c1-wc { position: absolute; left: -110px; top: -380px; width: 220px; height: 330px; border-radius: 14px; background: #fbf8f1; border: 2px solid #cbbd9f; transform-origin: 50% 110%; box-shadow: 0 18px 34px rgba(0,0,0,0.22); }
+    .c1-wc .r { position: absolute; left: 16px; top: 12px; font-family: "Shippori Mincho", serif; font-size: 44px; line-height: 1; }
+    .c1-wc .s { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 130px; }
+    .c1-wc.red { color: #c23b22; }
+    /* medio siglo */
+    #c1-time { opacity: 0; }
+    #c1-axis { position: absolute; left: 160px; right: 160px; top: 760px; height: 4px; background: #1b1714; transform-origin: 0 50%; }
+    .c1-tick { position: absolute; top: 790px; font-size: 38px; transform: translateX(-50%); opacity: 0; }
+    #c1-stack { position: absolute; left: 160px; top: 740px; width: 1600px; height: 0; }
+    .c1-sc { position: absolute; bottom: 0; width: 76px; height: 12px; background: #c23b22; border: 2px solid #1b1714; border-radius: 2px; opacity: 0; }
+    #c1-yr { position: absolute; left: 0; right: 0; top: 170px; text-align: center; font-family: "Yuji Syuku", serif; font-size: 210px; line-height: 1; opacity: 0; }
+    #c1-young { position: absolute; left: 1420px; top: 330px; width: 260px; height: 420px; opacity: 0; }
+    #c1-22 { position: absolute; left: 1150px; top: 370px; font-family: "Yuji Syuku", serif; font-size: 230px; color: #c23b22; opacity: 0; line-height: 1; }
+    #c1-22s { position: absolute; left: 1150px; top: 610px; font-size: 44px; opacity: 0; }
+    #c1-ink { position: absolute; left: 1550px; top: 540px; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: #1b1714; opacity: 0; z-index: 40; }
+  </style>
+  <div id="root" data-composition-id="ch1" data-width="1920" data-height="1080">
+    <canvas id="c1-fib" class="c1-tex" width="1920" height="1080" style="z-index:25"></canvas>
+
+    <!-- Kioto 1889 -->
+    <div id="c1-kyoto" class="c1-full">
+      <div id="c1-sky"></div>
+      <div id="c1-sun"></div>
+      <svg id="c1-far" class="c1-layer" viewBox="0 0 2600 1080"><path fill="#a89c88" opacity="0.55" d="M0 600 C 260 520, 420 560, 640 500 C 860 440, 1040 520, 1260 480 C 1480 440, 1700 520, 1960 470 C 2200 430, 2400 500, 2600 470 L2600 1080 L0 1080 Z"/><path fill="#8d8170" opacity="0.6" d="M0 680 C 300 610, 520 650, 760 600 C 980 560, 1180 630, 1420 590 C 1680 550, 1900 630, 2160 590 C 2360 560, 2500 600, 2600 590 L2600 1080 L0 1080 Z"/></svg>
+      <svg id="c1-mid" class="c1-layer" viewBox="0 0 2600 1080"><g id="c1-pagoda" fill="#3b332c"></g><rect x="0" y="770" width="2600" height="320" fill="#4a4038"/></svg>
+      <div class="c1-mist" style="left:-200px;top:640px;width:1400px" id="c1-m1"></div>
+      <div class="c1-mist" style="left:900px;top:700px;width:1600px" id="c1-m2"></div>
+      <svg id="c1-train" viewBox="0 0 520 90"><g fill="#2a231e"><rect x="0" y="30" width="150" height="44" rx="6"/><rect x="20" y="0" width="34" height="34"/><rect x="100" y="10" width="50" height="22"/><rect x="170" y="38" width="150" height="36" rx="4"/><rect x="340" y="38" width="150" height="36" rx="4"/><circle cx="30" cy="80" r="10"/><circle cx="70" cy="80" r="10"/><circle cx="120" cy="80" r="10"/><circle cx="200" cy="80" r="9"/><circle cx="290" cy="80" r="9"/><circle cx="370" cy="80" r="9"/><circle cx="460" cy="80" r="9"/></g><g fill="#8d8170" opacity="0.7"><circle id="c1-p1" cx="37" cy="-6" r="12"/><circle id="c1-p2" cx="10" cy="-22" r="18"/><circle id="c1-p3" cx="-30" cy="-34" r="24"/></g></svg>
+      <svg id="c1-near" class="c1-layer" viewBox="0 0 2600 1080"><g id="c1-roofs"></g></svg>
+      <div id="c1-year">1889</div>
+      <div id="c1-kyotoK">京都</div>
+    </div>
+
+    <!-- se juega como hace siglos -->
+    <div id="c1-play" class="c1-full">
+      <div id="c1-tatami"></div>
+      <div class="c1-tatamiedge" style="left:520px"></div><div class="c1-tatamiedge" style="left:1360px"></div>
+      <div class="c1-mini" id="c1-p-a" style="left:690px;top:360px;--f:#c23b22"><span>松</span></div>
+      <div class="c1-mini" id="c1-p-b" style="left:880px;top:390px;--f:#2f4a3a"><span>桜</span></div>
+      <div class="c1-mini" id="c1-p-c" style="left:1070px;top:350px;--f:#5a3a6e"><span>菊</span></div>
+    </div>
+
+    <!-- taller de Fusajiro -->
+    <div id="c1-shop" class="c1-full">
+      <div id="c1-shopwall"></div>
+      <div class="c1-beam" style="left:0;right:0;top:40px;height:44px"></div>
+      <div class="c1-beam" style="left:980px;top:40px;width:40px;height:900px"></div>
+      <div id="c1-shoji"></div>
+      <div id="c1-bench"></div>
+      <svg id="c1-man" viewBox="0 0 520 520"><g fill="#120c08">
+        <circle cx="250" cy="90" r="52"/><path d="M200 70 q50 -60 100 0 q-10 -18 -50 -22 q-40 4 -50 22z"/>
+        <path d="M150 400 C 150 250, 190 160, 250 150 C 320 160, 360 250, 370 400 L 420 470 L 100 470 Z"/>
+        <path id="c1-arm" d="M330 220 C 400 250, 450 300, 500 330 L 490 352 C 430 330, 380 300, 320 270 Z"/>
+      </g><line id="c1-brush" x1="490" y1="340" x2="540" y2="420" stroke="#120c08" stroke-width="7" stroke-linecap="round"/></svg>
+      <svg id="c1-wcard" viewBox="0 0 120 200"><rect width="120" height="200" rx="8" fill="#1b1714"/><rect x="6" y="6" width="108" height="188" rx="3" fill="#efe5cf"/><rect id="c1-wpaint" x="6" y="6" width="108" height="0" fill="#c23b22"/></svg>
+      <div class="c1-lower" id="c1-fusa"><div class="n">Fusajiro Yamauchi <span class="k">山内房次郎</span></div><div class="d">Fundador · 1859 – 1940</div></div>
+    </div>
+
+    <!-- 12 meses, 48 cartas -->
+    <div id="c1-grid" class="c1-full"><div id="c1-count"><b id="c1-n12">12</b> meses · <b id="c1-n48">0</b> cartas</div></div>
+
+    <!-- cartel Nintendo Koppai -->
+    <div id="c1-sign" class="c1-full">
+      <div id="c1-rope"></div>
+      <div id="c1-board"><div id="c1-boardk">任天堂骨牌</div></div>
+      <div id="c1-signlbl"><div class="a">Nintendo Koppai</div><div class="b">任天堂骨牌 · «cartas Nintendo»</div></div>
+    </div>
+
+    <!-- el nombre -->
+    <div id="c1-kan" class="c1-full">
+      <div class="c1-kj" id="c1-k1" style="left:200px"><div class="g">任</div><div class="m">confiar, dejar en manos</div></div>
+      <div class="c1-kj" id="c1-k2" style="left:730px"><div class="g">天</div><div class="m">el cielo</div></div>
+      <div class="c1-kj" id="c1-k3" style="left:1260px"><div class="g">堂</div><div class="m">la sala, el templo</div></div>
+      <div id="c1-kjline">«Deja la suerte en manos del cielo»</div>
+      <div id="c1-kjnote">Traducción habitual; Nintendo nunca ha dado una oficial</div>
+    </div>
+
+    <!-- 1902 -->
+    <div id="c1-west" class="c1-full">
+      <div id="c1-wyear">1902</div>
+      <div id="c1-wtxt">Primeras barajas de estilo occidental fabricadas en Japón</div>
+      <div id="c1-fan">
+        <div class="c1-wc" id="c1-w1" data-layout-allow-overlap><div class="r">A</div><div class="s">♠</div></div>
+        <div class="c1-wc red" id="c1-w2" data-layout-allow-overlap><div class="r">K</div><div class="s">♥</div></div>
+        <div class="c1-wc red" id="c1-w3" data-layout-allow-overlap><div class="r">Q</div><div class="s">♦</div></div>
+        <div class="c1-wc" id="c1-w4" data-layout-allow-overlap><div class="r">J</div><div class="s">♣</div></div>
+        <div class="c1-mini" id="c1-w5" style="left:-75px;top:-300px;--f:#c23b22"><span>松</span></div>
+      </div>
+    </div>
+
+    <!-- medio siglo de cartas -->
+    <div id="c1-time" class="c1-full">
+      <div id="c1-yr">1889</div>
+      <div id="c1-axis"></div>
+      <div id="c1-stack"></div>
+      <svg id="c1-young" viewBox="0 0 260 420"><g fill="#1b1714"><circle cx="130" cy="58" r="40"/><path d="M90 40 q40 -40 80 0 q-40 -16 -80 0z"/><path d="M70 120 Q130 96 190 120 L 210 270 L 176 270 L 172 410 L 140 410 L 132 290 L 124 410 L 92 410 L 88 270 L 50 270 Z"/></g><path d="M120 120 L130 170 L140 120 Z" fill="#efe5cf"/></svg>
+      <div id="c1-22">22</div>
+      <div id="c1-22s">años · 1949</div>
+    </div>
+    <div id="c1-ink"></div>
+
+    <div id="c1-card" class="cc">
+      <div class="cc-card"><div class="cc-k">一</div></div>
+      <div class="cc-text"><div class="cc-num">__NUM__</div><div class="cc-title">__TITLE__</div><div class="cc-year">__YEARS__</div></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT, $ = K.$;
+      K.fibers("#c1-fib", { n: 1400, color: "rgba(90,70,45,0.08)" });
+      const NS = "http://www.w3.org/2000/svg";
+      // pagoda de cinco pisos y tejados de machiya (geometría determinista)
+      (() => {
+        const g = $("#c1-pagoda"); let y = 760, w = 300; const cx = 1500; let d = "";
+        for (let i = 0; i < 5; i++) {
+          const h = 74, rw = w * 0.62;
+          d += `M${cx - rw / 2} ${y} L${cx + rw / 2} ${y} L${cx + rw / 2} ${y - h * 0.55} L${cx - rw / 2} ${y - h * 0.55} Z `;
+          const ey = y - h * 0.55;
+          d += `M${cx - w / 2 - 20} ${ey + 6} Q ${cx - w / 2} ${ey - 4}, ${cx - w * 0.3} ${ey - 26} L ${cx + w * 0.3} ${ey - 26} Q ${cx + w / 2} ${ey - 4}, ${cx + w / 2 + 20} ${ey + 6} L ${cx + w / 2 - 10} ${ey + 12} L ${cx - w / 2 + 10} ${ey + 12} Z `;
+          y = ey - 26; w *= 0.86;
+        }
+        d += `M${cx - 6} ${y} L${cx + 6} ${y} L${cx + 4} ${y - 150} L${cx - 4} ${y - 150} Z`;
+        const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); g.appendChild(p);
+        for (let i = 0; i < 7; i++) { const c = document.createElementNS(NS, "ellipse"); c.setAttribute("cx", cx); c.setAttribute("cy", y - 30 - i * 16); c.setAttribute("rx", 14 - i); c.setAttribute("ry", 4); g.appendChild(c); }
+        const r = K.rng(11), rg = $("#c1-roofs"); let x = -40;
+        while (x < 2640) {
+          const w2 = 220 + r() * 160, h2 = 70 + r() * 50, base = 840 + r() * 40;
+          const roof = document.createElementNS(NS, "path");
+          roof.setAttribute("d", `M${x - 20} ${base} L${x + w2 * 0.12} ${base - h2} L${x + w2 * 0.88} ${base - h2} L${x + w2 + 20} ${base} Z`);
+          roof.setAttribute("fill", "#2a231e"); rg.appendChild(roof);
+          for (let k = 1; k < 9; k++) { const ln = document.createElementNS(NS, "line"); const lx = x + (w2 * k) / 9; ln.setAttribute("x1", lx); ln.setAttribute("y1", base - h2 + 6); ln.setAttribute("x2", lx + (k - 4.5) * 4); ln.setAttribute("y2", base - 4); ln.setAttribute("stroke", "#463b33"); ln.setAttribute("stroke-width", "3"); rg.appendChild(ln); }
+          const wall = document.createElementNS(NS, "rect"); wall.setAttribute("x", x); wall.setAttribute("y", base); wall.setAttribute("width", w2); wall.setAttribute("height", 260); wall.setAttribute("fill", "#1f1915"); rg.appendChild(wall);
+          for (let k = 0; k < 5; k++) { const sl = document.createElementNS(NS, "rect"); sl.setAttribute("x", x + 20 + k * (w2 - 40) / 5); sl.setAttribute("y", base + 40); sl.setAttribute("width", 8); sl.setAttribute("height", 150); sl.setAttribute("fill", "#3a3029"); rg.appendChild(sl); }
+          if (r() < 0.55) { const l = document.createElementNS(NS, "rect"); l.setAttribute("x", x + w2 * 0.7); l.setAttribute("y", base + 20); l.setAttribute("width", 34); l.setAttribute("height", 50); l.setAttribute("rx", 14); l.setAttribute("fill", "#c23b22"); rg.appendChild(l);
+            const lc = document.createElementNS(NS, "rect"); lc.setAttribute("x", x + w2 * 0.7 + 8); lc.setAttribute("y", base + 30); lc.setAttribute("width", 18); lc.setAttribute("height", 30); lc.setAttribute("rx", 8); lc.setAttribute("fill", "#e9a66b"); rg.appendChild(lc); }
+          x += w2 + 30 + r() * 40;
+        }
+      })();
+      // 12 meses × 4 cartas
+      (() => {
+        const months = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
+        const flowers = ["松", "梅", "桜", "藤", "菖", "牡", "萩", "芒", "菊", "紅", "柳", "桐"];
+        const cols = ["#c23b22", "#b0435a", "#d77a8a", "#6c4b8a", "#3d5f8a", "#b23a3a", "#9a5a3a", "#6d6a3a", "#c6942e", "#a63a22", "#3f5a3a", "#5a4a6e"];
+        const grid = $("#c1-grid");
+        months.forEach((m, i) => {
+          const col = document.createElement("div"); col.className = "c1-col"; col.style.left = 120 + i * 140 + "px";
+          col.innerHTML = `<div class="c1-colh">${m}月</div>` + [0, 1, 2, 3].map(k => `<div class="c1-g" style="--f:${cols[i]};filter:brightness(${1 - k * 0.09})"><span>${flowers[i]}</span></div>`).join("");
+          grid.appendChild(col);
+        });
+      })();
+      // medio siglo: montón de cartas sobre el eje
+      (() => {
+        const st = $("#c1-stack");
+        for (let i = 0; i < 60; i++) { const c = document.createElement("div"); c.className = "c1-sc"; c.style.left = (i * 1600) / 60 + "px"; c.style.height = 14 + i * 7 + "px"; st.appendChild(c); }
+        [1889, 1902, 1929, 1949].forEach(y => { const t = document.createElement("div"); t.className = "c1-tick"; t.textContent = y; t.style.left = 160 + ((y - 1889) / 60) * 1600 + "px"; t.dataset.y = y; $("#c1-time").appendChild(t); });
+      })();
+
+      const tl = gsap.timeline({ paused: true });
+      // ---- tarjeta de capítulo
+      const tc = K.chapterCard(tl, "c1", 0.0, 1.55);
+      // ---- Kioto (c1a): paneo con paralaje
+      const a0 = 2.4, a1 = C.c1b[0];
+      tl.set("#c1-kyoto", { opacity: 1 }, a0);
+      tl.fromTo("#c1-far", { x: 0 }, { x: -160, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-mid", { x: -100 }, { x: -420, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-near", { x: 0 }, { x: -640, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-sun", { y: 40 }, { y: 70, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-m1", { x: 0 }, { x: 260, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-m2", { x: 0 }, { x: -300, duration: a1 - a0, ease: "none" }, a0);
+      K.blurIn(tl, "#c1-year", C.c1a[0] + 0.1, 0.6);
+      K.blurIn(tl, "#c1-kyotoK", C.c1a[0] + 0.5, 0.6);
+      // «Japón se abre al mundo a toda velocidad»: cruza el tren
+      const tr = C.c1a[0] + 1.6;
+      tl.set("#c1-train", { opacity: 1 }, tr);
+      tl.fromTo("#c1-train", { x: -560 }, { x: 2000, duration: 5.4, ease: "power1.inOut" }, tr);
+      ["#c1-p1", "#c1-p2", "#c1-p3"].forEach((p, i) => tl.fromTo(p, { attr: { r: 6 } }, { attr: { r: 14 + i * 8 }, duration: 0.9, repeat: 5, ease: "power1.out" }, tr + i * 0.15));
+      tl.to(["#c1-year", "#c1-kyotoK"], { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, C.c1a[0] + 4.6);
+      // «en sus calles aún se juega como hace siglos»: vista cenital de una partida
+      const p0 = C.c1a[0] + 4.9;
+      tl.set("#c1-play", { opacity: 1 }, p0);
+      tl.fromTo("#c1-play", { scale: 1.08 }, { scale: 1.0, duration: a1 - p0, ease: "power2.out" }, p0);
+      [["#c1-p-a", -1], ["#c1-p-b", 1], ["#c1-p-c", -1]].forEach(([s, dir], i) => tl.fromTo(s, { y: dir * 500, rotation: dir * 25, opacity: 0 }, { y: 0, rotation: (i - 1) * 6, opacity: 1, duration: 0.6, ease: "expo.out" }, p0 + 0.3 + i * 0.5));
+      tl.set(["#c1-kyoto", "#c1-play"], { opacity: 0 }, a1);
+      // ---- taller (c1b)
+      tl.set("#c1-shop", { opacity: 1 }, a1);
+      tl.fromTo("#c1-shop", { scale: 1.0 }, { scale: 1.07, transformOrigin: "40% 60%", duration: C.c1c[0] - a1, ease: "power1.inOut" }, a1);
+      tl.fromTo("#c1-arm", { rotation: -4, transformOrigin: "330px 245px" }, { rotation: 5, duration: 0.55, repeat: 8, yoyo: true, ease: "sine.inOut" }, a1);
+      tl.fromTo("#c1-brush", { rotation: -4, transformOrigin: "330px 245px" }, { rotation: 5, duration: 0.55, repeat: 8, yoyo: true, ease: "sine.inOut" }, a1);
+      tl.fromTo("#c1-wpaint", { attr: { height: 0 } }, { attr: { height: 188 }, duration: 4.2, ease: "power1.inOut" }, a1 + 0.5);
+      tl.set("#c1-fusa", { opacity: 1 }, C.c1b[0] + 1.7);
+      K.wordsIn(tl, "#c1-fusa .n", C.c1b[0] + 1.7, { gap: 0.1 });
+      K.blurIn(tl, "#c1-fusa .d", C.c1b[0] + 2.2, 0.4);
+      tl.set("#c1-shop", { opacity: 0 }, C.c1c[0] - 0.05);
+      // ---- 12 meses (c1c): reparto de 48 cartas
+      const g0 = C.c1c[0] - 0.05;
+      tl.set("#c1-grid", { opacity: 1 }, g0);
+      tl.fromTo("#c1-count", { opacity: 0 }, { opacity: 1, duration: 0.3 }, g0 + 0.1);
+      K.$$("#c1-grid .c1-colh").forEach((h, i) => tl.fromTo(h, { opacity: 0 }, { opacity: 1, duration: 0.2 }, g0 + 0.2 + i * 0.12));
+      K.$$("#c1-grid .c1-g").forEach((c, i) => {
+        const col = Math.floor(i / 4), row = i % 4, t = g0 + 0.9 + col * 0.2 + row * 0.07;
+        tl.fromTo(c, { opacity: 0, y: -260 - row * 30, rotation: (col % 2 ? 1 : -1) * 18 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "expo.out" }, t);
+      });
+      K.count(tl, "#c1-n48", 0, 48, g0 + 0.9, 2.9);
+      tl.to("#c1-grid", { opacity: 0, duration: 0.25 }, C.c1d[0] - 0.4);
+      // ---- Nintendo Koppai (c1d)
+      tl.set("#c1-sign", { opacity: 1 }, C.c1d[0] - 0.1);
+      tl.fromTo("#c1-board", { y: -900, rotation: -4 }, { y: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, C.c1d[0] - 0.1);
+      tl.fromTo("#c1-rope", { y: -900 }, { y: 0, duration: 0.9, ease: "expo.out" }, C.c1d[0] - 0.1);
+      tl.to("#c1-board", { rotation: 1.2, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "50% 0%" }, C.c1d[0] + 0.8);
+      tl.set("#c1-signlbl", { opacity: 1 }, C.c1d[0] + 0.6);
+      K.wordsIn(tl, "#c1-signlbl .a", C.c1d[0] + 0.6);
+      K.blurIn(tl, "#c1-signlbl .b", C.c1d[0] + 1.0, 0.4);
+      tl.set("#c1-sign", { opacity: 0 }, C.c1e[0] - 0.05);
+      // ---- 任 天 堂 (c1e)
+      tl.set("#c1-kan", { opacity: 1 }, C.c1e[0] - 0.05);
+      ["#c1-k1", "#c1-k2", "#c1-k3"].forEach((k, i) => tl.fromTo(k, { opacity: 0, scale: 1.08, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, C.c1e[0] + 0.1 + i * 0.45));
+      tl.to("#c1-k2 .g", { color: "#c23b22", duration: 0.4 }, C.c1e[0] + 2.2);
+      K.wordsIn(tl, "#c1-kjline", C.c1e[0] + 1.6, { gap: 0.09 });
+      K.blurIn(tl, "#c1-kjnote", C.c1e[0] + 2.1, 0.4);
+      tl.to("#c1-kan", { opacity: 0, duration: 0.3 }, C.c1f[0] - 0.15);
+      // ---- 1902 (c1f)
+      const w0 = C.c1f[0] - 0.1;
+      tl.set("#c1-west", { opacity: 1 }, w0);
+      tl.fromTo("#c1-w5", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, w0);
+      ["#c1-w1", "#c1-w2", "#c1-w3", "#c1-w4"].forEach((c, i) => tl.fromTo(c, { rotation: 0, opacity: 0, x: 300 }, { rotation: -24 + i * 16, opacity: 1, x: 40 + i * 30, duration: 0.8, ease: "expo.out" }, C.c1f[0] + 1.7 + i * 0.16));
+      tl.to("#c1-w5", { x: -260, rotation: -14, duration: 0.8, ease: "expo.out" }, C.c1f[0] + 1.6);
+      K.blurIn(tl, "#c1-wyear", C.c1f[0] + 1.5, 0.6);
+      K.wordsIn(tl, "#c1-wtxt", C.c1f[0] + 2.8, { gap: 0.08 });
+      tl.to("#c1-west", { opacity: 0, duration: 0.3 }, C.c1g[0] - 0.15);
+      // ---- medio siglo (c1g) y 1949 (c1h)
+      const m0 = C.c1g[0] - 0.1;
+      tl.set("#c1-time", { opacity: 1 }, m0);
+      tl.fromTo("#c1-axis", { scaleX: 0 }, { scaleX: 1, duration: 3.6, ease: "power1.inOut" }, m0);
+      K.$$("#c1-time .c1-tick").forEach(t => tl.fromTo(t, { opacity: 0 }, { opacity: 1, duration: 0.3 }, m0 + ((+t.dataset.y - 1889) / 60) * 3.6));
+      K.$$("#c1-stack .c1-sc").forEach((c, i) => tl.fromTo(c, { opacity: 0, scaleY: 0, transformOrigin: "50% 100%" }, { opacity: 1, scaleY: 1, duration: 0.25, ease: "power2.out" }, m0 + (i / 60) * 3.6));
+      tl.set("#c1-yr", { opacity: 1 }, m0);
+      K.count(tl, "#c1-yr", 1889, 1949, m0, 3.6, v => String(Math.round(v)));
+      const y0 = C.c1h[0];
+      tl.to("#c1-stack", { opacity: 0.25, duration: 0.4 }, y0);
+      tl.fromTo("#c1-young", { opacity: 0, x: 300 }, { opacity: 1, x: 0, duration: 1.1, ease: "expo.out" }, y0 + 0.1);
+      K.blurIn(tl, "#c1-22", y0 + 1.3, 0.5);
+      K.blurIn(tl, "#c1-22s", y0 + 1.6, 0.4);
+      // gota de tinta que lo cubre todo → capítulo 2
+      tl.set("#c1-ink", { opacity: 1 }, D - 0.95);
+      tl.fromTo("#c1-ink", { scale: 0 }, { scale: 120, duration: 0.9, ease: "power3.in" }, D - 0.95);
+      window.__timelines["ch1"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,266 @@
+<template>
+  <style>
+    __FONT_PIXEL__
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #6888fc; color: #2a2a2e; font-family: "Press Start 2P", monospace; }
+    .c4-full { position: absolute; inset: 0; opacity: 0; }
+    /* tarjeta */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; background: #6888fc; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 16px; background: #2a2a2e; transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 6px; background: #c8102e; background-image: linear-gradient(90deg, rgba(0,0,0,0.12) 50%, transparent 50%), linear-gradient(rgba(0,0,0,0.12) 50%, transparent 50%); background-size: 24px 24px; }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #fff; }
+    .cc-text { position: absolute; left: 930px; top: 380px; width: 900px; color: #fff; }
+    .cc-num { font-size: 30px; opacity: 0; color: #ffd23b; }
+    .cc-title { font-size: 56px; line-height: 1.4; margin-top: 22px; opacity: 0; }
+    .cc-year { font-size: 40px; margin-top: 22px; color: #2a2a2e; opacity: 0; }
+    /* estudio 3D */
+    #c4-studio { background: radial-gradient(ellipse 70% 80% at 50% 40%, #eceae4 0%, #d8d6d0 55%, #bdbab2 100%); }
+    #c4-cv { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    .c4-lab { position: absolute; left: 140px; top: 130px; opacity: 0; }
+    .c4-lab .d { font-size: 54px; color: #c8102e; }
+    .c4-lab .n { font-family: "Archivo Black", sans-serif; font-size: 76px; margin-top: 26px; line-height: 1; }
+    .c4-lab .s { font-family: "Inter", sans-serif; font-weight: 700; font-size: 32px; margin-top: 18px; color: #55555c; }
+    #c4-rob { position: absolute; left: 1440px; top: 300px; width: 300px; height: 450px; image-rendering: pixelated; opacity: 0; }
+    /* crisis 1983 */
+    #c4-crash { background: #3a2a2e; color: #f2e9e4; }
+    #c4-chart { position: absolute; left: 160px; top: 140px; width: 1600px; height: 560px; }
+    #c4-cl1 { position: absolute; left: 160px; top: 740px; font-size: 40px; opacity: 0; }
+    #c4-cl2 { position: absolute; left: 160px; top: 810px; font-family: "Inter"; font-weight: 600; font-size: 28px; color: #b9a8a0; opacity: 0; }
+    .c4-cart { position: absolute; width: 90px; height: 110px; background: #7a7a82; border-top: 18px solid #55555c; opacity: 0; }
+    /* sello */
+    #c4-seal { background: #d8d6d0; }
+    #c4-bigcart { position: absolute; left: 610px; top: 300px; width: 700px; height: 560px; background: #6e6e76; border-radius: 10px 10px 0 0; box-shadow: 0 40px 60px rgba(0,0,0,0.25); }
+    #c4-bigcart::before { content: ""; position: absolute; left: 70px; right: 70px; top: 60px; height: 300px; background: #2a2a2e; border-radius: 6px; }
+    #c4-bigcart::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 40px; background: repeating-linear-gradient(90deg, #55555c 0 30px, #6e6e76 30px 46px); }
+    #c4-stamp { position: absolute; left: 860px; top: 380px; width: 200px; height: 200px; border-radius: 50%; background: #e2b33c; border: 10px solid #9a7620; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 17px; line-height: 1.5; color: #4a3610; opacity: 0; }
+    #c4-trust { position: absolute; left: 0; right: 0; top: 150px; text-align: center; font-size: 66px; color: #c8102e; opacity: 0; }
+    /* mundo 8 bits */
+    #c4-world { background: #6888fc; }
+    #c4-scroll { position: absolute; left: 0; top: 0; width: 6000px; height: 1080px; }
+    .c4-cloud { position: absolute; width: 240px; height: 72px; background: #fff; box-shadow: 48px -24px 0 #fff, 96px 0 0 #fff, 24px 24px 0 #fff; }
+    .c4-hill { position: absolute; bottom: 216px; width: 0; height: 0; border-left: 300px solid transparent; border-right: 300px solid transparent; border-bottom: 260px solid #2e9a4a; }
+    #c4-ground { position: absolute; left: 0; bottom: 0; width: 6000px; height: 216px; background-color: #b8622a; background-image: linear-gradient(90deg, #7a3a12 6px, transparent 6px), linear-gradient(#7a3a12 6px, transparent 6px); background-size: 72px 72px; }
+    .c4-blk { position: absolute; width: 72px; height: 72px; background: #c87a2a; border: 6px solid #7a3a12; }
+    .c4-coin { position: absolute; width: 30px; height: 48px; background: #ffd23b; border: 6px solid #b8862a; opacity: 0; }
+    #c4-hero { position: absolute; left: 520px; bottom: 216px; width: 120px; height: 168px; image-rendering: pixelated; }
+    #c4-smb { position: absolute; left: 0; right: 0; top: 170px; text-align: center; color: #fff; text-shadow: 6px 6px 0 #2a2a2e; z-index: 5; }
+    #c4-smb .t { font-size: 84px; opacity: 0; }
+    #c4-smb .d { font-size: 40px; margin-top: 30px; color: #ffd23b; opacity: 0; }
+    /* décadas */
+    #c4-stairs { background: #6888fc; }
+    .c4-step { position: absolute; width: 300px; height: 48px; background: #c87a2a; border: 6px solid #7a3a12; opacity: 0; }
+    .c4-stepl { position: absolute; font-size: 30px; color: #fff; text-shadow: 4px 4px 0 #2a2a2e; opacity: 0; }
+    #c4-hero2 { position: absolute; left: 0; top: 0; width: 90px; height: 126px; image-rendering: pixelated; }
+    #c4-icon { position: absolute; left: 1080px; top: 140px; width: 760px; font-size: 52px; line-height: 1.5; color: #fff; text-shadow: 5px 5px 0 #2a2a2e; opacity: 0; }
+    /* 62 millones */
+    #c4-units { background: #2a2a2e; color: #fff; }
+    #c4-ugrid { position: absolute; left: 200px; top: 300px; width: 1520px; height: 440px; }
+    .c4-u { position: absolute; width: 96px; height: 40px; background: #c4c4c2; border-bottom: 14px solid #48484c; opacity: 0; }
+    #c4-un { position: absolute; left: 0; right: 0; top: 120px; text-align: center; font-size: 96px; color: #ffd23b; }
+    #c4-ul { position: absolute; left: 0; right: 0; top: 790px; text-align: center; font-family: "Inter"; font-weight: 700; font-size: 32px; color: #b0b0b8; opacity: 0; }
+    /* Game Boy pantalla */
+    #c4-gbs { background: #9bbc0f; }
+    #c4-gbgrid { position: absolute; left: 660px; top: 40px; width: 600px; height: 830px; background: #8bac0f; border: 12px solid #306230; }
+    .c4-mino { position: absolute; width: 60px; height: 60px; background: #306230; border: 6px solid #0f380f; }
+    #c4-gbn { position: absolute; left: 1330px; top: 300px; font-size: 64px; color: #0f380f; line-height: 1.4; opacity: 0; }
+    #c4-gbl { position: absolute; left: 1330px; top: 480px; width: 520px; font-size: 22px; color: #306230; line-height: 1.8; opacity: 0; }
+    #c4-bat { position: absolute; left: 160px; top: 380px; width: 260px; height: 130px; border: 14px solid #0f380f; }
+    #c4-bat::after { content: ""; position: absolute; right: -40px; top: 30px; width: 26px; height: 44px; background: #0f380f; }
+    #c4-batl { position: absolute; left: 10px; top: 10px; bottom: 10px; width: 212px; background: #306230; transform-origin: 0 50%; }
+    #c4-batt { position: absolute; left: 160px; top: 560px; font-size: 26px; color: #0f380f; line-height: 1.6; opacity: 0; }
+    /* 16 bits */
+    #c4-bits { background: #2a2a2e; color: #fff; }
+    .c4-bimg { position: absolute; top: 130px; width: 380px; height: 630px; image-rendering: pixelated; opacity: 0; }
+    .c4-bl { position: absolute; top: 790px; width: 380px; text-align: center; font-size: 34px; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="ch4" data-width="1920" data-height="1080">
+
+    <div id="c4-studio" class="c4-full">
+      <canvas id="c4-cv" width="1920" height="1080"></canvas>
+      <div class="c4-lab" id="c4-l1"><div class="d">15·07·1983</div><div class="n">Famicom</div><div class="s">Family Computer · Japón</div></div>
+      <div class="c4-lab" id="c4-l2"><div class="d">1985</div><div class="n">NES</div><div class="s">Nintendo Entertainment System · Nueva York</div></div>
+      <div class="c4-lab" id="c4-l3"><div class="d">21·04·1989</div><div class="n">Game Boy</div><div class="s">Diseñada por el equipo de Gunpei Yokoi</div></div>
+      <div class="c4-lab" id="c4-l4"><div class="d">21·11·1990</div><div class="n">Super Famicom</div><div class="s">Super Nintendo en Occidente · 16 bits</div></div>
+      <canvas id="c4-rob" width="10" height="15"></canvas>
+    </div>
+
+    <div id="c4-crash" class="c4-full">
+      <svg id="c4-chart" viewBox="0 0 1600 560"><line x1="0" y1="540" x2="1600" y2="540" stroke="#7a6a6e" stroke-width="6"/>
+        <polyline id="c4-cline" points="0,120 300,80 560,60 760,90 900,260 1040,420 1200,500 1600,520" fill="none" stroke="#ff4a3d" stroke-width="16" stroke-linejoin="miter" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/></svg>
+      <div id="c4-cl1">Crisis del videojuego · 1983</div>
+      <div id="c4-cl2">Mercado doméstico de EE. UU. (curva ilustrativa)</div>
+    </div>
+
+    <div id="c4-seal" class="c4-full"><div id="c4-bigcart"></div><div id="c4-stamp">SELLO<br>DE<br>CALIDAD</div><div id="c4-trust">Confianza</div></div>
+
+    <div id="c4-world" class="c4-full">
+      <div id="c4-scroll">
+        <div class="c4-cloud" style="left:300px;top:180px"></div><div class="c4-cloud" style="left:1300px;top:120px"></div><div class="c4-cloud" style="left:2300px;top:200px"></div><div class="c4-cloud" style="left:3300px;top:140px"></div><div class="c4-cloud" style="left:4300px;top:190px"></div>
+        <div class="c4-hill" style="left:100px"></div><div class="c4-hill" style="left:1700px;transform:scale(0.7);transform-origin:50% 100%"></div><div class="c4-hill" style="left:3000px"></div><div class="c4-hill" style="left:4500px"></div>
+        <div class="c4-blk" style="left:1500px;top:520px"></div><div class="c4-blk" style="left:1572px;top:520px" id="c4-qb"></div><div class="c4-blk" style="left:1644px;top:520px"></div>
+        <div class="c4-blk" style="left:2400px;top:430px"></div><div class="c4-blk" style="left:2472px;top:430px"></div>
+        <div class="c4-coin" id="c4-coin" style="left:1590px;top:450px"></div>
+        <div class="c4-blk" style="left:3200px;top:720px"></div><div class="c4-blk" style="left:3272px;top:720px"></div><div class="c4-blk" style="left:3272px;top:648px"></div>
+        <div id="c4-ground"></div>
+      </div>
+      <canvas id="c4-hero" width="10" height="14"></canvas>
+      <div id="c4-smb"><div class="t">SUPER MARIO BROS.</div><div class="d">13·09·1985</div></div>
+    </div>
+
+    <div id="c4-stairs" class="c4-full"><div id="c4-icon">Un icono<br>global</div><canvas id="c4-hero2" width="10" height="14"></canvas></div>
+
+    <div id="c4-units" class="c4-full"><div id="c4-un">0</div><div id="c4-ugrid"></div><div id="c4-ul">NES + Famicom · 61,91 millones de consolas (Nintendo)</div></div>
+
+    <div id="c4-gbs" class="c4-full">
+      <div id="c4-gbgrid"></div>
+      <div id="c4-bat"><div id="c4-batl"></div></div><div id="c4-batt">Pilas<br>que duran<br>horas</div>
+      <div id="c4-gbn"><span id="c4-gbnv">0</span><br>millones</div>
+      <div id="c4-gbl">Game Boy + Game Boy Color (Nintendo)</div>
+    </div>
+
+    <div id="c4-bits" class="c4-full">
+      <img class="c4-bimg" id="c4-b8" src="assets/img/crane-pixel.png" style="left:420px" alt="">
+      <img class="c4-bimg" id="c4-b16" src="assets/img/crane-16.png" style="left:1120px" alt="">
+      <div class="c4-bl" id="c4-bl8" style="left:420px">8 bits</div><div class="c4-bl" id="c4-bl16" style="left:1120px;color:#ffd23b">16 bits</div>
+    </div>
+
+    <div id="c4-card" class="cc">
+      <div class="cc-card"><div class="cc-k">四</div></div>
+      <div class="cc-text"><div class="cc-num">__NUM__</div><div class="cc-title">__TITLE__</div><div class="cc-year">__YEARS__</div></div>
+    </div>
+  </div>
+  <script type="module">
+    import { buildConsole, createStage } from "./assets/lib/consoles.js";
+    const T0 = __T0__, C = __C__;
+    const st = createStage(document.getElementById("c4-cv"), { fov: 26 });
+    const M = { famicom: buildConsole("famicom"), nes: buildConsole("nes"), gameboy: buildConsole("gameboy"), superfamicom: buildConsole("superfamicom") };
+    Object.values(M).forEach(m => { m.visible = false; st.scene.add(m); });
+    // ventanas de cada consola (tiempo local) y encuadre
+    const W = [
+      { m: "famicom", a: C.c4a[0] - 0.6, b: C.c4b[0], s: 1.6, y0: 0.5, cam: [5.5, 3.4, 7.2], look: [0.3, 0.35, 0] },
+      { m: "nes", a: C.c4c[0] - 0.1, b: C.c4d[0], s: 1.5, y0: 0.4, cam: [5.2, 3.6, 7.6], look: [0.5, 0.4, 0] },
+      { m: "gameboy", a: C.c4i[0] - 0.1, b: C.c4j[0], s: 1.9, y0: -0.5, cam: [1.4, 2.6, 8.6], look: [-0.4, 1.35, 0] },
+      { m: "superfamicom", a: C.c4k[0] - 0.1, b: C.c4k[0] + 4.2, s: 1.45, y0: 0.6, cam: [5.0, 3.6, 7.4], look: [0.9, 0.3, 0.3] },
+    ];
+    function renderAt(t) {
+      const l = t - T0;
+      const w = W.find(x => l >= x.a - 0.05 && l < x.b + 0.05) || W[0];
+      Object.entries(M).forEach(([k, m]) => (m.visible = k === w.m));
+      const m = M[w.m], p = Math.max(0, l - w.a);
+      m.scale.setScalar(w.s);
+      m.rotation.y = w.y0 + p * 0.22;
+      const e = Math.min(1, p / 2.5), ease = 1 - Math.pow(1 - e, 3);
+      st.camera.position.set(w.cam[0] * (1.25 - 0.25 * ease), w.cam[1], w.cam[2] * (1.25 - 0.25 * ease));
+      st.camera.lookAt(w.look[0], w.look[1], w.look[2]);
+      st.render();
+    }
+    window.addEventListener("hf-seek", e => renderAt(e.detail.time));
+    renderAt(T0);
+  </script>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT, $ = K.$, $$ = K.$$;
+      function sprite(id, rows, pal) { const c = $(id), x = c.getContext("2d"); rows.forEach((row, y) => [...row].forEach((ch, xx) => { if (ch !== ".") { x.fillStyle = pal[ch]; x.fillRect(xx, y, 1, 1); } })); }
+      const HERO = ["..hhhhhh..", ".hhhhhhhh.", "..ssssss..", "..sbsbss..", "..ssssss..", "...ssss...", ".gggggggg.", "ggsggggsgg", "gssggggssg", "..gggggg..", "..ggg.ggg.", "..oo...oo.", ".ooo...ooo", ".ooo...ooo"];
+      const HP = { h: "#8a5a2a", s: "#e8b38a", b: "#1b1b1b", g: "#3b7ad0", o: "#5a3a1a" };
+      sprite("#c4-hero", HERO, HP); sprite("#c4-hero2", HERO, HP);
+      sprite("#c4-rob", ["...gggg...", "..gwwwwg..", "..gbwwbg..", "..gggggg..", "....gg....", "..gggggg..", ".rgggggr..", ".r.gggg.r.", ".r.gggg.r.", "...gggg...", "....gg....", "....gg....", "..gggggg..", ".gggggggg.", "gggggggggg"], { g: "#c4c4c2", w: "#2a2a2e", b: "#c8102e", r: "#8a8a92" });
+      // peldaños de décadas
+      const steps = [[1985, 140, 860], [1995, 520, 740], [2005, 900, 620], [2015, 1280, 500], [2025, 1580, 380]];
+      steps.forEach(([y, x, top], i) => { const s = document.createElement("div"); s.className = "c4-step"; s.style.left = x + "px"; s.style.top = top + "px"; s.dataset.i = i; $("#c4-stairs").appendChild(s);
+        const l = document.createElement("div"); l.className = "c4-stepl"; l.textContent = y; l.style.left = x + 70 + "px"; l.style.top = top + 70 + "px"; l.dataset.i = i; $("#c4-stairs").appendChild(l); });
+      for (let i = 0; i < 62; i++) { const u = document.createElement("div"); u.className = "c4-u"; u.style.left = (i % 13) * 117 + "px"; u.style.top = Math.floor(i / 13) * 86 + "px"; if (i === 61) u.style.width = "86px"; $("#c4-ugrid").appendChild(u); }
+      const minos = [[[0,0],[1,0],[2,0],[3,0]], [[0,0],[0,1],[1,1],[2,1]], [[0,0],[1,0],[0,1],[1,1]], [[1,0],[0,1],[1,1],[2,1]], [[1,0],[2,0],[0,1],[1,1]]];
+      const drops = [[0, 0, 11], [2, 4, 11], [1, 0, 9], [3, 6, 10], [4, 2, 8], [0, 4, 7]];
+      drops.forEach(([m, cx, row], i) => { const g = document.createElement("div"); g.className = "c4-pc"; g.style.position = "absolute"; g.style.left = cx * 66 + 12 + "px"; g.style.top = "0px"; g.dataset.row = row;
+        minos[m].forEach(([dx, dy]) => { const b = document.createElement("div"); b.className = "c4-mino"; b.style.left = dx * 66 + "px"; b.style.top = dy * 66 + "px"; g.appendChild(b); }); $("#c4-gbgrid").appendChild(g); });
+
+      const tl = gsap.timeline({ paused: true });
+      const on = (s, t) => tl.set(s, { opacity: 1 }, t), off = (s, t) => tl.set(s, { opacity: 0 }, t);
+      K.chapterCard(tl, "c4", 0, 1.5);
+      // ---- Famicom (c4a)
+      on("#c4-studio", C.c4a[0] - 0.6);
+      tl.fromTo("#c4-studio", { opacity: 0 }, { opacity: 1, duration: 0.4 }, C.c4a[0] - 0.6);
+      K.blurIn(tl, "#c4-l1", C.c4a[0] + 0.4, 0.5);
+      tl.to("#c4-l1", { opacity: 0, duration: 0.25 }, C.c4b[0] - 0.3);
+      off("#c4-studio", C.c4b[0] - 0.02);
+      // ---- crisis (c4b)
+      const b0 = C.c4b[0] - 0.05; on("#c4-crash", b0);
+      tl.to("#c4-cline", { attr: { "stroke-dashoffset": 0 }, duration: 2.6, ease: "power1.in" }, b0 + 0.2);
+      K.blurIn(tl, "#c4-cl1", b0 + 0.6, 0.4); K.blurIn(tl, "#c4-cl2", b0 + 1.0, 0.4);
+      for (let i = 0; i < 9; i++) { const c = document.createElement("div"); c.className = "c4-cart"; c.style.left = 860 + i * 92 + "px"; c.style.top = "120px"; $("#c4-crash").appendChild(c);
+        tl.fromTo(c, { opacity: 0, y: -200, rotation: 0 }, { opacity: 1, y: 640 - (i % 3) * 40, rotation: (i % 2 ? 1 : -1) * (20 + i * 7), duration: 0.7, ease: "power2.in" }, C.c4b[0] + 3.1 + i * 0.12); }
+      off("#c4-crash", C.c4c[0] - 0.05);
+      // ---- NES y robot (c4c)
+      on("#c4-studio", C.c4c[0] - 0.1);
+      K.blurIn(tl, "#c4-l2", C.c4c[0] + 1.2, 0.5);
+      tl.fromTo("#c4-rob", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "steps(5)" }, C.c4c[0] + 4.6);
+      tl.to("#c4-rob", { y: -16, duration: 0.3, yoyo: true, repeat: 3, ease: "steps(2)" }, C.c4c[0] + 5.2);
+      tl.to(["#c4-l2", "#c4-rob"], { opacity: 0, duration: 0.25 }, C.c4d[0] - 0.3);
+      off("#c4-studio", C.c4d[0] - 0.02);
+      // ---- sello de calidad (c4d)
+      const d0 = C.c4d[0] - 0.05; on("#c4-seal", d0);
+      tl.fromTo("#c4-bigcart", { y: 300 }, { y: 0, duration: 0.6, ease: "expo.out" }, d0);
+      tl.fromTo("#c4-stamp", { opacity: 0, scale: 3, rotation: -30 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.3, ease: "power4.in" }, C.c4d[0] + 1.0);
+      tl.fromTo("#c4-seal", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 3 }, C.c4d[0] + 1.3);
+      K.blurIn(tl, "#c4-trust", C.c4d[0] + 3.2, 0.4);
+      off("#c4-seal", C.c4e[0] - 0.05);
+      // ---- Super Mario Bros. (c4e, c4f)
+      const e0 = C.c4e[0] - 0.05; on("#c4-world", e0);
+      tl.set("#c4-smb .t", { opacity: 1 }, e0 + 0.2);
+      tl.fromTo("#c4-smb .t", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "steps(17)" }, e0 + 0.2);
+      tl.fromTo("#c4-smb .d", { opacity: 0 }, { opacity: 1, duration: 0.05 }, e0 + 1.2);
+      tl.to("#c4-smb", { opacity: 0, duration: 0.2, ease: "steps(2)" }, C.c4f[0] + 0.6);
+      const f0 = C.c4f[0], f1 = C.c4g[0];
+      tl.fromTo("#c4-scroll", { x: 0 }, { x: -3600, duration: f1 - f0, ease: "none" }, f0);
+      // saltos del héroe (arcos), golpe al bloque y moneda
+      const jumps = [1.3, 2.6, 4.4];
+      jumps.forEach((j, i) => tl.to("#c4-hero", { y: i === 0 ? -260 : -200, duration: 0.38, ease: "power2.out", yoyo: true, repeat: 1 }, f0 + j));
+      tl.fromTo("#c4-coin", { opacity: 0, y: 0 }, { opacity: 1, y: -120, duration: 0.4, ease: "power2.out" }, f0 + 1.68);
+      tl.to("#c4-coin", { opacity: 0, duration: 0.1 }, f0 + 2.15);
+      tl.to("#c4-qb", { backgroundColor: "#7a3a12", duration: 0.05 }, f0 + 1.66);
+      tl.to("#c4-hero", { x: 6, duration: 0.12, repeat: Math.floor((f1 - f0) / 0.24) - 1, yoyo: true, ease: "steps(1)" }, f0);
+      off("#c4-world", f1 - 0.05);
+      // ---- décadas de plataformas (c4g)
+      const g0 = f1 - 0.05; on("#c4-stairs", g0);
+      $$("#c4-stairs .c4-step").forEach((s, i) => tl.fromTo(s, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.25, ease: "steps(3)" }, g0 + 0.2 + i * 0.6));
+      $$("#c4-stairs .c4-stepl").forEach((s, i) => tl.fromTo(s, { opacity: 0 }, { opacity: 1, duration: 0.05 }, g0 + 0.35 + i * 0.6));
+      steps.forEach(([y, x, top], i) => tl.to("#c4-hero2", { x: x + 100, y: top - 126, duration: 0.5, ease: "power1.inOut" }, g0 + 0.25 + i * 0.6));
+      tl.set("#c4-hero2", { x: 240, y: 734 }, g0);
+      tl.to("#c4-hero2", { scale: 2.2, duration: 0.6, ease: "expo.out", transformOrigin: "50% 100%" }, C.c4g[0] + 3.6);
+      K.blurIn(tl, "#c4-icon", C.c4g[0] + 3.7, 0.4);
+      off("#c4-stairs", C.c4h[0] - 0.05);
+      // ---- casi 62 millones (c4h)
+      const h0 = C.c4h[0] - 0.05; on("#c4-units", h0);
+      $$("#c4-ugrid .c4-u").forEach((u, i) => tl.fromTo(u, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }, h0 + 0.3 + i * 0.03));
+      K.count(tl, "#c4-un", 0, 61.91, h0 + 0.3, 1.9, v => K.es2(v) + " M");
+      K.blurIn(tl, "#c4-ul", h0 + 2.4, 0.4);
+      off("#c4-units", C.c4i[0] - 0.05);
+      // ---- Game Boy (c4i)
+      on("#c4-studio", C.c4i[0] - 0.1);
+      K.blurIn(tl, "#c4-l3", C.c4i[0] + 2.6, 0.5);
+      tl.to("#c4-l3", { opacity: 0, duration: 0.25 }, C.c4j[0] - 0.3);
+      off("#c4-studio", C.c4j[0] - 0.02);
+      // ---- pantalla verde: piezas que caen, pilas, ventas (c4j)
+      const j0 = C.c4j[0] - 0.05; on("#c4-gbs", j0);
+      $$("#c4-gbgrid .c4-pc").forEach((p, i) => tl.fromTo(p, { y: -140 }, { y: (+p.dataset.row) * 66, duration: 0.9, ease: "steps(" + (+p.dataset.row + 2) + ")" }, j0 + 0.1 + i * 0.75));
+      tl.fromTo("#c4-batl", { scaleX: 1 }, { scaleX: 0.72, duration: 5.5, ease: "none" }, j0);
+      K.blurIn(tl, "#c4-batt", j0 + 0.3, 0.3);
+      K.blurIn(tl, "#c4-gbn", C.c4j[0] + 3.3, 0.3);
+      K.count(tl, "#c4-gbnv", 0, 118.69, C.c4j[0] + 3.4, 1.5, v => K.es2(v));
+      K.blurIn(tl, "#c4-gbl", C.c4j[0] + 4.6, 0.3);
+      off("#c4-gbs", C.c4k[0] - 0.05);
+      // ---- Super Famicom (c4k) y 8 → 16 bits
+      on("#c4-studio", C.c4k[0] - 0.1);
+      K.blurIn(tl, "#c4-l4", C.c4k[0] + 2.4, 0.5);
+      off("#c4-studio", C.c4k[0] + 4.2);
+      const k0 = C.c4k[0] + 4.2; on("#c4-bits", k0);
+      tl.fromTo("#c4-b8", { opacity: 0 }, { opacity: 1, duration: 0.05 }, k0 + 0.05);
+      tl.fromTo("#c4-bl8", { opacity: 0 }, { opacity: 1, duration: 0.05 }, k0 + 0.1);
+      tl.fromTo("#c4-b16", { opacity: 0, clipPath: "inset(0 0 100% 0)" }, { opacity: 1, clipPath: "inset(0 0 0% 0)", duration: 0.8, ease: "steps(10)" }, k0 + 0.6);
+      tl.fromTo("#c4-bl16", { opacity: 0 }, { opacity: 1, duration: 0.05 }, k0 + 1.4);
+      window.__timelines["ch4"] = tl;
+    })();
+  </script>
+</template>

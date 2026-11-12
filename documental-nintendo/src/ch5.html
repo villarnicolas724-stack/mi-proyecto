@@ -1,0 +1,291 @@
+<template>
+  <style>
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1e1e24; color: #f4f4f4; font-family: "Archivo Black", sans-serif; }
+    .c5-full { position: absolute; inset: 0; opacity: 0; }
+    .c5-tag { font-family: "Inter", sans-serif; font-weight: 700; }
+    /* tarjeta */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; background: #1e1e24; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 16px; background: #f4f4f4; transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 6px; background: conic-gradient(from 30deg at 40% 45%, #e4002b 0 60deg, #ffc72c 60deg 130deg, #00a651 130deg 200deg, #0057b8 200deg 290deg, #e4002b 290deg); }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #fff; text-shadow: 0 6px 0 rgba(0,0,0,0.35); }
+    .cc-text { position: absolute; left: 930px; top: 380px; width: 900px; }
+    .cc-num { font-size: 30px; letter-spacing: 0.2em; color: #ffc72c; opacity: 0; }
+    .cc-title { font-size: 96px; line-height: 1.0; margin-top: 16px; opacity: 0; }
+    .cc-year { font-size: 56px; margin-top: 20px; color: #e4002b; opacity: 0; }
+    /* rivalidad */
+    #c5-vs { background: #1e1e24; }
+    #c5-left { position: absolute; inset: 0; background: #e4002b; clip-path: polygon(0 0, 58% 0, 42% 100%, 0 100%); }
+    #c5-right { position: absolute; inset: 0; background: #0057b8; clip-path: polygon(58% 0, 100% 0, 100% 100%, 42% 100%); }
+    .c5-side { position: absolute; top: 380px; font-size: 92px; line-height: 1; }
+    .c5-side small { display: block; font-family: "Inter"; font-weight: 700; font-size: 34px; margin-top: 18px; opacity: 0.85; }
+    #c5-vst { position: absolute; left: 0; right: 0; top: 420px; text-align: center; font-size: 150px; color: #ffc72c; text-shadow: 0 10px 0 #1e1e24; }
+    #c5-streak { position: absolute; inset: 0; pointer-events: none; }
+    .c5-sl { position: absolute; height: 14px; border-radius: 7px; background: #6fd0ff; opacity: 0; }
+    /* Sony */
+    #c5-sony { background: #24242c; }
+    .c5-doc { position: absolute; top: 200px; width: 380px; height: 520px; background: #f4f1ea; color: #222; padding: 50px 40px; font-family: "Inter"; font-weight: 800; font-size: 36px; line-height: 1.3; }
+    #c5-docL { left: 560px; clip-path: polygon(0 0, 100% 0, 92% 18%, 100% 34%, 90% 52%, 100% 70%, 92% 86%, 100% 100%, 0 100%); }
+    #c5-docR { left: 940px; padding-left: 20px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, -8% 86%, 0 70%, -10% 52%, 0 34%, -8% 18%); }
+    #c5-docL::after, #c5-docR::after { content: ""; position: absolute; left: 40px; right: 40px; top: 230px; height: 200px; background: repeating-linear-gradient(#cfcac0 0 6px, transparent 6px 34px); }
+    #c5-cd { position: absolute; left: 760px; top: 240px; width: 400px; height: 400px; border-radius: 50%; opacity: 0;
+      background: radial-gradient(circle, #24242c 0 13%, #c9ccd6 13.5% 16%, transparent 16.5%), conic-gradient(#d8dbe4, #9fd6ff, #f4c8ff, #d8dbe4, #fff1a8, #c8f0d8, #d8dbe4); }
+    #c5-ps { position: absolute; left: 0; right: 0; top: 700px; text-align: center; font-size: 72px; opacity: 0; }
+    #c5-ps small { display: block; font-family: "Inter"; font-weight: 700; font-size: 34px; color: #9fa0aa; margin-top: 10px; }
+    /* 3D */
+    #c5-3d { background: radial-gradient(ellipse 80% 80% at 50% 40%, #3a3a44 0%, #1e1e24 75%); }
+    #c5-cv { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    .c5-lab { position: absolute; left: 140px; top: 120px; opacity: 0; text-shadow: 0 4px 0 rgba(0,0,0,0.4); }
+    .c5-lab .d { font-size: 46px; color: #ffc72c; }
+    .c5-lab .n { font-size: 86px; margin-top: 10px; line-height: 1; }
+    .c5-lab .s { font-family: "Inter"; font-weight: 700; font-size: 32px; margin-top: 16px; color: #d0d0d8; }
+    #c5-stick { position: relative; opacity: 0; font-size: 34px; color: #ffc72c; white-space: nowrap; }
+    #c5-stick::before { content: ""; position: absolute; left: -64px; top: 40px; width: 90px; height: 6px; background: #ffc72c; transform: rotate(-50deg); transform-origin: 100% 50%; }
+    /* cartucho vs CD */
+    #c5-cap { background: #1e1e24; }
+    .c5-row { position: absolute; left: 180px; width: 1560px; height: 200px; }
+    .c5-row .ic { position: absolute; left: 0; top: 10px; width: 170px; height: 170px; }
+    .c5-row .bar { position: absolute; left: 230px; top: 60px; height: 80px; border-radius: 6px; transform-origin: 0 50%; }
+    .c5-row .lb { position: absolute; left: 230px; top: 150px; font-family: "Inter"; font-weight: 700; font-size: 32px; color: #c8c8d0; opacity: 0; }
+    .c5-row .v { position: absolute; top: 62px; font-size: 58px; opacity: 0; }
+    #c5-capn { position: absolute; left: 180px; top: 780px; font-family: "Inter"; font-weight: 600; font-size: 26px; color: #8a8a96; opacity: 0; }
+    /* bolsillo */
+    #c5-pocket { background: #2c4a7a; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 3px, transparent 3px 9px), repeating-linear-gradient(-45deg, rgba(0,0,0,0.1) 0 3px, transparent 3px 9px); }
+    #c5-pk { position: absolute; left: 560px; top: 420px; width: 800px; height: 700px; border-radius: 0 0 120px 120px; background: #24406c; border: 10px dashed #e0b04a; border-top: none;
+      background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 3px, transparent 3px 9px); }
+    #c5-gb { position: absolute; left: 790px; top: 160px; width: 340px; height: 560px; border-radius: 24px 24px 80px 24px; background: #c9c5bb; }
+    #c5-gb::before { content: ""; position: absolute; left: 34px; right: 34px; top: 40px; height: 230px; background: #5d5c69; border-radius: 12px; }
+    #c5-gb::after { content: ""; position: absolute; left: 70px; right: 70px; top: 70px; height: 170px; background: #8bac0f; }
+    /* Pokémon */
+    #c5-poke { background: #f4f1ea; color: #1e1e24; }
+    .c5-gb2 { position: absolute; top: 300px; width: 280px; height: 460px; border-radius: 20px 20px 64px 20px; background: #c9c5bb; box-shadow: 0 24px 40px rgba(0,0,0,0.2); }
+    .c5-gb2 i { position: absolute; left: 28px; right: 28px; top: 34px; height: 190px; background: #5d5c69; border-radius: 10px; }
+    .c5-gb2 b { position: absolute; left: 58px; right: 58px; top: 60px; height: 140px; background: #8bac0f; }
+    #c5-cable { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .c5-pkt { position: absolute; width: 36px; height: 36px; opacity: 0; }
+    #c5-pt { position: absolute; left: 0; right: 0; top: 50px; text-align: center; font-size: 110px; color: #e4002b; opacity: 0; line-height: 1; }
+    #c5-pd { position: absolute; left: 0; right: 0; top: 178px; text-align: center; font-family: "Inter"; font-weight: 700; font-size: 34px; color: #555; opacity: 0; }
+    /* fenómeno */
+    #c5-world { background: #1e1e24; }
+    #c5-map { position: absolute; left: 160px; top: 110px; width: 1600px; height: 700px; }
+    #c5-wt { position: absolute; left: 0; right: 0; top: 820px; text-align: center; font-size: 44px; color: #ffc72c; opacity: 0; }
+    /* GBA vs GameCube */
+    .c5-cmp { position: absolute; left: 140px; width: 700px; opacity: 0; }
+    .c5-cmp .n { font-size: 40px; }
+    .c5-cmp .b { height: 46px; margin-top: 12px; border-radius: 4px; transform-origin: 0 50%; }
+    .c5-cmp .v { font-size: 34px; margin-top: 8px; color: #d0d0d8; }
+    /* conclusión */
+    #c5-end { background: #1e1e24; }
+    #c5-arr { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #c5-ax1 { position: absolute; left: 270px; top: 120px; font-size: 34px; color: #8a8a96; opacity: 0; }
+    #c5-ax2 { position: absolute; left: 1120px; top: 650px; font-size: 44px; color: #e4002b; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="ch5" data-width="1920" data-height="1080">
+
+    <div id="c5-vs" class="c5-full">
+      <div id="c5-left"></div><div id="c5-right"></div>
+      <div class="c5-side" id="c5-sn" style="left:180px">Nintendo<small>Super Nintendo</small></div>
+      <div class="c5-side" id="c5-sg" style="right:180px;text-align:right">SEGA<small>Mega Drive</small></div>
+      <div id="c5-vst">VS</div>
+      <div id="c5-streak"></div>
+    </div>
+
+    <div id="c5-sony" class="c5-full">
+      <div class="c5-doc" id="c5-docL">Proyecto<br>lector de CD</div>
+      <div class="c5-doc" id="c5-docR">Nintendo<br>× Sony</div>
+      <div id="c5-cd"></div>
+      <div id="c5-ps">PlayStation<small>Sony · 1994</small></div>
+    </div>
+
+    <div id="c5-3d" class="c5-full">
+      <canvas id="c5-cv" width="1920" height="1080"></canvas>
+      <div class="c5-lab" id="c5-l1"><div class="d">23·06·1996</div><div class="n">Nintendo 64</div><div class="s">El primer mando con stick analógico de Nintendo</div></div>
+      <div id="c5-stickpos" style="position:absolute;left:0;top:0"><div id="c5-stick">Stick analógico</div></div>
+      <div class="c5-lab" id="c5-l2"><div class="d">1996</div><div class="n">Super Mario 64</div><div class="s">Correr, saltar y mirar en tres dimensiones</div></div>
+      <div class="c5-lab" id="c5-l3"><div class="d">2001</div><div class="n">GBA · GameCube</div><div class="s">21·03·2001 · 14·09·2001 (Japón)</div></div>
+      <div class="c5-cmp" id="c5-c1" style="top:470px"><div class="n">Game Boy Advance</div><div class="b" style="background:#8c84c4;width:700px"></div><div class="v">81,51 millones</div></div>
+      <div class="c5-cmp" id="c5-c2" style="top:640px"><div class="n">GameCube</div><div class="b" style="background:#5b4ea0;width:187px"></div><div class="v">21,74 millones</div></div>
+    </div>
+
+    <div id="c5-cap" class="c5-full">
+      <div class="c5-row" style="top:200px"><svg class="ic" viewBox="0 0 170 170"><rect x="25" y="20" width="120" height="140" rx="10" fill="#55555c"/><rect x="40" y="38" width="90" height="70" rx="4" fill="#2b2b30"/><rect x="25" y="20" width="120" height="16" fill="#77777e"/></svg>
+        <div class="bar" id="c5-bc" style="width:132px;background:#e4002b"></div><div class="v" id="c5-vc" style="left:390px">64 MB</div><div class="lb" id="c5-lc">Cartucho de Nintendo 64 (máximo)</div></div>
+      <div class="c5-row" style="top:480px"><svg class="ic" viewBox="0 0 170 170"><circle cx="85" cy="85" r="75" fill="#c9ccd6"/><circle cx="85" cy="85" r="18" fill="#1e1e24"/><circle cx="85" cy="85" r="30" fill="none" stroke="#9fd6ff" stroke-width="6"/></svg>
+        <div class="bar" id="c5-bd" style="width:1330px;background:#0057b8"></div><div class="v" id="c5-vd" style="left:1240px;top:-20px">≈ 650 MB</div><div class="lb" id="c5-ld">CD-ROM</div></div>
+      <div id="c5-capn">Capacidad de almacenamiento · más espacio para vídeo, música y mundos más grandes</div>
+    </div>
+
+    <div id="c5-pocket" class="c5-full"><div id="c5-gb"></div><div id="c5-pk"></div></div>
+
+    <div id="c5-poke" class="c5-full">
+      <svg id="c5-cable" viewBox="0 0 1920 1080"><path id="c5-cab" d="M560 330 C 640 250, 900 250, 960 300 C 1020 350, 1280 250, 1360 330" fill="none" stroke="#3a3a44" stroke-width="14" stroke-linecap="round"/></svg>
+      <div class="c5-gb2" style="left:420px"><i></i><b></b></div>
+      <div class="c5-gb2" style="left:1220px"><i></i><b></b></div>
+      <svg class="c5-pkt" id="c5-k1" viewBox="0 0 6 6"><path d="M1 0h4v1h1v4h-1v1h-4v-1h-1v-4h1z" fill="#ffc72c"/><rect x="1" y="2" width="1" height="1" fill="#1e1e24"/><rect x="4" y="2" width="1" height="1" fill="#1e1e24"/></svg>
+      <svg class="c5-pkt" id="c5-k2" viewBox="0 0 6 6"><path d="M2 0h2v1h2v4h-1v1h-4v-1h-1v-4h2z" fill="#00a651"/><rect x="1" y="2" width="1" height="1" fill="#1e1e24"/><rect x="4" y="2" width="1" height="1" fill="#1e1e24"/></svg>
+      <svg class="c5-pkt" id="c5-k3" viewBox="0 0 6 6"><path d="M0 1h6v4h-1v1h-4v-1h-1z" fill="#e4002b"/><rect x="1" y="2" width="1" height="1" fill="#1e1e24"/><rect x="4" y="2" width="1" height="1" fill="#1e1e24"/></svg>
+      <div id="c5-pt">Pokémon</div>
+      <div id="c5-pd">27·02·1996 · Game Freak · idea de Satoshi Tajiri</div>
+    </div>
+
+    <div id="c5-world" class="c5-full"><svg id="c5-map" viewBox="0 0 1600 700"><g id="c5-dots"></g></svg><div id="c5-wt">Un fenómeno mundial</div></div>
+
+    <div id="c5-end" class="c5-full">
+      <svg id="c5-arr" viewBox="0 0 1920 1080">
+        <g stroke="#55555c" stroke-width="18" stroke-linecap="round" fill="none"><path id="c5-a1" d="M300 900 L300 200" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/><path id="c5-a2" d="M420 900 L420 230" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/></g>
+        <path id="c5-a3" d="M560 900 L560 620 Q 560 560 620 560 L1500 560" stroke="#e4002b" stroke-width="22" stroke-linecap="round" fill="none" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+        <polygon id="c5-ah" points="1500,520 1580,560 1500,600" fill="#e4002b" opacity="0"/>
+      </svg>
+      <div id="c5-ax1">Más potencia</div><div id="c5-ax2">Otra forma de jugar</div>
+    </div>
+
+    <div id="c5-card" class="cc">
+      <div class="cc-card"><div class="cc-k">五</div></div>
+      <div class="cc-text"><div class="cc-num">__NUM__</div><div class="cc-title">__TITLE__</div><div class="cc-year">__YEARS__</div></div>
+    </div>
+  </div>
+  <script type="module">
+    import { buildConsole, createStage, THREE } from "./assets/lib/consoles.js";
+    const T0 = __T0__, C = __C__;
+    const st = createStage(document.getElementById("c5-cv"), { fov: 28 });
+    const n64 = buildConsole("n64"), gba = buildConsole("gba"), gc = buildConsole("gamecube");
+    [n64, gba, gc].forEach(m => { m.visible = false; st.scene.add(m); });
+    // mundo low-poly (semilla fija)
+    const world = new THREE.Group(); world.visible = false; st.scene.add(world);
+    const geo = new THREE.PlaneGeometry(120, 120, 48, 48); geo.rotateX(-Math.PI / 2);
+    const pos = geo.attributes.position;
+    for (let i = 0; i < pos.count; i++) { const x = pos.getX(i), z = pos.getZ(i);
+      const h = Math.sin(x * 0.13) * 1.6 + Math.cos(z * 0.11 + 1.3) * 1.8 + Math.sin((x + z) * 0.07) * 2.2 + Math.cos(x * 0.31 - z * 0.27) * 0.6;
+      pos.setY(i, Math.max(-0.5, h) - 1.2); }
+    geo.computeVertexNormals();
+    world.add(new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0x3fa34d, flatShading: true, roughness: 0.9 })));
+    const water = new THREE.Mesh(new THREE.PlaneGeometry(120, 120), new THREE.MeshStandardMaterial({ color: 0x2a7fd0, roughness: 0.4, flatShading: true }));
+    water.rotation.x = -Math.PI / 2; water.position.y = -1.4; world.add(water);
+    let seed = 64; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    for (let i = 0; i < 70; i++) { const x = (rnd() - 0.5) * 90, z = (rnd() - 0.5) * 90 - 10; if (Math.abs(x) < 3) continue;
+      const tr = new THREE.Mesh(new THREE.ConeGeometry(0.9 + rnd() * 0.6, 2.4 + rnd() * 2, 6), new THREE.MeshStandardMaterial({ color: 0x1f6b35, flatShading: true }));
+      tr.position.set(x, 1.0 + rnd() * 0.6, z); world.add(tr); }
+    const cols = [0xe4002b, 0xffc72c, 0x0057b8, 0x00a651];
+    for (let i = 0; i < 10; i++) { const b = new THREE.Mesh(new THREE.BoxGeometry(3, 0.6, 3), new THREE.MeshStandardMaterial({ color: cols[i % 4], flatShading: true, roughness: 0.6 }));
+      b.position.set((i % 2 ? 1 : -1) * (3 + rnd() * 6), 2.5 + rnd() * 4, -i * 6); world.add(b); }
+    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.1, 0), new THREE.MeshStandardMaterial({ color: 0xffc72c, flatShading: true, emissive: 0x553300 }));
+    ico.position.set(0, 5, -40); world.add(ico);
+    const fog = new THREE.Fog(0x8fc3ff, 20, 80);
+    function renderAt(t) {
+      const l = t - T0;
+      [n64, gba, gc].forEach(m => (m.visible = false)); world.visible = false; st.scene.fog = null; st.ground.visible = true; st.scene.background = null;
+      if (l < C.c5d[0] - 0.05) {                       // N64 + mando
+        n64.visible = true; const p = Math.max(0, l - (C.c5c[0] - 0.1));
+        n64.scale.setScalar(1.35); n64.rotation.y = 0.35 + p * 0.12;
+        const z = Math.min(1, Math.max(0, (l - C.c5c[0] - 4.2) / 1.6)), ez = z * z * (3 - 2 * z) * 0.45;
+        st.camera.position.set(4.6 - ez * 1.2, 3.6 - ez * 0.9, 7.6 - ez * 3.4); st.camera.lookAt(0.8 + ez * 1.6, 0.4, 0.3 + ez * 0.9);
+        const sk = n64.userData.pad.userData.stick; sk.rotation.x = Math.sin(l * 5) * 0.35 * z; sk.rotation.z = Math.cos(l * 4) * 0.35 * z;
+        st.camera.updateMatrixWorld(); n64.updateMatrixWorld(true);
+        const v = new THREE.Vector3(); sk.getWorldPosition(v); v.project(st.camera);
+        const lab = document.getElementById("c5-stickpos");
+        if (lab) lab.style.transform = `translate(${((v.x + 1) / 2) * 1920 + 60}px, ${((1 - v.y) / 2) * 1080 - 140}px)`;
+      } else if (l < C.c5i[0] - 0.05) {                // vuelo por el mundo
+        world.visible = true; st.ground.visible = false; st.scene.fog = fog; st.scene.background = new THREE.Color(0x8fc3ff);
+        const p = l - C.c5d[0];
+        st.camera.position.set(Math.sin(p * 0.35) * 4, 7 - p * 0.45, 18 - p * 9.5); st.camera.lookAt(Math.sin(p * 0.35 + 0.4) * 2, 3, -10 - p * 9.5);
+        ico.rotation.y = p * 2; ico.position.y = 5 + Math.sin(p * 3) * 0.3;
+      } else {                                         // GBA y GameCube
+        gba.visible = gc.visible = true; const p = l - C.c5i[0];
+        gba.scale.setScalar(2.0); gc.scale.setScalar(1.3);
+        gba.position.set(-2.6, 0.0, 0.6); gc.position.set(0.6, 0, -0.4);
+        gba.rotation.set(-0.15, 0.4 + p * 0.1, 0); gc.rotation.y = -0.5 + p * 0.12;
+        st.camera.position.set(-3.6, 4.2, 9.8 - Math.min(p, 4) * 0.15); st.camera.lookAt(-3.6, 0.8, 0);
+      }
+      st.render();
+    }
+    window.addEventListener("hf-seek", e => renderAt(e.detail.time));
+    renderAt(T0);
+  </script>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT, $ = K.$, $$ = K.$$;
+      for (let i = 0; i < 10; i++) { const l = document.createElement("div"); l.className = "c5-sl"; l.style.top = 180 + i * 72 + "px"; l.style.width = 300 + (i * 137) % 500 + "px"; $("#c5-streak").appendChild(l); }
+      const MAP = ["................................................................", "........xxxxxxxx.......xxx.........xxxxxxxxxxxxxxxxx............", ".....xxxxxxxxxxxxx....xxx......xxxxxxxxxxxxxxxxxxxxxxxxx........", "...xxxxxxxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxxx......", "....xxxxxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxxx.......", ".....xxxxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxx........", "......xxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxx..xx......", ".......xxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxx...xx......", "........xxxxxx.............xxxxxxxxxxxxxxxxxxxxxxxxx...xx.......", ".........xxxx..............xxxxxxxxxxxxxxxxxxxxxxxx.............", "..........xxx...............xxxxxxxxx...xxxxxxxxxx..............", "...........xxxx............xxxxxxxxxx.....xxxxxx................", "............xxxxx..........xxxxxxxxxxx.....xxxx.x...............", "..............xxxxx.........xxxxxxxxxx......xx...xx.............", "..............xxxxxx.........xxxxxxxx...........xxx.............", "..............xxxxxxx.........xxxxxxx............xxxxx..........", "...............xxxxxx..........xxxxx...........xxxxxxxx.........", "...............xxxxx...........xxxxx...........xxxxxxxxx........", "................xxxx............xxx.............xxxxxxx.........", "................xxx.............xx...............xxxx...........", ".................xx............................................."];
+      (() => { let h = ""; MAP.forEach((row, y) => [...row].forEach((ch, x) => { if (ch === "x") { const d = Math.hypot(x - 57, (y - 6) * 1.6); h += `<rect class="c5-dot" data-d="${d.toFixed(1)}" x="${x * 25}" y="${y * 33}" width="18" height="18" rx="4" fill="#3a3a44"/>`; } })); $("#c5-dots").innerHTML = h; })();
+
+      const tl = gsap.timeline({ paused: true });
+      const on = (s, t) => tl.set(s, { opacity: 1 }, t), off = (s, t) => tl.set(s, { opacity: 0 }, t);
+      K.chapterCard(tl, "c5", 0, 1.5);
+      // ---- rivalidad (c5a)
+      const a0 = 2.3; on("#c5-vs", a0);
+      tl.fromTo("#c5-left", { x: -1100 }, { x: 0, duration: 0.6, ease: "expo.out" }, a0);
+      tl.fromTo("#c5-right", { x: 1100 }, { x: 0, duration: 0.6, ease: "expo.out" }, a0 + 0.1);
+      K.blurIn(tl, "#c5-sn", C.c5a[0] + 1.2, 0.4); K.blurIn(tl, "#c5-sg", C.c5a[0] + 2.0, 0.4);
+      tl.fromTo("#c5-vst", { scale: 3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "power4.in" }, C.c5a[0] + 2.5);
+      $$("#c5-streak .c5-sl").forEach((l, i) => tl.fromTo(l, { opacity: 1, x: 2100 }, { x: -900, duration: 0.45, ease: "power2.in" }, C.c5a[0] + 4.1 + (i % 5) * 0.05));
+      off("#c5-vs", C.c5b[0] - 0.05);
+      // ---- Sony (c5b)
+      const b0 = C.c5b[0] - 0.05; on("#c5-sony", b0);
+      tl.fromTo(["#c5-docL", "#c5-docR"], { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, b0);
+      tl.to("#c5-docL", { x: -260, rotation: -9, duration: 0.6, ease: "power3.out" }, C.c5b[0] + 1.6);
+      tl.to("#c5-docR", { x: 260, rotation: 9, duration: 0.6, ease: "power3.out" }, C.c5b[0] + 1.6);
+      tl.to(["#c5-docL", "#c5-docR"], { opacity: 0.25, duration: 0.4 }, C.c5b[0] + 3.0);
+      tl.fromTo("#c5-cd", { opacity: 0, scale: 0.3, rotation: 0 }, { opacity: 1, scale: 1, rotation: 400, duration: 1.4, ease: "expo.out" }, C.c5b[0] + 3.2);
+      tl.to("#c5-cd", { rotation: 900, duration: 2.6, ease: "none" }, C.c5b[0] + 4.6);
+      K.blurIn(tl, "#c5-ps", C.c5b[0] + 4.3, 0.4);
+      off("#c5-sony", C.c5c[0] - 0.1);
+      // ---- N64 (c5c) y mundo 3D (c5d)
+      on("#c5-3d", C.c5c[0] - 0.1);
+      K.blurIn(tl, "#c5-l1", C.c5c[0] + 0.8, 0.5);
+      tl.to("#c5-l1", { opacity: 0, duration: 0.25 }, C.c5c[0] + 4.2);
+      K.blurIn(tl, "#c5-stick", C.c5c[0] + 5.6, 0.4);
+      tl.to("#c5-stick", { opacity: 0, duration: 0.2 }, C.c5d[0] - 0.2);
+      K.blurIn(tl, "#c5-l2", C.c5d[0] + 0.3, 0.5);
+      tl.to("#c5-l2", { opacity: 0, duration: 0.25 }, C.c5e[0] - 0.3);
+      off("#c5-3d", C.c5e[0] - 0.05);
+      // ---- cartucho vs CD (c5e)
+      const e0 = C.c5e[0] - 0.05; on("#c5-cap", e0);
+      tl.fromTo("#c5-bc", { scaleX: 0 }, { scaleX: 1, duration: 0.6, ease: "expo.out" }, e0 + 0.6);
+      K.blurIn(tl, "#c5-vc", e0 + 0.9, 0.3); K.blurIn(tl, "#c5-lc", e0 + 1.0, 0.3);
+      tl.fromTo("#c5-bd", { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "expo.out" }, C.c5e[0] + 2.6);
+      K.blurIn(tl, "#c5-vd", C.c5e[0] + 3.2, 0.3); K.blurIn(tl, "#c5-ld", C.c5e[0] + 3.2, 0.3);
+      K.blurIn(tl, "#c5-capn", C.c5e[0] + 3.8, 0.4);
+      off("#c5-cap", C.c5f[0] - 0.05);
+      // ---- en el bolsillo (c5f)
+      const f0 = C.c5f[0] - 0.05; on("#c5-pocket", f0);
+      tl.fromTo("#c5-gb", { y: -760 }, { y: 120, duration: 0.9, ease: "power2.in" }, f0 + 0.1);
+      tl.to("#c5-gb", { y: 60, duration: 0.6, ease: "expo.out" }, f0 + 1.9);
+      tl.to("#c5-pocket", { scale: 1.06, duration: 2.6, ease: "power1.inOut" }, f0 + 0.2);
+      off("#c5-pocket", C.c5g[0] - 0.05);
+      // ---- Pokémon (c5g)
+      const g0 = C.c5g[0] - 0.05; on("#c5-poke", g0);
+      tl.fromTo("#c5-cab", { strokeDasharray: 1200, strokeDashoffset: 1200 }, { strokeDashoffset: 0, duration: 1.2, ease: "power2.inOut" }, g0 + 0.3);
+      const path = $("#c5-cab"); const PL = path.getTotalLength(); const PTS = Array.from({ length: 201 }, (_, i) => { const q = path.getPointAtLength((i / 200) * PL); return [q.x, q.y]; });
+      const at = p => { const f = Math.max(0, Math.min(200, p * 200)), i = Math.floor(f), j = Math.min(200, i + 1), u = f - i; return [PTS[i][0] + (PTS[j][0] - PTS[i][0]) * u, PTS[i][1] + (PTS[j][1] - PTS[i][1]) * u]; };
+      ["#c5-k1", "#c5-k2", "#c5-k3"].forEach((k, i) => { const o = { p: 0 }; const t = C.c5g[0] + 3.0 + i * 0.7;
+        tl.set(k, { opacity: 1 }, t);
+        tl.to(o, { p: 1, duration: 1.3, ease: "power1.inOut", onUpdate: () => { const [x, y] = at(o.p); $(k).style.transform = `translate(${x - 18}px, ${y - 18}px) scale(${1 + Math.sin(o.p * Math.PI) * 0.6})`; } }, t);
+        tl.to(k, { opacity: 0, duration: 0.1 }, t + 1.3); });
+      tl.fromTo("#c5-pt", { opacity: 0, scale: 1.3 }, { opacity: 1, scale: 1, duration: 0.4, ease: "expo.out" }, C.c5g[0] + 6.9);
+      K.blurIn(tl, "#c5-pd", C.c5g[0] + 7.2, 0.4);
+      off("#c5-poke", C.c5h[0] - 0.05);
+      // ---- fenómeno mundial (c5h): se enciende desde Japón
+      const h0 = C.c5h[0] - 0.05; on("#c5-world", h0);
+      $$("#c5-dots .c5-dot").forEach(d => tl.to(d, { attr: { fill: "#ffc72c" }, duration: 0.2 }, h0 + 0.3 + parseFloat(d.dataset.d) * 0.06));
+      K.blurIn(tl, "#c5-wt", h0 + 1.2, 0.4);
+      off("#c5-world", C.c5i[0] - 0.05);
+      // ---- GBA y GameCube (c5i)
+      on("#c5-3d", C.c5i[0] - 0.05);
+      K.blurIn(tl, "#c5-l3", C.c5i[0] + 0.4, 0.5);
+      tl.fromTo("#c5-c1", { opacity: 0 }, { opacity: 1, duration: 0.3 }, C.c5i[0] + 3.0);
+      tl.fromTo("#c5-c1 .b", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "expo.out" }, C.c5i[0] + 3.0);
+      tl.fromTo("#c5-c2", { opacity: 0 }, { opacity: 1, duration: 0.3 }, C.c5i[0] + 4.6);
+      tl.fromTo("#c5-c2 .b", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "expo.out" }, C.c5i[0] + 4.6);
+      off("#c5-3d", C.c5j[0] - 0.05);
+      // ---- conclusión (c5j)
+      const j0 = C.c5j[0] - 0.05; on("#c5-end", j0);
+      tl.to(["#c5-a1", "#c5-a2"], { attr: { "stroke-dashoffset": 0 }, duration: 1.4, ease: "power2.out", stagger: 0.15 }, j0 + 0.1);
+      K.blurIn(tl, "#c5-ax1", j0 + 0.6, 0.3);
+      tl.to("#c5-a3", { attr: { "stroke-dashoffset": 0 }, duration: 1.6, ease: "power2.inOut" }, C.c5j[0] + 1.5);
+      tl.set("#c5-ah", { opacity: 1 }, C.c5j[0] + 3.0);
+      K.blurIn(tl, "#c5-ax2", C.c5j[0] + 2.8, 0.4);
+      window.__timelines["ch5"] = tl;
+    })();
+  </script>
+</template>

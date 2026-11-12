@@ -1,0 +1,303 @@
+<template>
+  <style>
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #f5f7f8; color: #2b2f33; font-family: "Nunito", sans-serif; font-weight: 800; }
+    .c6-full { position: absolute; inset: 0; opacity: 0; }
+    /* tarjeta */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; background: #f5f7f8; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 22px; background: #ffffff; box-shadow: 0 24px 60px rgba(0,0,0,0.14); transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 12px; background: linear-gradient(160deg, #e9f6fd, #c9e9f8); }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #00a2e8; }
+    .cc-text { position: absolute; left: 930px; top: 380px; width: 900px; }
+    .cc-num { font-size: 34px; letter-spacing: 0.12em; color: #00a2e8; opacity: 0; }
+    .cc-title { font-size: 96px; line-height: 1.02; margin-top: 12px; opacity: 0; }
+    .cc-year { font-size: 56px; margin-top: 16px; color: #8a9299; opacity: 0; }
+    /* Iwata */
+    #c6-iw { background: #f5f7f8; }
+    #c6-iwc { position: absolute; left: 220px; top: 170px; width: 700px; height: 700px; border-radius: 50%; background: #e3eaee; }
+    #c6-iwsil { position: absolute; left: 300px; top: 250px; width: 540px; height: 620px; }
+    #c6-iwn { position: absolute; left: 1040px; top: 330px; }
+    #c6-iwn .n { font-size: 110px; line-height: 1; opacity: 0; }
+    #c6-iwn .k { font-family: "Yuji Syuku", serif; font-size: 60px; color: #00a2e8; margin-top: 14px; opacity: 0; }
+    #c6-iwn .d { font-size: 36px; color: #6b7379; margin-top: 18px; opacity: 0; }
+    #c6-iwy { position: absolute; left: 1040px; top: 640px; font-size: 150px; color: #00a2e8; opacity: 0; }
+    /* programador */
+    #c6-code { background: #f5f7f8; }
+    #c6-mon { position: absolute; left: 360px; top: 150px; width: 1200px; height: 680px; border-radius: 26px; background: #22272c; padding: 60px 70px; box-shadow: 0 30px 70px rgba(0,0,0,0.18); }
+    .c6-ln { font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 40px; line-height: 1.7; color: #d7e3ea; white-space: pre; opacity: 0; }
+    .c6-ln b { color: #4fc3ff; font-weight: 700; } .c6-ln i { color: #ffb86b; font-style: normal; }
+    /* cita */
+    #c6-quote { background: #f5f7f8; }
+    .c6-q { position: absolute; left: 520px; width: 1200px; opacity: 0; }
+    .c6-q .a { font-size: 40px; color: #8a9299; }
+    .c6-q .b { font-size: 96px; line-height: 1.05; }
+    .c6-ic { position: absolute; left: 280px; width: 170px; height: 170px; opacity: 0; }
+    #c6-q3 .b { color: #00a2e8; font-size: 120px; }
+    /* jugadores */
+    #c6-crowd { background: #f5f7f8; }
+    #c6-pw { position: absolute; left: 140px; top: 140px; width: 620px; height: 620px; }
+    #c6-field { position: absolute; left: 860px; top: 140px; width: 920px; height: 620px; }
+    #c6-pwl { position: absolute; left: 140px; top: 790px; font-size: 38px; color: #8a9299; opacity: 0; }
+    #c6-fl { position: absolute; left: 860px; top: 790px; font-size: 38px; color: #00a2e8; opacity: 0; }
+    /* 3D */
+    #c6-3d { background: radial-gradient(ellipse 80% 80% at 50% 38%, #ffffff 0%, #eef2f4 50%, #dde3e7 100%); }
+    #c6-cv { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    .c6-lab { position: absolute; left: 140px; top: 130px; opacity: 0; }
+    .c6-lab .d { font-size: 54px; color: #00a2e8; }
+    .c6-lab .n { font-size: 100px; line-height: 1; margin-top: 4px; }
+    .c6-lab .s { font-size: 36px; color: #6b7379; margin-top: 14px; }
+    #c6-trail { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    /* usos DS */
+    #c6-uses { background: #f5f7f8; }
+    .c6-use { position: absolute; top: 230px; width: 380px; text-align: center; opacity: 0; }
+    .c6-use svg { width: 300px; height: 300px; }
+    .c6-use div { font-size: 40px; margin-top: 10px; }
+    #c6-dsn { position: absolute; left: 1080px; top: 330px; font-size: 150px; color: #00a2e8; line-height: 1; opacity: 0; }
+    #c6-dsl { position: absolute; left: 1086px; top: 500px; font-size: 40px; color: #6b7379; opacity: 0; }
+    /* salón */
+    #c6-room { background: #eaf4f9; }
+    #c6-tv { position: absolute; left: 700px; top: 130px; width: 520px; height: 320px; border-radius: 16px; background: #2b2f33; border: 16px solid #2b2f33; }
+    #c6-tv::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #8fd3ff, #c9ecff 60%, #9fdc8a 60%); border-radius: 4px; }
+    .c6-fam { position: absolute; bottom: 140px; }
+    #c6-floor { position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: #d6e6ee; }
+    .c6-pin { position: absolute; top: 330px; width: 22px; height: 64px; border-radius: 11px 11px 6px 6px; background: #fff; border: 4px solid #2b2f33; z-index: 2; }
+    #c6-rn { position: absolute; left: 1380px; top: 140px; font-size: 120px; color: #00a2e8; line-height: 1; opacity: 0; }
+    #c6-rl { position: absolute; left: 1386px; top: 280px; font-size: 38px; color: #6b7379; opacity: 0; }
+    /* 3DS */
+    #c6-3ds { background: #f5f7f8; }
+    .c6-lay { position: absolute; left: 980px; top: 300px; width: 600px; height: 400px; border-radius: 20px; }
+    #c6-3l { position: absolute; left: 140px; top: 130px; opacity: 0; }
+    #c6-3l .d { font-size: 54px; color: #00a2e8; } #c6-3l .n { font-size: 100px; line-height: 1; } #c6-3l .s { font-size: 36px; color: #6b7379; margin-top: 14px; }
+    /* comparativa */
+    #c6-bars { background: #f5f7f8; }
+    .c6-br { position: absolute; left: 470px; height: 74px; }
+    .c6-br .lab { position: absolute; left: -330px; top: 14px; width: 300px; text-align: right; font-size: 38px; }
+    .c6-br .bar { position: absolute; left: 0; top: 6px; height: 62px; border-radius: 8px; background: #c5d0d6; transform-origin: 0 50%; }
+    .c6-br .val { position: absolute; top: 14px; font-size: 38px; color: #6b7379; opacity: 0; }
+    #c6-bt { position: absolute; left: 140px; top: 70px; font-size: 52px; }
+    #c6-bn { position: absolute; left: 140px; top: 820px; font-size: 28px; color: #8a9299; font-weight: 700; }
+    /* Iwata · 2015 */
+    #c6-mem { background: #f1f3f4; }
+    #c6-mline { position: absolute; left: 660px; top: 540px; width: 600px; height: 3px; background: #b9c2c8; transform-origin: 50% 50%; }
+    #c6-mn { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-size: 88px; color: #2b2f33; opacity: 0; }
+    #c6-my { position: absolute; left: 0; right: 0; top: 590px; text-align: center; font-size: 48px; color: #8a9299; opacity: 0; }
+    /* tele y fuera */
+    #c6-away { background: #f5f7f8; }
+    #c6-tv2 { position: absolute; left: 260px; top: 200px; width: 760px; height: 460px; border-radius: 18px; background: #2b2f33; padding: 20px; }
+    #c6-pad2 { position: absolute; left: 1220px; top: 330px; width: 520px; height: 300px; border-radius: 60px; background: #1b1b1f; }
+    #c6-pad2 i { position: absolute; left: 110px; right: 110px; top: 40px; bottom: 40px; background: #0d0f12; border-radius: 8px; }
+    #c6-img { position: absolute; left: 280px; top: 220px; width: 720px; height: 420px; border-radius: 6px; background: linear-gradient(180deg, #8fd3ff 0 55%, #9fdc8a 55%); overflow: hidden; z-index: 3; }
+    #c6-img::after { content: ""; position: absolute; left: 44%; top: 30%; width: 90px; height: 90px; border-radius: 50%; background: #ffd23b; }
+    #c6-flood { position: absolute; inset: 0; z-index: 35; opacity: 0; background: linear-gradient(90deg, #0ab9e6 0 50%, #ff3c28 50% 100%); }
+  </style>
+  <div id="root" data-composition-id="ch6" data-width="1920" data-height="1080">
+
+    <div id="c6-iw" class="c6-full">
+      <div id="c6-iwc"></div>
+      <svg id="c6-iwsil" viewBox="0 0 540 620"><g fill="#2b2f33"><ellipse cx="270" cy="200" rx="118" ry="126"/><path d="M160 150 q110 -120 220 0 q-110 -50 -220 0z"/><path d="M70 620 C 70 420, 140 330, 270 322 C 400 330, 470 420, 470 620 Z"/></g>
+        <g fill="none" stroke="#f5f7f8" stroke-width="8"><circle cx="225" cy="200" r="30"/><circle cx="315" cy="200" r="30"/><line x1="255" y1="200" x2="285" y2="200"/><path d="M228 262 q42 26 84 0" stroke-linecap="round"/></g></svg>
+      <div id="c6-iwn"><div class="n">Satoru Iwata</div><div class="k">岩田聡</div><div class="d">Presidente de Nintendo · 2002 – 2015</div></div>
+      <div id="c6-iwy">2002</div>
+    </div>
+
+    <div id="c6-code" class="c6-full"><div id="c6-mon">
+      <div class="c6-ln"><b>function</b> jugar(persona) {</div>
+      <div class="c6-ln">  <b>if</b> (persona.nuncaHaJugado) {</div>
+      <div class="c6-ln">    invitar(persona);  <i>// la idea</i></div>
+      <div class="c6-ln">  }</div>
+      <div class="c6-ln">  <b>return</b> diversion;</div>
+      <div class="c6-ln">}</div>
+    </div></div>
+
+    <div id="c6-quote" class="c6-full">
+      <svg class="c6-ic" id="c6-i1" style="top:150px" viewBox="0 0 170 170"><rect x="10" y="40" width="150" height="90" rx="12" fill="none" stroke="#2b2f33" stroke-width="9"/><line x1="34" y1="70" x2="100" y2="70" stroke="#2b2f33" stroke-width="9" stroke-linecap="round"/><line x1="34" y1="98" x2="80" y2="98" stroke="#b9c2c8" stroke-width="9" stroke-linecap="round"/></svg>
+      <svg class="c6-ic" id="c6-i2" style="top:420px" viewBox="0 0 170 170"><path d="M85 30 C 40 30, 25 70, 40 95 C 30 125, 60 150, 85 140 C 110 150, 140 125, 130 95 C 145 70, 130 30, 85 30 Z M85 30 V140" fill="none" stroke="#2b2f33" stroke-width="9" stroke-linejoin="round"/></svg>
+      <svg class="c6-ic" id="c6-i3" style="top:690px" viewBox="0 0 170 170"><path d="M85 150 C 20 100, 15 60, 40 40 C 60 25, 80 35, 85 55 C 90 35, 110 25, 130 40 C 155 60, 150 100, 85 150 Z" fill="#00a2e8"/></svg>
+      <div class="c6-q" id="c6-q1" style="top:160px"><div class="a">En mi tarjeta de visita</div><div class="b">presidente</div></div>
+      <div class="c6-q" id="c6-q2" style="top:430px"><div class="a">En mi mente</div><div class="b">desarrollador</div></div>
+      <div class="c6-q" id="c6-q3" style="top:690px"><div class="a">En mi corazón</div><div class="b">jugador</div></div>
+    </div>
+
+    <div id="c6-crowd" class="c6-full">
+      <svg id="c6-pw" viewBox="0 0 620 620"><line x1="20" y1="600" x2="600" y2="600" stroke="#c5d0d6" stroke-width="6"/><line x1="20" y1="600" x2="20" y2="20" stroke="#c5d0d6" stroke-width="6"/>
+        <polyline id="c6-pwline" points="20,580 140,520 260,430 380,300 500,150 600,40" fill="none" stroke="#b9c2c8" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/></svg>
+      <svg id="c6-field" viewBox="0 0 920 620"><g id="c6-ppl"></g></svg>
+      <div id="c6-pwl">Más potencia</div><div id="c6-fl">Más personas jugando</div>
+    </div>
+
+    <div id="c6-3d" class="c6-full">
+      <canvas id="c6-cv" width="1920" height="1080"></canvas>
+      <svg id="c6-trail" viewBox="0 0 1920 1080"><path id="c6-arc" d="M1380 760 C 1480 540, 1660 440, 1800 480" fill="none" stroke="#00a2e8" stroke-width="10" stroke-linecap="round" stroke-dasharray="4 26" opacity="0"/></svg>
+      <div class="c6-lab" id="c6-l1"><div class="d">2004</div><div class="n">Nintendo DS</div><div class="s">Dos pantallas · una táctil · lápiz</div></div>
+      <div class="c6-lab" id="c6-l2"><div class="d">2006</div><div class="n">Wii</div><div class="s">Un mando que detecta el movimiento</div></div>
+      <div class="c6-lab" id="c6-l3"><div class="d">2012</div><div class="n">Wii U</div><div class="s">Consola de sobremesa con mando-pantalla</div></div>
+    </div>
+
+    <div id="c6-uses" class="c6-full">
+      <div class="c6-use" id="c6-u1" style="left:140px"><svg viewBox="0 0 300 300"><path d="M150 50 C 80 50, 55 110, 80 150 C 62 200, 110 245, 150 230 C 190 245, 238 200, 220 150 C 245 110, 220 50, 150 50 Z M150 50 V230 M95 110 q30 10 55 -8 M205 110 q-30 10 -55 -8 M95 175 q30 -10 55 8 M205 175 q-30 -10 -55 8" fill="none" stroke="#2b2f33" stroke-width="10" stroke-linecap="round"/></svg><div>Entrenar la mente</div></div>
+      <div class="c6-use" id="c6-u2" style="left:560px"><svg viewBox="0 0 300 300"><path d="M70 200 C 70 140, 110 110, 170 112 L 200 80 L 214 118 C 240 130, 250 160, 240 190 L 240 240 L 214 240 L 210 205 L 120 210 L 116 240 L 90 240 Z" fill="none" stroke="#2b2f33" stroke-width="10" stroke-linejoin="round"/><circle cx="214" cy="140" r="7" fill="#2b2f33"/><path d="M70 200 q-30 -10 -34 -50" fill="none" stroke="#2b2f33" stroke-width="10" stroke-linecap="round"/></svg><div>Cuidar de un perro</div></div>
+      <div id="c6-dsn">154,02 M</div><div id="c6-dsl">Nintendo DS · consolas vendidas (Nintendo)</div>
+    </div>
+
+    <div id="c6-room" class="c6-full">
+      <div id="c6-floor"></div>
+      <div id="c6-tv"></div>
+      <div id="c6-pins"></div>
+      <svg class="c6-fam" id="c6-gp" style="left:240px" width="300" height="520" viewBox="0 0 300 520"><g fill="#2b2f33"><circle cx="150" cy="80" r="56"/><path d="M80 520 L 90 240 C 90 170, 210 170, 210 240 L 220 520 Z"/></g><rect id="c6-gpa" x="196" y="200" width="30" height="190" rx="15" fill="#2b2f33"/><path d="M110 44 q40 -36 80 0" fill="none" stroke="#c5d0d6" stroke-width="12" stroke-linecap="round"/></svg>
+      <svg class="c6-fam" style="left:560px" width="220" height="420" viewBox="0 0 220 420"><g fill="#3b4248"><circle cx="110" cy="70" r="46"/><path d="M50 420 L 60 200 C 60 140, 160 140, 160 200 L 170 420 Z"/></g></svg>
+      <svg class="c6-fam" style="left:1320px" width="200" height="330" viewBox="0 0 200 330"><g fill="#4a535a"><circle cx="100" cy="60" r="40"/><path d="M50 330 L 58 170 C 58 120, 142 120, 142 170 L 150 330 Z"/></g></svg>
+      <svg class="c6-fam" style="left:1540px" width="240" height="460" viewBox="0 0 240 460"><g fill="#3b4248"><circle cx="120" cy="74" r="50"/><path d="M56 460 L 66 220 C 66 156, 174 156, 174 220 L 184 460 Z"/></g></svg>
+      <div id="c6-rn">101,63 M</div><div id="c6-rl">Wii · consolas vendidas</div>
+    </div>
+
+    <div id="c6-3ds" class="c6-full">
+      <div class="c6-lay" id="c6-la" style="background:#ff4d6d;mix-blend-mode:multiply"></div>
+      <div class="c6-lay" id="c6-lb" style="background:#00c2ff;mix-blend-mode:multiply"></div>
+      <div class="c6-lay" id="c6-lc" style="background:#ffffff;border:12px solid #2b2f33;display:flex;align-items:center;justify-content:center;font-size:140px">3D</div>
+      <div id="c6-3l"><div class="d">2011</div><div class="n">Nintendo 3DS</div><div class="s">Imágenes en relieve sin gafas</div></div>
+    </div>
+
+    <div id="c6-bars" class="c6-full"><div id="c6-bt">Consolas de sobremesa de Nintendo · unidades vendidas</div><div id="c6-brs"></div><div id="c6-bn">Fuente: Nintendo IR, ventas acumuladas mundiales (millones)</div></div>
+
+    <div id="c6-mem" class="c6-full"><div id="c6-mn">Satoru Iwata</div><div id="c6-mline"></div><div id="c6-my">1959 – 2015</div></div>
+
+    <div id="c6-away" class="c6-full"><div id="c6-tv2"></div><div id="c6-pad2"><i></i></div><div id="c6-img"></div></div>
+    <div id="c6-flood"></div>
+
+    <div id="c6-card" class="cc">
+      <div class="cc-card"><div class="cc-k">六</div></div>
+      <div class="cc-text"><div class="cc-num">__NUM__</div><div class="cc-title">__TITLE__</div><div class="cc-year">__YEARS__</div></div>
+    </div>
+  </div>
+  <script type="module">
+    import { buildConsole, createStage } from "./assets/lib/consoles.js";
+    const T0 = __T0__, C = __C__;
+    const st = createStage(document.getElementById("c6-cv"), { fov: 28, shadow: 0.25 });
+    const ds = buildConsole("ds"), wii = buildConsole("wii"), wiiu = buildConsole("wiiu");
+    [ds, wii, wiiu].forEach(m => { m.visible = false; st.scene.add(m); });
+    const sm = x => x * x * (3 - 2 * x), cl = x => Math.max(0, Math.min(1, x));
+    function renderAt(t) {
+      const l = t - T0;
+      ds.visible = l < C.c6f[0]; wii.visible = !ds.visible && l < C.c6h[0]; wiiu.visible = l >= C.c6i[0] + 2.4;
+      if (ds.visible) { const p = l - C.c6e[0];
+        ds.scale.setScalar(2.0); ds.rotation.y = -0.35 + p * 0.06;
+        ds.userData.lid.rotation.x = -0.05 - sm(cl((p - 0.6) / 1.4)) * 1.95;
+        ds.userData.stylus.position.set(0.9 - sm(cl((p - 2.6) / 1.0)) * 0.75, 0.2 + sm(cl((p - 2.6) / 1.0)) * 0.15, 0.2 - sm(cl((p - 2.6) / 1.0)) * 0.1);
+        ds.userData.stylus.rotation.z = 0.9 - sm(cl((p - 2.6) / 1.0)) * 0.5 + Math.sin(p * 6) * 0.04 * cl(p - 3.6);
+        st.camera.position.set(0.4, 6.2, 7.6); st.camera.lookAt(-1.4, 0.9, 0); }
+      if (wii.visible) { const p = l - C.c6g[0];
+        wii.scale.setScalar(1.3); wii.rotation.y = -0.6 + p * 0.06;
+        const r = wii.userData.remote; const sw = Math.sin(cl((p - 1.0) / 2.2) * Math.PI * 2);
+        r.rotation.set(0.2 + sw * 0.5, -0.3, -0.25 - sw * 0.9); r.position.set(1.3 + sw * 0.3, 1.0 + sw * 0.25, 0.8);
+        st.camera.position.set(-0.6, 3.0, 8.6); st.camera.lookAt(-1.2, 1.1, 0); }
+      if (wiiu.visible) { const p = l - C.c6i[0] - 2.4;
+        wiiu.scale.setScalar(1.05); wiiu.rotation.y = 0.35 + p * 0.08;
+        st.camera.position.set(0.0, 3.4, 9.4); st.camera.lookAt(-1.5, 1.0, 0); }
+      st.render();
+    }
+    window.addEventListener("hf-seek", e => renderAt(e.detail.time));
+    renderAt(T0);
+  </script>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT, $ = K.$, $$ = K.$$;
+      // multitud determinista
+      (() => { const r = K.rng(2006); let h = ""; for (let i = 0; i < 160; i++) { const x = 30 + r() * 860, y = 30 + r() * 560; h += `<g class="c6-p" data-i="${i}" transform="translate(${x.toFixed(0)},${y.toFixed(0)})" opacity="0"><circle r="11" cy="-16" fill="${i % 7 === 0 ? "#00a2e8" : "#2b2f33"}"/><rect x="-11" y="-2" width="22" height="26" rx="10" fill="${i % 7 === 0 ? "#00a2e8" : "#2b2f33"}"/></g>`; } $("#c6-ppl").innerHTML = h; })();
+      for (let i = 0; i < 6; i++) { const p = document.createElement("div"); p.className = "c6-pin"; p.style.left = 860 + (i % 3) * 36 + Math.floor(i / 3) * 18 + "px"; p.style.top = 300 + Math.floor(i / 3) * 40 + "px"; $("#c6-pins").appendChild(p); }
+      const DATA = [["NES", 61.91], ["Super Nintendo", 49.10], ["Nintendo 64", 32.93], ["GameCube", 21.74], ["Wii", 101.63], ["Wii U", 13.56]];
+      DATA.forEach(([n, v], i) => { const r = document.createElement("div"); r.className = "c6-br"; r.style.top = 190 + i * 100 + "px";
+        const w = (v / 101.63) * 1180; r.innerHTML = `<div class="lab">${n}</div><div class="bar" style="width:${w}px;${n === "Wii U" ? "background:#ff4d4d" : n === "Wii" ? "background:#00a2e8" : ""}"></div><div class="val" style="left:${w + 20}px">${K.es2(v)}</div>`; $("#c6-brs").appendChild(r); });
+
+      const tl = gsap.timeline({ paused: true });
+      const on = (s, t) => tl.set(s, { opacity: 1 }, t), off = (s, t) => tl.set(s, { opacity: 0 }, t);
+      K.chapterCard(tl, "c6", 0, 1.5);
+      // ---- Iwata (c6a)
+      const a0 = 2.3; on("#c6-iw", a0);
+      tl.fromTo("#c6-iwc", { scale: 0.4 }, { scale: 1, duration: 0.8, ease: "expo.out" }, a0);
+      tl.fromTo("#c6-iwsil", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, a0 + 0.15);
+      K.blurIn(tl, "#c6-iwy", C.c6a[0] + 0.2, 0.5);
+      K.wordsIn(tl, "#c6-iwn .n", C.c6a[0] + 1.2, { gap: 0.12 });
+      K.blurIn(tl, "#c6-iwn .k", C.c6a[0] + 1.6, 0.4); K.blurIn(tl, "#c6-iwn .d", C.c6a[0] + 2.0, 0.4);
+      tl.to("#c6-iwy", { opacity: 0, duration: 0.3 }, C.c6a[0] + 3.6);
+      off("#c6-iw", C.c6b[0] - 0.05);
+      // ---- programador (c6b)
+      const b0 = C.c6b[0] - 0.05; on("#c6-code", b0);
+      tl.fromTo("#c6-mon", { scale: 0.92 }, { scale: 1, duration: 2.8, ease: "power2.out" }, b0);
+      $$("#c6-code .c6-ln").forEach((l, i) => tl.fromTo(l, { opacity: 0, clipPath: "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.32, ease: "steps(14)" }, b0 + 0.15 + i * 0.36));
+      off("#c6-code", C.c6c[0] - 0.05);
+      // ---- la cita (c6c): tarjeta → mente → corazón
+      const q0 = C.c6c[0] - 0.05; on("#c6-quote", q0);
+      [["#c6-i1", "#c6-q1", 0.1], ["#c6-i2", "#c6-q2", 2.4], ["#c6-i3", "#c6-q3", 4.4]].forEach(([ic, q, dt]) => {
+        tl.fromTo(ic, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, q0 + dt);
+        K.blurIn(tl, q, q0 + dt + 0.15, 0.5);
+      });
+      tl.to(["#c6-q1", "#c6-q2", "#c6-i1", "#c6-i2"], { opacity: 0.3, duration: 0.5 }, q0 + 5.6);
+      tl.fromTo("#c6-i3", { scale: 1 }, { scale: 1.12, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, q0 + 5.4);
+      off("#c6-quote", C.c6d[0] - 0.05);
+      // ---- potencia frente a personas (c6d)
+      const d0 = C.c6d[0] - 0.05; on("#c6-crowd", d0);
+      tl.to("#c6-pwline", { attr: { "stroke-dashoffset": 0 }, duration: 1.6, ease: "power2.out" }, d0 + 0.3);
+      K.blurIn(tl, "#c6-pwl", d0 + 0.6, 0.3);
+      $$("#c6-ppl .c6-p").forEach((p, i) => tl.to(p, { opacity: 1, duration: 0.12 }, C.c6d[0] + 2.6 + i * 0.022));
+      K.blurIn(tl, "#c6-fl", C.c6d[0] + 3.0, 0.3);
+      off("#c6-crowd", C.c6e[0] - 0.05);
+      // ---- DS (c6e)
+      on("#c6-3d", C.c6e[0] - 0.05);
+      K.blurIn(tl, "#c6-l1", C.c6e[0] + 0.6, 0.5);
+      tl.to("#c6-l1", { opacity: 0, duration: 0.25 }, C.c6f[0] - 0.3);
+      off("#c6-3d", C.c6f[0] - 0.03);
+      // ---- usos y ventas DS (c6f)
+      const f0 = C.c6f[0] - 0.05; on("#c6-uses", f0);
+      tl.fromTo("#c6-u1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, f0 + 0.1);
+      tl.fromTo("#c6-u2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, f0 + 1.0);
+      tl.set("#c6-dsn", { opacity: 1 }, C.c6f[0] + 2.4);
+      K.count(tl, "#c6-dsn", 0, 154.02, C.c6f[0] + 2.4, 1.4, v => K.es2(v) + " M");
+      K.blurIn(tl, "#c6-dsl", C.c6f[0] + 3.0, 0.3);
+      off("#c6-uses", C.c6g[0] - 0.05);
+      // ---- Wii (c6g)
+      on("#c6-3d", C.c6g[0] - 0.05);
+      K.blurIn(tl, "#c6-l2", C.c6g[0] + 0.5, 0.5);
+      tl.fromTo("#c6-arc", { opacity: 0, strokeDashoffset: 300 }, { opacity: 1, strokeDashoffset: 0, duration: 1.2, ease: "power2.out" }, C.c6g[0] + 1.6);
+      tl.to(["#c6-l2", "#c6-arc"], { opacity: 0, duration: 0.25 }, C.c6h[0] - 0.3);
+      off("#c6-3d", C.c6h[0] - 0.03);
+      // ---- salón familiar y bolos (c6h)
+      const h0 = C.c6h[0] - 0.05; on("#c6-room", h0);
+      tl.fromTo("#c6-gpa", { rotation: -60, transformOrigin: "211px 205px" }, { rotation: 70, duration: 0.7, ease: "power2.inOut" }, h0 + 0.8);
+      $$("#c6-pins .c6-pin").forEach((p, i) => tl.to(p, { rotation: (i % 2 ? 1 : -1) * (60 + i * 8), x: (i - 2.5) * 22, y: 30, duration: 0.45, ease: "power2.out" }, h0 + 1.6 + i * 0.04));
+      tl.set("#c6-rn", { opacity: 1 }, C.c6h[0] + 3.4);
+      K.count(tl, "#c6-rn", 0, 101.63, C.c6h[0] + 3.4, 1.3, v => K.es2(v) + " M");
+      K.blurIn(tl, "#c6-rl", C.c6h[0] + 3.9, 0.3);
+      off("#c6-room", C.c6i[0] - 0.05);
+      // ---- 3DS y Wii U (c6i)
+      const i0 = C.c6i[0] - 0.05; on("#c6-3ds", i0);
+      tl.fromTo("#c6-la", { x: 0, y: 0 }, { x: -26, y: 8, duration: 0.8, ease: "expo.out" }, i0 + 0.5);
+      tl.fromTo("#c6-lb", { x: 0, y: 0 }, { x: 26, y: -8, duration: 0.8, ease: "expo.out" }, i0 + 0.5);
+      tl.fromTo("#c6-lc", { rotationY: -18, transformPerspective: 1200 }, { rotationY: 18, duration: 2.2, ease: "sine.inOut" }, i0);
+      K.blurIn(tl, "#c6-3l", i0 + 0.2, 0.4);
+      off("#c6-3ds", C.c6i[0] + 2.35);
+      on("#c6-3d", C.c6i[0] + 2.35);
+      K.blurIn(tl, "#c6-l3", C.c6i[0] + 2.6, 0.5);
+      off("#c6-3d", C.c6j[0] - 0.05);
+      // ---- comparativa de sobremesas (c6j)
+      const j0 = C.c6j[0] - 0.05; on("#c6-bars", j0);
+      $$("#c6-brs .c6-br").forEach((r, i) => { tl.fromTo(r.querySelector(".bar"), { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "expo.out" }, j0 + 0.2 + i * 0.22); tl.fromTo(r.querySelector(".val"), { opacity: 0 }, { opacity: 1, duration: 0.3 }, j0 + 0.6 + i * 0.22); });
+      tl.to("#c6-brs .c6-br:last-child .lab", { color: "#ff4d4d", duration: 0.3 }, C.c6j[0] + 3.2);
+      off("#c6-bars", C.c6k[0] - 0.05);
+      // ---- Iwata, 2015 (c6k): silencio visual
+      const k0 = C.c6k[0] - 0.05; on("#c6-mem", k0);
+      tl.fromTo("#c6-mline", { scaleX: 0 }, { scaleX: 1, duration: 2.4, ease: "power2.inOut" }, k0 + 1.5);
+      tl.fromTo("#c6-mn", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 1.6, ease: "power1.inOut" }, C.c6k[0] + 2.4);
+      tl.fromTo("#c6-my", { opacity: 0 }, { opacity: 1, duration: 1.2, ease: "power1.inOut" }, C.c6k[0] + 3.3);
+      tl.to(["#c6-mn", "#c6-my", "#c6-mline"], { opacity: 0, duration: 0.6 }, C.c6l[0] - 0.7);
+      off("#c6-mem", C.c6l[0] - 0.05);
+      // ---- jugar en la tele… y lejos de ella (c6l)
+      const l0 = C.c6l[0] - 0.05; on("#c6-away", l0);
+      tl.fromTo(["#c6-tv2", "#c6-pad2", "#c6-img"], { opacity: 0 }, { opacity: 1, duration: 0.5 }, l0);
+      tl.to("#c6-img", { x: 1050, y: 172, scale: 0.42, transformOrigin: "0 0", duration: 1.1, ease: "power3.inOut" }, C.c6l[0] + 2.6);
+      // inundación de color: rojo y azul → capítulo 7
+      tl.fromTo("#c6-flood", { opacity: 0, clipPath: "inset(0 50% 0 50%)" }, { opacity: 1, clipPath: "inset(0 0% 0 0%)", duration: 0.5, ease: "power2.inOut" }, D - 0.55);
+      window.__timelines["ch6"] = tl;
+    })();
+  </script>
+</template>

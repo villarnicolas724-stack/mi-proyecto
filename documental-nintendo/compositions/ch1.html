@@ -1,0 +1,491 @@
+<template>
+  <style>
+    @font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-20-400-normal.woff2') format('woff2');unicode-range:U+82e8,U+82ea,U+82ed,U+82ef,U+82f3-82f4,U+82f6-82f7,U+82f9,U+82fb,U+82fd-82fe,U+8300-8301,U+8303,U+8306-8308,U+830a-830c,U+8316-8318,U+831b,U+831d-831f,U+8321-8323,U+832b-8335,U+8337,U+833a,U+833c-833d,U+8340,U+8342-8347,U+834a,U+834d-8351,U+8353-8357,U+835a,U+8362-8363,U+8370,U+8373,U+8375,U+8378,U+837c-837d,U+837f-8380,U+8382,U+8384-8387,U+838a,U+838d-838e,U+8392-8396,U+8398-83a0,U+83a2,U+83a6-83ad,U+83b1,U+83b5,U+83bd-83c1,U+83c7,U+83c9,U+83ce-83d1,U+83d4,U+83d6,U+83d8,U+83dd,U+83df-83e1,U+83e5,U+83e8,U+83ea-83eb,U+83f0,U+83f2,U+83f4,U+83f6-83f9,U+83fb-83fd,U+8401,U+8403-8404,U+8406-8407,U+840a-840b,U+840d,U+840f,U+8411,U+8413,U+8415,U+8417,U+8419,U+8420,U+8422,U+842a,U+842f,U+8431,U+8435,U+8438-8439,U+843c,U+8445-8448,U+844a,U+844d-844f,U+8451-8452,U+8456,U+8458-845a,U+845c,U+845f-8462,U+8464-8467,U+8469-846b,U+846d-8470,U+8473-8474,U+8476-847a,U+847c-847d,U+8481-8482,U+8484-8485,U+848b,U+8490,U+8492-8493,U+8495,U+8497,U+849c,U+849e-849f,U+84a1,U+84a6,U+84a8-84aa,U+84ad,U+84af,U+84b1;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-21-400-normal.woff2') format('woff2');unicode-range:U+814a,U+814c,U+8151-8153,U+8157,U+815f-8161,U+8165-8169,U+816d-816f,U+8171,U+8173-8174,U+8177,U+8180-8186,U+8188,U+818a-818b,U+818e,U+8190,U+8193,U+8195-8196,U+8198,U+819b,U+819e,U+81a0,U+81a2,U+81a4,U+81a9,U+81ae,U+81b0,U+81b2,U+81b4-81b5,U+81b8,U+81ba-81bb,U+81bd-81be,U+81c0-81c3,U+81c5-81c6,U+81c8-81cb,U+81cd-81cf,U+81d1,U+81d5-81db,U+81dd-81e1,U+81e4-81e5,U+81e7,U+81eb-81ec,U+81ef-81f2,U+81f5-81f6,U+81f8-81fb,U+81fd-8205,U+8209-820b,U+820d,U+820f,U+8212-8214,U+8216,U+8219-821d,U+8221-8222,U+8228-8229,U+822b,U+822e,U+8232-8235,U+8237-8238,U+823a,U+823c,U+8240,U+8243-8246,U+8249,U+824b,U+824e-824f,U+8251,U+8256-825a,U+825c-825d,U+825f-8260,U+8262-8264,U+8267-8268,U+826a-826b,U+826d-826e,U+8271,U+8274,U+8277,U+8279,U+827b,U+827d-8281,U+8283-8284,U+8287,U+8289-828a,U+828d-828e,U+8291-8294,U+8296,U+8298-829b,U+829f-82a1,U+82a3-82a4,U+82a7-82ac,U+82ae,U+82b0,U+82b2,U+82b4,U+82b7,U+82ba-82bc,U+82be-82bf,U+82c5-82c6,U+82d0,U+82d2-82d3,U+82d5,U+82d9-82da,U+82dc,U+82de-82e4,U+82e7;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-27-400-normal.woff2') format('woff2');unicode-range:U+768c-768e,U+7690,U+7693,U+7695-7696,U+7699-76a8,U+76aa,U+76ad,U+76af-76b0,U+76b4,U+76b6-76ba,U+76bd,U+76c1-76c3,U+76c5,U+76c8-76c9,U+76cb-76ce,U+76d2,U+76d4,U+76d6,U+76d9,U+76dc,U+76de,U+76e0-76e1,U+76e5-76e8,U+76ea-76ec,U+76f0-76f1,U+76f6,U+76f9,U+76fb-76fc,U+7700,U+7704,U+7706-7708,U+770a,U+770e,U+7712,U+7714-7715,U+7717,U+7719-771c,U+7722,U+7724-7726,U+7728,U+772d-772f,U+7734-7739,U+773d-773e,U+7742,U+7745-7747,U+774a,U+774d-774f,U+7752,U+7756-7758,U+775a-775c,U+775e-7760,U+7762,U+7764-7765,U+7767,U+776a-776c,U+7770,U+7772-7774,U+7779-777a,U+777c-7780,U+7784,U+778b-778e,U+7794-7796,U+779a,U+779e-77a0,U+77a2,U+77a4-77a5,U+77a7,U+77a9-77aa,U+77ae-77b1,U+77b5-77b7,U+77b9,U+77bb-77bf,U+77c3,U+77c7,U+77c9,U+77cd,U+77d1-77d2,U+77d5,U+77d7,U+77d9-77da,U+77dc,U+77de-77e0,U+77e3-77e4,U+77e6-77e7,U+77e9-77ea,U+77ec,U+77ee,U+77f0-77f1,U+77f4,U+77f8,U+77fb-77fc,U+7805-7806,U+7809,U+780c-780e,U+7811-7812,U+7819,U+781d,U+7820-7823,U+7826-7827,U+782c-782e,U+7830,U+7835,U+7837,U+783a,U+783f,U+7843-7845,U+7847-7848,U+784c,U+784e-784f;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-32-400-normal.woff2') format('woff2');unicode-range:U+6d7c,U+6d80-6d82,U+6d85,U+6d87,U+6d89-6d8a,U+6d8c-6d8e,U+6d91-6d98,U+6d9c,U+6daa-6dac,U+6dae,U+6db4-6db5,U+6db7-6db9,U+6dbd,U+6dbf,U+6dc2,U+6dc4-6dc8,U+6dca,U+6dcc,U+6dce-6dd0,U+6dd2,U+6dd5-6dd6,U+6dd8-6ddb,U+6ddd-6de0,U+6de2,U+6de4-6de6,U+6de8-6dea,U+6dec,U+6dee-6df0,U+6df2,U+6df4,U+6df6,U+6df8-6dfa,U+6dfc,U+6e00,U+6e04,U+6e0a,U+6e17,U+6e19,U+6e1d-6e20,U+6e22-6e25,U+6e27,U+6e2b,U+6e2d-6e2e,U+6e32,U+6e34,U+6e36,U+6e38-6e3c,U+6e42-6e45,U+6e48-6e49,U+6e4b-6e4f,U+6e51-6e54,U+6e57,U+6e5b-6e5f,U+6e62-6e63,U+6e68,U+6e6b,U+6e6e,U+6e72-6e73,U+6e76,U+6e7b,U+6e7d,U+6e82,U+6e89,U+6e8c-6e8d,U+6e8f,U+6e93,U+6e98-6e99,U+6e9f-6ea0,U+6ea5,U+6ea7,U+6eaa-6eab,U+6ead-6eaf,U+6eb1-6eb4,U+6eb7,U+6ebb-6ebd,U+6ebf-6ec4,U+6ec7-6eca,U+6ecc-6ecf,U+6ed3-6ed5,U+6ed9-6edb,U+6ee6,U+6eeb-6eef,U+6ef7-6ef9,U+6efb,U+6efd-6eff,U+6f04,U+6f08-6f0a,U+6f0c-6f0d,U+6f10-6f11,U+6f13,U+6f15-6f16,U+6f18,U+6f1a-6f1b,U+6f25-6f26,U+6f29-6f2a,U+6f2d,U+6f2f-6f33,U+6f35-6f36,U+6f38,U+6f3b-6f3c,U+6f3e-6f3f,U+6f41,U+6f45,U+6f4f,U+6f51-6f53,U+6f57;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-60-400-normal.woff2') format('woff2');unicode-range:U+2227,U+26a0,U+2713,U+301f,U+4ff8,U+5239,U+526a,U+54fa,U+5740,U+5937,U+5993,U+59fb,U+5a3c,U+5c41,U+6028,U+626e,U+646f,U+647a,U+64b0,U+64e2,U+65a7,U+66fe,U+6727,U+6955,U+6bef,U+6f23,U+724c,U+767c,U+7a83,U+7ac4,U+7b67,U+8000,U+8471,U+8513,U+8599,U+86db,U+8718,U+87f2,U+88f3,U+8ad2,U+8e2a,U+8fa3,U+95a5,U+9798,U+9910,U+9957,U+9bab,U+9c3b,U+9daf,U+ff95;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-73-400-normal.woff2') format('woff2');unicode-range:U+221e,U+2514,U+51f9,U+5270,U+5449,U+5824,U+59a5,U+5a29,U+5d07,U+5e16,U+60e3,U+614c,U+6276,U+643e,U+64ab,U+6562,U+6681,U+670b,U+6734,U+67af,U+6a3d,U+6b05,U+6dc0,U+6e4a,U+7259,U+732a,U+7409,U+78a7,U+7a6b,U+8015,U+809b,U+817a,U+830e,U+837b,U+85ab,U+8a23,U+8a93,U+8b00,U+8b19,U+8b21,U+8cbf,U+8fb0,U+901d,U+91b8,U+9320,U+932c,U+9688,U+96f6,U+9df2,U+ff6a;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-74-400-normal.woff2') format('woff2');unicode-range:U+2002,U+2025,U+4f8d,U+51e1,U+51f8,U+5507,U+5598,U+58f1,U+5983,U+59ac,U+5c3c,U+5de7,U+5e7d,U+5eca,U+5f61,U+606d,U+60f9,U+636e,U+64ec,U+67da,U+67ff,U+6813,U+68f2,U+693f,U+6b6a,U+6bbb,U+6ef4,U+7092,U+717d,U+7261,U+73c8,U+7432,U+7483,U+76fe,U+7709,U+78d0,U+81a3,U+81b3,U+82af,U+8305,U+8309,U+8870,U+88fe,U+8cd1,U+8d66,U+906e,U+971e,U+9812,U+ff79,U+ff90;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-75-400-normal.woff2') format('woff2');unicode-range:U+2464,U+2501,U+2640,U+2642,U+339d,U+4f0e,U+5091,U+50b5,U+5132,U+51cc,U+558b,U+55aa,U+585e,U+5bee,U+5dfe,U+60b6,U+62b9,U+6349,U+6566,U+6590,U+6842,U+689d,U+6a58,U+6c70,U+6ff1,U+7815,U+7881,U+7aaa,U+7bc7,U+7def,U+7fa8,U+8017,U+8036,U+8061,U+821f,U+8429,U+8ce0,U+8e74,U+9019,U+90ca,U+9162,U+932f,U+93ae,U+9644,U+990c,U+9cf3,U+ff56,U+ff6e,U+ff7e,U+ff85;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-77-400-normal.woff2') format('woff2');unicode-range:U+2207,U+25ef,U+309c,U+4e4f,U+5146,U+51dd,U+5351,U+540a,U+5629,U+5eb5,U+5f04,U+5f13,U+60dc,U+6212,U+63b4,U+642c,U+6627,U+66a6,U+66c7,U+66fd,U+674e,U+6b96,U+6c4e,U+6df3,U+6e67,U+6f84,U+72fc,U+733f,U+7c97,U+7db1,U+7e4d,U+816b,U+82d1,U+84cb,U+854e,U+8607,U+86c7,U+871c,U+8776,U+8a89,U+8fc4,U+91a4,U+9285,U+9685,U+9903,U+9b31,U+9f13,U+ff42,U+ff74,U+ff91;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-78-400-normal.woff2') format('woff2');unicode-range:U+4e32,U+51db,U+53a8,U+53ea,U+5609,U+5674,U+5a92,U+5e7e,U+6115,U+611a,U+62cc,U+62ed,U+63c9,U+64b9,U+64e6,U+65cb,U+6606,U+6731,U+683d,U+6afb,U+7460,U+771e,U+78ef,U+7b26,U+7b51,U+7cde,U+7d10,U+7d2f,U+7d46,U+80de,U+819c,U+84b2,U+85cd,U+865a,U+8ecc,U+9022,U+90b8,U+9192,U+9675,U+96b7,U+99ff,U+ff44,U+ff55,U+ff6c,U+ff73,U+ff75,U+ff86,U+ff8d,U+ff92,U+ffe3;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-84-400-normal.woff2') format('woff2');unicode-range:U+3014-3015,U+4e3c,U+5036,U+5075,U+533f,U+53e9,U+5531,U+5642,U+5984,U+59e6,U+5a01,U+5b6b,U+5c0b,U+5f25,U+6069,U+60a0,U+614e,U+62b5,U+62d2-62d3,U+6597,U+660c,U+674f,U+67cf,U+6841,U+6905,U+6cf3,U+6d32,U+6d69,U+6f64,U+716e,U+7761,U+7b52,U+7be0,U+7dbf,U+7de9,U+7f36,U+81d3,U+8302,U+8389,U+846c,U+84ee,U+8a69,U+9038,U+9d8f,U+ff47,U+ff4b,U+ff76,U+ff9b;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-85-400-normal.woff2') format('woff2');unicode-range:U+25c7,U+3007,U+504f,U+507d,U+51a0,U+52a3,U+5410,U+5510,U+559a,U+5782,U+582a,U+5c0a,U+5c3f,U+5c48,U+5f6b,U+6176,U+622f,U+6279,U+62bd,U+62dd,U+65ed,U+67b6,U+6817,U+6850,U+6d6a,U+6deb,U+6ea2,U+6edd,U+6f5c,U+72e9,U+73a9,U+7573,U+76bf,U+7950,U+7956,U+7f8a,U+7ffc,U+80a2,U+80c3,U+83ca,U+8a02,U+8a13,U+8df5,U+9375,U+983b,U+99b4,U+ff4e,U+ff71,U+ff89,U+ff97;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-87-400-normal.woff2') format('woff2');unicode-range:U+b0,U+226a,U+2462,U+4e39,U+4fc3,U+4fd7,U+50be,U+50da,U+5200,U+5211,U+54f2,U+5618,U+596a,U+5b22,U+5bb4,U+5d50,U+60a3,U+63fa,U+658e,U+65e8,U+6669,U+6795,U+679d,U+67a0,U+6b3a,U+6e09,U+757f,U+7cd6,U+7dbe,U+7ffb,U+83cc,U+83f1,U+840c,U+845b,U+8846,U+8972,U+8a34,U+8a50,U+8a87,U+8edf,U+8ff0,U+90a6,U+9154,U+95a3,U+9663,U+9686,U+96c7,U+ff3c,U+ff7c,U+ff8a;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-88-400-normal.woff2') format('woff2');unicode-range:U+25bd,U+4e59,U+4ec1,U+4ff3,U+515a,U+518a,U+525b,U+5375,U+552f,U+57a3,U+5b9c,U+5c3d,U+5e3d,U+5e7b,U+5f0a,U+6094,U+6458,U+654f,U+67f3,U+6b8a,U+6bd2,U+6c37,U+6ce1,U+6e56,U+6e7f,U+6ed1,U+6ede,U+6f0f,U+70ad,U+7267,U+7363,U+786c,U+7a42,U+7db2,U+7f85,U+8178,U+829d,U+8896,U+8c5a,U+8cb0,U+8ce2,U+8ed2,U+9047,U+9177,U+970a,U+9ea6,U+ff1b,U+ff31,U+ff39,U+ff80;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-90-400-normal.woff2') format('woff2');unicode-range:U+4e18,U+4fb5,U+5104,U+52c7,U+5353,U+5374,U+53e5,U+587e,U+594f,U+5a20,U+5de1,U+5f18,U+5fcd,U+6291,U+62ab,U+6355,U+6392,U+63da,U+63e1,U+656c,U+6687,U+68b0-68b1,U+68d2,U+68da,U+6b27,U+6cbc,U+7159,U+7344,U+73cd,U+76df,U+790e,U+7cf8,U+8102,U+88c1,U+8aa0,U+8e0f,U+9178,U+92ad,U+9670,U+96c5,U+9cf4,U+9db4,U+ff3e,U+ff6f,U+ff72,U+ff78,U+ff7d,U+ff84,U+ff8c;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-93-400-normal.woff2') format('woff2');unicode-range:U+21d2,U+25ce,U+300a-300b,U+4e89,U+4e9c,U+4ea1,U+5263,U+53cc,U+5426,U+5869,U+5947,U+598a,U+5999,U+5e55,U+5e72,U+5e79,U+5fae,U+5fb9,U+602a,U+6163,U+624d,U+6749,U+6c5a,U+6cbf,U+6d45,U+6dfb,U+6e7e,U+708e,U+725b,U+7763,U+79c0,U+7bc4,U+7c89,U+7e01,U+7e2e,U+8010,U+8033,U+8c6a,U+8cc3,U+8f1d,U+8f9b,U+8fb2,U+907f,U+90f7,U+9707,U+9818,U+9b3c,U+ff0a,U+ff4d;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-94-400-normal.woff2') format('woff2');unicode-range:U+2015,U+2190,U+4e43,U+5019,U+5247,U+52e7,U+5438,U+54b2,U+55ab,U+57f7,U+5bd2,U+5e8a,U+5ef6,U+6016,U+60b2,U+6162,U+6319,U+6551,U+6607,U+66b4,U+675f,U+67d4,U+6b20,U+6b53,U+6ce3,U+719f,U+75b2,U+770b,U+7720,U+77ac,U+79d2,U+7af9,U+7d05,U+7dca,U+8056,U+80f8,U+81f3,U+8352,U+885d,U+8a70,U+8aa4,U+8cbc,U+900f,U+9084,U+91e3,U+9451,U+96c4,U+99c6,U+9ad4,U+ff70;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-95-400-normal.woff2') format('woff2');unicode-range:U+2193,U+25b2,U+4e4b,U+516d,U+51c4,U+529f,U+52c9,U+5360,U+5442,U+5857,U+5915,U+59eb,U+5a9b,U+5c3b,U+6012,U+61b6,U+62b1,U+6311,U+6577,U+65e2,U+65ec,U+6613,U+6790,U+6cb9,U+7372,U+76ae,U+7d5e,U+7fcc,U+88ab,U+88d5,U+8caf,U+8ddd,U+8ecd,U+8f38,U+8f9e,U+8feb,U+9063,U+90f5,U+93e1,U+968a,U+968f,U+98fe,U+9ec4,U+ff1d,U+ff27,U+ff2a,U+ff36,U+ff3b,U+ff3d,U+ffe5;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-96-400-normal.woff2') format('woff2');unicode-range:U+4e03,U+4f38,U+50b7,U+5264,U+5348,U+5371,U+585a,U+58ca,U+5951,U+59b9,U+59d4,U+5b98,U+5f8b,U+6388,U+64cd,U+65e7,U+6803,U+6b6f,U+6d66,U+6e0b,U+6ecb,U+6fc3,U+72ac,U+773c,U+77e2,U+7968,U+7a74,U+7dba,U+7dd1,U+7e3e,U+808c,U+811a,U+8179,U+8239,U+8584,U+8a0e,U+8a72,U+8b66,U+8c46,U+8f29,U+90a3,U+9234,U+96f0,U+9769,U+9774,U+9aa8,U+ff26,U+ff28,U+ff9e-ff9f;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-98-400-normal.woff2') format('woff2');unicode-range:U+25cb,U+4e71,U+4f59,U+50d5,U+520a,U+5217,U+5230,U+523a-523b,U+541b,U+5439,U+5747,U+59c9,U+5bdf,U+5c31,U+5de8,U+5e7c,U+5f69,U+6050,U+60d1,U+63cf,U+663c,U+67c4,U+6885,U+6c38,U+6d6e,U+6db2,U+6df7,U+6e2c,U+6f5f,U+7532,U+76e3-76e4,U+7701,U+793c,U+79f0,U+7a93,U+7d00,U+7de0,U+7e54,U+8328,U+8840,U+969c,U+96e8,U+9811,U+9aea,U+9b5a,U+ff24,U+ff2e,U+ff57;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-101-400-normal.woff2') format('woff2');unicode-range:U+25bc,U+3012,U+4ef2,U+4f0a,U+516b,U+5373,U+539a,U+53b3,U+559c,U+56f0,U+5727,U+5742,U+5965,U+59ff,U+5bc6,U+5dfb,U+5e45,U+5ead,U+5fb3,U+6211,U+6253,U+639b,U+63a8,U+6545,U+6575,U+6628,U+672d,U+68a8,U+6bdb,U+6d25,U+707d,U+767e,U+7834,U+7b46,U+7bc9,U+8074,U+82e6,U+8349,U+8a2a,U+8d70,U+8da3,U+8fce,U+91cc,U+967d,U+97ff,U+9996,U+ff1c,U+ff2f,U+ff32,U+ff34;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-102-400-normal.woff2') format('woff2');unicode-range:U+3d,U+5e,U+25cf,U+4e0e,U+4e5d,U+4e73,U+4e94,U+4f3c,U+5009,U+5145,U+51ac,U+5238,U+524a,U+53f3,U+547c,U+5802,U+5922,U+5a66,U+5c0e,U+5de6,U+5fd8,U+5feb,U+6797,U+685c,U+6b7b,U+6c5f-6c60,U+6cc9,U+6ce2,U+6d17,U+6e21,U+7167,U+7642,U+76db,U+8001,U+821e,U+8857,U+89d2,U+8b1b,U+8b70,U+8cb4,U+8cde,U+8f03,U+8f2a,U+968e,U+9b54,U+9e7f,U+9ebb,U+ff05,U+ff33;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-103-400-normal.woff2') format('woff2');unicode-range:U+500d,U+5074,U+50cd,U+5175,U+52e2,U+5352,U+5354,U+53f2,U+5409,U+56fa,U+5a18,U+5b88,U+5bdd,U+5ca9,U+5f92,U+5fa9,U+60a9,U+623f,U+6483,U+653f,U+666f,U+66ae,U+66f2,U+6a21,U+6b66,U+6bcd,U+6d5c,U+796d,U+7a4d,U+7aef,U+7b56,U+7b97,U+7c4d,U+7e04,U+7fa9,U+8377,U+83dc,U+83ef,U+8535,U+8863,U+88cf,U+88dc,U+8907,U+8acb,U+90ce,U+91dd,U+ff0b,U+ff0d,U+ff19,U+ff65;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-105-400-normal.woff2') format('woff2');unicode-range:U+25,U+25a0,U+4e26,U+4f4e,U+5341,U+56f2,U+5bbf,U+5c45,U+5c55,U+5c5e,U+5dee,U+5e9c,U+5f7c,U+6255,U+627f,U+62bc,U+65cf,U+661f,U+666e,U+66dc,U+67fb,U+6975,U+6a4b,U+6b32,U+6df1,U+6e29,U+6fc0,U+738b,U+7686,U+7a76,U+7a81,U+7c73,U+7d75,U+7dd2,U+82e5,U+82f1,U+85ac,U+888b,U+899a,U+8a31,U+8a8c,U+8ab0,U+8b58,U+904a,U+9060,U+9280,U+95b2,U+984d,U+9ce5,U+ff18;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-106-400-normal.woff2') format('woff2');unicode-range:U+30f6,U+50ac,U+5178,U+51e6,U+5224,U+52dd,U+5883,U+5897,U+590f,U+5a5a,U+5bb3,U+5c65,U+5e03,U+5e2b,U+5e30,U+5eb7,U+6271,U+63f4,U+64ae,U+6574,U+672b,U+679a,U+6a29-6a2a,U+6ca2,U+6cc1,U+6d0b,U+713c,U+74b0,U+7981,U+7a0b,U+7bc0,U+7d1a,U+7d61,U+7fd2,U+822c,U+8996,U+89aa,U+8cac,U+8cbb,U+8d77,U+8def,U+9020,U+9152,U+9244,U+9662,U+967a,U+96e3,U+9759,U+ff16;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-107-400-normal.woff2') format('woff2');unicode-range:U+23,U+3c,U+2192,U+4e45,U+4efb,U+4f50,U+4f8b,U+4fc2,U+5024,U+5150,U+5272,U+5370,U+53bb,U+542b,U+56db,U+56e3,U+57ce,U+5bc4,U+5bcc,U+5f71,U+60aa,U+6238,U+6280,U+629c,U+6539,U+66ff,U+670d,U+677e-677f,U+6839,U+69cb,U+6b4c,U+6bb5,U+6e96,U+6f14,U+72ec,U+7389,U+7814,U+79cb,U+79d1,U+79fb,U+7a0e,U+7d0d,U+85e4,U+8d64,U+9632,U+96e2,U+9805,U+99ac,U+ff1e;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-109-400-normal.woff2') format('woff2');unicode-range:U+266a,U+4f11,U+533a,U+5343,U+534a,U+53cd,U+5404,U+56f3,U+5b57-5b58,U+5bae,U+5c4a,U+5e0c,U+5e2f,U+5eab,U+5f35,U+5f79,U+614b,U+6226,U+629e,U+65c5,U+6625,U+6751,U+6821,U+6b69,U+6b8b,U+6bce,U+6c42,U+706b,U+7c21,U+7cfb,U+805e,U+80b2,U+82b8,U+843d,U+8853,U+88c5,U+8a3c,U+8a66,U+8d8a,U+8fba,U+9069,U+91cf,U+9752,U+975e,U+9999,U+ff0f-ff10,U+ff14-ff15;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-110-400-normal.woff2') format('woff2');unicode-range:U+40,U+4e86,U+4e95,U+4f01,U+4f1d,U+4fbf,U+5099,U+5171,U+5177,U+53cb,U+53ce,U+53f0,U+5668,U+5712,U+5ba4,U+5ca1,U+5f85,U+60f3,U+653e,U+65ad,U+65e9,U+6620,U+6750,U+6761,U+6b62,U+6b74,U+6e08,U+6e80,U+7248,U+7531,U+7533,U+753a,U+77f3,U+798f,U+7f6e,U+8449,U+88fd,U+89b3,U+8a55,U+8ac7,U+8b77,U+8db3,U+8efd,U+8fd4,U+9031-9032,U+9580,U+9589,U+96d1,U+985e;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-111-400-normal.woff2') format('woff2');unicode-range:U+2b,U+d7,U+300e-300f,U+4e07,U+4e8c,U+512a,U+5149,U+518d,U+5236,U+52b9,U+52d9,U+5468,U+578b,U+57fa,U+5b8c,U+5ba2,U+5c02,U+5de5,U+5f37,U+5f62,U+623b,U+63d0,U+652f,U+672a,U+6848,U+6d41,U+7136,U+7537,U+754c,U+76f4,U+79c1,U+7ba1,U+7d44,U+7d4c,U+7dcf,U+7dda,U+7de8,U+82b1,U+897f,U+8ca9,U+8cfc,U+904e,U+9664,U+982d,U+9858,U+98a8,U+9a13,U+ff13,U+ff5c;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-112-400-normal.woff2') format('woff2');unicode-range:U+4e16,U+4e3b,U+4ea4,U+4ee4,U+4f4d,U+4f4f,U+4f55,U+4f9b,U+5317,U+5358,U+53c2,U+53e4,U+548c,U+571f,U+59cb,U+5cf6,U+5e38,U+63a2,U+63b2,U+6559,U+662d,U+679c,U+6c7a,U+72b6,U+7523,U+767d,U+770c,U+7a2e,U+7a3f,U+7a7a,U+7b2c,U+7b49,U+7d20,U+7d42,U+8003,U+8272,U+8a08,U+8aac,U+8cb7,U+8eab,U+8ee2,U+9054-9055,U+90fd,U+914d,U+91cd,U+969b,U+97f3,U+984c,U+ff06;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-113-400-normal.woff2') format('woff2');unicode-range:U+26,U+5f,U+2026,U+203b,U+4e09,U+4eac,U+4ed5,U+4fa1,U+5143,U+5199,U+5207,U+539f,U+53e3,U+53f7,U+5411,U+5473,U+5546,U+55b6,U+5929,U+597d,U+5bb9,U+5c11,U+5c4b,U+5ddd,U+5f97,U+5fc5,U+6295,U+6301,U+6307,U+671b,U+76f8,U+78ba,U+795e,U+7d30,U+7d39,U+7d9a,U+89e3,U+8a00,U+8a73,U+8a8d,U+8a9e,U+8aad,U+8abf,U+8cea,U+8eca,U+8ffd,U+904b,U+9650,U+ff11-ff12;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-114-400-normal.woff2') format('woff2');unicode-range:U+3e,U+3005,U+4e0d,U+4e88,U+4ecb,U+4ee3,U+4ef6,U+4fdd,U+4fe1,U+500b,U+50cf,U+5186,U+5316,U+53d7,U+540c,U+544a,U+54e1,U+5728,U+58f2,U+5973,U+5b89,U+5c71,U+5e02,U+5e97,U+5f15,U+5fc3,U+5fdc,U+601d,U+611b,U+611f,U+671f,U+6728,U+6765,U+683c,U+6b21,U+6ce8,U+6d3b,U+6d77,U+7530,U+7740,U+7acb,U+7d50,U+826f,U+8f09,U+8fbc,U+9001,U+9053,U+91ce,U+9762,U+98df;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-115-400-normal.woff2') format('woff2');unicode-range:U+7c,U+3080,U+4ee5,U+5148,U+516c,U+521d,U+5225,U+529b,U+52a0,U+53ef,U+56de,U+56fd,U+5909,U+591a,U+5b66,U+5b9f,U+5bb6,U+5bfe,U+5e73,U+5e83,U+5ea6,U+5f53,U+6027,U+610f,U+6210,U+6240,U+660e,U+66f4,U+66f8,U+6709,U+6771,U+697d,U+69d8,U+6a5f,U+6c34,U+6cbb,U+73fe,U+756a,U+7684,U+771f,U+793a,U+7f8e,U+898f,U+8a2d,U+8a71,U+8fd1,U+9078,U+9577,U+96fb,U+ff5e;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-117-400-normal.woff2') format('woff2');unicode-range:U+4e,U+a0,U+3000,U+300c-300d,U+4e00,U+4e0a,U+4e2d,U+4e8b,U+4eba,U+4f1a,U+5165,U+5168,U+5185,U+51fa,U+5206,U+5229,U+524d,U+52d5,U+5408,U+554f,U+5831,U+5834,U+5927,U+5b9a,U+5e74,U+5f0f,U+60c5,U+65b0,U+65b9,U+6642,U+6700,U+672c,U+682a,U+6b63,U+6c17,U+7121,U+751f,U+7528,U+753b,U+76ee,U+793e,U+884c,U+898b,U+8a18,U+9593,U+95a2,U+ff01,U+ff08-ff09;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-118-400-normal.woff2') format('woff2');unicode-range:U+21-22,U+27-2a,U+2c-3b,U+3f,U+41-4d,U+4f-5d,U+61-7b,U+7d,U+ab,U+ae,U+b2-b3,U+b7,U+bb,U+c9,U+cd,U+d6,U+d8,U+dc,U+e0-e5,U+e7-ed,U+ef,U+f1-f4,U+f6,U+f8,U+fa,U+fc-fd,U+103,U+14d,U+1b0,U+300-301,U+1ebf,U+1ec7,U+2013-2014,U+201c-201d,U+2039-203a,U+203c,U+2048-2049,U+2113,U+2122,U+65e5,U+6708,U+70b9;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-119-400-normal.woff2') format('woff2');unicode-range:U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e;}
+@font-face{font-family:'Yuji Syuku';font-weight:400;font-style:normal;font-display:block;src:url('assets/fonts/yuji-syuku-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-20-700-normal.woff2') format('woff2');unicode-range:U+82e8,U+82ea,U+82ed,U+82ef,U+82f3-82f4,U+82f6-82f7,U+82f9,U+82fb,U+82fd-82fe,U+8300-8301,U+8303,U+8306-8308,U+830a-830c,U+8316-8318,U+831b,U+831d-831f,U+8321-8323,U+832b-8335,U+8337,U+833a,U+833c-833d,U+8340,U+8342-8347,U+834a,U+834d-8351,U+8353-8357,U+835a,U+8362-8363,U+8370,U+8373,U+8375,U+8378,U+837c-837d,U+837f-8380,U+8382,U+8384-8387,U+838a,U+838d-838e,U+8392-8396,U+8398-83a0,U+83a2,U+83a6-83ad,U+83b1,U+83b5,U+83bd-83c1,U+83c7,U+83c9,U+83ce-83d1,U+83d4,U+83d6,U+83d8,U+83dd,U+83df-83e1,U+83e5,U+83e8,U+83ea-83eb,U+83f0,U+83f2,U+83f4,U+83f6-83f9,U+83fb-83fd,U+8401,U+8403-8404,U+8406-8407,U+840a-840b,U+840d,U+840f,U+8411,U+8413,U+8415,U+8417,U+8419,U+8420,U+8422,U+842a,U+842f,U+8431,U+8435,U+8438-8439,U+843c,U+8445-8448,U+844a,U+844d-844f,U+8451-8452,U+8456,U+8458-845a,U+845c,U+845f-8462,U+8464-8467,U+8469-846b,U+846d-8470,U+8473-8474,U+8476-847a,U+847c-847d,U+8481-8482,U+8484-8485,U+848b,U+8490,U+8492-8493,U+8495,U+8497,U+849c,U+849e-849f,U+84a1,U+84a6,U+84a8-84aa,U+84ad,U+84af,U+84b1;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-21-700-normal.woff2') format('woff2');unicode-range:U+814a,U+814c,U+8151-8153,U+8157,U+815f-8161,U+8165-8169,U+816d-816f,U+8171,U+8173-8174,U+8177,U+8180-8186,U+8188,U+818a-818b,U+818e,U+8190,U+8193,U+8195-8196,U+8198,U+819b,U+819e,U+81a0,U+81a2,U+81a4,U+81a9,U+81ae,U+81b0,U+81b2,U+81b4-81b5,U+81b8,U+81ba-81bb,U+81bd-81be,U+81c0-81c3,U+81c5-81c6,U+81c8-81cb,U+81cd-81cf,U+81d1,U+81d5-81db,U+81dd-81e1,U+81e4-81e5,U+81e7,U+81eb-81ec,U+81ef-81f2,U+81f5-81f6,U+81f8-81fb,U+81fd-8205,U+8209-820b,U+820d,U+820f,U+8212-8214,U+8216,U+8219-821d,U+8221-8222,U+8228-8229,U+822b,U+822e,U+8232-8235,U+8237-8238,U+823a,U+823c,U+8240,U+8243-8246,U+8249,U+824b,U+824e-824f,U+8251,U+8256-825a,U+825c-825d,U+825f-8260,U+8262-8264,U+8267-8268,U+826a-826b,U+826d-826e,U+8271,U+8274,U+8277,U+8279,U+827b,U+827d-8281,U+8283-8284,U+8287,U+8289-828a,U+828d-828e,U+8291-8294,U+8296,U+8298-829b,U+829f-82a1,U+82a3-82a4,U+82a7-82ac,U+82ae,U+82b0,U+82b2,U+82b4,U+82b7,U+82ba-82bc,U+82be-82bf,U+82c5-82c6,U+82d0,U+82d2-82d3,U+82d5,U+82d9-82da,U+82dc,U+82de-82e4,U+82e7;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-27-700-normal.woff2') format('woff2');unicode-range:U+768c-768e,U+7690,U+7693,U+7695-7696,U+7699-76a8,U+76aa,U+76ad,U+76af-76b0,U+76b4,U+76b6-76ba,U+76bd,U+76c1-76c3,U+76c5,U+76c8-76c9,U+76cb-76ce,U+76d2,U+76d4,U+76d6,U+76d9,U+76dc,U+76de,U+76e0-76e1,U+76e5-76e8,U+76ea-76ec,U+76f0-76f1,U+76f6,U+76f9,U+76fb-76fc,U+7700,U+7704,U+7706-7708,U+770a,U+770e,U+7712,U+7714-7715,U+7717,U+7719-771c,U+7722,U+7724-7726,U+7728,U+772d-772f,U+7734-7739,U+773d-773e,U+7742,U+7745-7747,U+774a,U+774d-774f,U+7752,U+7756-7758,U+775a-775c,U+775e-7760,U+7762,U+7764-7765,U+7767,U+776a-776c,U+7770,U+7772-7774,U+7779-777a,U+777c-7780,U+7784,U+778b-778e,U+7794-7796,U+779a,U+779e-77a0,U+77a2,U+77a4-77a5,U+77a7,U+77a9-77aa,U+77ae-77b1,U+77b5-77b7,U+77b9,U+77bb-77bf,U+77c3,U+77c7,U+77c9,U+77cd,U+77d1-77d2,U+77d5,U+77d7,U+77d9-77da,U+77dc,U+77de-77e0,U+77e3-77e4,U+77e6-77e7,U+77e9-77ea,U+77ec,U+77ee,U+77f0-77f1,U+77f4,U+77f8,U+77fb-77fc,U+7805-7806,U+7809,U+780c-780e,U+7811-7812,U+7819,U+781d,U+7820-7823,U+7826-7827,U+782c-782e,U+7830,U+7835,U+7837,U+783a,U+783f,U+7843-7845,U+7847-7848,U+784c,U+784e-784f;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-32-700-normal.woff2') format('woff2');unicode-range:U+6d7c,U+6d80-6d82,U+6d85,U+6d87,U+6d89-6d8a,U+6d8c-6d8e,U+6d91-6d98,U+6d9c,U+6daa-6dac,U+6dae,U+6db4-6db5,U+6db7-6db9,U+6dbd,U+6dbf,U+6dc2,U+6dc4-6dc8,U+6dca,U+6dcc,U+6dce-6dd0,U+6dd2,U+6dd5-6dd6,U+6dd8-6ddb,U+6ddd-6de0,U+6de2,U+6de4-6de6,U+6de8-6dea,U+6dec,U+6dee-6df0,U+6df2,U+6df4,U+6df6,U+6df8-6dfa,U+6dfc,U+6e00,U+6e04,U+6e0a,U+6e17,U+6e19,U+6e1d-6e20,U+6e22-6e25,U+6e27,U+6e2b,U+6e2d-6e2e,U+6e32,U+6e34,U+6e36,U+6e38-6e3c,U+6e42-6e45,U+6e48-6e49,U+6e4b-6e4f,U+6e51-6e54,U+6e57,U+6e5b-6e5f,U+6e62-6e63,U+6e68,U+6e6b,U+6e6e,U+6e72-6e73,U+6e76,U+6e7b,U+6e7d,U+6e82,U+6e89,U+6e8c-6e8d,U+6e8f,U+6e93,U+6e98-6e99,U+6e9f-6ea0,U+6ea5,U+6ea7,U+6eaa-6eab,U+6ead-6eaf,U+6eb1-6eb4,U+6eb7,U+6ebb-6ebd,U+6ebf-6ec4,U+6ec7-6eca,U+6ecc-6ecf,U+6ed3-6ed5,U+6ed9-6edb,U+6ee6,U+6eeb-6eef,U+6ef7-6ef9,U+6efb,U+6efd-6eff,U+6f04,U+6f08-6f0a,U+6f0c-6f0d,U+6f10-6f11,U+6f13,U+6f15-6f16,U+6f18,U+6f1a-6f1b,U+6f25-6f26,U+6f29-6f2a,U+6f2d,U+6f2f-6f33,U+6f35-6f36,U+6f38,U+6f3b-6f3c,U+6f3e-6f3f,U+6f41,U+6f45,U+6f4f,U+6f51-6f53,U+6f57;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-60-700-normal.woff2') format('woff2');unicode-range:U+2227,U+26a0,U+2713,U+301f,U+4ff8,U+5239,U+526a,U+54fa,U+5740,U+5937,U+5993,U+59fb,U+5a3c,U+5c41,U+6028,U+626e,U+646f,U+647a,U+64b0,U+64e2,U+65a7,U+66fe,U+6727,U+6955,U+6bef,U+6f23,U+724c,U+767c,U+7a83,U+7ac4,U+7b67,U+8000,U+8471,U+8513,U+8599,U+86db,U+8718,U+87f2,U+88f3,U+8ad2,U+8e2a,U+8fa3,U+95a5,U+9798,U+9910,U+9957,U+9bab,U+9c3b,U+9daf,U+ff95;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-73-700-normal.woff2') format('woff2');unicode-range:U+221e,U+2514,U+51f9,U+5270,U+5449,U+5824,U+59a5,U+5a29,U+5d07,U+5e16,U+60e3,U+614c,U+6276,U+643e,U+64ab,U+6562,U+6681,U+670b,U+6734,U+67af,U+6a3d,U+6b05,U+6dc0,U+6e4a,U+7259,U+732a,U+7409,U+78a7,U+7a6b,U+8015,U+809b,U+817a,U+830e,U+837b,U+85ab,U+8a23,U+8a93,U+8b00,U+8b19,U+8b21,U+8cbf,U+8fb0,U+901d,U+91b8,U+9320,U+932c,U+9688,U+96f6,U+9df2,U+ff6a;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-74-700-normal.woff2') format('woff2');unicode-range:U+2002,U+2025,U+4f8d,U+51e1,U+51f8,U+5507,U+5598,U+58f1,U+5983,U+59ac,U+5c3c,U+5de7,U+5e7d,U+5eca,U+5f61,U+606d,U+60f9,U+636e,U+64ec,U+67da,U+67ff,U+6813,U+68f2,U+693f,U+6b6a,U+6bbb,U+6ef4,U+7092,U+717d,U+7261,U+73c8,U+7432,U+7483,U+76fe,U+7709,U+78d0,U+81a3,U+81b3,U+82af,U+8305,U+8309,U+8870,U+88fe,U+8cd1,U+8d66,U+906e,U+971e,U+9812,U+ff79,U+ff90;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-75-700-normal.woff2') format('woff2');unicode-range:U+2464,U+2501,U+2640,U+2642,U+339d,U+4f0e,U+5091,U+50b5,U+5132,U+51cc,U+558b,U+55aa,U+585e,U+5bee,U+5dfe,U+60b6,U+62b9,U+6349,U+6566,U+6590,U+6842,U+689d,U+6a58,U+6c70,U+6ff1,U+7815,U+7881,U+7aaa,U+7bc7,U+7def,U+7fa8,U+8017,U+8036,U+8061,U+821f,U+8429,U+8ce0,U+8e74,U+9019,U+90ca,U+9162,U+932f,U+93ae,U+9644,U+990c,U+9cf3,U+ff56,U+ff6e,U+ff7e,U+ff85;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-77-700-normal.woff2') format('woff2');unicode-range:U+2207,U+25ef,U+309c,U+4e4f,U+5146,U+51dd,U+5351,U+540a,U+5629,U+5eb5,U+5f04,U+5f13,U+60dc,U+6212,U+63b4,U+642c,U+6627,U+66a6,U+66c7,U+66fd,U+674e,U+6b96,U+6c4e,U+6df3,U+6e67,U+6f84,U+72fc,U+733f,U+7c97,U+7db1,U+7e4d,U+816b,U+82d1,U+84cb,U+854e,U+8607,U+86c7,U+871c,U+8776,U+8a89,U+8fc4,U+91a4,U+9285,U+9685,U+9903,U+9b31,U+9f13,U+ff42,U+ff74,U+ff91;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-78-700-normal.woff2') format('woff2');unicode-range:U+4e32,U+51db,U+53a8,U+53ea,U+5609,U+5674,U+5a92,U+5e7e,U+6115,U+611a,U+62cc,U+62ed,U+63c9,U+64b9,U+64e6,U+65cb,U+6606,U+6731,U+683d,U+6afb,U+7460,U+771e,U+78ef,U+7b26,U+7b51,U+7cde,U+7d10,U+7d2f,U+7d46,U+80de,U+819c,U+84b2,U+85cd,U+865a,U+8ecc,U+9022,U+90b8,U+9192,U+9675,U+96b7,U+99ff,U+ff44,U+ff55,U+ff6c,U+ff73,U+ff75,U+ff86,U+ff8d,U+ff92,U+ffe3;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-84-700-normal.woff2') format('woff2');unicode-range:U+3014-3015,U+4e3c,U+5036,U+5075,U+533f,U+53e9,U+5531,U+5642,U+5984,U+59e6,U+5a01,U+5b6b,U+5c0b,U+5f25,U+6069,U+60a0,U+614e,U+62b5,U+62d2-62d3,U+6597,U+660c,U+674f,U+67cf,U+6841,U+6905,U+6cf3,U+6d32,U+6d69,U+6f64,U+716e,U+7761,U+7b52,U+7be0,U+7dbf,U+7de9,U+7f36,U+81d3,U+8302,U+8389,U+846c,U+84ee,U+8a69,U+9038,U+9d8f,U+ff47,U+ff4b,U+ff76,U+ff9b;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-85-700-normal.woff2') format('woff2');unicode-range:U+25c7,U+3007,U+504f,U+507d,U+51a0,U+52a3,U+5410,U+5510,U+559a,U+5782,U+582a,U+5c0a,U+5c3f,U+5c48,U+5f6b,U+6176,U+622f,U+6279,U+62bd,U+62dd,U+65ed,U+67b6,U+6817,U+6850,U+6d6a,U+6deb,U+6ea2,U+6edd,U+6f5c,U+72e9,U+73a9,U+7573,U+76bf,U+7950,U+7956,U+7f8a,U+7ffc,U+80a2,U+80c3,U+83ca,U+8a02,U+8a13,U+8df5,U+9375,U+983b,U+99b4,U+ff4e,U+ff71,U+ff89,U+ff97;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-87-700-normal.woff2') format('woff2');unicode-range:U+b0,U+226a,U+2462,U+4e39,U+4fc3,U+4fd7,U+50be,U+50da,U+5200,U+5211,U+54f2,U+5618,U+596a,U+5b22,U+5bb4,U+5d50,U+60a3,U+63fa,U+658e,U+65e8,U+6669,U+6795,U+679d,U+67a0,U+6b3a,U+6e09,U+757f,U+7cd6,U+7dbe,U+7ffb,U+83cc,U+83f1,U+840c,U+845b,U+8846,U+8972,U+8a34,U+8a50,U+8a87,U+8edf,U+8ff0,U+90a6,U+9154,U+95a3,U+9663,U+9686,U+96c7,U+ff3c,U+ff7c,U+ff8a;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-88-700-normal.woff2') format('woff2');unicode-range:U+25bd,U+4e59,U+4ec1,U+4ff3,U+515a,U+518a,U+525b,U+5375,U+552f,U+57a3,U+5b9c,U+5c3d,U+5e3d,U+5e7b,U+5f0a,U+6094,U+6458,U+654f,U+67f3,U+6b8a,U+6bd2,U+6c37,U+6ce1,U+6e56,U+6e7f,U+6ed1,U+6ede,U+6f0f,U+70ad,U+7267,U+7363,U+786c,U+7a42,U+7db2,U+7f85,U+8178,U+829d,U+8896,U+8c5a,U+8cb0,U+8ce2,U+8ed2,U+9047,U+9177,U+970a,U+9ea6,U+ff1b,U+ff31,U+ff39,U+ff80;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-90-700-normal.woff2') format('woff2');unicode-range:U+4e18,U+4fb5,U+5104,U+52c7,U+5353,U+5374,U+53e5,U+587e,U+594f,U+5a20,U+5de1,U+5f18,U+5fcd,U+6291,U+62ab,U+6355,U+6392,U+63da,U+63e1,U+656c,U+6687,U+68b0-68b1,U+68d2,U+68da,U+6b27,U+6cbc,U+7159,U+7344,U+73cd,U+76df,U+790e,U+7cf8,U+8102,U+88c1,U+8aa0,U+8e0f,U+9178,U+92ad,U+9670,U+96c5,U+9cf4,U+9db4,U+ff3e,U+ff6f,U+ff72,U+ff78,U+ff7d,U+ff84,U+ff8c;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-93-700-normal.woff2') format('woff2');unicode-range:U+21d2,U+25ce,U+300a-300b,U+4e89,U+4e9c,U+4ea1,U+5263,U+53cc,U+5426,U+5869,U+5947,U+598a,U+5999,U+5e55,U+5e72,U+5e79,U+5fae,U+5fb9,U+602a,U+6163,U+624d,U+6749,U+6c5a,U+6cbf,U+6d45,U+6dfb,U+6e7e,U+708e,U+725b,U+7763,U+79c0,U+7bc4,U+7c89,U+7e01,U+7e2e,U+8010,U+8033,U+8c6a,U+8cc3,U+8f1d,U+8f9b,U+8fb2,U+907f,U+90f7,U+9707,U+9818,U+9b3c,U+ff0a,U+ff4d;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-94-700-normal.woff2') format('woff2');unicode-range:U+2015,U+2190,U+4e43,U+5019,U+5247,U+52e7,U+5438,U+54b2,U+55ab,U+57f7,U+5bd2,U+5e8a,U+5ef6,U+6016,U+60b2,U+6162,U+6319,U+6551,U+6607,U+66b4,U+675f,U+67d4,U+6b20,U+6b53,U+6ce3,U+719f,U+75b2,U+770b,U+7720,U+77ac,U+79d2,U+7af9,U+7d05,U+7dca,U+8056,U+80f8,U+81f3,U+8352,U+885d,U+8a70,U+8aa4,U+8cbc,U+900f,U+9084,U+91e3,U+9451,U+96c4,U+99c6,U+9ad4,U+ff70;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-95-700-normal.woff2') format('woff2');unicode-range:U+2193,U+25b2,U+4e4b,U+516d,U+51c4,U+529f,U+52c9,U+5360,U+5442,U+5857,U+5915,U+59eb,U+5a9b,U+5c3b,U+6012,U+61b6,U+62b1,U+6311,U+6577,U+65e2,U+65ec,U+6613,U+6790,U+6cb9,U+7372,U+76ae,U+7d5e,U+7fcc,U+88ab,U+88d5,U+8caf,U+8ddd,U+8ecd,U+8f38,U+8f9e,U+8feb,U+9063,U+90f5,U+93e1,U+968a,U+968f,U+98fe,U+9ec4,U+ff1d,U+ff27,U+ff2a,U+ff36,U+ff3b,U+ff3d,U+ffe5;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-96-700-normal.woff2') format('woff2');unicode-range:U+4e03,U+4f38,U+50b7,U+5264,U+5348,U+5371,U+585a,U+58ca,U+5951,U+59b9,U+59d4,U+5b98,U+5f8b,U+6388,U+64cd,U+65e7,U+6803,U+6b6f,U+6d66,U+6e0b,U+6ecb,U+6fc3,U+72ac,U+773c,U+77e2,U+7968,U+7a74,U+7dba,U+7dd1,U+7e3e,U+808c,U+811a,U+8179,U+8239,U+8584,U+8a0e,U+8a72,U+8b66,U+8c46,U+8f29,U+90a3,U+9234,U+96f0,U+9769,U+9774,U+9aa8,U+ff26,U+ff28,U+ff9e-ff9f;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-98-700-normal.woff2') format('woff2');unicode-range:U+25cb,U+4e71,U+4f59,U+50d5,U+520a,U+5217,U+5230,U+523a-523b,U+541b,U+5439,U+5747,U+59c9,U+5bdf,U+5c31,U+5de8,U+5e7c,U+5f69,U+6050,U+60d1,U+63cf,U+663c,U+67c4,U+6885,U+6c38,U+6d6e,U+6db2,U+6df7,U+6e2c,U+6f5f,U+7532,U+76e3-76e4,U+7701,U+793c,U+79f0,U+7a93,U+7d00,U+7de0,U+7e54,U+8328,U+8840,U+969c,U+96e8,U+9811,U+9aea,U+9b5a,U+ff24,U+ff2e,U+ff57;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-101-700-normal.woff2') format('woff2');unicode-range:U+25bc,U+3012,U+4ef2,U+4f0a,U+516b,U+5373,U+539a,U+53b3,U+559c,U+56f0,U+5727,U+5742,U+5965,U+59ff,U+5bc6,U+5dfb,U+5e45,U+5ead,U+5fb3,U+6211,U+6253,U+639b,U+63a8,U+6545,U+6575,U+6628,U+672d,U+68a8,U+6bdb,U+6d25,U+707d,U+767e,U+7834,U+7b46,U+7bc9,U+8074,U+82e6,U+8349,U+8a2a,U+8d70,U+8da3,U+8fce,U+91cc,U+967d,U+97ff,U+9996,U+ff1c,U+ff2f,U+ff32,U+ff34;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-102-700-normal.woff2') format('woff2');unicode-range:U+3d,U+5e,U+25cf,U+4e0e,U+4e5d,U+4e73,U+4e94,U+4f3c,U+5009,U+5145,U+51ac,U+5238,U+524a,U+53f3,U+547c,U+5802,U+5922,U+5a66,U+5c0e,U+5de6,U+5fd8,U+5feb,U+6797,U+685c,U+6b7b,U+6c5f-6c60,U+6cc9,U+6ce2,U+6d17,U+6e21,U+7167,U+7642,U+76db,U+8001,U+821e,U+8857,U+89d2,U+8b1b,U+8b70,U+8cb4,U+8cde,U+8f03,U+8f2a,U+968e,U+9b54,U+9e7f,U+9ebb,U+ff05,U+ff33;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-103-700-normal.woff2') format('woff2');unicode-range:U+500d,U+5074,U+50cd,U+5175,U+52e2,U+5352,U+5354,U+53f2,U+5409,U+56fa,U+5a18,U+5b88,U+5bdd,U+5ca9,U+5f92,U+5fa9,U+60a9,U+623f,U+6483,U+653f,U+666f,U+66ae,U+66f2,U+6a21,U+6b66,U+6bcd,U+6d5c,U+796d,U+7a4d,U+7aef,U+7b56,U+7b97,U+7c4d,U+7e04,U+7fa9,U+8377,U+83dc,U+83ef,U+8535,U+8863,U+88cf,U+88dc,U+8907,U+8acb,U+90ce,U+91dd,U+ff0b,U+ff0d,U+ff19,U+ff65;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-105-700-normal.woff2') format('woff2');unicode-range:U+25,U+25a0,U+4e26,U+4f4e,U+5341,U+56f2,U+5bbf,U+5c45,U+5c55,U+5c5e,U+5dee,U+5e9c,U+5f7c,U+6255,U+627f,U+62bc,U+65cf,U+661f,U+666e,U+66dc,U+67fb,U+6975,U+6a4b,U+6b32,U+6df1,U+6e29,U+6fc0,U+738b,U+7686,U+7a76,U+7a81,U+7c73,U+7d75,U+7dd2,U+82e5,U+82f1,U+85ac,U+888b,U+899a,U+8a31,U+8a8c,U+8ab0,U+8b58,U+904a,U+9060,U+9280,U+95b2,U+984d,U+9ce5,U+ff18;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-106-700-normal.woff2') format('woff2');unicode-range:U+30f6,U+50ac,U+5178,U+51e6,U+5224,U+52dd,U+5883,U+5897,U+590f,U+5a5a,U+5bb3,U+5c65,U+5e03,U+5e2b,U+5e30,U+5eb7,U+6271,U+63f4,U+64ae,U+6574,U+672b,U+679a,U+6a29-6a2a,U+6ca2,U+6cc1,U+6d0b,U+713c,U+74b0,U+7981,U+7a0b,U+7bc0,U+7d1a,U+7d61,U+7fd2,U+822c,U+8996,U+89aa,U+8cac,U+8cbb,U+8d77,U+8def,U+9020,U+9152,U+9244,U+9662,U+967a,U+96e3,U+9759,U+ff16;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-107-700-normal.woff2') format('woff2');unicode-range:U+23,U+3c,U+2192,U+4e45,U+4efb,U+4f50,U+4f8b,U+4fc2,U+5024,U+5150,U+5272,U+5370,U+53bb,U+542b,U+56db,U+56e3,U+57ce,U+5bc4,U+5bcc,U+5f71,U+60aa,U+6238,U+6280,U+629c,U+6539,U+66ff,U+670d,U+677e-677f,U+6839,U+69cb,U+6b4c,U+6bb5,U+6e96,U+6f14,U+72ec,U+7389,U+7814,U+79cb,U+79d1,U+79fb,U+7a0e,U+7d0d,U+85e4,U+8d64,U+9632,U+96e2,U+9805,U+99ac,U+ff1e;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-109-700-normal.woff2') format('woff2');unicode-range:U+266a,U+4f11,U+533a,U+5343,U+534a,U+53cd,U+5404,U+56f3,U+5b57-5b58,U+5bae,U+5c4a,U+5e0c,U+5e2f,U+5eab,U+5f35,U+5f79,U+614b,U+6226,U+629e,U+65c5,U+6625,U+6751,U+6821,U+6b69,U+6b8b,U+6bce,U+6c42,U+706b,U+7c21,U+7cfb,U+805e,U+80b2,U+82b8,U+843d,U+8853,U+88c5,U+8a3c,U+8a66,U+8d8a,U+8fba,U+9069,U+91cf,U+9752,U+975e,U+9999,U+ff0f-ff10,U+ff14-ff15;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-110-700-normal.woff2') format('woff2');unicode-range:U+40,U+4e86,U+4e95,U+4f01,U+4f1d,U+4fbf,U+5099,U+5171,U+5177,U+53cb,U+53ce,U+53f0,U+5668,U+5712,U+5ba4,U+5ca1,U+5f85,U+60f3,U+653e,U+65ad,U+65e9,U+6620,U+6750,U+6761,U+6b62,U+6b74,U+6e08,U+6e80,U+7248,U+7531,U+7533,U+753a,U+77f3,U+798f,U+7f6e,U+8449,U+88fd,U+89b3,U+8a55,U+8ac7,U+8b77,U+8db3,U+8efd,U+8fd4,U+9031-9032,U+9580,U+9589,U+96d1,U+985e;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-111-700-normal.woff2') format('woff2');unicode-range:U+2b,U+d7,U+300e-300f,U+4e07,U+4e8c,U+512a,U+5149,U+518d,U+5236,U+52b9,U+52d9,U+5468,U+578b,U+57fa,U+5b8c,U+5ba2,U+5c02,U+5de5,U+5f37,U+5f62,U+623b,U+63d0,U+652f,U+672a,U+6848,U+6d41,U+7136,U+7537,U+754c,U+76f4,U+79c1,U+7ba1,U+7d44,U+7d4c,U+7dcf,U+7dda,U+7de8,U+82b1,U+897f,U+8ca9,U+8cfc,U+904e,U+9664,U+982d,U+9858,U+98a8,U+9a13,U+ff13,U+ff5c;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-112-700-normal.woff2') format('woff2');unicode-range:U+4e16,U+4e3b,U+4ea4,U+4ee4,U+4f4d,U+4f4f,U+4f55,U+4f9b,U+5317,U+5358,U+53c2,U+53e4,U+548c,U+571f,U+59cb,U+5cf6,U+5e38,U+63a2,U+63b2,U+6559,U+662d,U+679c,U+6c7a,U+72b6,U+7523,U+767d,U+770c,U+7a2e,U+7a3f,U+7a7a,U+7b2c,U+7b49,U+7d20,U+7d42,U+8003,U+8272,U+8a08,U+8aac,U+8cb7,U+8eab,U+8ee2,U+9054-9055,U+90fd,U+914d,U+91cd,U+969b,U+97f3,U+984c,U+ff06;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-113-700-normal.woff2') format('woff2');unicode-range:U+26,U+5f,U+2026,U+203b,U+4e09,U+4eac,U+4ed5,U+4fa1,U+5143,U+5199,U+5207,U+539f,U+53e3,U+53f7,U+5411,U+5473,U+5546,U+55b6,U+5929,U+597d,U+5bb9,U+5c11,U+5c4b,U+5ddd,U+5f97,U+5fc5,U+6295,U+6301,U+6307,U+671b,U+76f8,U+78ba,U+795e,U+7d30,U+7d39,U+7d9a,U+89e3,U+8a00,U+8a73,U+8a8d,U+8a9e,U+8aad,U+8abf,U+8cea,U+8eca,U+8ffd,U+904b,U+9650,U+ff11-ff12;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-114-700-normal.woff2') format('woff2');unicode-range:U+3e,U+3005,U+4e0d,U+4e88,U+4ecb,U+4ee3,U+4ef6,U+4fdd,U+4fe1,U+500b,U+50cf,U+5186,U+5316,U+53d7,U+540c,U+544a,U+54e1,U+5728,U+58f2,U+5973,U+5b89,U+5c71,U+5e02,U+5e97,U+5f15,U+5fc3,U+5fdc,U+601d,U+611b,U+611f,U+671f,U+6728,U+6765,U+683c,U+6b21,U+6ce8,U+6d3b,U+6d77,U+7530,U+7740,U+7acb,U+7d50,U+826f,U+8f09,U+8fbc,U+9001,U+9053,U+91ce,U+9762,U+98df;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-115-700-normal.woff2') format('woff2');unicode-range:U+7c,U+3080,U+4ee5,U+5148,U+516c,U+521d,U+5225,U+529b,U+52a0,U+53ef,U+56de,U+56fd,U+5909,U+591a,U+5b66,U+5b9f,U+5bb6,U+5bfe,U+5e73,U+5e83,U+5ea6,U+5f53,U+6027,U+610f,U+6210,U+6240,U+660e,U+66f4,U+66f8,U+6709,U+6771,U+697d,U+69d8,U+6a5f,U+6c34,U+6cbb,U+73fe,U+756a,U+7684,U+771f,U+793a,U+7f8e,U+898f,U+8a2d,U+8a71,U+8fd1,U+9078,U+9577,U+96fb,U+ff5e;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-117-700-normal.woff2') format('woff2');unicode-range:U+4e,U+a0,U+3000,U+300c-300d,U+4e00,U+4e0a,U+4e2d,U+4e8b,U+4eba,U+4f1a,U+5165,U+5168,U+5185,U+51fa,U+5206,U+5229,U+524d,U+52d5,U+5408,U+554f,U+5831,U+5834,U+5927,U+5b9a,U+5e74,U+5f0f,U+60c5,U+65b0,U+65b9,U+6642,U+6700,U+672c,U+682a,U+6b63,U+6c17,U+7121,U+751f,U+7528,U+753b,U+76ee,U+793e,U+884c,U+898b,U+8a18,U+9593,U+95a2,U+ff01,U+ff08-ff09;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-118-700-normal.woff2') format('woff2');unicode-range:U+21-22,U+27-2a,U+2c-3b,U+3f,U+41-4d,U+4f-5d,U+61-7b,U+7d,U+ab,U+ae,U+b2-b3,U+b7,U+bb,U+c9,U+cd,U+d6,U+d8,U+dc,U+e0-e5,U+e7-ed,U+ef,U+f1-f4,U+f6,U+f8,U+fa,U+fc-fd,U+103,U+14d,U+1b0,U+300-301,U+1ebf,U+1ec7,U+2013-2014,U+201c-201d,U+2039-203a,U+203c,U+2048-2049,U+2113,U+2122,U+65e5,U+6708,U+70b9;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-119-700-normal.woff2') format('woff2');unicode-range:U+20,U+2027,U+3001-3002,U+3041-307f,U+3081-308f,U+3091-3093,U+3099-309a,U+309d-309e,U+30a1-30e1,U+30e3-30ed,U+30ef-30f0,U+30f2-30f4,U+30fb-30fe,U+ff0c,U+ff0e;}
+@font-face{font-family:'Shippori Mincho';font-weight:700;font-style:normal;font-display:block;src:url('assets/fonts/shippori-mincho-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ede3cf; font-family: "Shippori Mincho", serif; color: #1b1714; }
+    .c1-full { position: absolute; inset: 0; }
+    .c1-tex { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; }
+    /* tarjeta de capítulo */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 16px; background: #1b1714; transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 6px; background: #c23b22; }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #efe5cf; }
+    .cc-text { position: absolute; left: 930px; top: 380px; width: 860px; }
+    .cc-num { font-size: 40px; letter-spacing: 0.18em; color: #8a3a26; opacity: 0; }
+    .cc-title { font-size: 92px; line-height: 1.08; margin-top: 14px; opacity: 0; }
+    .cc-year { font-family: "Yuji Syuku", serif; font-size: 64px; margin-top: 18px; color: #c23b22; opacity: 0; }
+    /* Kioto */
+    #c1-kyoto { opacity: 0; }
+    #c1-sky { position: absolute; inset: 0; background: linear-gradient(180deg, #e7c8a0 0%, #ecd8b9 46%, #ede3cf 70%); }
+    #c1-sun { position: absolute; left: 1180px; top: 250px; width: 300px; height: 300px; border-radius: 50%; background: #c23b22; opacity: 0.92; }
+    .c1-layer { position: absolute; left: 0; top: 0; width: 2600px; height: 1080px; }
+    .c1-mist { position: absolute; height: 70px; border-radius: 50%; background: rgba(237, 227, 207, 0.75); filter: blur(14px); }
+    #c1-year { position: absolute; left: 150px; top: 120px; font-family: "Yuji Syuku", serif; font-size: 190px; line-height: 1; opacity: 0; }
+    #c1-kyotoK { position: absolute; left: 160px; top: 340px; font-family: "Yuji Syuku", serif; font-size: 64px; color: #c23b22; writing-mode: vertical-rl; letter-spacing: 0.2em; opacity: 0; }
+    #c1-train { position: absolute; left: 0; top: 560px; width: 520px; height: 90px; opacity: 0; }
+    /* juego en la calle (vista cenital) */
+    #c1-play { opacity: 0; background: #b89a64; }
+    #c1-tatami { position: absolute; inset: -40px; background: repeating-linear-gradient(90deg, #c7ab73 0 6px, #bb9d63 6px 12px); }
+    .c1-tatamiedge { position: absolute; top: -40px; bottom: -40px; width: 46px; background: #2f3a2c; }
+    .c1-mini { position: absolute; width: 150px; height: 248px; border-radius: 9px; background: #1b1714; box-shadow: 0 16px 30px rgba(0,0,0,0.35); }
+    .c1-mini::before { content: ""; position: absolute; inset: 7px; border-radius: 3px; background: var(--f, #c23b22); }
+    .c1-mini span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 74px; color: #efe5cf; }
+    .c1-hand { position: absolute; width: 260px; height: 120px; border-radius: 60px 60px 40px 40px; background: #d6a77f; box-shadow: 0 18px 30px rgba(0,0,0,0.3); }
+    /* taller */
+    #c1-shop { opacity: 0; background: #3a2a1e; }
+    #c1-shopwall { position: absolute; inset: 0; background: linear-gradient(180deg, #4b3626 0%, #3a2a1e 60%, #2b1f16 100%); }
+    .c1-beam { position: absolute; background: #24180f; }
+    #c1-shoji { position: absolute; left: 1080px; top: 90px; width: 700px; height: 560px; background: #e9dcc0;
+      background-image: linear-gradient(#5a4130 6px, transparent 6px), linear-gradient(90deg, #5a4130 6px, transparent 6px); background-size: 140px 140px; border: 14px solid #24180f; }
+    #c1-bench { position: absolute; left: 300px; top: 690px; width: 1000px; height: 70px; background: #6b4a2f; border-radius: 6px; box-shadow: 0 30px 40px rgba(0,0,0,0.4); }
+    #c1-man { position: absolute; left: 170px; top: 300px; width: 520px; height: 520px; }
+    #c1-wcard { position: absolute; left: 760px; top: 560px; width: 120px; height: 200px; transform: rotateX(62deg) rotateZ(-10deg); transform-origin: 50% 100%; }
+    .c1-lower { position: absolute; left: 1090px; top: 712px; opacity: 0; }
+    .c1-lower .n { font-size: 66px; color: #efe5cf; line-height: 1; }
+    .c1-lower .d { font-size: 34px; color: #d8c4a0; margin-top: 10px; letter-spacing: 0.05em; }
+    .c1-lower .k { font-family: "Yuji Syuku", serif; font-size: 44px; color: #e2553a; margin-left: 22px; }
+    /* 12 meses × 4 cartas */
+    #c1-grid { opacity: 0; }
+    .c1-col { position: absolute; top: 160px; width: 120px; }
+    .c1-colh { font-family: "Yuji Syuku", serif; font-size: 34px; text-align: center; height: 56px; opacity: 0; }
+    .c1-g { width: 100px; height: 150px; margin: 0 auto 12px; border-radius: 7px; background: #1b1714; position: relative; opacity: 0; }
+    .c1-g::before { content: ""; position: absolute; inset: 5px; border-radius: 3px; background: var(--f); }
+    .c1-g span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 46px; color: #efe5cf; }
+    #c1-count { position: absolute; left: 0; right: 0; top: 40px; text-align: center; font-size: 60px; opacity: 0; }
+    #c1-count b { font-family: "Yuji Syuku", serif; font-weight: 400; color: #c23b22; font-size: 84px; }
+    /* cartel */
+    #c1-sign { opacity: 0; }
+    #c1-board { position: absolute; left: 770px; top: 90px; width: 380px; height: 820px; border-radius: 10px; background: linear-gradient(90deg, #7a5536, #8e6644 50%, #6d4b2f); box-shadow: 0 40px 70px rgba(0,0,0,0.35); }
+    #c1-board::before { content: ""; position: absolute; inset: 22px; border: 4px solid rgba(30, 18, 10, 0.55); border-radius: 4px; }
+    #c1-boardk { position: absolute; left: 0; right: 0; top: 60px; text-align: center; font-family: "Yuji Syuku", serif; font-size: 124px; color: #1b1714; writing-mode: vertical-rl; margin: 0 auto; height: 700px; letter-spacing: 0.06em; }
+    #c1-rope { position: absolute; left: 950px; top: -20px; width: 20px; height: 120px; background: #a58a5a; }
+    #c1-signlbl { position: absolute; left: 1230px; top: 430px; opacity: 0; }
+    #c1-signlbl .a { font-size: 74px; }
+    #c1-signlbl .b { font-size: 36px; color: #6d5a43; margin-top: 12px; }
+    /* kanji */
+    #c1-kan { opacity: 0; }
+    .c1-kj { position: absolute; top: 210px; width: 460px; text-align: center; opacity: 0; }
+    .c1-kj .g { font-family: "Yuji Syuku", serif; font-size: 300px; line-height: 1; color: #1b1714; }
+    .c1-kj .m { font-size: 44px; margin-top: 18px; color: #6d5a43; }
+    #c1-kjline { position: absolute; left: 0; right: 0; top: 760px; text-align: center; font-size: 58px; opacity: 0; }
+    #c1-kjnote { position: absolute; left: 0; right: 0; top: 842px; text-align: center; font-size: 30px; color: #8b7556; opacity: 0; }
+    /* 1902 */
+    #c1-west { opacity: 0; }
+    #c1-wyear { position: absolute; left: 170px; top: 300px; font-family: "Yuji Syuku", serif; font-size: 240px; line-height: 1; opacity: 0; }
+    #c1-wtxt { position: absolute; left: 180px; top: 580px; width: 640px; font-size: 46px; line-height: 1.3; opacity: 0; }
+    #c1-fan { position: absolute; left: 1290px; top: 560px; width: 0; height: 0; }
+    .c1-wc { position: absolute; left: -110px; top: -380px; width: 220px; height: 330px; border-radius: 14px; background: #fbf8f1; border: 2px solid #cbbd9f; transform-origin: 50% 110%; box-shadow: 0 18px 34px rgba(0,0,0,0.22); }
+    .c1-wc .r { position: absolute; left: 16px; top: 12px; font-family: "Shippori Mincho", serif; font-size: 44px; line-height: 1; }
+    .c1-wc .s { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 130px; }
+    .c1-wc.red { color: #c23b22; }
+    /* medio siglo */
+    #c1-time { opacity: 0; }
+    #c1-axis { position: absolute; left: 160px; right: 160px; top: 760px; height: 4px; background: #1b1714; transform-origin: 0 50%; }
+    .c1-tick { position: absolute; top: 790px; font-size: 38px; transform: translateX(-50%); opacity: 0; }
+    #c1-stack { position: absolute; left: 160px; top: 740px; width: 1600px; height: 0; }
+    .c1-sc { position: absolute; bottom: 0; width: 76px; height: 12px; background: #c23b22; border: 2px solid #1b1714; border-radius: 2px; opacity: 0; }
+    #c1-yr { position: absolute; left: 0; right: 0; top: 170px; text-align: center; font-family: "Yuji Syuku", serif; font-size: 210px; line-height: 1; opacity: 0; }
+    #c1-young { position: absolute; left: 1420px; top: 330px; width: 260px; height: 420px; opacity: 0; }
+    #c1-22 { position: absolute; left: 1150px; top: 370px; font-family: "Yuji Syuku", serif; font-size: 230px; color: #c23b22; opacity: 0; line-height: 1; }
+    #c1-22s { position: absolute; left: 1150px; top: 610px; font-size: 44px; opacity: 0; }
+    #c1-ink { position: absolute; left: 1550px; top: 540px; width: 40px; height: 40px; margin: -20px 0 0 -20px; border-radius: 50%; background: #1b1714; opacity: 0; z-index: 40; }
+  </style>
+  <div id="root" data-composition-id="ch1" data-width="1920" data-height="1080">
+    <canvas id="c1-fib" class="c1-tex" width="1920" height="1080" style="z-index:25"></canvas>
+
+    <!-- Kioto 1889 -->
+    <div id="c1-kyoto" class="c1-full">
+      <div id="c1-sky"></div>
+      <div id="c1-sun"></div>
+      <svg id="c1-far" class="c1-layer" viewBox="0 0 2600 1080"><path fill="#a89c88" opacity="0.55" d="M0 600 C 260 520, 420 560, 640 500 C 860 440, 1040 520, 1260 480 C 1480 440, 1700 520, 1960 470 C 2200 430, 2400 500, 2600 470 L2600 1080 L0 1080 Z"/><path fill="#8d8170" opacity="0.6" d="M0 680 C 300 610, 520 650, 760 600 C 980 560, 1180 630, 1420 590 C 1680 550, 1900 630, 2160 590 C 2360 560, 2500 600, 2600 590 L2600 1080 L0 1080 Z"/></svg>
+      <svg id="c1-mid" class="c1-layer" viewBox="0 0 2600 1080"><g id="c1-pagoda" fill="#3b332c"></g><rect x="0" y="770" width="2600" height="320" fill="#4a4038"/></svg>
+      <div class="c1-mist" style="left:-200px;top:640px;width:1400px" id="c1-m1"></div>
+      <div class="c1-mist" style="left:900px;top:700px;width:1600px" id="c1-m2"></div>
+      <svg id="c1-train" viewBox="0 0 520 90"><g fill="#2a231e"><rect x="0" y="30" width="150" height="44" rx="6"/><rect x="20" y="0" width="34" height="34"/><rect x="100" y="10" width="50" height="22"/><rect x="170" y="38" width="150" height="36" rx="4"/><rect x="340" y="38" width="150" height="36" rx="4"/><circle cx="30" cy="80" r="10"/><circle cx="70" cy="80" r="10"/><circle cx="120" cy="80" r="10"/><circle cx="200" cy="80" r="9"/><circle cx="290" cy="80" r="9"/><circle cx="370" cy="80" r="9"/><circle cx="460" cy="80" r="9"/></g><g fill="#8d8170" opacity="0.7"><circle id="c1-p1" cx="37" cy="-6" r="12"/><circle id="c1-p2" cx="10" cy="-22" r="18"/><circle id="c1-p3" cx="-30" cy="-34" r="24"/></g></svg>
+      <svg id="c1-near" class="c1-layer" viewBox="0 0 2600 1080"><g id="c1-roofs"></g></svg>
+      <div id="c1-year">1889</div>
+      <div id="c1-kyotoK">京都</div>
+    </div>
+
+    <!-- se juega como hace siglos -->
+    <div id="c1-play" class="c1-full">
+      <div id="c1-tatami"></div>
+      <div class="c1-tatamiedge" style="left:520px"></div><div class="c1-tatamiedge" style="left:1360px"></div>
+      <div class="c1-mini" id="c1-p-a" style="left:690px;top:360px;--f:#c23b22"><span>松</span></div>
+      <div class="c1-mini" id="c1-p-b" style="left:880px;top:390px;--f:#2f4a3a"><span>桜</span></div>
+      <div class="c1-mini" id="c1-p-c" style="left:1070px;top:350px;--f:#5a3a6e"><span>菊</span></div>
+    </div>
+
+    <!-- taller de Fusajiro -->
+    <div id="c1-shop" class="c1-full">
+      <div id="c1-shopwall"></div>
+      <div class="c1-beam" style="left:0;right:0;top:40px;height:44px"></div>
+      <div class="c1-beam" style="left:980px;top:40px;width:40px;height:900px"></div>
+      <div id="c1-shoji"></div>
+      <div id="c1-bench"></div>
+      <svg id="c1-man" viewBox="0 0 520 520"><g fill="#120c08">
+        <circle cx="250" cy="90" r="52"/><path d="M200 70 q50 -60 100 0 q-10 -18 -50 -22 q-40 4 -50 22z"/>
+        <path d="M150 400 C 150 250, 190 160, 250 150 C 320 160, 360 250, 370 400 L 420 470 L 100 470 Z"/>
+        <path id="c1-arm" d="M330 220 C 400 250, 450 300, 500 330 L 490 352 C 430 330, 380 300, 320 270 Z"/>
+      </g><line id="c1-brush" x1="490" y1="340" x2="540" y2="420" stroke="#120c08" stroke-width="7" stroke-linecap="round"/></svg>
+      <svg id="c1-wcard" viewBox="0 0 120 200"><rect width="120" height="200" rx="8" fill="#1b1714"/><rect x="6" y="6" width="108" height="188" rx="3" fill="#efe5cf"/><rect id="c1-wpaint" x="6" y="6" width="108" height="0" fill="#c23b22"/></svg>
+      <div class="c1-lower" id="c1-fusa"><div class="n">Fusajiro Yamauchi <span class="k">山内房次郎</span></div><div class="d">Fundador · 1859 – 1940</div></div>
+    </div>
+
+    <!-- 12 meses, 48 cartas -->
+    <div id="c1-grid" class="c1-full"><div id="c1-count"><b id="c1-n12">12</b> meses · <b id="c1-n48">0</b> cartas</div></div>
+
+    <!-- cartel Nintendo Koppai -->
+    <div id="c1-sign" class="c1-full">
+      <div id="c1-rope"></div>
+      <div id="c1-board"><div id="c1-boardk">任天堂骨牌</div></div>
+      <div id="c1-signlbl"><div class="a">Nintendo Koppai</div><div class="b">任天堂骨牌 · «cartas Nintendo»</div></div>
+    </div>
+
+    <!-- el nombre -->
+    <div id="c1-kan" class="c1-full">
+      <div class="c1-kj" id="c1-k1" style="left:200px"><div class="g">任</div><div class="m">confiar, dejar en manos</div></div>
+      <div class="c1-kj" id="c1-k2" style="left:730px"><div class="g">天</div><div class="m">el cielo</div></div>
+      <div class="c1-kj" id="c1-k3" style="left:1260px"><div class="g">堂</div><div class="m">la sala, el templo</div></div>
+      <div id="c1-kjline">«Deja la suerte en manos del cielo»</div>
+      <div id="c1-kjnote">Traducción habitual; Nintendo nunca ha dado una oficial</div>
+    </div>
+
+    <!-- 1902 -->
+    <div id="c1-west" class="c1-full">
+      <div id="c1-wyear">1902</div>
+      <div id="c1-wtxt">Primeras barajas de estilo occidental fabricadas en Japón</div>
+      <div id="c1-fan">
+        <div class="c1-wc" id="c1-w1" data-layout-allow-overlap><div class="r">A</div><div class="s">♠</div></div>
+        <div class="c1-wc red" id="c1-w2" data-layout-allow-overlap><div class="r">K</div><div class="s">♥</div></div>
+        <div class="c1-wc red" id="c1-w3" data-layout-allow-overlap><div class="r">Q</div><div class="s">♦</div></div>
+        <div class="c1-wc" id="c1-w4" data-layout-allow-overlap><div class="r">J</div><div class="s">♣</div></div>
+        <div class="c1-mini" id="c1-w5" style="left:-75px;top:-300px;--f:#c23b22"><span>松</span></div>
+      </div>
+    </div>
+
+    <!-- medio siglo de cartas -->
+    <div id="c1-time" class="c1-full">
+      <div id="c1-yr">1889</div>
+      <div id="c1-axis"></div>
+      <div id="c1-stack"></div>
+      <svg id="c1-young" viewBox="0 0 260 420"><g fill="#1b1714"><circle cx="130" cy="58" r="40"/><path d="M90 40 q40 -40 80 0 q-40 -16 -80 0z"/><path d="M70 120 Q130 96 190 120 L 210 270 L 176 270 L 172 410 L 140 410 L 132 290 L 124 410 L 92 410 L 88 270 L 50 270 Z"/></g><path d="M120 120 L130 170 L140 120 Z" fill="#efe5cf"/></svg>
+      <div id="c1-22">22</div>
+      <div id="c1-22s">años · 1949</div>
+    </div>
+    <div id="c1-ink"></div>
+
+    <div id="c1-card" class="cc">
+      <div class="cc-card"><div class="cc-k">一</div></div>
+      <div class="cc-text"><div class="cc-num">Capítulo 1</div><div class="cc-title">Los humildes comienzos</div><div class="cc-year">1889</div></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      // Kit de animación compartido (se inserta en cada escena al generar compositions/).
+// Todo es función del tiempo de la línea temporal: sin reloj, sin azar sin semilla.
+const KIT = (() => {
+  const $ = (s, r = document) => (typeof s === "string" ? r.querySelector(s) : s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  function rng(seed) { // mulberry32
+    return () => { seed |= 0; seed = (seed + 0x6d2b79f5) | 0; let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  }
+  // separa un texto en palabras (span.w) una sola vez
+  function split(el, cls = "w") {
+    el = $(el); if (el.dataset.split) return $$("." + cls, el);
+    const nodes = Array.from(el.childNodes); el.textContent = "";
+    nodes.forEach(nd => {
+      if (nd.nodeType !== 3) { el.appendChild(nd); return; }   // <br>, <b>… se conservan
+      nd.textContent.split(/(\s+)/).forEach(p => {
+        if (/^\s+$/.test(p)) el.appendChild(document.createTextNode(" "));
+        else if (p) { const s = document.createElement("span"); s.className = cls; s.textContent = p; s.style.display = "inline-block"; el.appendChild(s); }
+      });
+    });
+    $$(":scope > :not(." + cls + "):not(br)", el).forEach(x => x.classList.add(cls));
+    el.dataset.split = 1; return $$("." + cls, el);
+  }
+  function splitChars(el) {
+    el = $(el); const nodes = Array.from(el.childNodes); el.textContent = ""; const out = [];
+    nodes.forEach(nd => { if (nd.nodeType !== 3) { el.appendChild(nd); return; } [...nd.textContent].forEach(ch => out.push(mk(ch))); });
+    return out;
+    function mk(ch) { const s = document.createElement("span"); s.textContent = ch === " " ? " " : ch; s.style.display = "inline-block"; el.appendChild(s); return s; }
+  }
+  // entrada por palabra: desenfoque → nítido, sin desplazamiento
+  function wordsIn(tl, el, t, { gap = 0.07, dur = 0.16, blur = 6 } = {}) {
+    const ws = split(el);
+    tl.set($(el), { opacity: 1 }, t);
+    ws.forEach((w, i) => tl.fromTo(w, { opacity: 0, filter: `blur(${blur}px)` }, { opacity: 1, filter: "blur(0px)", duration: dur, ease: "power2.out" }, t + i * gap));
+    return t + ws.length * gap + dur;
+  }
+  function charsIn(tl, el, t, { gap = 0.045, dur = 0.2 } = {}) {
+    const cs = splitChars(el); tl.set($(el), { opacity: 1 }, t);
+    cs.forEach((c, i) => tl.fromTo(c, { opacity: 0.0, filter: "blur(4px)" }, { opacity: 1, filter: "blur(0px)", duration: dur, ease: "power1.out" }, t + i * gap));
+    return t + cs.length * gap + dur;
+  }
+  function blurIn(tl, el, t, d = 0.35, from = {}) {
+    return tl.fromTo($(el), { opacity: 0, filter: "blur(10px)", ...from }, { opacity: 1, filter: "blur(0px)", x: 0, y: 0, scale: 1, duration: d, ease: "expo.out" }, t);
+  }
+  function blurOut(tl, el, t, d = 0.25) {
+    return tl.to($(el), { opacity: 0, filter: "blur(8px)", duration: d, ease: "power2.in" }, t);
+  }
+  function fadeIn(tl, el, t, d = 0.6) { return tl.fromTo($(el), { opacity: 0 }, { opacity: 1, duration: d, ease: "power1.inOut" }, t); }
+  function fadeOut(tl, el, t, d = 0.4) { return tl.to($(el), { opacity: 0, duration: d, ease: "power1.inOut" }, t); }
+  // contador que aterriza y se queda quieto
+  function count(tl, el, from, to, t, d = 1.4, fmt = v => Math.round(v).toLocaleString("es-ES")) {
+    el = $(el); const o = { v: from };
+    el.textContent = fmt(from);
+    tl.to(o, { v: to, duration: d, ease: "power2.out", onUpdate: () => (el.textContent = fmt(o.v)) }, t);
+    tl.call(() => (el.textContent = fmt(to)), null, t + d + 0.001);
+    return t + d;
+  }
+  const es2 = v => v.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // un «plano» que entra y sale: devuelve el elemento
+  function shot(tl, el, t0, t1, { inFx = "blur", outFx = "blur", dIn = 0.5, dOut = 0.3 } = {}) {
+    el = $(el);
+    if (inFx === "blur") blurIn(tl, el, t0, dIn); else if (inFx === "fade") fadeIn(tl, el, t0, dIn); else if (inFx === "cut") tl.set(el, { opacity: 1 }, t0);
+    if (t1 != null) { if (outFx === "blur") blurOut(tl, el, t1 - dOut, dOut); else if (outFx === "fade") fadeOut(tl, el, t1 - dOut, dOut); else if (outFx === "cut") tl.set(el, { opacity: 0 }, t1); }
+    return el;
+  }
+  // tarjeta de capítulo: la carta gira, se lee, y crece hasta convertirse en el mundo
+  function chapterCard(tl, p, t0 = 0, hold = 1.9) {
+    const wrap = $(`#${p}-card`), card = $(`#${p}-card .cc-card`), lbl = $(`#${p}-card .cc-num`), ttl = $(`#${p}-card .cc-title`), yr = $(`#${p}-card .cc-year`);
+    tl.set(wrap, { opacity: 1 }, t0);
+    tl.fromTo(card, { rotationY: -180, scale: 0.55, y: 60 }, { rotationY: 0, scale: 1, y: 0, duration: 1.0, ease: "expo.out" }, t0 + 0.05);
+    tl.fromTo(lbl, { opacity: 0 }, { opacity: 1, duration: 0.3 }, t0 + 0.55);
+    wordsIn(tl, ttl, t0 + 0.7, { gap: 0.08 });
+    tl.fromTo(yr, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3 }, t0 + 1.1);
+    const tz = t0 + 0.6 + hold;
+    tl.to(card, { scale: 9, rotationZ: 0, duration: 0.75, ease: "power3.in" }, tz);
+    tl.to([lbl, ttl, yr], { opacity: 0, duration: 0.2, ease: "power2.in" }, tz);
+    tl.to(wrap, { opacity: 0, duration: 0.25, ease: "power1.in" }, tz + 0.55);
+    return tz + 0.8;
+  }
+  // texturas deterministas
+  function grain(canvas, { alpha = 0.06, seed = 7, size = 1 } = {}) {
+    const c = $(canvas), x = c.getContext("2d"), w = c.width, h = c.height, im = x.createImageData(w, h), r = rng(seed);
+    for (let i = 0; i < im.data.length; i += 4) { const v = r() * 255; im.data[i] = im.data[i + 1] = im.data[i + 2] = v; im.data[i + 3] = alpha * 255; }
+    x.putImageData(im, 0, 0);
+  }
+  function fibers(canvas, { n = 900, seed = 3, color = "rgba(80,60,40,0.10)" } = {}) {
+    const c = $(canvas), x = c.getContext("2d"), r = rng(seed);
+    x.strokeStyle = color; x.lineCap = "round";
+    for (let i = 0; i < n; i++) { const px = r() * c.width, py = r() * c.height, a = r() * Math.PI * 2, l = 6 + r() * 38;
+      x.lineWidth = 0.4 + r() * 1.1; x.beginPath(); x.moveTo(px, py); x.quadraticCurveTo(px + Math.cos(a + 0.6) * l * 0.5, py + Math.sin(a + 0.6) * l * 0.5, px + Math.cos(a) * l, py + Math.sin(a) * l); x.stroke(); }
+  }
+  return { $, $$, rng, split, splitChars, wordsIn, charsIn, blurIn, blurOut, fadeIn, fadeOut, count, es2, shot, chapterCard, grain, fibers };
+})();
+
+      const C = {"c1a": [3.2, 10.941], "c1b": [11.541, 17.333], "c1c": [17.683, 22.797], "c1d": [23.397, 25.838], "c1e": [26.188, 30.255], "c1f": [30.855, 38.019], "c1g": [38.619, 42.796], "c1h": [43.146, 45.799]}, D = 46.699, K = KIT, $ = K.$;
+      K.fibers("#c1-fib", { n: 1400, color: "rgba(90,70,45,0.08)" });
+      const NS = "http://www.w3.org/2000/svg";
+      // pagoda de cinco pisos y tejados de machiya (geometría determinista)
+      (() => {
+        const g = $("#c1-pagoda"); let y = 760, w = 300; const cx = 1500; let d = "";
+        for (let i = 0; i < 5; i++) {
+          const h = 74, rw = w * 0.62;
+          d += `M${cx - rw / 2} ${y} L${cx + rw / 2} ${y} L${cx + rw / 2} ${y - h * 0.55} L${cx - rw / 2} ${y - h * 0.55} Z `;
+          const ey = y - h * 0.55;
+          d += `M${cx - w / 2 - 20} ${ey + 6} Q ${cx - w / 2} ${ey - 4}, ${cx - w * 0.3} ${ey - 26} L ${cx + w * 0.3} ${ey - 26} Q ${cx + w / 2} ${ey - 4}, ${cx + w / 2 + 20} ${ey + 6} L ${cx + w / 2 - 10} ${ey + 12} L ${cx - w / 2 + 10} ${ey + 12} Z `;
+          y = ey - 26; w *= 0.86;
+        }
+        d += `M${cx - 6} ${y} L${cx + 6} ${y} L${cx + 4} ${y - 150} L${cx - 4} ${y - 150} Z`;
+        const p = document.createElementNS(NS, "path"); p.setAttribute("d", d); g.appendChild(p);
+        for (let i = 0; i < 7; i++) { const c = document.createElementNS(NS, "ellipse"); c.setAttribute("cx", cx); c.setAttribute("cy", y - 30 - i * 16); c.setAttribute("rx", 14 - i); c.setAttribute("ry", 4); g.appendChild(c); }
+        const r = K.rng(11), rg = $("#c1-roofs"); let x = -40;
+        while (x < 2640) {
+          const w2 = 220 + r() * 160, h2 = 70 + r() * 50, base = 840 + r() * 40;
+          const roof = document.createElementNS(NS, "path");
+          roof.setAttribute("d", `M${x - 20} ${base} L${x + w2 * 0.12} ${base - h2} L${x + w2 * 0.88} ${base - h2} L${x + w2 + 20} ${base} Z`);
+          roof.setAttribute("fill", "#2a231e"); rg.appendChild(roof);
+          for (let k = 1; k < 9; k++) { const ln = document.createElementNS(NS, "line"); const lx = x + (w2 * k) / 9; ln.setAttribute("x1", lx); ln.setAttribute("y1", base - h2 + 6); ln.setAttribute("x2", lx + (k - 4.5) * 4); ln.setAttribute("y2", base - 4); ln.setAttribute("stroke", "#463b33"); ln.setAttribute("stroke-width", "3"); rg.appendChild(ln); }
+          const wall = document.createElementNS(NS, "rect"); wall.setAttribute("x", x); wall.setAttribute("y", base); wall.setAttribute("width", w2); wall.setAttribute("height", 260); wall.setAttribute("fill", "#1f1915"); rg.appendChild(wall);
+          for (let k = 0; k < 5; k++) { const sl = document.createElementNS(NS, "rect"); sl.setAttribute("x", x + 20 + k * (w2 - 40) / 5); sl.setAttribute("y", base + 40); sl.setAttribute("width", 8); sl.setAttribute("height", 150); sl.setAttribute("fill", "#3a3029"); rg.appendChild(sl); }
+          if (r() < 0.55) { const l = document.createElementNS(NS, "rect"); l.setAttribute("x", x + w2 * 0.7); l.setAttribute("y", base + 20); l.setAttribute("width", 34); l.setAttribute("height", 50); l.setAttribute("rx", 14); l.setAttribute("fill", "#c23b22"); rg.appendChild(l);
+            const lc = document.createElementNS(NS, "rect"); lc.setAttribute("x", x + w2 * 0.7 + 8); lc.setAttribute("y", base + 30); lc.setAttribute("width", 18); lc.setAttribute("height", 30); lc.setAttribute("rx", 8); lc.setAttribute("fill", "#e9a66b"); rg.appendChild(lc); }
+          x += w2 + 30 + r() * 40;
+        }
+      })();
+      // 12 meses × 4 cartas
+      (() => {
+        const months = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"];
+        const flowers = ["松", "梅", "桜", "藤", "菖", "牡", "萩", "芒", "菊", "紅", "柳", "桐"];
+        const cols = ["#c23b22", "#b0435a", "#d77a8a", "#6c4b8a", "#3d5f8a", "#b23a3a", "#9a5a3a", "#6d6a3a", "#c6942e", "#a63a22", "#3f5a3a", "#5a4a6e"];
+        const grid = $("#c1-grid");
+        months.forEach((m, i) => {
+          const col = document.createElement("div"); col.className = "c1-col"; col.style.left = 120 + i * 140 + "px";
+          col.innerHTML = `<div class="c1-colh">${m}月</div>` + [0, 1, 2, 3].map(k => `<div class="c1-g" style="--f:${cols[i]};filter:brightness(${1 - k * 0.09})"><span>${flowers[i]}</span></div>`).join("");
+          grid.appendChild(col);
+        });
+      })();
+      // medio siglo: montón de cartas sobre el eje
+      (() => {
+        const st = $("#c1-stack");
+        for (let i = 0; i < 60; i++) { const c = document.createElement("div"); c.className = "c1-sc"; c.style.left = (i * 1600) / 60 + "px"; c.style.height = 14 + i * 7 + "px"; st.appendChild(c); }
+        [1889, 1902, 1929, 1949].forEach(y => { const t = document.createElement("div"); t.className = "c1-tick"; t.textContent = y; t.style.left = 160 + ((y - 1889) / 60) * 1600 + "px"; t.dataset.y = y; $("#c1-time").appendChild(t); });
+      })();
+
+      const tl = gsap.timeline({ paused: true });
+      // ---- tarjeta de capítulo
+      const tc = K.chapterCard(tl, "c1", 0.0, 1.55);
+      // ---- Kioto (c1a): paneo con paralaje
+      const a0 = 2.4, a1 = C.c1b[0];
+      tl.set("#c1-kyoto", { opacity: 1 }, a0);
+      tl.fromTo("#c1-far", { x: 0 }, { x: -160, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-mid", { x: -100 }, { x: -420, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-near", { x: 0 }, { x: -640, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-sun", { y: 40 }, { y: 70, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-m1", { x: 0 }, { x: 260, duration: a1 - a0, ease: "none" }, a0);
+      tl.fromTo("#c1-m2", { x: 0 }, { x: -300, duration: a1 - a0, ease: "none" }, a0);
+      K.blurIn(tl, "#c1-year", C.c1a[0] + 0.1, 0.6);
+      K.blurIn(tl, "#c1-kyotoK", C.c1a[0] + 0.5, 0.6);
+      // «Japón se abre al mundo a toda velocidad»: cruza el tren
+      const tr = C.c1a[0] + 1.6;
+      tl.set("#c1-train", { opacity: 1 }, tr);
+      tl.fromTo("#c1-train", { x: -560 }, { x: 2000, duration: 5.4, ease: "power1.inOut" }, tr);
+      ["#c1-p1", "#c1-p2", "#c1-p3"].forEach((p, i) => tl.fromTo(p, { attr: { r: 6 } }, { attr: { r: 14 + i * 8 }, duration: 0.9, repeat: 5, ease: "power1.out" }, tr + i * 0.15));
+      tl.to(["#c1-year", "#c1-kyotoK"], { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, C.c1a[0] + 4.6);
+      // «en sus calles aún se juega como hace siglos»: vista cenital de una partida
+      const p0 = C.c1a[0] + 4.9;
+      tl.set("#c1-play", { opacity: 1 }, p0);
+      tl.fromTo("#c1-play", { scale: 1.08 }, { scale: 1.0, duration: a1 - p0, ease: "power2.out" }, p0);
+      [["#c1-p-a", -1], ["#c1-p-b", 1], ["#c1-p-c", -1]].forEach(([s, dir], i) => tl.fromTo(s, { y: dir * 500, rotation: dir * 25, opacity: 0 }, { y: 0, rotation: (i - 1) * 6, opacity: 1, duration: 0.6, ease: "expo.out" }, p0 + 0.3 + i * 0.5));
+      tl.set(["#c1-kyoto", "#c1-play"], { opacity: 0 }, a1);
+      // ---- taller (c1b)
+      tl.set("#c1-shop", { opacity: 1 }, a1);
+      tl.fromTo("#c1-shop", { scale: 1.0 }, { scale: 1.07, transformOrigin: "40% 60%", duration: C.c1c[0] - a1, ease: "power1.inOut" }, a1);
+      tl.fromTo("#c1-arm", { rotation: -4, transformOrigin: "330px 245px" }, { rotation: 5, duration: 0.55, repeat: 8, yoyo: true, ease: "sine.inOut" }, a1);
+      tl.fromTo("#c1-brush", { rotation: -4, transformOrigin: "330px 245px" }, { rotation: 5, duration: 0.55, repeat: 8, yoyo: true, ease: "sine.inOut" }, a1);
+      tl.fromTo("#c1-wpaint", { attr: { height: 0 } }, { attr: { height: 188 }, duration: 4.2, ease: "power1.inOut" }, a1 + 0.5);
+      tl.set("#c1-fusa", { opacity: 1 }, C.c1b[0] + 1.7);
+      K.wordsIn(tl, "#c1-fusa .n", C.c1b[0] + 1.7, { gap: 0.1 });
+      K.blurIn(tl, "#c1-fusa .d", C.c1b[0] + 2.2, 0.4);
+      tl.set("#c1-shop", { opacity: 0 }, C.c1c[0] - 0.05);
+      // ---- 12 meses (c1c): reparto de 48 cartas
+      const g0 = C.c1c[0] - 0.05;
+      tl.set("#c1-grid", { opacity: 1 }, g0);
+      tl.fromTo("#c1-count", { opacity: 0 }, { opacity: 1, duration: 0.3 }, g0 + 0.1);
+      K.$$("#c1-grid .c1-colh").forEach((h, i) => tl.fromTo(h, { opacity: 0 }, { opacity: 1, duration: 0.2 }, g0 + 0.2 + i * 0.12));
+      K.$$("#c1-grid .c1-g").forEach((c, i) => {
+        const col = Math.floor(i / 4), row = i % 4, t = g0 + 0.9 + col * 0.2 + row * 0.07;
+        tl.fromTo(c, { opacity: 0, y: -260 - row * 30, rotation: (col % 2 ? 1 : -1) * 18 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "expo.out" }, t);
+      });
+      K.count(tl, "#c1-n48", 0, 48, g0 + 0.9, 2.9);
+      tl.to("#c1-grid", { opacity: 0, duration: 0.25 }, C.c1d[0] - 0.4);
+      // ---- Nintendo Koppai (c1d)
+      tl.set("#c1-sign", { opacity: 1 }, C.c1d[0] - 0.1);
+      tl.fromTo("#c1-board", { y: -900, rotation: -4 }, { y: 0, rotation: 0, duration: 0.9, ease: "expo.out" }, C.c1d[0] - 0.1);
+      tl.fromTo("#c1-rope", { y: -900 }, { y: 0, duration: 0.9, ease: "expo.out" }, C.c1d[0] - 0.1);
+      tl.to("#c1-board", { rotation: 1.2, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1, transformOrigin: "50% 0%" }, C.c1d[0] + 0.8);
+      tl.set("#c1-signlbl", { opacity: 1 }, C.c1d[0] + 0.6);
+      K.wordsIn(tl, "#c1-signlbl .a", C.c1d[0] + 0.6);
+      K.blurIn(tl, "#c1-signlbl .b", C.c1d[0] + 1.0, 0.4);
+      tl.set("#c1-sign", { opacity: 0 }, C.c1e[0] - 0.05);
+      // ---- 任 天 堂 (c1e)
+      tl.set("#c1-kan", { opacity: 1 }, C.c1e[0] - 0.05);
+      ["#c1-k1", "#c1-k2", "#c1-k3"].forEach((k, i) => tl.fromTo(k, { opacity: 0, scale: 1.08, filter: "blur(12px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, C.c1e[0] + 0.1 + i * 0.45));
+      tl.to("#c1-k2 .g", { color: "#c23b22", duration: 0.4 }, C.c1e[0] + 2.2);
+      K.wordsIn(tl, "#c1-kjline", C.c1e[0] + 1.6, { gap: 0.09 });
+      K.blurIn(tl, "#c1-kjnote", C.c1e[0] + 2.1, 0.4);
+      tl.to("#c1-kan", { opacity: 0, duration: 0.3 }, C.c1f[0] - 0.15);
+      // ---- 1902 (c1f)
+      const w0 = C.c1f[0] - 0.1;
+      tl.set("#c1-west", { opacity: 1 }, w0);
+      tl.fromTo("#c1-w5", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, w0);
+      ["#c1-w1", "#c1-w2", "#c1-w3", "#c1-w4"].forEach((c, i) => tl.fromTo(c, { rotation: 0, opacity: 0, x: 300 }, { rotation: -24 + i * 16, opacity: 1, x: 40 + i * 30, duration: 0.8, ease: "expo.out" }, C.c1f[0] + 1.7 + i * 0.16));
+      tl.to("#c1-w5", { x: -260, rotation: -14, duration: 0.8, ease: "expo.out" }, C.c1f[0] + 1.6);
+      K.blurIn(tl, "#c1-wyear", C.c1f[0] + 1.5, 0.6);
+      K.wordsIn(tl, "#c1-wtxt", C.c1f[0] + 2.8, { gap: 0.08 });
+      tl.to("#c1-west", { opacity: 0, duration: 0.3 }, C.c1g[0] - 0.15);
+      // ---- medio siglo (c1g) y 1949 (c1h)
+      const m0 = C.c1g[0] - 0.1;
+      tl.set("#c1-time", { opacity: 1 }, m0);
+      tl.fromTo("#c1-axis", { scaleX: 0 }, { scaleX: 1, duration: 3.6, ease: "power1.inOut" }, m0);
+      K.$$("#c1-time .c1-tick").forEach(t => tl.fromTo(t, { opacity: 0 }, { opacity: 1, duration: 0.3 }, m0 + ((+t.dataset.y - 1889) / 60) * 3.6));
+      K.$$("#c1-stack .c1-sc").forEach((c, i) => tl.fromTo(c, { opacity: 0, scaleY: 0, transformOrigin: "50% 100%" }, { opacity: 1, scaleY: 1, duration: 0.25, ease: "power2.out" }, m0 + (i / 60) * 3.6));
+      tl.set("#c1-yr", { opacity: 1 }, m0);
+      K.count(tl, "#c1-yr", 1889, 1949, m0, 3.6, v => String(Math.round(v)));
+      const y0 = C.c1h[0];
+      tl.to("#c1-stack", { opacity: 0.25, duration: 0.4 }, y0);
+      tl.fromTo("#c1-young", { opacity: 0, x: 300 }, { opacity: 1, x: 0, duration: 1.1, ease: "expo.out" }, y0 + 0.1);
+      K.blurIn(tl, "#c1-22", y0 + 1.3, 0.5);
+      K.blurIn(tl, "#c1-22s", y0 + 1.6, 0.4);
+      // gota de tinta que lo cubre todo → capítulo 2
+      tl.set("#c1-ink", { opacity: 1 }, D - 0.95);
+      tl.fromTo("#c1-ink", { scale: 0 }, { scale: 120, duration: 0.9, ease: "power3.in" }, D - 0.95);
+      window.__timelines["ch1"] = tl;
+    })();
+  </script>
+</template>

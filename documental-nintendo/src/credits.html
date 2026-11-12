@@ -1,0 +1,35 @@
+<template>
+  <style>
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #ede3cf; color: #1b1714; font-family: "Shippori Mincho", serif; }
+    #cr-fib { position: absolute; inset: 0; width: 1920px; height: 1080px; }
+    .cr-pg { position: absolute; left: 0; right: 0; top: 0; height: 1080px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; opacity: 0; padding-bottom: 120px; }
+    .cr-pg h1 { font-size: 120px; font-weight: 700; line-height: 1; letter-spacing: 0.06em; }
+    .cr-pg .k { font-family: "Yuji Syuku", serif; font-size: 76px; color: #c23b22; letter-spacing: 0.2em; }
+    .cr-pg .sub { font-size: 46px; margin-top: 18px; color: #6d5a43; }
+    .cr-pg h2 { font-size: 40px; color: #8a3a26; letter-spacing: 0.14em; margin: 0 0 16px; }
+    .cr-pg h2 + p { margin-bottom: 60px; }
+    .cr-pg p { font-family: "Inter", sans-serif; font-weight: 600; font-size: 34px; line-height: 1.55; color: #2b241e; max-width: 1500px; }
+    .cr-pg p.s { font-size: 30px; color: #4a3d31; }
+  </style>
+  <div id="root" data-composition-id="credits" data-width="1920" data-height="1080">
+    <canvas id="cr-fib" width="1920" height="1080"></canvas>
+    <div class="cr-pg" id="cr-p1"><div class="k">任天堂</div><h1>NINTENDO</h1><div class="sub">De las cartas a las consolas · 1889 – 2026</div></div>
+    <div class="cr-pg" id="cr-p2"><h2>PRODUCCIÓN</h2><p>Guion, documentación, dirección de arte, animación 2D y 3D y montaje<br>generados con Claude Code y HyperFrames</p><h2>VOZ</h2><p>Síntesis de voz local Kokoro-82M · voz «em_alex» (español)</p></div>
+    <div class="cr-pg" id="cr-p3"><h2>MÚSICA Y EFECTOS</h2><p>Banda sonora y efectos originales, compuestos por código para este documental</p><h2>ILUSTRACIÓN</h2><p>Ilustraciones, sprites y modelos 3D originales.<br>No se ha usado material audiovisual, logotipos ni música de Nintendo.</p></div>
+    <div class="cr-pg" id="cr-p4"><h2>FUENTES</h2><p class="s">Nintendo · Company History (nintendo.co.jp)<br>Nintendo IR · Dedicated Video Game Sales Units y resultados del 5·11·2026<br>Wikipedia · History of Nintendo<br>TechRadar · «Nintendo before the NES» · «Nintendo might be younger than it claims»<br>Gematsu · VGChartz · Engadget · Video Games Chronicle<br>TechSpot · Nintendo Life · GamesRadar · japan-guide.com</p></div>
+    <div class="cr-pg" id="cr-p5"><h2>AVISO</h2><p class="s">Documental divulgativo no oficial, sin relación con Nintendo Co., Ltd.<br>Las marcas citadas pertenecen a sus propietarios.<br>Efectos adicionales: Pixabay (licencia Pixabay).<br><br>Datos verificados a 12 de noviembre de 2026.</p></div>
+    <div class="cr-pg" id="cr-p6"><div class="k" style="font-size:130px">任天堂</div><div class="sub">Gracias por jugar</div></div>
+  </div>
+  <script>
+    (() => {
+      __KIT__
+      const D = __DUR__, K = KIT;
+      K.fibers("#cr-fib", { n: 1300, color: "rgba(90,70,45,0.08)" });
+      const tl = gsap.timeline({ paused: true });
+      const P = [["#cr-p1", 0.3, 3.3], ["#cr-p2", 3.5, 6.9], ["#cr-p3", 7.1, 10.5], ["#cr-p4", 10.7, 14.4], ["#cr-p5", 14.6, 18.9], ["#cr-p6", 19.1, D - 0.2]];
+      P.forEach(([p, a, b]) => { K.blurIn(tl, p, a, 0.6); if (b < D - 0.5) K.blurOut(tl, p, b - 0.3, 0.3); else tl.to(p, { opacity: 0, duration: 1.0, ease: "power1.inOut" }, b - 1.0); });
+      window.__timelines["credits"] = tl;
+    })();
+  </script>
+</template>

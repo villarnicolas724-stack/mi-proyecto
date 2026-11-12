@@ -1,0 +1,8 @@
+renders/
+.hyperframes/
+production/.tts_cache/
+production/__pycache__/
+assets/voice/*.wav
+assets/music/*.wav
+assets/sfx/*.wav
+node_modules/

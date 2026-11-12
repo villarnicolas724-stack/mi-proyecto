@@ -1,0 +1,1539 @@
+{
+ "voice": "em_alex",
+ "speed": 0.95,
+ "chapters": [
+  {
+   "id": "hook",
+   "title": null,
+   "start": 0.0,
+   "end": 15.062
+  },
+  {
+   "id": "ch1",
+   "title": [
+    "Capítulo 1",
+    "Los humildes comienzos",
+    "1889"
+   ],
+   "start": 15.062,
+   "end": 61.761
+  },
+  {
+   "id": "ch2",
+   "title": [
+    "Capítulo 2",
+    "Nintendo busca nuevos caminos",
+    "1949 – 1980"
+   ],
+   "start": 61.761,
+   "end": 128.534
+  },
+  {
+   "id": "ch3",
+   "title": [
+    "Capítulo 3",
+    "La llegada de los videojuegos",
+    "1980 – 1983"
+   ],
+   "start": 128.534,
+   "end": 174.719
+  },
+  {
+   "id": "ch4",
+   "title": [
+    "Capítulo 4",
+    "La revolución de las consolas",
+    "1983 – 1991"
+   ],
+   "start": 174.719,
+   "end": 248.372
+  },
+  {
+   "id": "ch5",
+   "title": [
+    "Capítulo 5",
+    "La guerra de las consolas",
+    "1991 – 2002"
+   ],
+   "start": 248.372,
+   "end": 315.6
+  },
+  {
+   "id": "ch6",
+   "title": [
+    "Capítulo 6",
+    "Nintendo vuelve a innovar",
+    "2002 – 2016"
+   ],
+   "start": 315.6,
+   "end": 390.946
+  },
+  {
+   "id": "ch7",
+   "title": [
+    "Capítulo 7",
+    "La era moderna",
+    "2017 – 2026"
+   ],
+   "start": 390.946,
+   "end": 468.638
+  },
+  {
+   "id": "ch8",
+   "title": [
+    "Capítulo 8",
+    "El legado",
+    "1889 – ∞"
+   ],
+   "start": 468.638,
+   "end": 512.719
+  },
+  {
+   "id": "credits",
+   "title": null,
+   "start": 512.719,
+   "end": 534.719
+  }
+ ],
+ "cues": [
+  {
+   "id": "h1",
+   "chapter": "hook",
+   "text": "Esta carta se pintó a mano en Kioto hace más de un siglo.",
+   "start": 1.6,
+   "end": 4.993
+  },
+  {
+   "id": "h2",
+   "chapter": "hook",
+   "text": "La empresa que la fabricó acabaría cambiando la forma en que el mundo entero juega.",
+   "start": 5.593,
+   "end": 10.125
+  },
+  {
+   "id": "h3",
+   "chapter": "hook",
+   "text": "Su nombre es Nintendo.",
+   "start": 11.125,
+   "end": 12.663
+  },
+  {
+   "id": "c1a",
+   "chapter": "ch1",
+   "text": "Kioto, 1889. Japón se abre al mundo a toda velocidad, pero en sus calles aún se juega como hace siglos.",
+   "start": 18.262,
+   "end": 26.003
+  },
+  {
+   "id": "c1b",
+   "chapter": "ch1",
+   "text": "En un pequeño taller del barrio de Shimogyō, Fusajiro Yamauchi empieza a fabricar cartas hanafuda.",
+   "start": 26.603,
+   "end": 32.395
+  },
+  {
+   "id": "c1c",
+   "chapter": "ch1",
+   "text": "Barajas de flores: doce meses, cuarenta y ocho cartas, pintadas a mano sobre papel.",
+   "start": 32.745,
+   "end": 37.859
+  },
+  {
+   "id": "c1d",
+   "chapter": "ch1",
+   "text": "El negocio se llama Nintendo Koppai.",
+   "start": 38.459,
+   "end": 40.9
+  },
+  {
+   "id": "c1e",
+   "chapter": "ch1",
+   "text": "Su nombre suele traducirse como «deja la suerte en manos del cielo».",
+   "start": 41.25,
+   "end": 45.317
+  },
+  {
+   "id": "c1f",
+   "chapter": "ch1",
+   "text": "Las cartas triunfan, y en 1902 Nintendo fabrica las primeras barajas de estilo occidental hechas en Japón.",
+   "start": 45.917,
+   "end": 53.081
+  },
+  {
+   "id": "c1g",
+   "chapter": "ch1",
+   "text": "Durante medio siglo, Nintendo será eso: un fabricante de cartas.",
+   "start": 53.681,
+   "end": 57.858
+  },
+  {
+   "id": "c1h",
+   "chapter": "ch1",
+   "text": "Hasta que llega un joven de veintidós años.",
+   "start": 58.208,
+   "end": 60.861
+  },
+  {
+   "id": "c2a",
+   "chapter": "ch2",
+   "text": "En 1949, Hiroshi Yamauchi, bisnieto del fundador, asume la presidencia.",
+   "start": 64.961,
+   "end": 70.626
+  },
+  {
+   "id": "c2b",
+   "chapter": "ch2",
+   "text": "Es exigente, ambicioso, y quiere que Nintendo sea mucho más que una fábrica de naipes.",
+   "start": 70.976,
+   "end": 76.05
+  },
+  {
+   "id": "c2c",
+   "chapter": "ch2",
+   "text": "En 1959 firma con Disney: Mickey Mouse llega a las barajas, y las cartas entran en los hogares con niños.",
+   "start": 76.65,
+   "end": 84.201
+  },
+  {
+   "id": "c2d",
+   "chapter": "ch2",
+   "text": "En 1963 la empresa pasa a llamarse Nintendo Co., Ltd., y empieza a probarlo todo.",
+   "start": 84.801,
+   "end": 91.79
+  },
+  {
+   "id": "c2e",
+   "chapter": "ch2",
+   "text": "Una compañía de taxis. Arroz instantáneo. Casi nada funciona.",
+   "start": 92.14,
+   "end": 96.103
+  },
+  {
+   "id": "c2f",
+   "chapter": "ch2",
+   "text": "La respuesta llega desde donde nadie miraba: el taller de mantenimiento.",
+   "start": 96.703,
+   "end": 100.82
+  },
+  {
+   "id": "c2g",
+   "chapter": "ch2",
+   "text": "Allí trabaja Gunpei Yokoi, un ingeniero que se ha fabricado un brazo extensible para entretenerse.",
+   "start": 101.17,
+   "end": 106.965
+  },
+  {
+   "id": "c2h",
+   "chapter": "ch2",
+   "text": "Yamauchi lo ve y le pide convertirlo en producto. En 1966 nace la Ultra Hand. Es un éxito inmediato.",
+   "start": 107.315,
+   "end": 114.73
+  },
+  {
+   "id": "c2i",
+   "chapter": "ch2",
+   "text": "Le siguen pistolas de luz, el Color TV-Game y, en 1980, las Game & Watch.",
+   "start": 115.33,
+   "end": 120.856
+  },
+  {
+   "id": "c2j",
+   "chapter": "ch2",
+   "text": "La filosofía de Yokoi marcará a Nintendo para siempre: usar tecnología madura y barata de formas nuevas.",
+   "start": 121.206,
+   "end": 127.634
+  },
+  {
+   "id": "c3a",
+   "chapter": "ch3",
+   "text": "Los salones recreativos hipnotizan a medio mundo, y Nintendo quiere su parte.",
+   "start": 131.534,
+   "end": 136.149
+  },
+  {
+   "id": "c3b",
+   "chapter": "ch3",
+   "text": "En 1980 abre una filial en Estados Unidos, pero su gran apuesta, Radar Scope, fracasa.",
+   "start": 136.499,
+   "end": 142.889
+  },
+  {
+   "id": "c3c",
+   "chapter": "ch3",
+   "text": "Miles de máquinas se acumulan sin vender en un almacén.",
+   "start": 143.239,
+   "end": 146.562
+  },
+  {
+   "id": "c3d",
+   "chapter": "ch3",
+   "text": "Para salvarlas, Yamauchi encarga un juego nuevo a un joven diseñador: Shigeru Miyamoto.",
+   "start": 147.162,
+   "end": 151.985
+  },
+  {
+   "id": "c3e",
+   "chapter": "ch3",
+   "text": "Miyamoto no piensa como un ingeniero. Piensa como un narrador.",
+   "start": 152.335,
+   "end": 155.921
+  },
+  {
+   "id": "c3f",
+   "chapter": "ch3",
+   "text": "Un gorila, una dama en apuros y un carpintero que salta barriles.",
+   "start": 156.521,
+   "end": 160.4
+  },
+  {
+   "id": "c3g",
+   "chapter": "ch3",
+   "text": "Donkey Kong. 1981.",
+   "start": 160.65,
+   "end": 163.264
+  },
+  {
+   "id": "c3h",
+   "chapter": "ch3",
+   "text": "Aquel héroe se llamaba Jumpman. Muy pronto, el mundo lo conocería como Mario.",
+   "start": 163.864,
+   "end": 168.404
+  },
+  {
+   "id": "c3i",
+   "chapter": "ch3",
+   "text": "Donkey Kong es un éxito enorme y pone el nombre de Nintendo en los salones de todo el mundo.",
+   "start": 168.754,
+   "end": 173.819
+  },
+  {
+   "id": "c4a",
+   "chapter": "ch4",
+   "text": "El 15 de julio de 1983, Nintendo lanza en Japón la Family Computer: la Famicom.",
+   "start": 177.719,
+   "end": 184.128
+  },
+  {
+   "id": "c4b",
+   "chapter": "ch4",
+   "text": "Ese mismo año, en Estados Unidos, el mercado se hunde. Las tiendas ya no quieren videojuegos.",
+   "start": 184.728,
+   "end": 190.455
+  },
+  {
+   "id": "c4c",
+   "chapter": "ch4",
+   "text": "Nintendo llega en 1985 de todos modos: con un nombre nuevo, NES, y con un robot para venderla como un juguete.",
+   "start": 191.055,
+   "end": 198.811
+  },
+  {
+   "id": "c4d",
+   "chapter": "ch4",
+   "text": "Y con un sello de calidad que promete lo que el público había perdido: confianza.",
+   "start": 199.161,
+   "end": 203.619
+  },
+  {
+   "id": "c4e",
+   "chapter": "ch4",
+   "text": "Ese mismo año llega Super Mario Bros.",
+   "start": 204.219,
+   "end": 206.768
+  },
+  {
+   "id": "c4f",
+   "chapter": "ch4",
+   "text": "Un mundo que avanza contigo, secretos escondidos y un control tan preciso que saltar se convierte en un placer.",
+   "start": 207.118,
+   "end": 213.884
+  },
+  {
+   "id": "c4g",
+   "chapter": "ch4",
+   "text": "Para muchos, define los juegos de plataformas durante décadas. Mario se convierte en un icono global.",
+   "start": 214.234,
+   "end": 220.211
+  },
+  {
+   "id": "c4h",
+   "chapter": "ch4",
+   "text": "NES vende casi 62 millones de consolas y devuelve la vida al videojuego doméstico.",
+   "start": 220.811,
+   "end": 226.731
+  },
+  {
+   "id": "c4i",
+   "chapter": "ch4",
+   "text": "En 1989, Gunpei Yokoi vuelve a dar en el clavo: Game Boy.",
+   "start": 227.331,
+   "end": 231.964
+  },
+  {
+   "id": "c4j",
+   "chapter": "ch4",
+   "text": "Pilas que duran horas y Tetris en el bolsillo. Con su sucesora en color, supera los 118 millones.",
+   "start": 232.314,
+   "end": 238.859
+  },
+  {
+   "id": "c4k",
+   "chapter": "ch4",
+   "text": "Y en 1990 llega Super Famicom, la Super Nintendo: dieciséis bits, más color y una nueva generación de clásicos.",
+   "start": 239.459,
+   "end": 247.472
+  },
+  {
+   "id": "c5a",
+   "chapter": "ch5",
+   "text": "Pero Nintendo ya no está sola. SEGA y su Mega Drive le plantan cara con un erizo muy rápido.",
+   "start": 251.372,
+   "end": 257.12
+  },
+  {
+   "id": "c5b",
+   "chapter": "ch5",
+   "text": "Y un acuerdo frustrado con Sony para un lector de CD acaba dando vida a un nuevo rival: PlayStation.",
+   "start": 257.47,
+   "end": 263.135
+  },
+  {
+   "id": "c5c",
+   "chapter": "ch5",
+   "text": "En 1996, Nintendo responde con Nintendo 64 y un mando con algo nuevo: un stick analógico.",
+   "start": 263.735,
+   "end": 271.475
+  },
+  {
+   "id": "c5d",
+   "chapter": "ch5",
+   "text": "Super Mario 64 enseña a toda una industria a moverse en tres dimensiones.",
+   "start": 271.825,
+   "end": 276.986
+  },
+  {
+   "id": "c5e",
+   "chapter": "ch5",
+   "text": "Pero Nintendo apuesta por el cartucho cuando sus rivales eligen el CD, y pierde terreno en el salón.",
+   "start": 277.336,
+   "end": 283.319
+  },
+  {
+   "id": "c5f",
+   "chapter": "ch5",
+   "text": "En el bolsillo, en cambio, ocurre algo inesperado.",
+   "start": 283.919,
+   "end": 286.862
+  },
+  {
+   "id": "c5g",
+   "chapter": "ch5",
+   "text": "En 1996, un juego de Game Boy propone atrapar criaturas e intercambiarlas por cable con tus amigos: Pokémon.",
+   "start": 287.212,
+   "end": 295.202
+  },
+  {
+   "id": "c5h",
+   "chapter": "ch5",
+   "text": "Se convierte en un fenómeno mundial y en una de las franquicias más grandes del entretenimiento.",
+   "start": 295.552,
+   "end": 300.77
+  },
+  {
+   "id": "c5i",
+   "chapter": "ch5",
+   "text": "En 2001 llegan Game Boy Advance y GameCube. La portátil arrasa. GameCube, con 22 millones, queda lejos de sus rivales.",
+   "start": 301.37,
+   "end": 309.522
+  },
+  {
+   "id": "c5j",
+   "chapter": "ch5",
+   "text": "Nintendo saca una conclusión: no ganará jugando al mismo juego que los demás.",
+   "start": 310.122,
+   "end": 314.7
+  },
+  {
+   "id": "c6a",
+   "chapter": "ch6",
+   "text": "En 2002, Satoru Iwata se convierte en presidente: el primero ajeno a la familia Yamauchi.",
+   "start": 318.6,
+   "end": 324.402
+  },
+  {
+   "id": "c6b",
+   "chapter": "ch6",
+   "text": "Iwata es programador, y lo dice con orgullo:",
+   "start": 324.752,
+   "end": 327.316
+  },
+  {
+   "id": "c6c",
+   "chapter": "ch6",
+   "text": "«En mi tarjeta de visita soy presidente de una empresa. En mi mente, soy un desarrollador. Pero en mi corazón, soy un jugador.»",
+   "start": 327.666,
+   "end": 334.605
+  },
+  {
+   "id": "c6d",
+   "chapter": "ch6",
+   "text": "Su idea es sencilla y arriesgada: no competir en potencia, sino invitar a jugar a quien nunca lo había hecho.",
+   "start": 335.205,
+   "end": 341.53
+  },
+  {
+   "id": "c6e",
+   "chapter": "ch6",
+   "text": "En 2004 llega Nintendo DS: dos pantallas, una táctil, y un lápiz para jugar escribiendo y dibujando.",
+   "start": 342.13,
+   "end": 348.998
+  },
+  {
+   "id": "c6f",
+   "chapter": "ch6",
+   "text": "Entrenar la mente, cuidar de un perro… DS vende más de 154 millones.",
+   "start": 349.348,
+   "end": 354.778
+  },
+  {
+   "id": "c6g",
+   "chapter": "ch6",
+   "text": "En 2006, Wii lo lleva al salón: un mando que entiende tus movimientos.",
+   "start": 355.378,
+   "end": 359.805
+  },
+  {
+   "id": "c6h",
+   "chapter": "ch6",
+   "text": "Abuelos jugando a los bolos, familias enteras de pie frente a la tele. Más de cien millones de consolas.",
+   "start": 360.155,
+   "end": 366.108
+  },
+  {
+   "id": "c6i",
+   "chapter": "ch6",
+   "text": "Después llegan 3DS, con imágenes en 3D sin gafas, y en 2012, Wii U.",
+   "start": 366.708,
+   "end": 371.973
+  },
+  {
+   "id": "c6j",
+   "chapter": "ch6",
+   "text": "Wii U no se entiende bien. Con 13,56 millones, es la sobremesa menos vendida de la compañía.",
+   "start": 372.323,
+   "end": 378.396
+  },
+  {
+   "id": "c6k",
+   "chapter": "ch6",
+   "text": "En 2015 llega el golpe más duro: Satoru Iwata fallece a los 55 años.",
+   "start": 378.996,
+   "end": 384.722
+  },
+  {
+   "id": "c6l",
+   "chapter": "ch6",
+   "text": "Pero Wii U deja una idea en el aire: jugar en la tele… y también lejos de ella.",
+   "start": 385.722,
+   "end": 390.046
+  },
+  {
+   "id": "c7a",
+   "chapter": "ch7",
+   "text": "El 3 de marzo de 2017 llega Nintendo Switch.",
+   "start": 393.946,
+   "end": 397.449
+  },
+  {
+   "id": "c7b",
+   "chapter": "ch7",
+   "text": "Una consola de sobremesa que se convierte en portátil en un segundo. Separas los mandos y ya puedes compartir la partida.",
+   "start": 397.799,
+   "end": 405.035
+  },
+  {
+   "id": "c7c",
+   "chapter": "ch7",
+   "text": "Llega con Zelda: Breath of the Wild, una aventura de mundo abierto que deja huella en toda la industria.",
+   "start": 405.385,
+   "end": 411.068
+  },
+  {
+   "id": "c7d",
+   "chapter": "ch7",
+   "text": "Mario Kart, Smash Bros., Animal Crossing… En 2020, durante el confinamiento, millones de personas se reúnen en islas virtuales.",
+   "start": 411.668,
+   "end": 419.645
+  },
+  {
+   "id": "c7e",
+   "chapter": "ch7",
+   "text": "A finales de 2025, Switch supera a DS y se convierte en la consola más vendida de Nintendo: hoy, más de 157 millones.",
+   "start": 420.245,
+   "end": 429.422
+  },
+  {
+   "id": "c7f",
+   "chapter": "ch7",
+   "text": "Mario salta de la pantalla al mundo real: un parque temático en 2021, una película taquillera en 2023 y, en 2024, un museo en su antigua fábrica de cartas.",
+   "start": 430.022,
+   "end": 441.6
+  },
+  {
+   "id": "c7g",
+   "chapter": "ch7",
+   "text": "El 5 de junio de 2025 llega Nintendo Switch 2. Vende 3,5 millones en cuatro días: el lanzamiento más rápido de Nintendo.",
+   "start": 443.0,
+   "end": 451.777
+  },
+  {
+   "id": "c7h",
+   "chapter": "ch7",
+   "text": "En 2026 su precio sube por el encarecimiento de la memoria, pero a 30 de septiembre ya supera los 26 millones.",
+   "start": 452.127,
+   "end": 460.101
+  },
+  {
+   "id": "c7i",
+   "chapter": "ch7",
+   "text": "Y el viaje sigue: una nueva película de Mario en 2026 y, para 2027, Zelda en imagen real.",
+   "start": 460.701,
+   "end": 467.738
+  },
+  {
+   "id": "c8a",
+   "chapter": "ch8",
+   "text": "Ciento treinta y siete años después, Nintendo sigue en Kioto.",
+   "start": 471.638,
+   "end": 475.165
+  },
+  {
+   "id": "c8b",
+   "chapter": "ch8",
+   "text": "Ha sobrevivido a guerras, crisis y fracasos, y casi siempre ha encontrado la salida por el mismo camino: hacer algo distinto.",
+   "start": 475.765,
+   "end": 483.182
+  },
+  {
+   "id": "c8c",
+   "chapter": "ch8",
+   "text": "No siempre ha tenido la máquina más potente. Ha apostado por otra cosa: juegos fáciles de entender y difíciles de olvidar.",
+   "start": 483.782,
+   "end": 491.125
+  },
+  {
+   "id": "c8d",
+   "chapter": "ch8",
+   "text": "Quienes jugaron con una NES enseñan hoy a sus hijos a coger un Joy-Con.",
+   "start": 491.725,
+   "end": 495.905
+  },
+  {
+   "id": "c8e",
+   "chapter": "ch8",
+   "text": "Detrás de cada consola late el mismo gesto que empezó en un taller de Kioto: repartir las cartas y preguntar…",
+   "start": 496.505,
+   "end": 502.839
+  },
+  {
+   "id": "c8f",
+   "chapter": "ch8",
+   "text": "«¿Jugamos?»",
+   "start": 503.339,
+   "end": 504.069
+  },
+  {
+   "id": "c8g",
+   "chapter": "ch8",
+   "text": "Porque la historia de Nintendo no se juega en una sola partida.",
+   "start": 505.069,
+   "end": 508.525
+  },
+  {
+   "id": "c8h",
+   "chapter": "ch8",
+   "text": "Y la próxima carta… aún está por repartir.",
+   "start": 508.875,
+   "end": 511.519
+  }
+ ],
+ "total": 534.719,
+ "subs": [
+  {
+   "cue": "h1",
+   "start": 1.6,
+   "end": 3.357,
+   "text": "Esta carta se pintó a mano en"
+  },
+  {
+   "cue": "h1",
+   "start": 3.357,
+   "end": 4.993,
+   "text": "Kioto hace más de un siglo."
+  },
+  {
+   "cue": "h2",
+   "start": 5.593,
+   "end": 8.191,
+   "text": "La empresa que la fabricó acabaría cambiando la"
+  },
+  {
+   "cue": "h2",
+   "start": 8.191,
+   "end": 10.125,
+   "text": "forma en que el mundo entero juega."
+  },
+  {
+   "cue": "h3",
+   "start": 11.125,
+   "end": 12.663,
+   "text": "Su nombre es Nintendo."
+  },
+  {
+   "cue": "c1a",
+   "start": 18.262,
+   "end": 22.284,
+   "text": "Kioto, 1889. Japón se abre al mundo a toda velocidad,"
+  },
+  {
+   "cue": "c1a",
+   "start": 22.284,
+   "end": 26.003,
+   "text": "pero en sus calles aún se juega como hace siglos."
+  },
+  {
+   "cue": "c1b",
+   "start": 26.603,
+   "end": 29.23,
+   "text": "En un pequeño taller del barrio de Shimogyō,"
+  },
+  {
+   "cue": "c1b",
+   "start": 29.23,
+   "end": 32.395,
+   "text": "Fusajiro Yamauchi empieza a fabricar cartas hanafuda."
+  },
+  {
+   "cue": "c1c",
+   "start": 32.745,
+   "end": 35.302,
+   "text": "Barajas de flores: doce meses, cuarenta y"
+  },
+  {
+   "cue": "c1c",
+   "start": 35.302,
+   "end": 37.859,
+   "text": "ocho cartas, pintadas a mano sobre papel."
+  },
+  {
+   "cue": "c1d",
+   "start": 38.459,
+   "end": 40.9,
+   "text": "El negocio se llama Nintendo Koppai."
+  },
+  {
+   "cue": "c1e",
+   "start": 41.25,
+   "end": 43.496,
+   "text": "Su nombre suele traducirse como «deja"
+  },
+  {
+   "cue": "c1e",
+   "start": 43.496,
+   "end": 45.317,
+   "text": "la suerte en manos del cielo»."
+  },
+  {
+   "cue": "c1f",
+   "start": 45.917,
+   "end": 49.397,
+   "text": "Las cartas triunfan, y en 1902 Nintendo fabrica las"
+  },
+  {
+   "cue": "c1f",
+   "start": 49.397,
+   "end": 53.081,
+   "text": "primeras barajas de estilo occidental hechas en Japón."
+  },
+  {
+   "cue": "c1g",
+   "start": 53.681,
+   "end": 57.858,
+   "text": "Durante medio siglo, Nintendo será eso: un fabricante de cartas."
+  },
+  {
+   "cue": "c1h",
+   "start": 58.208,
+   "end": 60.861,
+   "text": "Hasta que llega un joven de veintidós años."
+  },
+  {
+   "cue": "c2a",
+   "start": 64.961,
+   "end": 70.626,
+   "text": "En 1949, Hiroshi Yamauchi, bisnieto del fundador, asume la presidencia."
+  },
+  {
+   "cue": "c2b",
+   "start": 70.976,
+   "end": 73.901,
+   "text": "Es exigente, ambicioso, y quiere que Nintendo sea"
+  },
+  {
+   "cue": "c2b",
+   "start": 73.901,
+   "end": 76.05,
+   "text": "mucho más que una fábrica de naipes."
+  },
+  {
+   "cue": "c2c",
+   "start": 76.65,
+   "end": 80.28,
+   "text": "En 1959 firma con Disney: Mickey Mouse llega a las"
+  },
+  {
+   "cue": "c2c",
+   "start": 80.28,
+   "end": 84.201,
+   "text": "barajas, y las cartas entran en los hogares con niños."
+  },
+  {
+   "cue": "c2d",
+   "start": 84.801,
+   "end": 88.558,
+   "text": "En 1963 la empresa pasa a llamarse Nintendo"
+  },
+  {
+   "cue": "c2d",
+   "start": 88.558,
+   "end": 91.79,
+   "text": "Co., Ltd., y empieza a probarlo todo."
+  },
+  {
+   "cue": "c2e",
+   "start": 92.14,
+   "end": 96.103,
+   "text": "Una compañía de taxis. Arroz instantáneo. Casi nada funciona."
+  },
+  {
+   "cue": "c2f",
+   "start": 96.703,
+   "end": 100.82,
+   "text": "La respuesta llega desde donde nadie miraba: el taller de mantenimiento."
+  },
+  {
+   "cue": "c2g",
+   "start": 101.17,
+   "end": 103.918,
+   "text": "Allí trabaja Gunpei Yokoi, un ingeniero que se"
+  },
+  {
+   "cue": "c2g",
+   "start": 103.918,
+   "end": 106.965,
+   "text": "ha fabricado un brazo extensible para entretenerse."
+  },
+  {
+   "cue": "c2h",
+   "start": 107.315,
+   "end": 111.21,
+   "text": "Yamauchi lo ve y le pide convertirlo en producto. En"
+  },
+  {
+   "cue": "c2h",
+   "start": 111.21,
+   "end": 114.73,
+   "text": "1966 nace la Ultra Hand. Es un éxito inmediato."
+  },
+  {
+   "cue": "c2i",
+   "start": 115.33,
+   "end": 118.63,
+   "text": "Le siguen pistolas de luz, el Color TV-Game"
+  },
+  {
+   "cue": "c2i",
+   "start": 118.63,
+   "end": 120.856,
+   "text": "y, en 1980, las Game & Watch."
+  },
+  {
+   "cue": "c2j",
+   "start": 121.206,
+   "end": 124.576,
+   "text": "La filosofía de Yokoi marcará a Nintendo para siempre:"
+  },
+  {
+   "cue": "c2j",
+   "start": 124.576,
+   "end": 127.634,
+   "text": "usar tecnología madura y barata de formas nuevas."
+  },
+  {
+   "cue": "c3a",
+   "start": 131.534,
+   "end": 134.084,
+   "text": "Los salones recreativos hipnotizan a medio"
+  },
+  {
+   "cue": "c3a",
+   "start": 134.084,
+   "end": 136.149,
+   "text": "mundo, y Nintendo quiere su parte."
+  },
+  {
+   "cue": "c3b",
+   "start": 136.499,
+   "end": 139.656,
+   "text": "En 1980 abre una filial en Estados Unidos,"
+  },
+  {
+   "cue": "c3b",
+   "start": 139.656,
+   "end": 142.889,
+   "text": "pero su gran apuesta, Radar Scope, fracasa."
+  },
+  {
+   "cue": "c3c",
+   "start": 143.239,
+   "end": 146.562,
+   "text": "Miles de máquinas se acumulan sin vender en un almacén."
+  },
+  {
+   "cue": "c3d",
+   "start": 147.162,
+   "end": 149.798,
+   "text": "Para salvarlas, Yamauchi encarga un juego nuevo"
+  },
+  {
+   "cue": "c3d",
+   "start": 149.798,
+   "end": 151.985,
+   "text": "a un joven diseñador: Shigeru Miyamoto."
+  },
+  {
+   "cue": "c3e",
+   "start": 152.335,
+   "end": 155.921,
+   "text": "Miyamoto no piensa como un ingeniero. Piensa como un narrador."
+  },
+  {
+   "cue": "c3f",
+   "start": 156.521,
+   "end": 158.279,
+   "text": "Un gorila, una dama en apuros"
+  },
+  {
+   "cue": "c3f",
+   "start": 158.279,
+   "end": 160.4,
+   "text": "y un carpintero que salta barriles."
+  },
+  {
+   "cue": "c3g",
+   "start": 160.65,
+   "end": 163.264,
+   "text": "Donkey Kong. 1981."
+  },
+  {
+   "cue": "c3h",
+   "start": 163.864,
+   "end": 166.433,
+   "text": "Aquel héroe se llamaba Jumpman. Muy pronto,"
+  },
+  {
+   "cue": "c3h",
+   "start": 166.433,
+   "end": 168.404,
+   "text": "el mundo lo conocería como Mario."
+  },
+  {
+   "cue": "c3i",
+   "start": 168.754,
+   "end": 171.37,
+   "text": "Donkey Kong es un éxito enorme y pone el nombre"
+  },
+  {
+   "cue": "c3i",
+   "start": 171.37,
+   "end": 173.819,
+   "text": "de Nintendo en los salones de todo el mundo."
+  },
+  {
+   "cue": "c4a",
+   "start": 177.719,
+   "end": 180.841,
+   "text": "El 15 de julio de 1983, Nintendo lanza"
+  },
+  {
+   "cue": "c4a",
+   "start": 180.841,
+   "end": 184.128,
+   "text": "en Japón la Family Computer: la Famicom."
+  },
+  {
+   "cue": "c4b",
+   "start": 184.728,
+   "end": 187.467,
+   "text": "Ese mismo año, en Estados Unidos, el mercado"
+  },
+  {
+   "cue": "c4b",
+   "start": 187.467,
+   "end": 190.455,
+   "text": "se hunde. Las tiendas ya no quieren videojuegos."
+  },
+  {
+   "cue": "c4c",
+   "start": 191.055,
+   "end": 195.253,
+   "text": "Nintendo llega en 1985 de todos modos: con un nombre nuevo,"
+  },
+  {
+   "cue": "c4c",
+   "start": 195.253,
+   "end": 198.811,
+   "text": "NES, y con un robot para venderla como un juguete."
+  },
+  {
+   "cue": "c4d",
+   "start": 199.161,
+   "end": 201.223,
+   "text": "Y con un sello de calidad que promete"
+  },
+  {
+   "cue": "c4d",
+   "start": 201.223,
+   "end": 203.619,
+   "text": "lo que el público había perdido: confianza."
+  },
+  {
+   "cue": "c4e",
+   "start": 204.219,
+   "end": 206.768,
+   "text": "Ese mismo año llega Super Mario Bros."
+  },
+  {
+   "cue": "c4f",
+   "start": 207.118,
+   "end": 210.87,
+   "text": "Un mundo que avanza contigo, secretos escondidos y un control"
+  },
+  {
+   "cue": "c4f",
+   "start": 210.87,
+   "end": 213.884,
+   "text": "tan preciso que saltar se convierte en un placer."
+  },
+  {
+   "cue": "c4g",
+   "start": 214.234,
+   "end": 217.402,
+   "text": "Para muchos, define los juegos de plataformas durante"
+  },
+  {
+   "cue": "c4g",
+   "start": 217.402,
+   "end": 220.211,
+   "text": "décadas. Mario se convierte en un icono global."
+  },
+  {
+   "cue": "c4h",
+   "start": 220.811,
+   "end": 223.588,
+   "text": "NES vende casi 62 millones de consolas"
+  },
+  {
+   "cue": "c4h",
+   "start": 223.588,
+   "end": 226.731,
+   "text": "y devuelve la vida al videojuego doméstico."
+  },
+  {
+   "cue": "c4i",
+   "start": 227.331,
+   "end": 229.813,
+   "text": "En 1989, Gunpei Yokoi vuelve a"
+  },
+  {
+   "cue": "c4i",
+   "start": 229.813,
+   "end": 231.964,
+   "text": "dar en el clavo: Game Boy."
+  },
+  {
+   "cue": "c4j",
+   "start": 232.314,
+   "end": 235.45,
+   "text": "Pilas que duran horas y Tetris en el bolsillo."
+  },
+  {
+   "cue": "c4j",
+   "start": 235.45,
+   "end": 238.859,
+   "text": "Con su sucesora en color, supera los 118 millones."
+  },
+  {
+   "cue": "c4k",
+   "start": 239.459,
+   "end": 243.757,
+   "text": "Y en 1990 llega Super Famicom, la Super Nintendo: dieciséis"
+  },
+  {
+   "cue": "c4k",
+   "start": 243.757,
+   "end": 247.472,
+   "text": "bits, más color y una nueva generación de clásicos."
+  },
+  {
+   "cue": "c5a",
+   "start": 251.372,
+   "end": 254.214,
+   "text": "Pero Nintendo ya no está sola. SEGA y su Mega"
+  },
+  {
+   "cue": "c5a",
+   "start": 254.214,
+   "end": 257.12,
+   "text": "Drive le plantan cara con un erizo muy rápido."
+  },
+  {
+   "cue": "c5b",
+   "start": 257.47,
+   "end": 260.274,
+   "text": "Y un acuerdo frustrado con Sony para un lector de"
+  },
+  {
+   "cue": "c5b",
+   "start": 260.274,
+   "end": 263.135,
+   "text": "CD acaba dando vida a un nuevo rival: PlayStation."
+  },
+  {
+   "cue": "c5c",
+   "start": 263.735,
+   "end": 267.605,
+   "text": "En 1996, Nintendo responde con Nintendo 64 y"
+  },
+  {
+   "cue": "c5c",
+   "start": 267.605,
+   "end": 271.475,
+   "text": "un mando con algo nuevo: un stick analógico."
+  },
+  {
+   "cue": "c5d",
+   "start": 271.825,
+   "end": 274.119,
+   "text": "Super Mario 64 enseña a toda una"
+  },
+  {
+   "cue": "c5d",
+   "start": 274.119,
+   "end": 276.986,
+   "text": "industria a moverse en tres dimensiones."
+  },
+  {
+   "cue": "c5e",
+   "start": 277.336,
+   "end": 280.72,
+   "text": "Pero Nintendo apuesta por el cartucho cuando sus rivales"
+  },
+  {
+   "cue": "c5e",
+   "start": 280.72,
+   "end": 283.319,
+   "text": "eligen el CD, y pierde terreno en el salón."
+  },
+  {
+   "cue": "c5f",
+   "start": 283.919,
+   "end": 286.862,
+   "text": "En el bolsillo, en cambio, ocurre algo inesperado."
+  },
+  {
+   "cue": "c5g",
+   "start": 287.212,
+   "end": 290.572,
+   "text": "En 1996, un juego de Game Boy propone atrapar"
+  },
+  {
+   "cue": "c5g",
+   "start": 290.572,
+   "end": 295.202,
+   "text": "criaturas e intercambiarlas por cable con tus amigos: Pokémon."
+  },
+  {
+   "cue": "c5h",
+   "start": 295.552,
+   "end": 297.749,
+   "text": "Se convierte en un fenómeno mundial y en"
+  },
+  {
+   "cue": "c5h",
+   "start": 297.749,
+   "end": 300.77,
+   "text": "una de las franquicias más grandes del entretenimiento."
+  },
+  {
+   "cue": "c5i",
+   "start": 301.37,
+   "end": 305.202,
+   "text": "En 2001 llegan Game Boy Advance y GameCube. La portátil"
+  },
+  {
+   "cue": "c5i",
+   "start": 305.202,
+   "end": 309.522,
+   "text": "arrasa. GameCube, con 22 millones, queda lejos de sus rivales."
+  },
+  {
+   "cue": "c5j",
+   "start": 310.122,
+   "end": 312.953,
+   "text": "Nintendo saca una conclusión: no ganará jugando"
+  },
+  {
+   "cue": "c5j",
+   "start": 312.953,
+   "end": 314.7,
+   "text": "al mismo juego que los demás."
+  },
+  {
+   "cue": "c6a",
+   "start": 318.6,
+   "end": 321.831,
+   "text": "En 2002, Satoru Iwata se convierte en presidente:"
+  },
+  {
+   "cue": "c6a",
+   "start": 321.831,
+   "end": 324.402,
+   "text": "el primero ajeno a la familia Yamauchi."
+  },
+  {
+   "cue": "c6b",
+   "start": 324.752,
+   "end": 327.316,
+   "text": "Iwata es programador, y lo dice con orgullo:"
+  },
+  {
+   "cue": "c6c",
+   "start": 327.666,
+   "end": 329.998,
+   "text": "«En mi tarjeta de visita soy presidente de"
+  },
+  {
+   "cue": "c6c",
+   "start": 329.998,
+   "end": 332.607,
+   "text": "una empresa. En mi mente, soy un desarrollador."
+  },
+  {
+   "cue": "c6c",
+   "start": 332.607,
+   "end": 334.605,
+   "text": "Pero en mi corazón, soy un jugador.»"
+  },
+  {
+   "cue": "c6d",
+   "start": 335.205,
+   "end": 338.602,
+   "text": "Su idea es sencilla y arriesgada: no competir en potencia,"
+  },
+  {
+   "cue": "c6d",
+   "start": 338.602,
+   "end": 341.53,
+   "text": "sino invitar a jugar a quien nunca lo había hecho."
+  },
+  {
+   "cue": "c6e",
+   "start": 342.13,
+   "end": 345.807,
+   "text": "En 2004 llega Nintendo DS: dos pantallas, una táctil,"
+  },
+  {
+   "cue": "c6e",
+   "start": 345.807,
+   "end": 348.998,
+   "text": "y un lápiz para jugar escribiendo y dibujando."
+  },
+  {
+   "cue": "c6f",
+   "start": 349.348,
+   "end": 352.428,
+   "text": "Entrenar la mente, cuidar de un perro…"
+  },
+  {
+   "cue": "c6f",
+   "start": 352.428,
+   "end": 354.778,
+   "text": "DS vende más de 154 millones."
+  },
+  {
+   "cue": "c6g",
+   "start": 355.378,
+   "end": 357.367,
+   "text": "En 2006, Wii lo lleva al salón:"
+  },
+  {
+   "cue": "c6g",
+   "start": 357.367,
+   "end": 359.805,
+   "text": "un mando que entiende tus movimientos."
+  },
+  {
+   "cue": "c6h",
+   "start": 360.155,
+   "end": 363.565,
+   "text": "Abuelos jugando a los bolos, familias enteras de pie frente"
+  },
+  {
+   "cue": "c6h",
+   "start": 363.565,
+   "end": 366.108,
+   "text": "a la tele. Más de cien millones de consolas."
+  },
+  {
+   "cue": "c6i",
+   "start": 366.708,
+   "end": 369.739,
+   "text": "Después llegan 3DS, con imágenes en 3D"
+  },
+  {
+   "cue": "c6i",
+   "start": 369.739,
+   "end": 371.973,
+   "text": "sin gafas, y en 2012, Wii U."
+  },
+  {
+   "cue": "c6j",
+   "start": 372.323,
+   "end": 375.393,
+   "text": "Wii U no se entiende bien. Con 13,56 millones,"
+  },
+  {
+   "cue": "c6j",
+   "start": 375.393,
+   "end": 378.396,
+   "text": "es la sobremesa menos vendida de la compañía."
+  },
+  {
+   "cue": "c6k",
+   "start": 378.996,
+   "end": 381.731,
+   "text": "En 2015 llega el golpe más duro:"
+  },
+  {
+   "cue": "c6k",
+   "start": 381.731,
+   "end": 384.722,
+   "text": "Satoru Iwata fallece a los 55 años."
+  },
+  {
+   "cue": "c6l",
+   "start": 385.722,
+   "end": 387.718,
+   "text": "Pero Wii U deja una idea en el aire:"
+  },
+  {
+   "cue": "c6l",
+   "start": 387.718,
+   "end": 390.046,
+   "text": "jugar en la tele… y también lejos de ella."
+  },
+  {
+   "cue": "c7a",
+   "start": 393.946,
+   "end": 397.449,
+   "text": "El 3 de marzo de 2017 llega Nintendo Switch."
+  },
+  {
+   "cue": "c7b",
+   "start": 397.799,
+   "end": 401.357,
+   "text": "Una consola de sobremesa que se convierte en portátil en un"
+  },
+  {
+   "cue": "c7b",
+   "start": 401.357,
+   "end": 405.035,
+   "text": "segundo. Separas los mandos y ya puedes compartir la partida."
+  },
+  {
+   "cue": "c7c",
+   "start": 405.385,
+   "end": 408.254,
+   "text": "Llega con Zelda: Breath of the Wild, una aventura de"
+  },
+  {
+   "cue": "c7c",
+   "start": 408.254,
+   "end": 411.068,
+   "text": "mundo abierto que deja huella en toda la industria."
+  },
+  {
+   "cue": "c7d",
+   "start": 411.668,
+   "end": 415.53,
+   "text": "Mario Kart, Smash Bros., Animal Crossing… En 2020, durante el"
+  },
+  {
+   "cue": "c7d",
+   "start": 415.53,
+   "end": 419.645,
+   "text": "confinamiento, millones de personas se reúnen en islas virtuales."
+  },
+  {
+   "cue": "c7e",
+   "start": 420.245,
+   "end": 423.198,
+   "text": "A finales de 2025, Switch supera a DS"
+  },
+  {
+   "cue": "c7e",
+   "start": 423.198,
+   "end": 426.39,
+   "text": "y se convierte en la consola más vendida"
+  },
+  {
+   "cue": "c7e",
+   "start": 426.39,
+   "end": 429.422,
+   "text": "de Nintendo: hoy, más de 157 millones."
+  },
+  {
+   "cue": "c7f",
+   "start": 430.022,
+   "end": 433.881,
+   "text": "Mario salta de la pantalla al mundo real: un parque"
+  },
+  {
+   "cue": "c7f",
+   "start": 433.881,
+   "end": 438.043,
+   "text": "temático en 2021, una película taquillera en 2023 y, en"
+  },
+  {
+   "cue": "c7f",
+   "start": 438.043,
+   "end": 441.6,
+   "text": "2024, un museo en su antigua fábrica de cartas."
+  },
+  {
+   "cue": "c7g",
+   "start": 443.0,
+   "end": 446.835,
+   "text": "El 5 de junio de 2025 llega Nintendo Switch 2. Vende"
+  },
+  {
+   "cue": "c7g",
+   "start": 446.835,
+   "end": 451.777,
+   "text": "3,5 millones en cuatro días: el lanzamiento más rápido de Nintendo."
+  },
+  {
+   "cue": "c7h",
+   "start": 452.127,
+   "end": 456.443,
+   "text": "En 2026 su precio sube por el encarecimiento de la memoria,"
+  },
+  {
+   "cue": "c7h",
+   "start": 456.443,
+   "end": 460.101,
+   "text": "pero a 30 de septiembre ya supera los 26 millones."
+  },
+  {
+   "cue": "c7i",
+   "start": 460.701,
+   "end": 464.299,
+   "text": "Y el viaje sigue: una nueva película de Mario"
+  },
+  {
+   "cue": "c7i",
+   "start": 464.299,
+   "end": 467.738,
+   "text": "en 2026 y, para 2027, Zelda en imagen real."
+  },
+  {
+   "cue": "c8a",
+   "start": 471.638,
+   "end": 475.165,
+   "text": "Ciento treinta y siete años después, Nintendo sigue en Kioto."
+  },
+  {
+   "cue": "c8b",
+   "start": 475.765,
+   "end": 479.474,
+   "text": "Ha sobrevivido a guerras, crisis y fracasos, y casi siempre ha"
+  },
+  {
+   "cue": "c8b",
+   "start": 479.474,
+   "end": 483.182,
+   "text": "encontrado la salida por el mismo camino: hacer algo distinto."
+  },
+  {
+   "cue": "c8c",
+   "start": 483.782,
+   "end": 487.423,
+   "text": "No siempre ha tenido la máquina más potente. Ha apostado por"
+  },
+  {
+   "cue": "c8c",
+   "start": 487.423,
+   "end": 491.125,
+   "text": "otra cosa: juegos fáciles de entender y difíciles de olvidar."
+  },
+  {
+   "cue": "c8d",
+   "start": 491.725,
+   "end": 494.054,
+   "text": "Quienes jugaron con una NES enseñan hoy"
+  },
+  {
+   "cue": "c8d",
+   "start": 494.054,
+   "end": 495.905,
+   "text": "a sus hijos a coger un Joy-Con."
+  },
+  {
+   "cue": "c8e",
+   "start": 496.505,
+   "end": 499.613,
+   "text": "Detrás de cada consola late el mismo gesto que empezó"
+  },
+  {
+   "cue": "c8e",
+   "start": 499.613,
+   "end": 502.839,
+   "text": "en un taller de Kioto: repartir las cartas y preguntar…"
+  },
+  {
+   "cue": "c8f",
+   "start": 503.339,
+   "end": 504.069,
+   "text": "«¿Jugamos?»"
+  },
+  {
+   "cue": "c8g",
+   "start": 505.069,
+   "end": 506.908,
+   "text": "Porque la historia de Nintendo no"
+  },
+  {
+   "cue": "c8g",
+   "start": 506.908,
+   "end": 508.525,
+   "text": "se juega en una sola partida."
+  },
+  {
+   "cue": "c8h",
+   "start": 508.875,
+   "end": 511.519,
+   "text": "Y la próxima carta… aún está por repartir."
+  }
+ ]
+}

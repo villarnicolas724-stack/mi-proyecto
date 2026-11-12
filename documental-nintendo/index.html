@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Nintendo: de las cartas a las consolas</title>
+    <script src="assets/lib/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #1b1714; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="534.719" data-width="1920" data-height="1080" data-fps="30">
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0.0" data-duration="15.062" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="ch1" data-composition-id="ch1" data-composition-src="compositions/ch1.html" data-start="15.062" data-duration="46.699" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="ch2" data-composition-id="ch2" data-composition-src="compositions/ch2.html" data-start="61.761" data-duration="66.773" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:3"></div>
+      <div id="ch3" data-composition-id="ch3" data-composition-src="compositions/ch3.html" data-start="128.534" data-duration="46.185" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:4"></div>
+      <div id="ch4" data-composition-id="ch4" data-composition-src="compositions/ch4.html" data-start="174.719" data-duration="73.653" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="ch5" data-composition-id="ch5" data-composition-src="compositions/ch5.html" data-start="248.372" data-duration="67.228" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:6"></div>
+      <div id="ch6" data-composition-id="ch6" data-composition-src="compositions/ch6.html" data-start="315.6" data-duration="75.346" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:7"></div>
+      <div id="ch7" data-composition-id="ch7" data-composition-src="compositions/ch7.html" data-start="390.946" data-duration="77.692" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:8"></div>
+      <div id="ch8" data-composition-id="ch8" data-composition-src="compositions/ch8.html" data-start="468.638" data-duration="44.081" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:9"></div>
+      <div id="credits" data-composition-id="credits" data-composition-src="compositions/credits.html" data-start="512.719" data-duration="22.0" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:10"></div>
+      <div id="subs" data-composition-id="subs" data-composition-src="compositions/subs.html" data-start="0" data-duration="534.719" data-track-index="9" data-track-kind="captions" data-width="1920" data-height="1080" style="z-index:50"></div>
+      <audio id="voz" class="clip" src="assets/voice/narracion.wav" data-start="0" data-duration="534.719" data-track-index="10" data-volume="1"></audio>
+      <audio id="musica" class="clip" src="assets/music/banda_sonora.wav" data-start="0" data-duration="534.719" data-track-index="11" data-volume="1"></audio>
+      <audio id="efectos" class="clip" src="assets/sfx/efectos.wav" data-start="0" data-duration="534.719" data-track-index="12" data-volume="1"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,291 @@
+<template>
+  <style>
+    __FONT_PIXEL__
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #07060b; color: #f2f2f2; font-family: "Press Start 2P", monospace; }
+    .c3-full { position: absolute; inset: 0; opacity: 0; }
+    #c3-scan { position: absolute; inset: 0; z-index: 35; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.22) 0 1px, transparent 1px 3px); }
+    #c3-vig { position: absolute; inset: 0; z-index: 36; pointer-events: none; background: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%); }
+    .c3-rgb { text-shadow: -3px 0 rgba(255,59,59,0.75), 3px 0 rgba(59,227,255,0.75); }
+    /* tarjeta */
+    .cc { position: absolute; inset: 0; opacity: 0; perspective: 1600px; z-index: 30; background: #07060b; }
+    .cc-card { position: absolute; left: 520px; top: 270px; width: 320px; height: 534px; border-radius: 16px; background: #ff3b3b; transform-style: preserve-3d; }
+    .cc-card::before { content: ""; position: absolute; inset: 14px; border-radius: 6px; background: #07060b; background-image: repeating-linear-gradient(0deg, rgba(59,227,255,0.15) 0 2px, transparent 2px 6px); }
+    .cc-k { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: "Yuji Syuku", serif; font-size: 230px; color: #3be3ff; }
+    .cc-text { position: absolute; left: 930px; top: 380px; width: 900px; }
+    .cc-num { font-size: 30px; color: #3be3ff; opacity: 0; letter-spacing: 0.1em; }
+    .cc-title { font-size: 58px; line-height: 1.35; margin-top: 22px; opacity: 0; }
+    .cc-year { font-size: 40px; margin-top: 22px; color: #ffd23b; opacity: 0; }
+    /* salón */
+    #c3-hall { perspective: 900px; perspective-origin: 50% 46%; }
+    #c3-floor { position: absolute; left: -1000px; right: -1000px; top: 640px; height: 1400px; transform-origin: 50% 0; transform: rotateX(78deg);
+      background-color: #120d1c; background-image: linear-gradient(90deg, #2a1d40 4px, transparent 4px), linear-gradient(#2a1d40 4px, transparent 4px); background-size: 120px 120px; }
+    #c3-ceil { position: absolute; left: 0; right: 0; top: 0; height: 300px; background: linear-gradient(#000, #0b0812); }
+    #c3-corr { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+    .c3-wall { position: absolute; top: -330px; width: 2600px; height: 560px; transform-style: preserve-3d; }
+    #c3-wl { left: -1250px; transform-origin: 0 50%; transform: translateX(-300px) rotateY(80deg); }
+    #c3-wr { left: 0; transform-origin: 100% 50%; transform: translateX(-1050px) rotateY(-80deg); }
+    .c3-cab { position: absolute; top: 0; width: 330px; height: 560px; background: #1d1830; border: 6px solid #0c0a14; }
+    .c3-cab .mq { position: absolute; left: 18px; right: 18px; top: 18px; height: 70px; background: var(--c); }
+    .c3-cab .sc { position: absolute; left: 30px; right: 30px; top: 110px; height: 220px; background: #000; background-image: repeating-linear-gradient(90deg, var(--c) 0 18px, transparent 18px 54px), repeating-linear-gradient(0deg, rgba(255,255,255,0.15) 0 9px, transparent 9px 36px); opacity: 0.85; }
+    .c3-cab .cp { position: absolute; left: 0; right: 0; top: 360px; height: 60px; background: #2b2444; }
+    #c3-htitle { position: absolute; left: 0; right: 0; top: 140px; text-align: center; font-size: 44px; color: #ffd23b; opacity: 0; }
+    /* 1980 · radar */
+    #c3-noa { background: #07060b; }
+    #c3-noay { position: absolute; left: 140px; top: 200px; font-size: 150px; opacity: 0; color: #3be3ff; }
+    #c3-noat { position: absolute; left: 150px; top: 420px; font-size: 40px; line-height: 1.6; opacity: 0; }
+    #c3-radarwrap { position: absolute; left: 1060px; top: 120px; width: 720px; height: 720px; opacity: 0; }
+    #c3-radar { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle, #04140c 0%, #020805 70%); border: 10px solid #1d1830; overflow: hidden; }
+    .c3-ring { position: absolute; left: 50%; top: 50%; border: 3px solid rgba(80,255,150,0.45); border-radius: 50%; transform: translate(-50%, -50%); }
+    #c3-sweep { position: absolute; left: 50%; top: 50%; width: 360px; height: 6px; margin-top: -3px; background: linear-gradient(90deg, rgba(80,255,150,0.9), rgba(80,255,150,0)); transform-origin: 0 50%; }
+    .c3-blip { position: absolute; width: 18px; height: 18px; background: #50ff96; }
+    #c3-rtitle { position: absolute; left: 1060px; top: 870px; width: 720px; text-align: center; font-size: 36px; color: #50ff96; opacity: 0; }
+    #c3-fail { position: absolute; left: 150px; top: 640px; font-size: 64px; color: #ff3b3b; opacity: 0; }
+    /* almacén */
+    #c3-ware { background: #0d0b12; }
+    #c3-whouse { position: absolute; inset: 0; }
+    .c3-box { position: absolute; width: 120px; height: 190px; background: #2b2444; border-top: 26px solid #3f3560; opacity: 0; }
+    .c3-box::after { content: ""; position: absolute; left: 18px; right: 18px; top: 22px; height: 60px; background: #0a0810; }
+    #c3-wt { position: absolute; left: 0; right: 0; top: 110px; text-align: center; font-size: 48px; color: #ff3b3b; opacity: 0; }
+    /* Miyamoto */
+    #c3-miya { background: #07060b; }
+    #c3-mport { position: absolute; left: 230px; top: 200px; width: 512px; height: 608px; image-rendering: pixelated; }
+    #c3-mname { position: absolute; left: 860px; top: 330px; }
+    #c3-mname .n { font-size: 66px; line-height: 1.4; opacity: 0; }
+    #c3-mname .k { font-family: "Yuji Syuku", serif; font-size: 72px; color: #ff3b3b; margin-top: 20px; opacity: 0; }
+    #c3-mname .d { font-size: 28px; color: #3be3ff; margin-top: 30px; opacity: 0; }
+    /* ingeniero vs narrador */
+    #c3-ing { background: #07060b; }
+    #c3-circ { position: absolute; left: 100px; top: 180px; width: 760px; height: 600px; }
+    #c3-board { position: absolute; left: 1000px; top: 200px; width: 820px; height: 560px; }
+    .c3-pan { position: absolute; top: 0; width: 250px; height: 330px; border: 6px solid #f2f2f2; background: #15121f; opacity: 0; }
+    .c3-pan svg { position: absolute; inset: 20px; }
+    #c3-l1, #c3-l2 { position: absolute; top: 820px; font-size: 40px; opacity: 0; }
+    #c3-l1 { left: 300px; color: #6f6a80; }
+    #c3-l2 { left: 1220px; color: #ffd23b; }
+    /* sprites y vigas */
+    #c3-cast { background: #07060b; }
+    .c3-spr { position: absolute; image-rendering: pixelated; opacity: 0; }
+    .c3-lbl { position: absolute; font-size: 30px; opacity: 0; text-align: center; width: 400px; }
+    #c3-girders { position: absolute; inset: 0; opacity: 0; }
+    /* título */
+    #c3-dk { background: #07060b; }
+    #c3-dkt { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-size: 150px; color: #ff3b3b; line-height: 1.1; }
+    #c3-dky { position: absolute; left: 0; right: 0; top: 620px; text-align: center; font-size: 90px; color: #ffd23b; opacity: 0; }
+    #c3-flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 34; }
+    /* Jumpman → Mario */
+    #c3-name { background: #07060b; }
+    #c3-tag { position: absolute; left: 0; right: 0; top: 380px; text-align: center; font-size: 150px; color: #3be3ff; }
+    #c3-tagl { position: absolute; left: 0; right: 0; top: 280px; text-align: center; font-size: 30px; color: #6f6a80; opacity: 0; }
+    /* mundo */
+    #c3-world { background: #07060b; }
+    #c3-map { position: absolute; left: 160px; top: 120px; width: 1600px; height: 700px; }
+    #c3-wtxt { position: absolute; left: 0; right: 0; top: 840px; text-align: center; font-size: 34px; color: #ffd23b; opacity: 0; }
+    #c3-pix { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+    .c3-px { position: absolute; width: 120px; height: 120px; background: #6888fc; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="ch3" data-width="1920" data-height="1080">
+    <div id="c3-scan"></div><div id="c3-vig"></div>
+
+    <div id="c3-hall" class="c3-full">
+      <div id="c3-ceil"></div>
+      <div id="c3-floor"></div>
+      <div id="c3-corr"><div id="c3-wl" class="c3-wall"></div><div id="c3-wr" class="c3-wall"></div></div>
+      <div id="c3-htitle" class="c3-rgb">Salones recreativos</div>
+    </div>
+
+    <div id="c3-noa" class="c3-full">
+      <div id="c3-noay" class="c3-rgb">1980</div>
+      <div id="c3-noat">Nintendo of America<br><span style="color:#6f6a80">Nueva York</span></div>
+      <div id="c3-fail" class="c3-rgb">Fracaso</div>
+      <div id="c3-radarwrap"><div id="c3-radar">
+        <div class="c3-ring" style="width:620px;height:620px"></div><div class="c3-ring" style="width:430px;height:430px"></div><div class="c3-ring" style="width:240px;height:240px"></div>
+        <div id="c3-sweep"></div>
+        <div class="c3-blip" id="c3-b1" style="left:470px;top:200px"></div><div class="c3-blip" id="c3-b2" style="left:220px;top:420px"></div><div class="c3-blip" id="c3-b3" style="left:520px;top:480px"></div>
+      </div></div>
+      <div id="c3-rtitle">RADAR SCOPE</div>
+    </div>
+
+    <div id="c3-ware" class="c3-full"><div id="c3-whouse"></div><div id="c3-wt" class="c3-rgb">Sin vender</div></div>
+
+    <div id="c3-miya" class="c3-full">
+      <canvas id="c3-mport" width="16" height="19"></canvas>
+      <div id="c3-mname"><div class="n">Shigeru<br>Miyamoto</div><div class="k">宮本茂</div><div class="d">Diseñador · n. 1952</div></div>
+    </div>
+
+    <div id="c3-ing" class="c3-full">
+      <svg id="c3-circ" viewBox="0 0 760 600"><g fill="none" stroke="#3a3550" stroke-width="10" stroke-linecap="square" id="c3-traces">
+        <path d="M0 100 H300 V250 H520"/><path d="M0 300 H180 V450 H700"/><path d="M120 0 V180 H420 V600"/><path d="M760 80 H600 V380 H300"/><path d="M0 520 H260 V340"/>
+      </g><g fill="#3a3550"><rect x="500" y="230" width="60" height="60"/><rect x="280" y="430" width="60" height="60"/><rect x="400" y="160" width="60" height="60"/></g></svg>
+      <div id="c3-board">
+        <div class="c3-pan" id="c3-pn1" style="left:0"><svg viewBox="0 0 210 290"><path d="M40 260 C 40 150, 60 90, 105 80 C 150 90, 170 150, 170 260 Z M70 80 a35 35 0 1 1 70 0 a35 35 0 1 1 -70 0" fill="none" stroke="#f2f2f2" stroke-width="5"/></svg></div>
+        <div class="c3-pan" id="c3-pn2" style="left:285px"><svg viewBox="0 0 210 290"><path d="M105 60 a28 28 0 1 1 0.1 0 M105 120 L50 270 L160 270 Z" fill="none" stroke="#f2f2f2" stroke-width="5"/></svg></div>
+        <div class="c3-pan" id="c3-pn3" style="left:570px"><svg viewBox="0 0 210 290"><path d="M105 70 a26 26 0 1 1 0.1 0 M105 125 V210 M105 210 L70 270 M105 210 L140 270 M105 150 L60 120 M105 150 L150 180" fill="none" stroke="#f2f2f2" stroke-width="5"/><path d="M20 280 Q 105 180 190 280" fill="none" stroke="#ffd23b" stroke-width="4" stroke-dasharray="10 10"/></svg></div>
+      </div>
+      <div id="c3-l1">Ingeniero</div><div id="c3-l2">Narrador</div>
+    </div>
+
+    <div id="c3-cast" class="c3-full">
+      <svg id="c3-girders" viewBox="0 0 1920 1080"><g fill="#d6324a"><polygon points="0,800 1920,740 1920,770 0,830"/><polygon points="0,560 1920,620 1920,650 0,590"/></g><g fill="#07060b">
+        <rect x="0" y="0" width="1" height="1"/></g></svg>
+      <canvas class="c3-spr" id="c3-ape" width="16" height="16" style="left:160px;top:180px;width:384px;height:384px"></canvas>
+      <canvas class="c3-spr" id="c3-lady" width="10" height="16" style="left:840px;top:200px;width:240px;height:384px"></canvas>
+      <canvas class="c3-spr" id="c3-man" width="10" height="14" style="left:1440px;top:250px;width:240px;height:336px"></canvas>
+      <canvas class="c3-spr" id="c3-barrel" width="10" height="10" style="left:0;top:0;width:110px;height:110px"></canvas>
+      <div class="c3-lbl" id="c3-la" style="left:152px;top:600px">Un gorila</div>
+      <div class="c3-lbl" id="c3-lb" style="left:760px;top:600px">Una dama</div>
+      <div class="c3-lbl" id="c3-lc" style="left:1360px;top:600px">Un carpintero</div>
+    </div>
+
+    <div id="c3-dk" class="c3-full"><div id="c3-dkt" class="c3-rgb">DONKEY<br>KONG</div><div id="c3-dky" class="c3-rgb">1981</div></div>
+    <div id="c3-flash"></div>
+
+    <div id="c3-name" class="c3-full"><div id="c3-tagl">Su primer nombre</div><div id="c3-tag" class="c3-rgb">JUMPMAN</div></div>
+
+    <div id="c3-world" class="c3-full"><svg id="c3-map" viewBox="0 0 1600 700"><g id="c3-dots"></g><g id="c3-cities"></g></svg><div id="c3-wtxt">Salones de todo el mundo</div></div>
+
+    <div id="c3-pix"></div>
+
+    <div id="c3-card" class="cc">
+      <div class="cc-card"><div class="cc-k">三</div></div>
+      <div class="cc-text"><div class="cc-num">__NUM__</div><div class="cc-title">__TITLE__</div><div class="cc-year">__YEARS__</div></div>
+    </div>
+  </div>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT, $ = K.$, $$ = K.$$;
+      const NS = "http://www.w3.org/2000/svg";
+      // ---- construcción estática (determinista)
+      const cols = ["#ff3b3b", "#3be3ff", "#ffd23b", "#8b5cf6", "#50ff96", "#ff8a3b"];
+      ["#c3-wl", "#c3-wr"].forEach((w, wi) => { for (let i = 0; i < 7; i++) { const c = document.createElement("div"); c.className = "c3-cab"; c.style.left = i * 370 + "px"; c.style.setProperty("--c", cols[(i + wi * 3) % 6]); c.innerHTML = '<div class="mq"></div><div class="sc"></div><div class="cp"></div>'; $(w).appendChild(c); } });
+      (() => { const wh = $("#c3-whouse"); for (let r = 0; r < 4; r++) for (let i = 0; i < 13; i++) { const b = document.createElement("div"); b.className = "c3-box"; const s = 1 - r * 0.16; b.style.left = 60 + i * 140 * 1 + r * 20 + "px"; b.style.top = 300 + r * 140 + "px"; b.style.transform = `scale(${s})`; b.dataset.r = r; wh.appendChild(b); } })();
+      function sprite(id, rows, pal) { const c = $(id), x = c.getContext("2d"); rows.forEach((row, y) => [...row].forEach((ch, xx) => { if (ch !== ".") { x.fillStyle = pal[ch]; x.fillRect(xx, y, 1, 1); } })); }
+      sprite("#c3-mport", [
+        "....kkkkkkk.....", "...kkkkkkkkk....", "..kkkkkkkkkkk...", "..kkssssssskk...", "..kssssssssss...", "..ksswwsswwss...", "..ksswbsswbss...", "..kssssssssss...", "..ksssmmmmsss....", "...sssssssss....",
+        "....sssssss.....", ".....sssss......", "...ccccccccc....", "..cccccccccccc..", ".ccccccwwccccccc", ".ccccccwwccccccc", ".ccccccwwccccccc", ".ccccccccccccccc", ".ccccccccccccccc"],
+        { k: "#2b2030", s: "#e8b38a", w: "#ffffff", b: "#1b1b1b", m: "#a35b4a", c: "#3b4a8a" });
+      sprite("#c3-ape", [
+        ".....bbbbbb.....", "...bbbbbbbbbb...", "..bbbttttttbbb..", "..bbtwbttbwtbb..", "..bbttttttttbb..", "..bbbttnnttbbb..", ".bbbbbtttttbbbb.", "bbbbbbbbbbbbbbbb",
+        "bbtbbbbbbbbbbtbb", "bbtbbbttttbbbtbb", "bbttbbttttbbttbb", ".bbbbbbbbbbbbbb.", "..bbbbbbbbbbbb..", "..bbbb....bbbb..", ".bbbbb....bbbbb.", ".ttttt....ttttt."],
+        { b: "#7a4a2a", t: "#d9a066", w: "#ffffff", n: "#3a2010" });
+      sprite("#c3-lady", ["...yyyy...", "..yyyyyy..", "..ysssyy..", "..ssssss..", "...ssss...", "..pppppp..", ".pppppppp.", ".ppwppwpp.", "pppppppppp", "pppppppppp", ".pppppppp.", "pppppppppp", "pppppppppp", "pppppppppp", "..s....s..", ".ss....ss."], { y: "#ffd23b", s: "#e8b38a", p: "#ff6fb1", w: "#ffffff" });
+      sprite("#c3-man", ["..hhhhhh..", ".hhhhhhhh.", "..ssssss..", "..sbsbss..", "..ssssss..", "...ssss...", ".gggggggg.", "ggsggggsgg", "gssggggssg", "..gggggg..", "..ggg.ggg.", "..oo...oo.", ".ooo...ooo", ".ooo...ooo"], { h: "#8a5a2a", s: "#e8b38a", b: "#1b1b1b", g: "#3b7ad0", o: "#5a3a1a" });
+      sprite("#c3-barrel", ["..bbbbbb..", ".bbddddbb.", "bbddddddbb", "bkkkkkkkkb", "bbddddddbb", "bbddddddbb", "bkkkkkkkkb", "bbddddddbb", ".bbddddbb.", "..bbbbbb.."], { b: "#8a4a1a", d: "#c07030", k: "#3a1a0a" });
+      // mapa de puntos (aproximado, estilizado)
+      const MAP = [
+        "................................................................",
+        "........xxxxxxxx.......xxx.........xxxxxxxxxxxxxxxxx............",
+        ".....xxxxxxxxxxxxx....xxx......xxxxxxxxxxxxxxxxxxxxxxxxx........",
+        "...xxxxxxxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxxx......",
+        "....xxxxxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxxx.......",
+        ".....xxxxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxxx........",
+        "......xxxxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxx..xx......",
+        ".......xxxxxxxxx...........xxxxxxxxxxxxxxxxxxxxxxxxxx...xx......",
+        "........xxxxxx.............xxxxxxxxxxxxxxxxxxxxxxxxx...xx.......",
+        ".........xxxx..............xxxxxxxxxxxxxxxxxxxxxxxx.............",
+        "..........xxx...............xxxxxxxxx...xxxxxxxxxx..............",
+        "...........xxxx............xxxxxxxxxx.....xxxxxx................",
+        "............xxxxx..........xxxxxxxxxxx.....xxxx.x...............",
+        "..............xxxxx.........xxxxxxxxxx......xx...xx.............",
+        "..............xxxxxx.........xxxxxxxx...........xxx.............",
+        "..............xxxxxxx.........xxxxxxx............xxxxx..........",
+        "...............xxxxxx..........xxxxx...........xxxxxxxx.........",
+        "...............xxxxx...........xxxxx...........xxxxxxxxx........",
+        "................xxxx............xxx.............xxxxxxx.........",
+        "................xxx.............xx...............xxxx...........",
+        ".................xx.............................................",
+      ];
+      (() => { const g = $("#c3-dots"); let html = ""; MAP.forEach((row, y) => [...row].forEach((ch, x) => { if (ch === "x") html += `<rect x="${x * 25}" y="${y * 33}" width="16" height="16" fill="#2a2444"/>`; })); g.innerHTML = html;
+        const cities = [[13, 5], [9, 7], [12, 8], [32, 4], [30, 5], [34, 6], [57, 6], [56, 7], [52, 15], [17, 15], [44, 10], [38, 12]];
+        $("#c3-cities").innerHTML = cities.map(([x, y], i) => `<rect class="c3-city" x="${x * 25 - 6}" y="${y * 33 - 6}" width="28" height="28" fill="${["#ff3b3b", "#ffd23b", "#3be3ff"][i % 3]}" opacity="0"/>`).join(""); })();
+      (() => { const p = $("#c3-pix"); for (let y = 0; y < 9; y++) for (let x = 0; x < 16; x++) { const d = document.createElement("div"); d.className = "c3-px"; d.style.left = x * 120 + "px"; d.style.top = y * 120 + "px"; d.dataset.o = ((x * 7 + y * 13) % 17) / 17; p.appendChild(d); } })();
+
+      const tl = gsap.timeline({ paused: true });
+      const on = (s, t) => tl.set(s, { opacity: 1 }, t), off = (s, t) => tl.set(s, { opacity: 0 }, t);
+      K.chapterCard(tl, "c3", 0, 1.5);
+      // ---- salón recreativo (c3a)
+      const a0 = 2.2; on("#c3-hall", a0);
+      tl.fromTo("#c3-corr", { z: -300 }, { z: 520, duration: C.c3b[0] - a0, ease: "power1.inOut" }, a0);
+      tl.fromTo("#c3-floor", { backgroundPositionY: "0px" }, { backgroundPositionY: "480px", duration: C.c3b[0] - a0, ease: "power1.inOut" }, a0);
+      $$("#c3-hall .sc").forEach((s, i) => tl.fromTo(s, { backgroundPositionX: "0px" }, { backgroundPositionX: (i % 2 ? 216 : -216) + "px", duration: C.c3b[0] - a0, ease: "none" }, a0));
+      K.blurIn(tl, "#c3-htitle", C.c3a[0] + 0.3, 0.4);
+      off("#c3-hall", C.c3b[0] - 0.05);
+      // ---- 1980 Nintendo of America + Radar Scope (c3b)
+      const b0 = C.c3b[0] - 0.05; on("#c3-noa", b0);
+      K.blurIn(tl, "#c3-noay", b0 + 0.1, 0.3);
+      K.blurIn(tl, "#c3-noat", C.c3b[0] + 1.4, 0.3);
+      tl.fromTo("#c3-radarwrap", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, C.c3b[0] + 3.2);
+      tl.fromTo("#c3-sweep", { rotation: 0 }, { rotation: 720, duration: 4.2, ease: "none" }, C.c3b[0] + 3.2);
+      $$("#c3-noa .c3-blip").forEach((b, i) => tl.fromTo(b, { opacity: 0 }, { opacity: 1, duration: 0.05, yoyo: true, repeat: 5 }, C.c3b[0] + 3.6 + i * 0.35));
+      tl.set("#c3-rtitle", { opacity: 1 }, C.c3b[0] + 3.6);
+      tl.fromTo("#c3-fail", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.in" }, C.c3b[0] + 5.5);
+      tl.to("#c3-radar", { filter: "saturate(0) brightness(0.5)", duration: 0.4 }, C.c3b[0] + 5.6);
+      off("#c3-noa", C.c3c[0] - 0.05);
+      // ---- almacén (c3c)
+      const w0 = C.c3c[0] - 0.05; on("#c3-ware", w0);
+      $$("#c3-whouse .c3-box").forEach((b, i) => tl.fromTo(b, { opacity: 0, y: -40 }, { opacity: 1 - b.dataset.r * 0.18, y: 0, duration: 0.25, ease: "power2.out" }, w0 + 0.05 + (i % 13) * 0.05 + b.dataset.r * 0.3));
+      tl.fromTo("#c3-whouse", { scale: 1.15 }, { scale: 1.0, duration: 3.4, ease: "power2.out" }, w0);
+      K.blurIn(tl, "#c3-wt", C.c3c[0] + 1.6, 0.3);
+      off("#c3-ware", C.c3d[0] - 0.05);
+      // ---- Miyamoto (c3d)
+      const m0 = C.c3d[0] - 0.05; on("#c3-miya", m0);
+      tl.fromTo("#c3-mport", { clipPath: "inset(0 0 100% 0)" }, { clipPath: "inset(0 0 0% 0)", duration: 0.9, ease: "steps(19)" }, m0);
+      K.charsIn(tl, "#c3-mname .n", C.c3d[0] + 2.2, { gap: 0.05 });
+      K.blurIn(tl, "#c3-mname .k", C.c3d[0] + 3.0, 0.4);
+      K.blurIn(tl, "#c3-mname .d", C.c3d[0] + 3.4, 0.3);
+      off("#c3-miya", C.c3e[0] - 0.05);
+      // ---- ingeniero → narrador (c3e)
+      const e0 = C.c3e[0] - 0.05; on("#c3-ing", e0);
+      K.blurIn(tl, "#c3-l1", e0 + 0.2, 0.3);
+      tl.fromTo("#c3-traces path", { strokeDasharray: "1600", strokeDashoffset: 1600 }, { strokeDashoffset: 0, duration: 1.4, ease: "power2.out", stagger: 0.1 }, e0);
+      ["#c3-pn1", "#c3-pn2", "#c3-pn3"].forEach((p, i) => tl.fromTo(p, { opacity: 0, y: 40, rotation: -6 + i * 6 }, { opacity: 1, y: 0, rotation: -3 + i * 3, duration: 0.5, ease: "expo.out" }, C.c3e[0] + 1.8 + i * 0.25));
+      K.blurIn(tl, "#c3-l2", C.c3e[0] + 2.1, 0.3);
+      tl.to("#c3-circ", { opacity: 0.35, duration: 0.5 }, C.c3e[0] + 1.9);
+      off("#c3-ing", C.c3f[0] - 0.05);
+      // ---- un gorila, una dama, un carpintero (c3f) → salto del barril
+      const f0 = C.c3f[0] - 0.05; on("#c3-cast", f0);
+      [["#c3-ape", "#c3-la", 0.1], ["#c3-lady", "#c3-lb", 1.1], ["#c3-man", "#c3-lc", 2.1]].forEach(([s, l, dt]) => {
+        tl.fromTo(s, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.3, ease: "steps(4)" }, f0 + dt);
+        tl.set(l, { opacity: 1 }, f0 + dt + 0.2);
+      });
+      tl.set("#c3-girders", { opacity: 1 }, f0 + 3.0);
+      tl.to(["#c3-la", "#c3-lb", "#c3-lc"], { opacity: 0, duration: 0.15 }, f0 + 3.0);
+      tl.to("#c3-ape", { x: -40, y: 150, scale: 0.5, duration: 0.5, ease: "power2.inOut" }, f0 + 3.0);
+      tl.to("#c3-lady", { x: 400, y: -120, scale: 0.45, duration: 0.5, ease: "power2.inOut" }, f0 + 3.0);
+      tl.to("#c3-man", { x: -300, y: 340, scale: 0.5, duration: 0.5, ease: "power2.inOut" }, f0 + 3.0);
+      tl.set("#c3-barrel", { opacity: 1 }, f0 + 3.4);
+      tl.fromTo("#c3-barrel", { x: 300, y: 690, rotation: 0 }, { x: 1760, y: 645, rotation: 720, duration: 1.6, ease: "none" }, f0 + 3.4);
+      tl.to("#c3-man", { y: 200, duration: 0.3, ease: "power2.out", yoyo: true, repeat: 1 }, f0 + 3.85);
+      off("#c3-cast", C.c3g[0] - 0.05);
+      // ---- DONKEY KONG · 1981 (c3g)
+      const g0 = C.c3g[0] - 0.08; on("#c3-dk", g0);
+      tl.set("#c3-flash", { opacity: 0.85 }, g0);
+      tl.to("#c3-flash", { opacity: 0, duration: 0.35, ease: "power2.out" }, g0 + 0.01);
+      tl.fromTo("#c3-dkt", { scale: 1.35, filter: "blur(10px)" }, { scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, g0);
+      tl.fromTo("#c3-dk", { x: -14 }, { x: 0, duration: 0.4, ease: "elastic.out(1,0.3)" }, g0 + 0.05);
+      tl.fromTo("#c3-dky", { opacity: 0 }, { opacity: 1, duration: 0.01 }, C.c3g[0] + 1.25);
+      tl.fromTo("#c3-dky", { scale: 1.4 }, { scale: 1, duration: 0.3, ease: "expo.out" }, C.c3g[0] + 1.25);
+      off("#c3-dk", C.c3h[0] - 0.05);
+      // ---- Jumpman → Mario (c3h): el nombre gira como una tragaperras
+      const h0 = C.c3h[0] - 0.05; on("#c3-name", h0);
+      K.blurIn(tl, "#c3-tagl", h0 + 0.1, 0.3);
+      const names = ["JUMPMAN", "JUMPMAX", "JUMARIO", "MUMARIO", "MARIO"];
+      const roll = { i: 0 };
+      tl.to(roll, { i: names.length - 1, duration: 0.6, ease: "steps(" + (names.length - 1) + ")", onUpdate: () => ($("#c3-tag").textContent = names[Math.round(roll.i)]) }, C.c3h[0] + 2.9);
+      tl.call(() => ($("#c3-tag").textContent = "MARIO"), null, C.c3h[0] + 3.55);
+      tl.call(() => ($("#c3-tag").textContent = "JUMPMAN"), null, h0 + 0.01);
+      tl.to("#c3-tag", { color: "#ff3b3b", scale: 1.15, duration: 0.25, ease: "expo.out" }, C.c3h[0] + 3.5);
+      tl.to("#c3-tagl", { opacity: 0, duration: 0.2 }, C.c3h[0] + 2.8);
+      off("#c3-name", C.c3i[0] - 0.05);
+      // ---- salones de todo el mundo (c3i)
+      const i0 = C.c3i[0] - 0.05; on("#c3-world", i0);
+      tl.fromTo("#c3-dots", { opacity: 0 }, { opacity: 1, duration: 0.6 }, i0);
+      $$("#c3-world .c3-city").forEach((c, i) => tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: 0.06, ease: "steps(1)" }, C.c3i[0] + 0.6 + i * 0.28));
+      K.blurIn(tl, "#c3-wtxt", C.c3i[0] + 1.0, 0.3);
+      // barrido de píxeles hacia el capítulo 4
+      $$("#c3-pix .c3-px").forEach(p => tl.fromTo(p, { opacity: 0 }, { opacity: 1, duration: 0.05, ease: "steps(1)" }, D - 0.9 + parseFloat(p.dataset.o) * 0.6));
+      window.__timelines["ch3"] = tl;
+    })();
+  </script>
+</template>

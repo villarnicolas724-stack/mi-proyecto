@@ -1,0 +1,95 @@
+<template>
+  <style>
+    __FONT_JP__
+    #root { position: absolute; inset: 0; overflow: hidden; background: #241811; }
+    #hk-table { position: absolute; inset: -60px; background:
+      radial-gradient(ellipse 52% 60% at 50% 46%, #6b4a33 0%, #4a3120 38%, #2a1c13 70%, #170f0a 100%); }
+    #hk-grainwood { position: absolute; inset: 0; width: 1920px; height: 1080px; opacity: 0.55; mix-blend-mode: multiply; }
+    #hk-cam { position: absolute; inset: 0; transform-origin: 50% 48%; }
+    #hk-stage { position: absolute; left: 50%; top: 50%; width: 0; height: 0; perspective: 1800px; }
+    #hk-card3d { position: absolute; left: -190px; top: -330px; width: 380px; height: 630px; transform-style: preserve-3d; }
+    .hk-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 40px 70px rgba(0,0,0,0.55), 0 6px 14px rgba(0,0,0,0.35); }
+    .hk-face svg { width: 100%; height: 100%; display: block; }
+    #hk-back { transform: rotateY(180deg); background: #121214; }
+    #hk-screen { position: absolute; inset: 18px; border-radius: 6px; background: linear-gradient(160deg, #1f2733 0%, #0c0f14 60%); overflow: hidden; }
+    #hk-pix { position: absolute; left: 50%; top: 50%; width: 220px; height: 363px; margin: -181px 0 0 -110px; image-rendering: pixelated; opacity: 0; }
+    #hk-sheen { position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.10) 45%, transparent 60%); }
+    .hk-joy { position: absolute; top: -190px; width: 118px; height: 380px; border-radius: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); opacity: 0; }
+    #hk-joyl { left: -436px; background: linear-gradient(90deg, #0a9fcc, #18c2ee); border-radius: 64px 14px 14px 64px; }
+    #hk-joyr { left: 318px; background: linear-gradient(90deg, #ff4b36, #e8321f); border-radius: 14px 64px 64px 14px; }
+    .hk-stick { position: absolute; width: 52px; height: 52px; border-radius: 50%; background: #1b1b1f; left: 34px; box-shadow: inset 0 -4px 0 #333; }
+    .hk-btn { position: absolute; width: 24px; height: 24px; border-radius: 50%; background: #1b1b1f; }
+    #hk-year { position: absolute; left: 230px; top: 640px; font-family: "Yuji Syuku", "Shippori Mincho", serif; font-size: 120px; color: #efe5cf; opacity: 0; letter-spacing: 0.04em; }
+    #hk-year2 { position: absolute; right: 230px; top: 640px; font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 104px; color: #efe5cf; opacity: 0; letter-spacing: 0.02em; }
+    #hk-title { position: absolute; left: 0; right: 0; top: 330px; text-align: center; opacity: 0; }
+    #hk-kanji { font-family: "Yuji Syuku", serif; font-size: 96px; color: #e2553a; letter-spacing: 0.25em; margin-left: 0.25em; }
+    #hk-name { font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 196px; color: #f4ecdc; letter-spacing: 0.16em; margin-left: 0.16em; line-height: 1.05; }
+    #hk-sub { font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 46px; color: #d9c9a8; letter-spacing: 0.06em; margin-top: 18px; }
+    #hk-flood { position: absolute; inset: 0; background: #ede3cf; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080">
+    <div id="hk-table"></div>
+    <canvas id="hk-grainwood" width="1920" height="1080"></canvas>
+    <div id="hk-cam">
+      <div id="hk-year">1889</div>
+      <div id="hk-year2">2026</div>
+      <div id="hk-stage">
+        <div id="hk-joyl" class="hk-joy"><div class="hk-stick" style="top:70px"></div><div class="hk-btn" style="left:47px;top:200px"></div><div class="hk-btn" style="left:47px;top:262px"></div><div class="hk-btn" style="left:16px;top:231px"></div><div class="hk-btn" style="left:78px;top:231px"></div></div>
+        <div id="hk-card3d">
+          <div class="hk-face" id="hk-front">__INCLUDE(src/svg/crane.svg|hkc)__</div>
+          <div class="hk-face" id="hk-back"><div id="hk-screen"><img id="hk-pix" src="assets/img/crane-pixel.png" alt=""><div id="hk-sheen"></div></div></div>
+        </div>
+        <div id="hk-joyr" class="hk-joy"><div class="hk-stick" style="top:230px"></div><div class="hk-btn" style="left:47px;top:60px"></div><div class="hk-btn" style="left:47px;top:122px"></div><div class="hk-btn" style="left:16px;top:91px"></div><div class="hk-btn" style="left:78px;top:91px"></div></div>
+      </div>
+    </div>
+    <div id="hk-title">
+      <div id="hk-kanji">任天堂</div>
+      <div id="hk-name">NINTENDO</div>
+      <div id="hk-sub">De las cartas a las consolas · 1889 – 2026</div>
+    </div>
+    <div id="hk-flood"></div>
+  </div>
+  <script>
+    (() => {
+      __KIT__
+      const C = __C__, D = __DUR__, K = KIT;
+      // vetas de madera deterministas
+      (() => { const c = document.getElementById("hk-grainwood"), x = c.getContext("2d"), r = K.rng(42);
+        for (let i = 0; i < 140; i++) { const y = r() * 1080; x.strokeStyle = `rgba(20,10,4,${0.08 + r() * 0.18})`; x.lineWidth = 1 + r() * 4;
+          x.beginPath(); x.moveTo(0, y); for (let px = 0; px <= 1920; px += 80) x.lineTo(px, y + Math.sin(px / (180 + r() * 200) + i) * (6 + r() * 10)); x.stroke(); } })();
+      const tl = gsap.timeline({ paused: true });
+      // 0 s — la carta ya está en pantalla; el pigmento se pinta por pinceladas
+      const strokes = K.$$(".hkc-stroke");
+      tl.set(strokes[0], { attr: { "stroke-dashoffset": 45 } }, 0);
+      strokes.forEach((s, i) => tl.to(s, { attr: { "stroke-dashoffset": 0 }, duration: 1.0, ease: "power2.inOut" }, i === 0 ? 0.1 : 0.55 + i * 0.85));
+      tl.fromTo("#hk-card3d", { rotationY: -14, rotationX: 8, rotationZ: -3 }, { rotationY: 10, rotationX: 4, rotationZ: 1, duration: 5.4, ease: "power1.inOut" }, 0);
+      tl.fromTo("#hk-cam", { scale: 1.12 }, { scale: 1.0, duration: 5.6, ease: "power2.out" }, 0);
+      tl.fromTo("#hk-year", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, C.h1[0] + 1.1);
+      // h2 — la carta se da la vuelta, gira 90° y se convierte en consola
+      const flip = C.h2[0] + 0.25;
+      tl.to("#hk-year", { opacity: 0, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, flip - 0.1);
+      tl.to("#hk-card3d", { rotationY: 180, rotationX: 0, rotationZ: 90, duration: 1.3, ease: "power3.inOut" }, flip);
+      tl.to("#hk-cam", { scale: 1.06, duration: 1.3, ease: "power2.inOut" }, flip);
+      tl.set(".hk-joy", { opacity: 1 }, flip + 1.0);
+      tl.fromTo("#hk-joyl", { x: -520, rotation: -12 }, { x: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, flip + 1.05);
+      tl.fromTo("#hk-joyr", { x: 520, rotation: 12 }, { x: 0, rotation: 0, duration: 0.55, ease: "expo.out" }, flip + 1.15);
+      tl.fromTo("#hk-pix", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out" }, flip + 1.8);
+      tl.set("#hk-pix", { rotation: -90 }, 0);
+      tl.fromTo("#hk-sheen", { x: -500 }, { x: 600, duration: 1.4, ease: "power2.inOut" }, flip + 1.9);
+      tl.fromTo("#hk-year2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, flip + 2.2);
+      // h3 — el nombre
+      const tn = C.h3[0];
+      tl.to("#hk-year2", { opacity: 0, duration: 0.25 }, tn - 0.2);
+      tl.to("#hk-stage", { y: -40, scale: 0.42, opacity: 0.0, duration: 0.7, ease: "power3.inOut" }, tn - 0.25);
+      tl.set("#hk-title", { opacity: 1 }, tn + 0.1);
+      K.blurIn(tl, "#hk-kanji", tn + 0.15, 0.5);
+      K.charsIn(tl, "#hk-name", tn + 0.95, { gap: 0.06, dur: 0.25 });
+      K.wordsIn(tl, "#hk-sub", tn + 1.25, { gap: 0.05 });
+      // inundación de color hacia el papel de Kioto
+      tl.to("#hk-title", { opacity: 0, filter: "blur(10px)", duration: 0.35, ease: "power2.in" }, D - 0.55);
+      tl.to("#hk-flood", { opacity: 1, duration: 0.4, ease: "power2.inOut" }, D - 0.42);
+      window.__timelines["hook"] = tl;
+    })();
+  </script>
+</template>
