@@ -196,6 +196,8 @@
       st.render();
     }
     window.addEventListener("hf-seek", e => renderAt(e.detail.time));
+    // precompila sombreadores y sube geometría de todos los modelos antes de la captura
+    { const vis = []; st.scene.traverse(o => { vis.push([o, o.visible]); o.visible = true; }); st.renderer.compile(st.scene, st.camera); st.render(); vis.forEach(([o, v]) => (o.visible = v)); }
     renderAt(T0);
   </script>
   <script>
