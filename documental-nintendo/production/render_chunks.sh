@@ -4,7 +4,7 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p renders/tramos
-B=(0 62 128 175 205 248 280 316 350 391 430 469 500 END)
+B=(0 62 128 175 190 205 225 248 280 316 350 391 430 469 500 END)
 for i in $(seq 0 $((${#B[@]}-2))); do
   s=${B[$i]}; e=${B[$((i+1))]}; out=renders/tramos/t$(printf %02d $i).mp4
   [ -s "$out" ] && { echo "salto $out"; continue; }
