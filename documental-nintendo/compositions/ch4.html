@@ -358,7 +358,7 @@ const KIT = (() => {
       tl.to("#c4-cline", { attr: { "stroke-dashoffset": 0 }, duration: 2.6, ease: "power1.in" }, b0 + 0.2);
       K.blurIn(tl, "#c4-cl1", b0 + 0.6, 0.4); K.blurIn(tl, "#c4-cl2", b0 + 1.0, 0.4);
       for (let i = 0; i < 9; i++) { const c = document.createElement("div"); c.className = "c4-cart"; c.style.left = 860 + i * 92 + "px"; c.style.top = "120px"; $("#c4-crash").appendChild(c);
-        tl.fromTo(c, { opacity: 0, y: -200, rotation: 0 }, { opacity: 1, y: 640 - (i % 3) * 40, rotation: (i % 2 ? 1 : -1) * (20 + i * 7), duration: 0.7, ease: "power2.in" }, C.c4b[0] + 3.1 + i * 0.12); }
+        tl.fromTo(c, { opacity: 0, y: -200, rotation: 0 }, { opacity: 1, y: 450 - (i % 3) * 40, rotation: (i % 2 ? 1 : -1) * (20 + i * 7), duration: 0.7, ease: "power2.in" }, C.c4b[0] + 3.1 + i * 0.12); }
       off("#c4-crash", C.c4c[0] - 0.05);
       // ---- NES y robot (c4c)
       on("#c4-studio", C.c4c[0] - 0.1);
