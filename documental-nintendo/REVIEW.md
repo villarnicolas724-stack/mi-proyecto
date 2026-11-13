@@ -10,7 +10,12 @@
 - `hyperframes check`: **ok** (0 errores). Avisos que se mantienen a propósito: el tamaño de los archivos de escena, la densidad de la pista de subtítulos (146 grupos), los mensajes de rendimiento de WebGL por software, el letrero de la puerta en perspectiva (es decorativo) y el aviso legal de los créditos (4,3 s en pantalla, también disponible por escrito en este paquete).
 - Voz: 80 frases, sin valores atípicos de velocidad (de 12 a 19 caracteres por segundo); pronunciación revisada con los fonemas de espeak-ng para cada nombre extranjero.
 - Mezcla (medida, **no escuchada**): la música queda ~14,5 dB por debajo de la voz mientras se habla y unos 9 dB por debajo en las pausas, con reducción automática (ducking) de 7,5 dB guiada por la voz. Los golpes de efectos quedan ~3 dB por encima de la música. El máster final se normaliza a −16 LUFS con techo de −1,5 dBTP (ver renders/).
-- Revisión visual: hojas de contacto de todos los capítulos, de los 9 cortes entre capítulos y a ancho de móvil (360 px).
+- Revisión visual: hojas de contacto de todos los capítulos, de los 9 cortes entre capítulos y a ancho de móvil (360 px), y del vídeo final cada 10 s.
+- Vídeo final (`renders/nintendo_documental_1080p.mp4`): 16.042 fotogramas (8 min 55 s), 1920×1080, 30 fps, H.264 + AAC estéreo 256 kb/s, 106 MB. Sonoridad medida: −16,0 LUFS integrados, pico −1,5 dBFS, LRA 3,6 LU. Las uniones entre tramos se comprobaron fotograma a fotograma (idénticas a ambos lados del corte).
+- Corregido tras ver el render: los cartuchos de la crisis de 1983 tapaban el rótulo y los puntos de la isla de 2020 pasaban sobre el texto; la mezcla salía en mono y ahora es estéreo (voz centrada).
+
+## Cómo se renderizó
+- El render por software (WebGL con SwiftShader, sin GPU) se bloqueaba de forma reproducible en algunos fotogramas de los capítulos 4 a 8 cuando se capturaban en una sesión larga, aunque esos mismos fotogramas salen bien por separado. `production/render_chunks.sh` renderiza por tramos, parte un tramo por el segundo donde se bloquea y une todo sin recodificar; el audio se mezcla aparte con las tres pistas a volumen 1, igual que en `index.html`.
 
 ## Lo que nadie ha comprobado
 - **Nadie ha escuchado el audio.** La voz es una síntesis local (Kokoro) y la música está compuesta y sintetizada por código: se midieron los niveles, el equilibrio espectral y la ausencia de saturación, pero no su calidad ni su expresividad a oído.

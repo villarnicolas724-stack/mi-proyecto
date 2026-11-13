@@ -2,7 +2,7 @@
 
 | Archivo | Qué es |
 |---|---|
-| `renders/nintendo_documental_1080p.mp4` | Documental terminado: 1920×1080, 30 fps, H.264 + AAC, subtítulos en español incrustados, ~8 min 55 s |
+| `renders/nintendo_documental_1080p.mp4` | Documental terminado: 1920×1080, 30 fps, H.264 + AAC, subtítulos en español incrustados, 8 min 55 s, audio estéreo a −16 LUFS |
 | `deliverables/subtitulos_es.srt` / `.vtt` | Subtítulos aparte (para YouTube o reproductores) |
 | `deliverables/GUION.md` | Guion completo de la narración |
 | `deliverables/STORYBOARD.md` | Storyboard plano a plano con tiempos exactos, animación, música y transiciones |
@@ -31,6 +31,9 @@ python3 production/build_scenes.py
 ```
 ```bash
 ./production/render_chunks.sh   # render por tramos reanudable + mezcla de audio
+```
+```bash
+./production/master.sh          # normaliza el audio y genera renders/nintendo_documental_1080p.mp4
 ```
 
 ## Cambiar la voz por la de un locutor
