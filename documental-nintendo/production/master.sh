@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Masterizado: normaliza el audio del render a -16 LUFS / -1.5 dBTP en dos pasadas; el vídeo se copia sin recodificar.
 set -euo pipefail
-IN=${1:-renders/nintendo_documental_raw.mp4}
+IN=${1:-renders/nintendo_documental_raw.mov}
 OUT=${2:-renders/nintendo_documental_1080p.mp4}
 STATS=$(ffmpeg -hide_banner -nostats -i "$IN" -map 0:a -af loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json -f null - 2>&1 | sed -n '/^{/,/^}/p')
 get() { echo "$STATS" | python3 -c "import json,sys; print(json.load(sys.stdin)['$1'])"; }

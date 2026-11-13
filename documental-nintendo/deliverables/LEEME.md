@@ -30,7 +30,7 @@
 python3 production/build_scenes.py
 ```
 ```bash
-npx hyperframes render -o renders/nintendo_documental_raw.mp4 --quality delivery
+./production/render_chunks.sh   # render por tramos reanudable + mezcla de audio
 ```
 
 ## Cambiar la voz por la de un locutor
