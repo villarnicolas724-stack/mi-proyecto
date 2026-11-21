@@ -1,0 +1,52 @@
+<template>
+  <style>
+#root { position:absolute; inset:0; overflow:hidden; background:#F3F1EC; color:#111111; font-family:'Archivo Black', sans-serif; }
+.cam { position:absolute; inset:0; transform-origin:50% 50%; }
+.pn { position:absolute; border:10px solid #111111; background:#F3F1EC; overflow:hidden; opacity:0; }
+.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.22; }
+.big { position:absolute; text-transform:uppercase; letter-spacing:-0.01em; line-height:.92; margin:0; white-space:nowrap; }
+.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; }
+.h { opacity:0; }
+.fill { position:absolute; inset:0; }
+.svgbox { position:absolute; }
+</style>
+  <div id="root" data-composition-id="s6" data-width="1920" data-height="1080" data-duration="13.26">
+    <div id="s6-cam" class="cam">
+
+      <div id="s6-k" class="pn" style="left:120px;top:60px;width:1000px;height:960px;background:#FBFAF6;transform-origin:30% 100%;">
+        <h1 class="big" style="left:70px;top:60px;font-size:130px;">Contrato</h1>
+        <div style="position:absolute;left:70px;top:210px;width:840px;height:8px;background:#111111;"></div>
+        <p id="s6-l1" class="sub h" style="left:70px;top:270px;font-size:46px;">POCHITA ENTREGA:</p>
+        <h1 id="s6-l1b" class="big h" style="left:66px;top:340px;font-size:100px;color:#FF6A13;-webkit-text-stroke:5px #111111;">Su corazón</h1>
+        <p id="s6-l2" class="sub h" style="left:70px;top:520px;font-size:46px;">A CAMBIO, DENJI DEBE:</p>
+        <h1 id="s6-l2b" class="big h" style="left:66px;top:590px;font-size:76px;line-height:1;">Cumplir<br>sus sueños</h1>
+        <div id="s6-stamp" class="svgbox h" style="left:560px;top:740px;width:340px;height:160px;">
+          <div style="position:absolute;inset:0;border:10px solid #FF6A13;transform:rotate(-8deg);"><p class="sub" style="left:22px;top:38px;font-size:56px;color:#FF6A13;">FIRMADO</p></div>
+        </div>
+      </div>
+      <div id="s6-h" class="svgbox h" style="left:1240px;top:260px;width:560px;height:532px;"><svg id="s6-heart" viewBox="0 0 400 380" width="100%" height="100%"><path d="M200,360 C80,270 20,200 20,120 C20,60 70,20 125,20 C160,20 185,40 200,70 C215,40 240,20 275,20 C330,20 380,60 380,120 C380,200 320,270 200,360Z" fill="#FF6A13" stroke="#111" stroke-width="14"/><path d="M110,90 q-30,20 -25,60" stroke="#111" stroke-width="10" fill="none" stroke-linecap="round"/></svg></div>
+    </div>
+  </div>
+  <script>
+
+const tl = gsap.timeline({ paused: true });
+const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.08 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
+const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.6 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.28, ease: "back.out(2.2)" }, t);
+const on = (s, t) => tl.set(s, { opacity: 1 }, t);
+const off = (s, t) => tl.set(s, { opacity: 0 }, t);
+const shake = (s, t, a) => { a = a || 18; const p = [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]]; p.forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
+const chain = (s, t, d) => tl.fromTo(s, { x: 0 }, { x: -40, duration: 0.1, ease: "none", repeat: Math.max(1, Math.round(d / 0.1) - 1) }, t);
+
+tl.fromTo("#s6-cam", { scale: 1 }, { scale: 1.04, duration: 13.26, ease: "none" }, 0);
+
+slam("#s6-k", 0.6, { y: 80, rotation: -3 });
+on("#s6-l1", 3.625); slam("#s6-l1b", 4.895); pop("#s6-h", 4.895);
+tl.to("#s6-heart", { scale: 1.08, duration: 0.12, ease: "power2.out", transformOrigin: "50% 50%", yoyo: true, repeat: 1 }, 5.395);
+tl.to("#s6-heart", { scale: 1.08, duration: 0.12, ease: "power2.out", transformOrigin: "50% 50%", yoyo: true, repeat: 1 }, 6.395);
+tl.to("#s6-heart", { scale: 1.08, duration: 0.12, ease: "power2.out", transformOrigin: "50% 50%", yoyo: true, repeat: 1 }, 7.395);
+on("#s6-l2", 6.346); slam("#s6-l2b", 9.091);
+slam("#s6-stamp", 10.690999999999999, { scale: 1.8 }); shake("#s6-cam", 10.741, 8);
+
+window.__timelines["s6"] = tl;
+  </script>
+</template>

@@ -1,0 +1,283 @@
+{
+ "theme": null,
+ "format": "wav",
+ "formats": [
+  "wav"
+ ],
+ "sounds": [
+  {
+   "name": "whoosh",
+   "file": "whoosh.wav",
+   "files": [
+    "whoosh.wav"
+   ],
+   "sound": "whoosh/fast",
+   "dur_s": 0.305,
+   "lufs_max": -23.1,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 3,
+    "recording": "recording 1 of 3"
+   }
+  },
+  {
+   "name": "whoosh_soft",
+   "file": "whoosh_soft.wav",
+   "files": [
+    "whoosh_soft.wav"
+   ],
+   "sound": "whoosh/sweep",
+   "dur_s": 0.422,
+   "lufs_max": -15.4,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  },
+  {
+   "name": "slide",
+   "file": "slide.wav",
+   "files": [
+    "slide.wav"
+   ],
+   "sound": "slide/paper",
+   "dur_s": 0.316,
+   "lufs_max": -16.5,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  },
+  {
+   "name": "pop",
+   "file": "pop.wav",
+   "files": [
+    "pop.wav"
+   ],
+   "sound": "thump/door",
+   "dur_s": 0.197,
+   "lufs_max": -23.3,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 2,
+    "recording": "recording 1 of 2"
+   }
+  },
+  {
+   "name": "tick",
+   "file": "tick.wav",
+   "files": [
+    "tick.wav"
+   ],
+   "sound": "tick/key",
+   "dur_s": 0.07,
+   "lufs_max": -20.4,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 2,
+    "recording": "recording 1 of 2"
+   }
+  },
+  {
+   "name": "click",
+   "file": "click.wav",
+   "files": [
+    "click.wav"
+   ],
+   "sound": "click/cursor",
+   "dur_s": 0.131,
+   "lufs_max": -21.8,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  },
+  {
+   "name": "type",
+   "file": "type.wav",
+   "files": [
+    "type.wav"
+   ],
+   "sound": "type/mechanical",
+   "dur_s": 0.3,
+   "lufs_max": -18.7,
+   "loop": false,
+   "ok": true
+  },
+  {
+   "name": "shutter",
+   "file": "shutter.wav",
+   "files": [
+    "shutter.wav"
+   ],
+   "sound": "success/shutter",
+   "dur_s": 0.36,
+   "lufs_max": -15.2,
+   "loop": false,
+   "ok": true
+  },
+  {
+   "name": "hit",
+   "file": "hit.wav",
+   "files": [
+    "hit.wav"
+   ],
+   "sound": "title/bag",
+   "dur_s": 0.464,
+   "lufs_max": -19.2,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  },
+  {
+   "name": "impact",
+   "file": "impact.wav",
+   "files": [
+    "impact.wav"
+   ],
+   "sound": "impact/car",
+   "dur_s": 0.526,
+   "lufs_max": -22.7,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 2,
+    "recording": "recording 1 of 2"
+   }
+  },
+  {
+   "name": "drop",
+   "file": "drop.wav",
+   "files": [
+    "drop.wav"
+   ],
+   "sound": "drop/sack",
+   "dur_s": 0.215,
+   "lufs_max": -22.0,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  },
+  {
+   "name": "riser",
+   "file": "riser.wav",
+   "files": [
+    "riser.wav"
+   ],
+   "sound": "rise/breath",
+   "dur_s": 1.5,
+   "lufs_max": -14.0,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 2,
+    "recording": "recording 1 of 2"
+   }
+  },
+  {
+   "name": "swell",
+   "file": "swell.wav",
+   "files": [
+    "swell.wav"
+   ],
+   "sound": "rise/hit",
+   "dur_s": 1.199,
+   "lufs_max": -17.5,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 2,
+    "recording": "recording 1 of 2"
+   }
+  },
+  {
+   "name": "glint",
+   "file": "glint.wav",
+   "files": [
+    "glint.wav"
+   ],
+   "sound": "shine/blade",
+   "dur_s": 0.358,
+   "lufs_max": -16.2,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  },
+  {
+   "name": "success",
+   "file": "success.wav",
+   "files": [
+    "success.wav"
+   ],
+   "sound": "success/click",
+   "dur_s": 0.306,
+   "lufs_max": -17.3,
+   "loop": false,
+   "ok": true
+  },
+  {
+   "name": "sting",
+   "file": "sting.wav",
+   "files": [
+    "sting.wav"
+   ],
+   "sound": "sting/reveal",
+   "dur_s": 0.812,
+   "lufs_max": -19.2,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 2,
+    "recording": "recording 1 of 2"
+   }
+  },
+  {
+   "name": "logo",
+   "file": "logo.wav",
+   "files": [
+    "logo.wav"
+   ],
+   "sound": "logo/bag",
+   "dur_s": 0.472,
+   "lufs_max": -21.0,
+   "loop": false,
+   "ok": true,
+   "member": {
+    "n": 1,
+    "of": 1,
+    "recording": "recording 1 of 1"
+   }
+  }
+ ]
+}

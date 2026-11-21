@@ -1,0 +1,53 @@
+<template>
+  <style>
+#root { position:absolute; inset:0; overflow:hidden; background:#F3F1EC; color:#111111; font-family:'Archivo Black', sans-serif; }
+.cam { position:absolute; inset:0; transform-origin:50% 50%; }
+.pn { position:absolute; border:10px solid #111111; background:#F3F1EC; overflow:hidden; opacity:0; }
+.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.22; }
+.big { position:absolute; text-transform:uppercase; letter-spacing:-0.01em; line-height:.92; margin:0; white-space:nowrap; }
+.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; }
+.h { opacity:0; }
+.fill { position:absolute; inset:0; }
+.svgbox { position:absolute; }
+</style>
+  <div id="root" data-composition-id="s4" data-width="1920" data-height="1080" data-duration="12.78">
+    <div id="s4-cam" class="cam">
+
+      <div id="s4-a" class="pn" style="left:60px;top:60px;width:1800px;height:400px;background:#111111;color:#F3F1EC;">
+        <p class="sub" style="left:60px;top:56px;font-size:52px;color:#F3F1EC;">LA DEUDA DE SU PADRE CON LA</p>
+        <h1 class="big" style="left:52px;top:150px;font-size:190px;color:#FF6A13;">Yakuza</h1>
+      </div>
+      <div id="s4-b" class="pn" style="left:60px;top:500px;width:740px;height:520px;">
+        <p class="sub" style="left:50px;top:40px;font-size:52px;">CAZAR DEMONIOS<br>POR MONEDAS</p>
+        <div id="s4-co0" class="svgbox h" style="left:80px;top:260px;width:150px;height:150px;"><svg id="s4-c0" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-co1" class="svgbox h" style="left:230px;top:330px;width:150px;height:150px;"><svg id="s4-c1" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-co2" class="svgbox h" style="left:380px;top:260px;width:150px;height:150px;"><svg id="s4-c2" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-co3" class="svgbox h" style="left:530px;top:330px;width:150px;height:150px;"><svg id="s4-c3" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div>
+      </div>
+      <div id="s4-c" class="pn" style="left:840px;top:500px;width:420px;height:520px;">
+        <div class="tone" style="opacity:.1"></div>
+        <div id="s4-br" class="svgbox" style="left:60px;top:60px;width:280px;height:243px;"><svg id="s4-br-svg" viewBox="0 0 300 260" width="100%" height="100%"><path d="M40,250 L40,120 C10,110 10,30 80,20 C130,10 170,10 220,20 C290,30 290,110 260,120 L260,250Z" fill="#D9A35B" stroke="#111" stroke-width="12"/><path d="M70,230 L70,130 C50,120 45,55 95,48 C140,40 160,40 205,48 C255,55 250,120 230,130 L230,230Z" fill="#F6E7C8" stroke="#111" stroke-width="5"/><circle cx="120" cy="150" r="7" fill="#111"/><circle cx="180" cy="180" r="6" fill="#111"/><circle cx="150" cy="105" r="5" fill="#111"/></svg></div>
+        <p class="sub" style="left:50px;top:360px;font-size:60px;">PAN DURO</p>
+      </div>
+      <div id="s4-d" class="pn" style="left:1300px;top:500px;width:560px;height:520px;background:#FF6A13;">
+        <p class="sub" style="left:44px;top:60px;font-size:48px;">SOÑABAN CON</p>
+        <h1 class="big" style="left:40px;top:150px;font-size:88px;line-height:1;">Una vida<br>normal</h1>
+      </div>
+    </div>
+  </div>
+  <script>
+
+const tl = gsap.timeline({ paused: true });
+const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.08 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
+const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.6 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.28, ease: "back.out(2.2)" }, t);
+const on = (s, t) => tl.set(s, { opacity: 1 }, t);
+const off = (s, t) => tl.set(s, { opacity: 0 }, t);
+const shake = (s, t, a) => { a = a || 18; const p = [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]]; p.forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
+const chain = (s, t, d) => tl.fromTo(s, { x: 0 }, { x: -40, duration: 0.1, ease: "none", repeat: Math.max(1, Math.round(d / 0.1) - 1) }, t);
+
+tl.fromTo("#s4-cam", { scale: 1 }, { scale: 1.04, duration: 12.78, ease: "none" }, 0);
+
+slam("#s4-a", 0.6); slam("#s4-b", 4.419, { y: 60 });
+pop("#s4-co0", 6.900, { y: -80 });pop("#s4-co1", 7.040, { y: -80 });pop("#s4-co2", 7.180, { y: -80 });pop("#s4-co3", 7.320, { y: -80 });
+slam("#s4-c", 8.103, { y: 60 }); slam("#s4-d", 8.855, { x: 80 });
+
+window.__timelines["s4"] = tl;
+  </script>
+</template>
