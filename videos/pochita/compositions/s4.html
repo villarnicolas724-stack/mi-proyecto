@@ -2,51 +2,92 @@
   <style>
 #root { position:absolute; inset:0; overflow:hidden; background:#F3F1EC; color:#111111; font-family:'Archivo Black', sans-serif; }
 .cam { position:absolute; inset:0; transform-origin:50% 50%; }
-.pn { position:absolute; border:10px solid #111111; background:#F3F1EC; overflow:hidden; opacity:0; }
-.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.22; }
+.pn { position:absolute; overflow:hidden; opacity:0; }
+.full { left:-20px; top:-20px; width:1960px; height:1120px; }
+.bord { border:10px solid #111111; }
+.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.2; }
 .big { position:absolute; text-transform:uppercase; letter-spacing:-0.01em; line-height:.92; margin:0; white-space:nowrap; }
-.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; }
+.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; white-space:nowrap; }
 .h { opacity:0; }
 .fill { position:absolute; inset:0; }
-.svgbox { position:absolute; }
+.ch { position:absolute; }
+.box { position:absolute; }
+.tag { position:absolute; font-family:'Archivo Black'; text-transform:uppercase; background:#111111; color:#F3F1EC; padding:6px 18px; font-size:44px; }
 </style>
-  <div id="root" data-composition-id="s4" data-width="1920" data-height="1080" data-duration="12.78">
+  <div id="root" data-composition-id="s4" data-width="1920" data-height="1080" data-duration="14.63">
     <div id="s4-cam" class="cam">
 
-      <div id="s4-a" class="pn" style="left:60px;top:60px;width:1800px;height:400px;background:#111111;color:#F3F1EC;">
-        <p class="sub" style="left:60px;top:56px;font-size:52px;color:#F3F1EC;">LA DEUDA DE SU PADRE CON LA</p>
-        <h1 class="big" style="left:52px;top:150px;font-size:190px;color:#FF6A13;">Yakuza</h1>
+      <div id="s4-a" class="pn full" style="background:#1B1B22;opacity:1">
+        <div id="s4-d" class="ch" style="left:150px;top:100px;width:362px;height:980px;"><div id="s4-d-in" class="fill" style="transform-origin:50% 100%;"><img src="assets/chars/denji_dark.png" style="width:100%;height:100%;display:block"/></div></div>
+        <p class="sub" style="left:640px;top:200px;font-size:56px;color:#F3F1EC;">UNA DEUDA ENORME CON LA</p>
+        <h1 id="s4-y" class="big h" style="left:630px;top:290px;font-size:230px;color:#C3121E;-webkit-text-stroke:6px #111111;">Yakuza</h1>
+        <div id="s4-c0" class="box h" style="left:700px;top:-260px;width:170px;height:170px;"><svg id="s4-cs0" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#E5B53A" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-c1" class="box h" style="left:930px;top:-260px;width:170px;height:170px;"><svg id="s4-cs1" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#E5B53A" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-c2" class="box h" style="left:1160px;top:-260px;width:170px;height:170px;"><svg id="s4-cs2" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#E5B53A" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-c3" class="box h" style="left:1390px;top:-260px;width:170px;height:170px;"><svg id="s4-cs3" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#E5B53A" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-c4" class="box h" style="left:1620px;top:-260px;width:170px;height:170px;"><svg id="s4-cs4" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#E5B53A" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div>
       </div>
-      <div id="s4-b" class="pn" style="left:60px;top:500px;width:740px;height:520px;">
-        <p class="sub" style="left:50px;top:40px;font-size:52px;">CAZAR DEMONIOS<br>POR MONEDAS</p>
-        <div id="s4-co0" class="svgbox h" style="left:80px;top:260px;width:150px;height:150px;"><svg id="s4-c0" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-co1" class="svgbox h" style="left:230px;top:330px;width:150px;height:150px;"><svg id="s4-c1" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-co2" class="svgbox h" style="left:380px;top:260px;width:150px;height:150px;"><svg id="s4-c2" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div><div id="s4-co3" class="svgbox h" style="left:530px;top:330px;width:150px;height:150px;"><svg id="s4-c3" viewBox="0 0 200 200" width="100%" height="100%"><circle cx="100" cy="100" r="88" fill="#8E8E8E" stroke="#111" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#111" stroke-width="5"/><text x="100" y="128" text-anchor="middle" font-family="Archivo Black" font-size="80" fill="#111">¥</text></svg></div>
+      <div id="s4-b" class="pn bord" style="left:50px;top:50px;width:900px;height:980px;background:#F3F1EC;">
+        <div class="tone" style="opacity:.12"></div>
+        <p class="sub" style="left:50px;top:50px;font-size:54px;">CAZAR DEMONIOS</p>
+        <h1 class="big" style="left:46px;top:120px;font-size:110px;">x 4 monedas</h1>
+        <div id="s4-p" class="ch" style="left:260px;top:420px;width:420px;height:441px;"><div id="s4-p-in" class="fill" style="transform-origin:50% 100%;"><svg viewBox="0 0 400 420" width="100%" height="100%" overflow="visible">
+  <defs>
+    <radialGradient id="s4-pp-g" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FFA94D"/><stop offset=".55" stop-color="#F08A2B"/><stop offset="1" stop-color="#D86E1C"/></radialGradient>
+    <clipPath id="s4-pp-bladeclip"><rect x="160" y="10" width="80" height="262" rx="14"/></clipPath>
+  </defs>
+  <g id="s4-pp-body">
+    <g id="s4-pp-tail"><path d="M350,300 C392,300 396,340 372,352" stroke="#3A1C0B" stroke-width="6" fill="none"/>
+      <rect x="356" y="344" width="40" height="16" rx="8" fill="#2B2B2E"/></g>
+    <g id="s4-pp-legs" fill="#D86E1C" stroke="#3A1C0B" stroke-width="6">
+      <rect x="112" y="318" width="54" height="72" rx="24"/><rect x="234" y="318" width="54" height="72" rx="24"/></g>
+    <path d="M30,215 C30,105 105,52 200,52 C295,52 370,105 370,215 C370,318 298,362 200,362 C102,362 30,318 30,215Z" fill="url(#s4-pp-g)" stroke="#3A1C0B" stroke-width="7"/>
+    <path d="M70,300 C110,345 290,345 330,300" stroke="#D86E1C" stroke-width="10" fill="none" opacity=".6" stroke-linecap="round"/>
+    <rect x="150" y="2" width="100" height="40" rx="12" fill="#2B2B2E" stroke="#3A1C0B" stroke-width="5"/>
+    <g clip-path="url(#s4-pp-bladeclip)"><g id="s4-pp-teeth" fill="#2B2B2E"><path d="M188,34 l-11,8 l11,8Z"/><path d="M188,50 l-11,8 l11,8Z"/><path d="M188,66 l-11,8 l11,8Z"/><path d="M188,82 l-11,8 l11,8Z"/><path d="M188,98 l-11,8 l11,8Z"/><path d="M188,114 l-11,8 l11,8Z"/><path d="M188,130 l-11,8 l11,8Z"/><path d="M188,146 l-11,8 l11,8Z"/><path d="M188,162 l-11,8 l11,8Z"/><path d="M188,178 l-11,8 l11,8Z"/><path d="M188,194 l-11,8 l11,8Z"/><path d="M188,210 l-11,8 l11,8Z"/><path d="M188,226 l-11,8 l11,8Z"/><path d="M188,242 l-11,8 l11,8Z"/><path d="M188,258 l-11,8 l11,8Z"/><path d="M188,274 l-11,8 l11,8Z"/><path d="M212,34 l11,8 l-11,8Z"/><path d="M212,50 l11,8 l-11,8Z"/><path d="M212,66 l11,8 l-11,8Z"/><path d="M212,82 l11,8 l-11,8Z"/><path d="M212,98 l11,8 l-11,8Z"/><path d="M212,114 l11,8 l-11,8Z"/><path d="M212,130 l11,8 l-11,8Z"/><path d="M212,146 l11,8 l-11,8Z"/><path d="M212,162 l11,8 l-11,8Z"/><path d="M212,178 l11,8 l-11,8Z"/><path d="M212,194 l11,8 l-11,8Z"/><path d="M212,210 l11,8 l-11,8Z"/><path d="M212,226 l11,8 l-11,8Z"/><path d="M212,242 l11,8 l-11,8Z"/><path d="M212,258 l11,8 l-11,8Z"/><path d="M212,274 l11,8 l-11,8Z"/></g></g>
+    <rect x="186" y="30" width="28" height="238" rx="14" fill="#5B5B5E" stroke="#3A1C0B" stroke-width="5"/>
+    <line x1="200" y1="44" x2="200" y2="254" stroke="#8C8C90" stroke-width="4"/>
+    <g id="s4-pp-eyes"><circle cx="115" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="115" cy="185" r="33" fill="#141414"/><circle cx="103" cy="172" r="8" fill="#FFFFFF" opacity=".85"/><circle cx="285" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="285" cy="185" r="33" fill="#141414"/><circle cx="273" cy="172" r="8" fill="#FFFFFF" opacity=".85"/></g>
+    <path d="M140,250 C150,284 182,290 196,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M260,250 C250,284 218,290 204,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/>
+  </g>
+</svg></div></div>
       </div>
-      <div id="s4-c" class="pn" style="left:840px;top:500px;width:420px;height:520px;">
-        <div class="tone" style="opacity:.1"></div>
-        <div id="s4-br" class="svgbox" style="left:60px;top:60px;width:280px;height:243px;"><svg id="s4-br-svg" viewBox="0 0 300 260" width="100%" height="100%"><path d="M40,250 L40,120 C10,110 10,30 80,20 C130,10 170,10 220,20 C290,30 290,110 260,120 L260,250Z" fill="#D9A35B" stroke="#111" stroke-width="12"/><path d="M70,230 L70,130 C50,120 45,55 95,48 C140,40 160,40 205,48 C255,55 250,120 230,130 L230,230Z" fill="#F6E7C8" stroke="#111" stroke-width="5"/><circle cx="120" cy="150" r="7" fill="#111"/><circle cx="180" cy="180" r="6" fill="#111"/><circle cx="150" cy="105" r="5" fill="#111"/></svg></div>
-        <p class="sub" style="left:50px;top:360px;font-size:60px;">PAN DURO</p>
+      <div id="s4-c" class="pn bord" style="left:990px;top:50px;width:880px;height:470px;background:#FFF4E2;">
+        <div id="s4-br" class="box" style="left:60px;top:90px;width:300px;height:260px;"><svg id="s4-brs" viewBox="0 0 300 260" width="100%" height="100%"><path d="M40,250 L40,120 C10,110 10,30 80,20 C130,10 170,10 220,20 C290,30 290,110 260,120 L260,250Z" fill="#D9A35B" stroke="#111" stroke-width="12"/><path d="M70,230 L70,130 C50,120 45,55 95,48 C140,40 160,40 205,48 C255,55 250,120 230,130 L230,230Z" fill="#F6E7C8" stroke="#111" stroke-width="5"/></svg></div>
+        <h1 class="big" style="left:400px;top:180px;font-size:80px;">Pan duro</h1>
       </div>
-      <div id="s4-d" class="pn" style="left:1300px;top:500px;width:560px;height:520px;background:#FF6A13;">
-        <p class="sub" style="left:44px;top:60px;font-size:48px;">SOÑABAN CON</p>
-        <h1 class="big" style="left:40px;top:150px;font-size:88px;line-height:1;">Una vida<br>normal</h1>
+      <div id="s4-e" class="pn bord" style="left:990px;top:560px;width:880px;height:470px;background:#FF6A13;">
+        <div id="s4-d3" class="ch" style="left:10px;top:20px;width:388px;height:1050px;"><div id="s4-d3-in" class="fill" style="transform-origin:50% 100%;"><img src="assets/chars/denji_cut.png" style="width:100%;height:100%;display:block"/></div></div>
+        <p class="sub" style="left:420px;top:70px;font-size:44px;">SUEÑAN CON</p>
+        <h1 class="big" style="left:416px;top:140px;font-size:80px;line-height:1;">Una vida<br>normal</h1>
       </div>
     </div>
   </div>
   <script>
 
 const tl = gsap.timeline({ paused: true });
-const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.08 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
-const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.6 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.28, ease: "back.out(2.2)" }, t);
+const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.12 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
+const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.4 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.32, ease: "back.out(2.4)" }, t);
+const slideIn = (s, t, dx, dy) => tl.fromTo(s, { opacity: 0, x: dx || 0, y: dy || 0, rotation: (dx || 0) > 0 ? 4 : -4 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.42, ease: "back.out(1.6)" }, t);
 const on = (s, t) => tl.set(s, { opacity: 1 }, t);
 const off = (s, t) => tl.set(s, { opacity: 0 }, t);
-const shake = (s, t, a) => { a = a || 18; const p = [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]]; p.forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
-const chain = (s, t, d) => tl.fromTo(s, { x: 0 }, { x: -40, duration: 0.1, ease: "none", repeat: Math.max(1, Math.round(d / 0.1) - 1) }, t);
+const shake = (s, t, a) => { a = a || 18; [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]].forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
+const punch = (s, t, k, d) => tl.fromTo(s, { scale: 1 }, { scale: k || 1.15, duration: 0.12, ease: "power3.out" }, t).to(s, { scale: 1, duration: (d || 0.9), ease: "power2.inOut" }, t + 0.5);
+const chain = (s, t, d, ax) => { const big = ax === "y40"; if (big) ax = "y"; const o = {}; o[ax || "x"] = 0; const e = {}; e[ax || "x"] = big ? 40 : (ax === "y" ? 16 : -40); tl.fromTo(s, o, Object.assign(e, { duration: 0.08, ease: "none", repeat: Math.max(1, Math.round(d / 0.08) - 1) }), t); };
+const breathe = (s, t, d) => tl.fromTo(s, { scaleY: 1, scaleX: 1 }, { scaleY: 1.018, scaleX: 0.995, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor(d / 0.9)) }, t);
+const blink = (s, ts) => ts.forEach(t => { tl.to(s, { scaleY: 0.08, duration: 0.05, ease: "power2.in", transformOrigin: "50% 50%" }, t); tl.to(s, { scaleY: 1, duration: 0.08, ease: "power2.out" }, t + 0.08); });
+const hop = (s, t, n, hgt) => { hgt = hgt || 70; for (let i = 0; i < n; i++) { const b = t + i * 0.5;
+  tl.to(s, { scaleY: 0.86, scaleX: 1.1, duration: 0.07, ease: "power2.out" }, b);
+  tl.to(s, { y: -hgt, scaleY: 1.1, scaleX: 0.93, duration: 0.18, ease: "power2.out" }, b + 0.07);
+  tl.to(s, { y: 0, scaleY: 1, scaleX: 1, duration: 0.18, ease: "power2.in" }, b + 0.25);
+  tl.to(s, { scaleY: 0.9, scaleX: 1.07, duration: 0.05 }, b + 0.43); tl.to(s, { scaleY: 1, scaleX: 1, duration: 0.07 }, b + 0.48); } };
+const wag = (s, t, d) => tl.fromTo(s, { rotation: -14 }, { rotation: 14, duration: 0.14, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round(d / 0.14)), transformOrigin: "0% 0%" }, t);
+const sway = (s, t, d, a) => tl.fromTo(s, { rotation: -(a || 3) }, { rotation: (a || 3), duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round(d / 0.6)) }, t);
+const impact = (s, t) => { tl.set(s, { opacity: 1 }, t); tl.set(s, { opacity: 0 }, t + 2 / 30); tl.set(s, { opacity: 1 }, t + 4 / 30); tl.set(s, { opacity: 0 }, t + 6 / 30); };
 
-tl.fromTo("#s4-cam", { scale: 1 }, { scale: 1.04, duration: 12.78, ease: "none" }, 0);
+tl.fromTo("#s4-cam", { scale: 1 }, { scale: 1.035, duration: 14.63, ease: "none" }, 0);
 
-slam("#s4-a", 0.6); slam("#s4-b", 4.419, { y: 60 });
-pop("#s4-co0", 6.900, { y: -80 });pop("#s4-co1", 7.040, { y: -80 });pop("#s4-co2", 7.180, { y: -80 });pop("#s4-co3", 7.320, { y: -80 });
-slam("#s4-c", 8.103, { y: 60 }); slam("#s4-d", 8.855, { x: 80 });
+slideIn("#s4-d", 0.45, -500); breathe("#s4-d-in", 0.45, 6.12); slam("#s4-y", 5.797, { scale: 1.4 }); shake("#s4-cam", 5.8469999999999995, 12);
+on("#s4-c0", 6.10); tl.fromTo("#s4-c0", { y: 0, rotation: 0 }, { y: 1500, rotation: 200, duration: 1.3, ease: "power2.in" }, 6.10);on("#s4-c1", 6.22); tl.fromTo("#s4-c1", { y: 0, rotation: 0 }, { y: 1540, rotation: -200, duration: 1.3, ease: "power2.in" }, 6.22);on("#s4-c2", 6.34); tl.fromTo("#s4-c2", { y: 0, rotation: 0 }, { y: 1580, rotation: 200, duration: 1.3, ease: "power2.in" }, 6.34);on("#s4-c3", 6.46); tl.fromTo("#s4-c3", { y: 0, rotation: 0 }, { y: 1620, rotation: -200, duration: 1.3, ease: "power2.in" }, 6.46);on("#s4-c4", 6.58); tl.fromTo("#s4-c4", { y: 0, rotation: 0 }, { y: 1660, rotation: 200, duration: 1.3, ease: "power2.in" }, 6.58);
+on("#s4-b", 6.57); off("#s4-a", 6.62); slam("#s4-b", 6.57); pop("#s4-p", 8.942, { y: 150 }); hop("#s4-p-in", 9.242, 2, 50); blink("#s4-pp-eyes", [7.17, 9.47, 11.77, 14.07]);
+slideIn("#s4-c", 9.789, 400); tl.fromTo("#s4-br", { rotation: -8 }, { rotation: 8, duration: 0.3, yoyo: true, repeat: 5, ease: "sine.inOut" }, 10.089);
+slideIn("#s4-e", 10.81, 0, 400); breathe("#s4-d3-in", 10.81, 3.8200000000000003);
 
 window.__timelines["s4"] = tl;
   </script>

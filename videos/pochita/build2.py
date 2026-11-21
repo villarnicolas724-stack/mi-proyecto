@@ -66,6 +66,16 @@ def blade(uid, w=1000, h=200):
             f'<circle cx="{w-60}" cy="100" r="16" fill="#111"/></svg>')
 
 
+def vblade(uid, h=1000):
+    n = int(h / 40) + 3
+    l = "".join(f'<path d="M64,{-40+k*40} l-30,20 l30,20Z"/>' for k in range(n))
+    r = "".join(f'<path d="M136,{-40+k*40} l30,20 l-30,20Z"/>' for k in range(n))
+    return (f'<svg viewBox="0 0 200 {h}" width="100%" height="100%" preserveAspectRatio="none" overflow="hidden">'
+            f'<g id="{uid}-teeth" fill="#1d1d1f">{l}{r}</g>'
+            f'<rect x="60" y="6" width="80" height="{h-12}" rx="40" fill="#6b6b70" stroke="#111" stroke-width="8"/>'
+            f'<line x1="100" y1="40" x2="100" y2="{h-40}" stroke="#a0a0a6" stroke-width="6"/></svg>')
+
+
 def demon(uid, c="#1a0a0a"):
     return (f'<svg id="{uid}" viewBox="0 0 200 220" width="100%" height="100%">'
             f'<path d="M40,60 L20,0 L75,45 Z M160,60 L180,0 L125,45 Z" fill="{c}"/>'
@@ -104,9 +114,13 @@ def cord(uid):
 
 
 def arms(uid):
+    def arm(i, d, col):
+        return (f'<path id="{uid}-o{i}" d="{d}" fill="none" stroke="#111" stroke-width="74" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" opacity="0"/>'
+                f'<path id="{uid}-a{i}" d="{d}" fill="none" stroke="{col}" stroke-width="58" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110" opacity="0"/>')
     return (f'<svg viewBox="0 0 660 600" width="100%" height="100%" overflow="visible">'
-            f'<path id="{uid}-a1" d="M40,520 C10,360 110,300 200,340 C250,365 290,390 330,395" fill="none" stroke="#E9C9A8" stroke-width="58" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>'
-            f'<path id="{uid}-a2" d="M620,520 C650,360 550,300 460,340 C410,365 370,390 330,395" fill="none" stroke="#F1ECDD" stroke-width="58" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/></svg>')
+            + arm(1, "M50,200 C30,420 150,480 300,440", "#F1ECDD") + arm(2, "M610,200 C630,420 510,480 360,440", "#F1ECDD")
+            + f'<circle id="{uid}-h1" cx="300" cy="440" r="36" fill="#F3D2B3" stroke="#111" stroke-width="8" opacity="0"/>'
+            + f'<circle id="{uid}-h2" cx="360" cy="440" r="36" fill="#F3D2B3" stroke="#111" stroke-width="8" opacity="0"/></svg>')
 
 
 def img(uid, src, left, top, h, ratio, extra=""):
@@ -153,7 +167,7 @@ const on = (s, t) => tl.set(s, { opacity: 1 }, t);
 const off = (s, t) => tl.set(s, { opacity: 0 }, t);
 const shake = (s, t, a) => { a = a || 18; [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]].forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
 const punch = (s, t, k, d) => tl.fromTo(s, { scale: 1 }, { scale: k || 1.15, duration: 0.12, ease: "power3.out" }, t).to(s, { scale: 1, duration: (d || 0.9), ease: "power2.inOut" }, t + 0.5);
-const chain = (s, t, d, ax) => { const o = {}; o[ax || "x"] = 0; const e = {}; e[ax || "x"] = ax === "y" ? 16 : -40; tl.fromTo(s, o, Object.assign(e, { duration: 0.08, ease: "none", repeat: Math.max(1, Math.round(d / 0.08) - 1) }), t); };
+const chain = (s, t, d, ax) => { const big = ax === "y40"; if (big) ax = "y"; const o = {}; o[ax || "x"] = 0; const e = {}; e[ax || "x"] = big ? 40 : (ax === "y" ? 16 : -40); tl.fromTo(s, o, Object.assign(e, { duration: 0.08, ease: "none", repeat: Math.max(1, Math.round(d / 0.08) - 1) }), t); };
 const breathe = (s, t, d) => tl.fromTo(s, { scaleY: 1, scaleX: 1 }, { scaleY: 1.018, scaleX: 0.995, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor(d / 0.9)) }, t);
 const blink = (s, ts) => ts.forEach(t => { tl.to(s, { scaleY: 0.08, duration: 0.05, ease: "power2.in", transformOrigin: "50% 50%" }, t); tl.to(s, { scaleY: 1, duration: 0.08, ease: "power2.out" }, t + 0.08); });
 const hop = (s, t, n, hgt) => { hgt = hgt || 70; for (let i = 0; i < n; i++) { const b = t + i * 0.5;
@@ -279,7 +293,7 @@ def s2(sc):
 slam("#s2-a", {a0}); pop("{p['root']}", {a0 + 0.3}, {{ y: 200 }}); blink("{p['eyes']}", {blinks(a0, a2)});
 slideIn("#s2-b", {am}, 300);
 slideIn("#s2-c", {a1}, 0, 300); wag("{p['tail']}", {ac}, {a2 - ac}); sway("{p['inn']}", {a1}, {a2 - a1}, 6); pop("#s2-bone", {ac});
-on("#s2-d", {a2}); impact("#s2-imp", {a2}); punch("#s2-d", {a2 + 0.02}, 1.12); shake("#s2-cam", {a2 + 0.05}, 22); chain("{pd['teeth']}", {a2}, {D - a2}, "y");
+on("#s2-d", {a2}); off("#s2-a,#s2-b,#s2-c", {a2 + 0.05}); impact("#s2-imp", {a2}); punch("#s2-d", {a2 + 0.02}, 1.12); shake("#s2-cam", {a2 + 0.05}, 22); chain("{pd['teeth']}", {a2}, {D - a2}, "y");
 """
     m += f'\n      <div id="s2-imp" class="pn full" style="background:{PAPER};"></div>'
     sfx(sc, "assets/sfx/film/whoosh_soft.wav", am, 0.30, 0.7)
@@ -344,12 +358,12 @@ def s4(sc):
       </div>
       <div id="s4-c" class="pn bord" style="left:990px;top:50px;width:880px;height:470px;background:{CREAM};">
         <div id="s4-br" class="box" style="left:60px;top:90px;width:300px;height:260px;">{bread("s4-brs")}</div>
-        <h1 class="big" style="left:400px;top:170px;font-size:96px;">Pan duro</h1>
+        <h1 class="big" style="left:400px;top:180px;font-size:80px;">Pan duro</h1>
       </div>
       <div id="s4-e" class="pn bord" style="left:990px;top:560px;width:880px;height:470px;background:{OR};">
-        {denji("s4-d3", 40, 30, 1300)}
-        <p class="sub" style="left:330px;top:70px;font-size:48px;">SUEÑAN CON</p>
-        <h1 class="big" style="left:326px;top:140px;font-size:96px;line-height:1;">Una vida<br>normal</h1>
+        {denji("s4-d3", 10, 20, 1050)}
+        <p class="sub" style="left:420px;top:70px;font-size:44px;">SUEÑAN CON</p>
+        <h1 class="big" style="left:416px;top:140px;font-size:80px;line-height:1;">Una vida<br>normal</h1>
       </div>"""
     p = P_("s4-p")
     js = f"""
@@ -373,7 +387,7 @@ def s5(sc):
     strips = ""
     polys = ["0 0,100% 0,100% 30%,0 42%", "0 42%,100% 30%,100% 64%,0 74%", "0 74%,100% 64%,100% 100%,0 100%"]
     for k, pg in enumerate(polys):
-        strips += f'<div id="s5-s{k}" class="box" style="left:620px;top:60px;width:{round(960*DEN_R)}px;height:960px;clip-path:polygon({pg});"><img src="assets/chars/denji_red.png" style="width:100%;height:100%"/></div>'
+        strips += f'<div id="s5-s{k}" class="box" style="left:1180px;top:60px;width:{round(960*DEN_R)}px;height:960px;clip-path:polygon({pg});"><img src="assets/chars/denji_red.png" style="width:100%;height:100%"/></div>'
     m = f"""
       <div id="s5-a" class="pn full" style="background:{INK};opacity:1">
         {speedlines(100, 21, "#3a0a0e")}
@@ -386,9 +400,10 @@ def s5(sc):
         <h1 class="big" style="left:110px;top:220px;font-size:170px;color:#B9D99A;-webkit-text-stroke:6px {INK};">Demonio Zombi</h1>
         {hands}
       </div>
-      <div id="s5-c" class="pn full" style="background:{RED};">
+      <div id="s5-c" class="pn full" style="background:{INK};">
+        {speedlines(100, 22, "#3a0a0e")}
         {strips}
-        <h1 class="big" style="left:110px;top:120px;font-size:150px;color:{PAPER};-webkit-text-stroke:5px {INK};line-height:1;">¡Despedazan<br>a Denji!</h1>
+        <h1 class="big" style="left:90px;top:320px;font-size:130px;color:{PAPER};line-height:1;">¡Despedazan<br><span style="color:{RED};">a Denji!</span></h1>
       </div>
       <div id="s5-imp" class="pn full" style="background:{PAPER};"></div>"""
     js = f"""
@@ -444,19 +459,19 @@ on("#s6-l2", {a2}); slam("#s6-st", {as_ + 0.2}, {{ scale: 2 }}); shake("#s6-cam"
 def s7(sc):
     at, end = cue_fn(sc); a0, a1, a2 = at(0), at(1), at(2); D = sc["D"]
     # Denji 1000 px de alto -> cabeza x~49%, frente y~3.5%; muñeca alzada (39%,17%); muñeca en cadera (9%,36%)
-    ov = (f'<div id="s7-bh" class="box h" style="left:42%;top:-24%;width:14%;height:27%;"><div class="fill" style="transform:rotate(90deg) scale(1.9,.52);transform-origin:50% 50%;">{blade("s7-b1", 600)}</div></div>'
-          f'<div id="s7-ba" class="box h" style="left:24%;top:-2%;width:12%;height:22%;"><div class="fill" style="transform:rotate(80deg) scale(1.8,.5);">{blade("s7-b2", 500)}</div></div>'
+    ov = (f'<div id="s7-bh" class="box h" style="left:38%;top:-25%;width:23%;height:30%;">{vblade("s7-b1", 520)}</div>'
+          f'<div id="s7-ba" class="box h" style="left:27%;top:-6%;width:17%;height:24%;">{vblade("s7-b2", 420)}</div>'
           f'<div id="s7-bc" class="box h" style="left:-34%;top:33%;width:40%;height:7%;"><div class="fill" style="transform:rotate(-20deg);">{blade("s7-b3", 600)}</div></div>'
           f'<div id="s7-cord" class="box h" style="left:43%;top:21%;width:8%;height:12%;">{cord("s7-cs")}</div>')
     m = f"""
       <div id="s7-a" class="pn full" style="background:{OR};opacity:1">
         {speedlines(130, 5)}
-        <h1 id="s7-t" class="big" style="left:90px;top:400px;font-size:200px;background:{INK};color:{OR};padding:6px 30px;">Chainsaw Man</h1>
+        <h1 id="s7-t" class="big" style="left:90px;top:400px;font-size:166px;background:{INK};color:{OR};padding:6px 30px;">Chainsaw Man</h1>
       </div>
       <div id="s7-b" class="pn full" style="background:{PAPER};">
         <div class="tone" style="opacity:.14"></div>
         {speedlines(110, 6, "#d9d4ca")}
-        {denji("s7-d", 760, 150, 1000, "cut", ov)}
+        {denji("s7-d", 1150, 430, 960, "cut", ov)}
         <p id="s7-l1" class="sub h" style="left:90px;top:820px;font-size:56px;background:{INK};color:{PAPER};padding:6px 16px;">TIRA DE LA CUERDA DE SU PECHO</p>
         <h1 id="s7-l2" class="big h" style="left:90px;top:160px;font-size:130px;color:{OR};-webkit-text-stroke:6px {INK};line-height:1;">¡Salen las<br>motosierras!</h1>
       </div>
@@ -469,7 +484,7 @@ impact("#s7-imp", {a2}); off("#s7-l1", {a2}); slam("#s7-l2", {a2 + 0.1});
 tl.fromTo("#s7-bh", {{ opacity: 1, scaleY: 0, transformOrigin: "50% 100%" }}, {{ scaleY: 1, duration: 0.16, ease: "back.out(2)" }}, {a2 + 0.05});
 tl.fromTo("#s7-ba", {{ opacity: 1, scaleY: 0, transformOrigin: "50% 100%" }}, {{ scaleY: 1, duration: 0.16, ease: "back.out(2)" }}, {a2 + 0.15});
 tl.fromTo("#s7-bc", {{ opacity: 1, scaleX: 0, transformOrigin: "100% 50%" }}, {{ scaleX: 1, duration: 0.16, ease: "back.out(2)" }}, {a2 + 0.25});
-chain("#s7-b1-teeth", {a2}, {D - a2}); chain("#s7-b2-teeth", {a2}, {D - a2}); chain("#s7-b3-teeth", {a2}, {D - a2});
+chain("#s7-b1-teeth", {a2}, {D - a2}, "y40"); chain("#s7-b2-teeth", {a2}, {D - a2}, "y40"); chain("#s7-b3-teeth", {a2}, {D - a2});
 shake("#s7-cam", {a2 + 0.1}, 24); shake("#s7-cam", {a2 + 0.7}, 14); shake("#s7-cam", {a2 + 1.4}, 10); punch("#s7-b", {a2 + 0.1}, 1.12);
 """
     sfx(sc, "assets/sfx/film/hit.wav", a0 + 0.05, 0.24, 1.0)
@@ -545,7 +560,7 @@ def s9(sc):
         {poch("s9-p", 200, 700, 300)}
       </div>
       <div id="s9-b" class="pn full" style="background:{INK};">
-        <div id="s9-eye" class="ch" style="left:-1150px;top:-1250px;width:4200px;height:5600px;"><img src="assets/chars/makima_cut.png" style="width:100%;height:100%"/></div>
+        <div id="s9-eye" class="ch" style="left:-540px;top:-960px;width:2400px;height:3200px;"><img src="assets/chars/makima_cut.png" style="width:100%;height:100%"/></div>
         <p class="sub" style="left:120px;top:900px;font-size:66px;background:{RED};color:{PAPER};padding:6px 16px;">A CUALQUIER PRECIO</p>
       </div>"""
     p = P_("s9-p")
@@ -577,18 +592,18 @@ def s10(sc):
       <div id="s10-b" class="pn full" style="background:{OR};">
         {speedlines(110, 33)}
         {denji("s10-d2", 1240, 90, 980)}
-        {poch("s10-p2", 1000, 640, 360)}
-        <p class="sub" style="left:110px;top:200px;font-size:54px;">EL DEMONIO MÁS TEMIDO DEL INFIERNO…</p>
+        {poch("s10-p2", 1040, 660, 340)}
+        <p class="sub" style="left:110px;top:200px;font-size:46px;">EL DEMONIO MÁS TEMIDO DEL INFIERNO…</p>
         <h1 class="big" style="left:90px;top:290px;font-size:220px;">Pochita</h1>
         <p id="s10-f" class="sub h" style="left:110px;top:560px;font-size:64px;background:{INK};color:{OR};padding:8px 18px;">…Y EL MEJOR AMIGO DE DENJI</p>
-        <div id="s10-cta" class="box h" style="left:100px;top:740px;width:820px;height:150px;background:{PAPER};border:8px solid {INK};">
-          <p class="sub" style="left:30px;top:38px;font-size:54px;">💬 ¡TE LEO EN LOS COMENTARIOS!</p></div>
+        <div id="s10-cta" class="box h" style="left:100px;top:740px;width:900px;height:150px;background:{PAPER};border:8px solid {INK};">
+          <p class="sub" style="left:30px;top:42px;font-size:48px;">💬 ¡TE LEO EN LOS COMENTARIOS!</p></div>
       </div>"""
     p, p2 = P_("s10-p"), P_("s10-p2")
     js = f"""
 pop("{p['root']}", {a0 + 0.2}, {{ y: 120 }}); blink("{p['eyes']}", {blinks(a0, a1, 1.7)}); sway("{p['inn']}", {a0}, {aa - a0}, 3);
 tl.fromTo("#s10-d", {{ y: 0 }}, {{ y: -1110, duration: 0.6, ease: "power3.out" }}, {aa - 0.4});
-tl.to("#s10-ar-a1", {{ strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }}, {aa + 0.1}); tl.to("#s10-ar-a2", {{ strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }}, {aa + 0.18});
+{"".join(f'on("#s10-ar-o{i},#s10-ar-a{i}", {aa + 0.1}); tl.to("#s10-ar-o{i},#s10-ar-a{i}", {{ strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }}, {aa + 0.1 + (i-1)*0.08:.2f}); pop("#s10-ar-h{i}", {aa + 0.78 + (i-1)*0.08:.2f});' for i in (1, 2))}
 tl.to("{p['inn']}", {{ scaleX: 0.93, scaleY: 1.04, duration: 0.3, ease: "power2.out" }}, {aa + 0.75});
 {"".join(f'pop("#s10-h{k}", {aa + 0.9 + k*0.15:.2f}); tl.to("#s10-h{k}", {{ y: -120, duration: 1.6, ease: "sine.out" }}, {aa + 1.0 + k*0.15:.2f});' for k in range(5))}
 on("#s10-b", {a1}); off("#s10-a", {a1 + 0.05}); slideIn("#s10-d2", {a1}, 400); pop("{p2['root']}", {a1 + 0.2}, {{ y: 150 }}); breathe("#s10-d2-in", {a1}, {D - a1});

@@ -2,44 +2,85 @@
   <style>
 #root { position:absolute; inset:0; overflow:hidden; background:#F3F1EC; color:#111111; font-family:'Archivo Black', sans-serif; }
 .cam { position:absolute; inset:0; transform-origin:50% 50%; }
-.pn { position:absolute; border:10px solid #111111; background:#F3F1EC; overflow:hidden; opacity:0; }
-.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.22; }
+.pn { position:absolute; overflow:hidden; opacity:0; }
+.full { left:-20px; top:-20px; width:1960px; height:1120px; }
+.bord { border:10px solid #111111; }
+.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.2; }
 .big { position:absolute; text-transform:uppercase; letter-spacing:-0.01em; line-height:.92; margin:0; white-space:nowrap; }
-.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; }
+.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; white-space:nowrap; }
 .h { opacity:0; }
 .fill { position:absolute; inset:0; }
-.svgbox { position:absolute; }
+.ch { position:absolute; }
+.box { position:absolute; }
+.tag { position:absolute; font-family:'Archivo Black'; text-transform:uppercase; background:#111111; color:#F3F1EC; padding:6px 18px; font-size:44px; }
 </style>
-  <div id="root" data-composition-id="s9" data-width="1920" data-height="1080" data-duration="5.87">
+  <div id="root" data-composition-id="s9" data-width="1920" data-height="1080" data-duration="5.19">
     <div id="s9-cam" class="cam">
 
-      <div id="s9-a" class="pn" style="left:-10px;top:-10px;width:1940px;height:1100px;border:none;background:#F3F1EC;">
-        <div class="tone" style="opacity:.16"></div>
-        <h1 id="s9-m" class="big h" style="left:110px;top:150px;font-size:260px;color:#C3121E;-webkit-text-stroke:8px #111111;">Makima</h1>
-        <p id="s9-q" class="sub h" style="left:120px;top:470px;font-size:60px;">QUIERE CONTROLARLO</p>
-        <p id="s9-q2" class="sub h" style="left:120px;top:550px;font-size:60px;background:#111111;color:#F3F1EC;padding:4px 14px;">A CUALQUIER PRECIO</p>
-        <svg class="svgbox" style="left:0;top:0;" width="1920" height="1080" viewBox="0 0 1920 1080">
-          <path id="s9-leash" d="M760,330 C1000,620 1200,760 1420,760" fill="none" stroke="#111111" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+      <div id="s9-a" class="pn full" style="background:#F6E9E4;opacity:1">
+        <div class="tone" style="opacity:.1"></div>
+        <div id="s9-mk" class="ch" style="left:980px;top:120px;width:900px;height:1200px;"><img src="assets/chars/makima_cut.png" style="width:100%;height:100%"/></div>
+        <h1 id="s9-n" class="big h" style="left:110px;top:150px;font-size:220px;color:#C3121E;-webkit-text-stroke:7px #111111;">Makima</h1>
+        <p id="s9-q" class="sub h" style="left:120px;top:400px;font-size:58px;">LA MISTERIOSA JEFA DE DENJI</p>
+        <p id="s9-q2" class="sub h" style="left:120px;top:490px;font-size:58px;background:#111111;color:#F3F1EC;padding:6px 16px;">QUIERE CONTROLARLO</p>
+        <svg class="box" style="left:0;top:0;" width="1920" height="1080" viewBox="0 0 1920 1080">
+          <path id="s9-leash" d="M1150,760 C900,900 600,950 420,880" fill="none" stroke="#111111" stroke-width="14" stroke-linecap="round" stroke-dasharray="22 14" pathLength="100"/>
         </svg>
-        <div id="s9-em" class="svgbox h" style="left:1400px;top:560px;width:380px;height:399px;"><svg id="s9-em-svg" viewBox="0 0 400 420" width="100%" height="100%"><g fill="#111"><path d="M150,40 l-16,8 l16,8Z"/><path d="M150,62 l-16,8 l16,8Z"/><path d="M150,84 l-16,8 l16,8Z"/><path d="M150,106 l-16,8 l16,8Z"/><path d="M150,128 l-16,8 l16,8Z"/><path d="M150,150 l-16,8 l16,8Z"/><path d="M150,172 l-16,8 l16,8Z"/><path d="M150,194 l-16,8 l16,8Z"/><path d="M250,40 l16,8 l-16,8Z"/><path d="M250,62 l16,8 l-16,8Z"/><path d="M250,84 l16,8 l-16,8Z"/><path d="M250,106 l16,8 l-16,8Z"/><path d="M250,128 l16,8 l-16,8Z"/><path d="M250,150 l16,8 l-16,8Z"/><path d="M250,172 l16,8 l-16,8Z"/><path d="M250,194 l16,8 l-16,8Z"/></g><rect x="150" y="20" width="100" height="200" rx="50" fill="#8E8E8E" stroke="#111" stroke-width="10"/><line x1="200" y1="50" x2="200" y2="185" stroke="#111" stroke-width="6"/><path d="M40,300 C40,190 110,165 200,165 C290,165 360,190 360,300 C360,380 300,405 200,405 C100,405 40,380 40,300Z" fill="#FF6A13" stroke="#111" stroke-width="12"/><circle cx="140" cy="250" r="14" fill="#111"/><circle cx="260" cy="250" r="14" fill="#111"/><path d="M182,300 q18,16 36,0" stroke="#111" stroke-width="8" fill="none" stroke-linecap="round"/></svg></div>
+        <div id="s9-p" class="ch" style="left:200px;top:700px;width:300px;height:315px;"><div id="s9-p-in" class="fill" style="transform-origin:50% 100%;"><svg viewBox="0 0 400 420" width="100%" height="100%" overflow="visible">
+  <defs>
+    <radialGradient id="s9-pp-g" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FFA94D"/><stop offset=".55" stop-color="#F08A2B"/><stop offset="1" stop-color="#D86E1C"/></radialGradient>
+    <clipPath id="s9-pp-bladeclip"><rect x="160" y="10" width="80" height="262" rx="14"/></clipPath>
+  </defs>
+  <g id="s9-pp-body">
+    <g id="s9-pp-tail"><path d="M350,300 C392,300 396,340 372,352" stroke="#3A1C0B" stroke-width="6" fill="none"/>
+      <rect x="356" y="344" width="40" height="16" rx="8" fill="#2B2B2E"/></g>
+    <g id="s9-pp-legs" fill="#D86E1C" stroke="#3A1C0B" stroke-width="6">
+      <rect x="112" y="318" width="54" height="72" rx="24"/><rect x="234" y="318" width="54" height="72" rx="24"/></g>
+    <path d="M30,215 C30,105 105,52 200,52 C295,52 370,105 370,215 C370,318 298,362 200,362 C102,362 30,318 30,215Z" fill="url(#s9-pp-g)" stroke="#3A1C0B" stroke-width="7"/>
+    <path d="M70,300 C110,345 290,345 330,300" stroke="#D86E1C" stroke-width="10" fill="none" opacity=".6" stroke-linecap="round"/>
+    <rect x="150" y="2" width="100" height="40" rx="12" fill="#2B2B2E" stroke="#3A1C0B" stroke-width="5"/>
+    <g clip-path="url(#s9-pp-bladeclip)"><g id="s9-pp-teeth" fill="#2B2B2E"><path d="M188,34 l-11,8 l11,8Z"/><path d="M188,50 l-11,8 l11,8Z"/><path d="M188,66 l-11,8 l11,8Z"/><path d="M188,82 l-11,8 l11,8Z"/><path d="M188,98 l-11,8 l11,8Z"/><path d="M188,114 l-11,8 l11,8Z"/><path d="M188,130 l-11,8 l11,8Z"/><path d="M188,146 l-11,8 l11,8Z"/><path d="M188,162 l-11,8 l11,8Z"/><path d="M188,178 l-11,8 l11,8Z"/><path d="M188,194 l-11,8 l11,8Z"/><path d="M188,210 l-11,8 l11,8Z"/><path d="M188,226 l-11,8 l11,8Z"/><path d="M188,242 l-11,8 l11,8Z"/><path d="M188,258 l-11,8 l11,8Z"/><path d="M188,274 l-11,8 l11,8Z"/><path d="M212,34 l11,8 l-11,8Z"/><path d="M212,50 l11,8 l-11,8Z"/><path d="M212,66 l11,8 l-11,8Z"/><path d="M212,82 l11,8 l-11,8Z"/><path d="M212,98 l11,8 l-11,8Z"/><path d="M212,114 l11,8 l-11,8Z"/><path d="M212,130 l11,8 l-11,8Z"/><path d="M212,146 l11,8 l-11,8Z"/><path d="M212,162 l11,8 l-11,8Z"/><path d="M212,178 l11,8 l-11,8Z"/><path d="M212,194 l11,8 l-11,8Z"/><path d="M212,210 l11,8 l-11,8Z"/><path d="M212,226 l11,8 l-11,8Z"/><path d="M212,242 l11,8 l-11,8Z"/><path d="M212,258 l11,8 l-11,8Z"/><path d="M212,274 l11,8 l-11,8Z"/></g></g>
+    <rect x="186" y="30" width="28" height="238" rx="14" fill="#5B5B5E" stroke="#3A1C0B" stroke-width="5"/>
+    <line x1="200" y1="44" x2="200" y2="254" stroke="#8C8C90" stroke-width="4"/>
+    <g id="s9-pp-eyes"><circle cx="115" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="115" cy="185" r="33" fill="#141414"/><circle cx="103" cy="172" r="8" fill="#FFFFFF" opacity=".85"/><circle cx="285" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="285" cy="185" r="33" fill="#141414"/><circle cx="273" cy="172" r="8" fill="#FFFFFF" opacity=".85"/></g>
+    <path d="M140,250 C150,284 182,290 196,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M260,250 C250,284 218,290 204,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/>
+  </g>
+</svg></div></div>
+      </div>
+      <div id="s9-b" class="pn full" style="background:#111111;">
+        <div id="s9-eye" class="ch" style="left:-540px;top:-960px;width:2400px;height:3200px;"><img src="assets/chars/makima_cut.png" style="width:100%;height:100%"/></div>
+        <p class="sub" style="left:120px;top:900px;font-size:66px;background:#C3121E;color:#F3F1EC;padding:6px 16px;">A CUALQUIER PRECIO</p>
       </div>
     </div>
   </div>
   <script>
 
 const tl = gsap.timeline({ paused: true });
-const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.08 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
-const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.6 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.28, ease: "back.out(2.2)" }, t);
+const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.12 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
+const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.4 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.32, ease: "back.out(2.4)" }, t);
+const slideIn = (s, t, dx, dy) => tl.fromTo(s, { opacity: 0, x: dx || 0, y: dy || 0, rotation: (dx || 0) > 0 ? 4 : -4 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.42, ease: "back.out(1.6)" }, t);
 const on = (s, t) => tl.set(s, { opacity: 1 }, t);
 const off = (s, t) => tl.set(s, { opacity: 0 }, t);
-const shake = (s, t, a) => { a = a || 18; const p = [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]]; p.forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
-const chain = (s, t, d) => tl.fromTo(s, { x: 0 }, { x: -40, duration: 0.1, ease: "none", repeat: Math.max(1, Math.round(d / 0.1) - 1) }, t);
+const shake = (s, t, a) => { a = a || 18; [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]].forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
+const punch = (s, t, k, d) => tl.fromTo(s, { scale: 1 }, { scale: k || 1.15, duration: 0.12, ease: "power3.out" }, t).to(s, { scale: 1, duration: (d || 0.9), ease: "power2.inOut" }, t + 0.5);
+const chain = (s, t, d, ax) => { const big = ax === "y40"; if (big) ax = "y"; const o = {}; o[ax || "x"] = 0; const e = {}; e[ax || "x"] = big ? 40 : (ax === "y" ? 16 : -40); tl.fromTo(s, o, Object.assign(e, { duration: 0.08, ease: "none", repeat: Math.max(1, Math.round(d / 0.08) - 1) }), t); };
+const breathe = (s, t, d) => tl.fromTo(s, { scaleY: 1, scaleX: 1 }, { scaleY: 1.018, scaleX: 0.995, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor(d / 0.9)) }, t);
+const blink = (s, ts) => ts.forEach(t => { tl.to(s, { scaleY: 0.08, duration: 0.05, ease: "power2.in", transformOrigin: "50% 50%" }, t); tl.to(s, { scaleY: 1, duration: 0.08, ease: "power2.out" }, t + 0.08); });
+const hop = (s, t, n, hgt) => { hgt = hgt || 70; for (let i = 0; i < n; i++) { const b = t + i * 0.5;
+  tl.to(s, { scaleY: 0.86, scaleX: 1.1, duration: 0.07, ease: "power2.out" }, b);
+  tl.to(s, { y: -hgt, scaleY: 1.1, scaleX: 0.93, duration: 0.18, ease: "power2.out" }, b + 0.07);
+  tl.to(s, { y: 0, scaleY: 1, scaleX: 1, duration: 0.18, ease: "power2.in" }, b + 0.25);
+  tl.to(s, { scaleY: 0.9, scaleX: 1.07, duration: 0.05 }, b + 0.43); tl.to(s, { scaleY: 1, scaleX: 1, duration: 0.07 }, b + 0.48); } };
+const wag = (s, t, d) => tl.fromTo(s, { rotation: -14 }, { rotation: 14, duration: 0.14, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round(d / 0.14)), transformOrigin: "0% 0%" }, t);
+const sway = (s, t, d, a) => tl.fromTo(s, { rotation: -(a || 3) }, { rotation: (a || 3), duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round(d / 0.6)) }, t);
+const impact = (s, t) => { tl.set(s, { opacity: 1 }, t); tl.set(s, { opacity: 0 }, t + 2 / 30); tl.set(s, { opacity: 1 }, t + 4 / 30); tl.set(s, { opacity: 0 }, t + 6 / 30); };
 
-tl.fromTo("#s9-cam", { scale: 1 }, { scale: 1.04, duration: 5.87, ease: "none" }, 0);
+tl.fromTo("#s9-cam", { scale: 1 }, { scale: 1.035, duration: 5.19, ease: "none" }, 0);
 
-on("#s9-a", 0); slam("#s9-m", 1.15, { scale: 1.3 }); pop("#s9-em", 1.45);
-on("#s9-q", 2.114); tl.to("#s9-leash", { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, 2.114);
-on("#s9-q2", 3.014); tl.to("#s9-em", { x: -60, rotation: -8, duration: 0.25, ease: "power3.out" }, 2.864);
+slideIn("#s9-mk", 0.45, 600); breathe("#s9-mk", 0.8500000000000001, 4.79); slam("#s9-n", 0.82, { scale: 1.3 }); on("#s9-q", 1.42);
+on("#s9-q2", 2.856); tl.fromTo("#s9-leash", { strokeDashoffset: 0, opacity: 0 }, { strokeDashoffset: -60, opacity: 1, duration: 1.2, ease: "none" }, 2.856);
+pop("#s9-p", 1.1199999999999999); tl.to("#s9-p", { x: 40, rotation: 10, duration: 0.25, ease: "power3.out" }, 3.456); blink("#s9-pp-eyes", [3.056, 4.256]);
+on("#s9-b", 3.411); tl.fromTo("#s9-eye", { scale: 0.92 }, { scale: 1.0, duration: 1.8, ease: "power2.out" }, 3.411);
 
 window.__timelines["s9"] = tl;
   </script>

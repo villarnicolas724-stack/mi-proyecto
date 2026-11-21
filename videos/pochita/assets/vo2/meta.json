@@ -1,0 +1,208 @@
+{
+ "s1": [
+  {
+   "text": "¡Es pequeño!",
+   "file": "assets/vo2/s1_0.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "¡Es naranja!",
+   "file": "assets/vo2/s1_1.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "Tiene una motosierra saliendo de la cabeza... ¡y los demonios del infierno le tienen pánico!",
+   "file": "assets/vo2/s1_2.wav",
+   "score": 1.0,
+   "seed": 23
+  },
+  {
+   "text": "Señoras y señores... ¡esto es Pochita!",
+   "file": "assets/vo2/s1_3.wav",
+   "score": 1.0,
+   "seed": 23
+  }
+ ],
+ "s2": [
+  {
+   "text": "Pochita es el Demonio Motosierra de Chainsaw Man, el manga de Tatsuki Fujimoto.",
+   "file": "assets/vo2/s2_0.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "Parece un perrito, mueve la colita como un perrito...",
+   "file": "assets/vo2/s2_1.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "¡pero no te dejes engañar!",
+   "file": "assets/vo2/s2_2.wav",
+   "score": 1.0,
+   "seed": 23
+  }
+ ],
+ "s3": [
+  {
+   "text": "Todo empieza cuando Denji, un chico que no tiene nada, lo encuentra herido y a punto de morir.",
+   "file": "assets/vo2/s3_0.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "¿Y qué hace? ¡Le da su propia sangre para salvarlo!",
+   "file": "assets/vo2/s3_1.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "Desde ese día, son inseparables.",
+   "file": "assets/vo2/s3_2.wav",
+   "score": 1.0,
+   "seed": 23
+  }
+ ],
+ "s4": [
+  {
+   "text": "Pero la vida de Denji es durísima: su padre le dejó una deuda enorme con la yakuza.",
+   "file": "assets/vo2/s4_0.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "Así que los dos cazan demonios por cuatro monedas, comen pan duro...",
+   "file": "assets/vo2/s4_1.wav",
+   "score": 1.0,
+   "seed": 37
+  },
+  {
+   "text": "y sueñan con una vida normal.",
+   "file": "assets/vo2/s4_2.wav",
+   "score": 1.0,
+   "seed": 11
+  }
+ ],
+ "s5": [
+  {
+   "text": "Hasta que llega la traición.",
+   "file": "assets/vo2/s5_0.wav",
+   "score": 1.0,
+   "seed": 37
+  },
+  {
+   "text": "La yakuza hace un pacto con el Demonio Zombi...",
+   "file": "assets/vo2/s5_1.wav",
+   "score": 0.8888888888888888,
+   "seed": 11
+  },
+  {
+   "text": "¡y despedazan a Denji!",
+   "file": "assets/vo2/s5_2.wav",
+   "score": 0.8888888888888888,
+   "seed": 37
+  }
+ ],
+ "s6": [
+  {
+   "text": "Y aquí viene el momento clave.",
+   "file": "assets/vo2/s6_0.wav",
+   "score": 1.0,
+   "seed": 23
+  },
+  {
+   "text": "Pochita hace un contrato: le entrega su corazón a Denji.",
+   "file": "assets/vo2/s6_1.wav",
+   "score": 1.0,
+   "seed": 23
+  },
+  {
+   "text": "¿A cambio? Solo una cosa... ¡ver sus sueños hechos realidad!",
+   "file": "assets/vo2/s6_2.wav",
+   "score": 0.9,
+   "seed": 51
+  }
+ ],
+ "s7": [
+  {
+   "text": "¡Así nace Chainsaw Man!",
+   "file": "assets/vo2/s7_0.wav",
+   "score": 1.0,
+   "seed": 37
+  },
+  {
+   "text": "Cada vez que Denji tira de la cuerda de su pecho...",
+   "file": "assets/vo2/s7_1.wav",
+   "score": 1.0,
+   "seed": 37
+  },
+  {
+   "text": "¡las motosierras salen disparadas de su cuerpo!",
+   "file": "assets/vo2/s7_2.wav",
+   "score": 1.0,
+   "seed": 37
+  }
+ ],
+ "s8": [
+  {
+   "text": "¡Ojo, que vienen spoilers!",
+   "file": "assets/vo2/s8_0.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "Pochita no es un demonio cualquiera.",
+   "file": "assets/vo2/s8_1.wav",
+   "score": 1.0,
+   "seed": 11
+  },
+  {
+   "text": "¡Es el Héroe del Infierno!",
+   "file": "assets/vo2/s8_2.wav",
+   "score": 1.0,
+   "seed": 23
+  },
+  {
+   "text": "Los demonios que devora desaparecen... ¡y su concepto se borra del mundo para siempre!",
+   "file": "assets/vo2/s8_3.wav",
+   "score": 0.9333333333333333,
+   "seed": 11
+  }
+ ],
+ "s9": [
+  {
+   "text": "Por eso Makima, la misteriosa jefa de Denji, quiere controlarlo a cualquier precio.",
+   "file": "assets/vo2/s9_0.wav",
+   "score": 0.9629629629629629,
+   "seed": 11
+  }
+ ],
+ "s10": [
+  {
+   "text": "¿Y el sueño de Pochita? Algo tan simple... como que alguien lo abrazara.",
+   "file": "assets/vo2/s10_0.wav",
+   "score": 1.0,
+   "seed": 23
+  },
+  {
+   "text": "El demonio más temido del infierno...",
+   "file": "assets/vo2/s10_1.wav",
+   "score": 1.0,
+   "seed": 37
+  },
+  {
+   "text": "¡y el mejor amigo de Denji!",
+   "file": "assets/vo2/s10_2.wav",
+   "score": 1.0,
+   "seed": 37
+  },
+  {
+   "text": "¿Tú ya conocías esta historia? ¡Te leo en los comentarios!",
+   "file": "assets/vo2/s10_3.wav",
+   "score": 1.0,
+   "seed": 11
+  }
+ ]
+}

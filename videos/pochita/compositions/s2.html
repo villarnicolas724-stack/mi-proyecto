@@ -2,52 +2,109 @@
   <style>
 #root { position:absolute; inset:0; overflow:hidden; background:#F3F1EC; color:#111111; font-family:'Archivo Black', sans-serif; }
 .cam { position:absolute; inset:0; transform-origin:50% 50%; }
-.pn { position:absolute; border:10px solid #111111; background:#F3F1EC; overflow:hidden; opacity:0; }
-.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.22; }
+.pn { position:absolute; overflow:hidden; opacity:0; }
+.full { left:-20px; top:-20px; width:1960px; height:1120px; }
+.bord { border:10px solid #111111; }
+.tone { position:absolute; inset:0; background-image:radial-gradient(#111111 26%, transparent 29%); background-size:14px 14px; opacity:.2; }
 .big { position:absolute; text-transform:uppercase; letter-spacing:-0.01em; line-height:.92; margin:0; white-space:nowrap; }
-.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; }
+.sub { position:absolute; font-family:'Inter', sans-serif; font-weight:900; line-height:1.1; margin:0; white-space:nowrap; }
 .h { opacity:0; }
 .fill { position:absolute; inset:0; }
-.svgbox { position:absolute; }
+.ch { position:absolute; }
+.box { position:absolute; }
+.tag { position:absolute; font-family:'Archivo Black'; text-transform:uppercase; background:#111111; color:#F3F1EC; padding:6px 18px; font-size:44px; }
 </style>
-  <div id="root" data-composition-id="s2" data-width="1920" data-height="1080" data-duration="13.33">
+  <div id="root" data-composition-id="s2" data-width="1920" data-height="1080" data-duration="12.79">
     <div id="s2-cam" class="cam">
 
-      <div id="s2-a" class="pn" style="left:60px;top:60px;width:1100px;height:600px;">
-        <div class="tone" style="opacity:.12"></div>
-        <p class="sub" style="left:60px;top:60px;font-size:48px;">POCHITA ES</p>
-        <h1 class="big" style="left:52px;top:150px;font-size:132px;">El demonio</h1>
-        <h1 class="big" style="left:52px;top:300px;font-size:132px;color:#FF6A13;-webkit-text-stroke:6px #111111;">motosierra</h1>
+      <div id="s2-a" class="pn bord" style="left:50px;top:50px;width:980px;height:980px;background:#FFF4E2;">
+        <div class="tone" style="opacity:.1"></div>
+        <p class="sub" style="left:56px;top:56px;font-size:46px;">POCHITA ES EL</p>
+        <h1 class="big" style="left:50px;top:130px;font-size:118px;line-height:1;">Demonio<br><span style="color:#FF6A13;-webkit-text-stroke:5px #111111;">Motosierra</span></h1>
+        <div id="s2-p" class="ch" style="left:300px;top:420px;width:470px;height:494px;"><div id="s2-p-in" class="fill" style="transform-origin:50% 100%;"><svg viewBox="0 0 400 420" width="100%" height="100%" overflow="visible">
+  <defs>
+    <radialGradient id="s2-pp-g" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FFA94D"/><stop offset=".55" stop-color="#F08A2B"/><stop offset="1" stop-color="#D86E1C"/></radialGradient>
+    <clipPath id="s2-pp-bladeclip"><rect x="160" y="10" width="80" height="262" rx="14"/></clipPath>
+  </defs>
+  <g id="s2-pp-body">
+    <g id="s2-pp-tail"><path d="M350,300 C392,300 396,340 372,352" stroke="#3A1C0B" stroke-width="6" fill="none"/>
+      <rect x="356" y="344" width="40" height="16" rx="8" fill="#2B2B2E"/></g>
+    <g id="s2-pp-legs" fill="#D86E1C" stroke="#3A1C0B" stroke-width="6">
+      <rect x="112" y="318" width="54" height="72" rx="24"/><rect x="234" y="318" width="54" height="72" rx="24"/></g>
+    <path d="M30,215 C30,105 105,52 200,52 C295,52 370,105 370,215 C370,318 298,362 200,362 C102,362 30,318 30,215Z" fill="url(#s2-pp-g)" stroke="#3A1C0B" stroke-width="7"/>
+    <path d="M70,300 C110,345 290,345 330,300" stroke="#D86E1C" stroke-width="10" fill="none" opacity=".6" stroke-linecap="round"/>
+    <rect x="150" y="2" width="100" height="40" rx="12" fill="#2B2B2E" stroke="#3A1C0B" stroke-width="5"/>
+    <g clip-path="url(#s2-pp-bladeclip)"><g id="s2-pp-teeth" fill="#2B2B2E"><path d="M188,34 l-11,8 l11,8Z"/><path d="M188,50 l-11,8 l11,8Z"/><path d="M188,66 l-11,8 l11,8Z"/><path d="M188,82 l-11,8 l11,8Z"/><path d="M188,98 l-11,8 l11,8Z"/><path d="M188,114 l-11,8 l11,8Z"/><path d="M188,130 l-11,8 l11,8Z"/><path d="M188,146 l-11,8 l11,8Z"/><path d="M188,162 l-11,8 l11,8Z"/><path d="M188,178 l-11,8 l11,8Z"/><path d="M188,194 l-11,8 l11,8Z"/><path d="M188,210 l-11,8 l11,8Z"/><path d="M188,226 l-11,8 l11,8Z"/><path d="M188,242 l-11,8 l11,8Z"/><path d="M188,258 l-11,8 l11,8Z"/><path d="M188,274 l-11,8 l11,8Z"/><path d="M212,34 l11,8 l-11,8Z"/><path d="M212,50 l11,8 l-11,8Z"/><path d="M212,66 l11,8 l-11,8Z"/><path d="M212,82 l11,8 l-11,8Z"/><path d="M212,98 l11,8 l-11,8Z"/><path d="M212,114 l11,8 l-11,8Z"/><path d="M212,130 l11,8 l-11,8Z"/><path d="M212,146 l11,8 l-11,8Z"/><path d="M212,162 l11,8 l-11,8Z"/><path d="M212,178 l11,8 l-11,8Z"/><path d="M212,194 l11,8 l-11,8Z"/><path d="M212,210 l11,8 l-11,8Z"/><path d="M212,226 l11,8 l-11,8Z"/><path d="M212,242 l11,8 l-11,8Z"/><path d="M212,258 l11,8 l-11,8Z"/><path d="M212,274 l11,8 l-11,8Z"/></g></g>
+    <rect x="186" y="30" width="28" height="238" rx="14" fill="#5B5B5E" stroke="#3A1C0B" stroke-width="5"/>
+    <line x1="200" y1="44" x2="200" y2="254" stroke="#8C8C90" stroke-width="4"/>
+    <g id="s2-pp-eyes"><circle cx="115" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="115" cy="185" r="33" fill="#141414"/><circle cx="103" cy="172" r="8" fill="#FFFFFF" opacity=".85"/><circle cx="285" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="285" cy="185" r="33" fill="#141414"/><circle cx="273" cy="172" r="8" fill="#FFFFFF" opacity=".85"/></g>
+    <path d="M140,250 C150,284 182,290 196,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M260,250 C250,284 218,290 204,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/>
+  </g>
+</svg></div></div>
       </div>
-      <div id="s2-b" class="pn" style="left:1200px;top:60px;width:660px;height:600px;background:#111111;color:#F3F1EC;">
-        <h1 class="big" style="left:50px;top:70px;font-size:96px;line-height:1;">Chainsaw<br>Man</h1>
-        <p id="s2-f" class="sub h" style="left:54px;top:330px;font-size:44px;color:#F3F1EC;">MANGA DE<br>TATSUKI FUJIMOTO</p>
+      <div id="s2-b" class="pn bord" style="left:1070px;top:50px;width:800px;height:470px;background:#111111;color:#F3F1EC;">
+        <h1 class="big" style="left:50px;top:60px;font-size:104px;color:#FF6A13;line-height:1;">Chainsaw<br>Man</h1>
+        <p class="sub" style="left:54px;top:310px;font-size:42px;color:#F3F1EC;">MANGA DE TATSUKI FUJIMOTO</p>
       </div>
-      <div id="s2-c" class="pn" style="left:60px;top:700px;width:1800px;height:320px;">
-        <h1 class="big" style="left:60px;top:90px;font-size:120px;">¿Un perrito?</h1>
-        <div id="s2-em" class="svgbox" style="left:1560px;top:40px;width:210px;height:220px;"><svg id="s2-em-svg" viewBox="0 0 400 420" width="100%" height="100%"><g fill="#111"><path d="M150,40 l-16,8 l16,8Z"/><path d="M150,62 l-16,8 l16,8Z"/><path d="M150,84 l-16,8 l16,8Z"/><path d="M150,106 l-16,8 l16,8Z"/><path d="M150,128 l-16,8 l16,8Z"/><path d="M150,150 l-16,8 l16,8Z"/><path d="M150,172 l-16,8 l16,8Z"/><path d="M150,194 l-16,8 l16,8Z"/><path d="M250,40 l16,8 l-16,8Z"/><path d="M250,62 l16,8 l-16,8Z"/><path d="M250,84 l16,8 l-16,8Z"/><path d="M250,106 l16,8 l-16,8Z"/><path d="M250,128 l16,8 l-16,8Z"/><path d="M250,150 l16,8 l-16,8Z"/><path d="M250,172 l16,8 l-16,8Z"/><path d="M250,194 l16,8 l-16,8Z"/></g><rect x="150" y="20" width="100" height="200" rx="50" fill="#8E8E8E" stroke="#111" stroke-width="10"/><line x1="200" y1="50" x2="200" y2="185" stroke="#111" stroke-width="6"/><path d="M40,300 C40,190 110,165 200,165 C290,165 360,190 360,300 C360,380 300,405 200,405 C100,405 40,380 40,300Z" fill="#FF6A13" stroke="#111" stroke-width="12"/><circle cx="140" cy="250" r="14" fill="#111"/><circle cx="260" cy="250" r="14" fill="#111"/><path d="M182,300 q18,16 36,0" stroke="#111" stroke-width="8" fill="none" stroke-linecap="round"/></svg></div>
-        <div id="s2-no" class="svgbox h" style="left:1090px;top:66px;width:440px;height:170px;">
-          <div style="position:absolute;inset:0;background:#C3121E;transform:rotate(-4deg);border:8px solid #111111;"></div>
-          <h1 class="big" style="left:30px;top:46px;font-size:66px;color:#F3F1EC;transform:rotate(-4deg);">No lo es</h1>
-        </div>
+      <div id="s2-c" class="pn bord" style="left:1070px;top:560px;width:800px;height:470px;background:#F3F1EC;">
+        <h1 class="big" style="left:50px;top:60px;font-size:96px;">¿Un perrito?</h1>
+        <div id="s2-bone" class="box" style="left:60px;top:230px;width:300px;height:120px;"><svg viewBox="0 0 300 120" width="100%" height="100%"><path d="M60,40 a30,30 0 1,1 20,-25 h140 a30,30 0 1,1 20,25 a30,30 0 1,1 -20,25 h-140 a30,30 0 1,1 -20,-25Z" fill="#fff" stroke="#111" stroke-width="10"/></svg></div>
       </div>
+      <div id="s2-d" class="pn full" style="background:#C3121E;">
+        <svg viewBox="0 0 1920 1080" width="1920" height="1080" fill="#7A0A12" style="position:absolute;left:0;top:0;overflow:visible"><path d="M1438,533 L3260,518 L3260,495Z"/><path d="M1307,566 L3253,715 L3254,702Z"/><path d="M1317,570 L3251,744 L3253,720Z"/><path d="M1394,599 L3238,856 L3240,843Z"/><path d="M1364,621 L3213,1003 L3218,977Z"/><path d="M1253,621 L3176,1157 L3180,1143Z"/><path d="M1464,692 L3158,1217 L3166,1192Z"/><path d="M1437,733 L3087,1415 L3096,1392Z"/><path d="M1417,758 L3032,1538 L3038,1526Z"/><path d="M1336,742 L2981,1638 L2993,1616Z"/><path d="M1316,747 L2943,1705 L2951,1691Z"/><path d="M1281,746 L2891,1789 L2897,1780Z"/><path d="M1365,846 L2786,1939 L2803,1916Z"/><path d="M1302,823 L2723,2017 L2739,1998Z"/><path d="M1321,851 L2697,2048 L2708,2034Z"/><path d="M1214,784 L2611,2142 L2624,2127Z"/><path d="M1245,848 L2516,2234 L2532,2219Z"/><path d="M1172,798 L2411,2324 L2426,2312Z"/><path d="M1177,829 L2336,2383 L2346,2375Z"/><path d="M1136,806 L2219,2465 L2237,2453Z"/><path d="M1151,893 L2045,2568 L2066,2557Z"/><path d="M1094,821 L1946,2618 L1956,2613Z"/><path d="M1162,1017 L1847,2662 L1867,2654Z"/><path d="M1114,917 L1815,2675 L1840,2665Z"/><path d="M1106,1027 L1614,2745 L1626,2742Z"/><path d="M1055,926 L1496,2777 L1520,2771Z"/><path d="M1087,1078 L1477,2781 L1497,2776Z"/><path d="M1011,891 L1279,2818 L1300,2815Z"/><path d="M1005,991 L1181,2829 L1197,2828Z"/><path d="M975,928 L1042,2839 L1056,2838Z"/><path d="M970,1018 L1001,2840 L1012,2839Z"/><path d="M949,858 L866,2838 L889,2839Z"/><path d="M912,979 L707,2826 L716,2827Z"/><path d="M901,925 L603,2812 L613,2814Z"/><path d="M860,1090 L544,2802 L554,2804Z"/><path d="M869,898 L381,2766 L401,2771Z"/><path d="M840,945 L297,2742 L313,2747Z"/><path d="M846,819 L86,2667 L100,2673Z"/><path d="M736,1044 L16,2637 L34,2645Z"/><path d="M745,963 L-87,2588 L-75,2594Z"/><path d="M755,919 L-146,2557 L-121,2570Z"/><path d="M756,845 L-330,2444 L-311,2457Z"/><path d="M738,833 L-439,2366 L-422,2378Z"/><path d="M734,824 L-477,2335 L-466,2344Z"/><path d="M703,835 L-552,2273 L-545,2279Z"/><path d="M733,769 L-665,2168 L-648,2185Z"/><path d="M735,740 L-767,2059 L-750,2078Z"/><path d="M635,814 L-807,2013 L-794,2028Z"/><path d="M659,764 L-892,1903 L-882,1918Z"/><path d="M526,835 L-944,1830 L-938,1839Z"/><path d="M648,712 L-1057,1645 L-1050,1658Z"/><path d="M686,682 L-1085,1593 L-1080,1603Z"/><path d="M582,712 L-1139,1481 L-1128,1505Z"/><path d="M666,643 L-1214,1291 L-1207,1310Z"/><path d="M480,708 L-1214,1292 L-1209,1306Z"/><path d="M531,644 L-1276,1078 L-1274,1088Z"/><path d="M606,626 L-1278,1072 L-1271,1098Z"/><path d="M542,615 L-1305,939 L-1302,955Z"/><path d="M455,598 L-1326,795 L-1324,808Z"/><path d="M487,559 L-1339,616 L-1338,645Z"/><path d="M421,539 L-1340,528 L-1340,546Z"/><path d="M499,514 L-1336,396 L-1337,423Z"/><path d="M633,498 L-1320,240 L-1322,251Z"/><path d="M455,459 L-1309,166 L-1313,185Z"/><path d="M421,432 L-1294,82 L-1297,96Z"/><path d="M655,466 L-1275,-4 L-1277,4Z"/><path d="M650,434 L-1214,-212 L-1221,-189Z"/><path d="M442,328 L-1164,-343 L-1173,-319Z"/><path d="M537,354 L-1140,-398 L-1151,-374Z"/><path d="M628,365 L-1070,-542 L-1081,-520Z"/><path d="M626,358 L-1051,-576 L-1065,-550Z"/><path d="M650,339 L-964,-720 L-978,-699Z"/><path d="M716,364 L-902,-810 L-907,-803Z"/><path d="M656,301 L-839,-893 L-857,-870Z"/><path d="M568,197 L-764,-983 L-781,-963Z"/><path d="M563,147 L-666,-1087 L-683,-1069Z"/><path d="M714,267 L-574,-1174 L-587,-1162Z"/><path d="M692,192 L-439,-1286 L-449,-1278Z"/><path d="M708,199 L-401,-1314 L-411,-1307Z"/><path d="M793,280 L-273,-1401 L-295,-1387Z"/><path d="M791,260 L-219,-1435 L-237,-1424Z"/><path d="M714,70 L-99,-1501 L-116,-1493Z"/><path d="M750,67 L33,-1565 L21,-1560Z"/><path d="M798,100 L176,-1622 L159,-1616Z"/><path d="M874,247 L323,-1670 L297,-1662Z"/><path d="M815,42 L323,-1670 L312,-1667Z"/><path d="M859,122 L436,-1699 L408,-1693Z"/><path d="M887,120 L578,-1728 L557,-1724Z"/><path d="M908,105 L689,-1744 L680,-1743Z"/><path d="M932,43 L840,-1757 L825,-1756Z"/><path d="M955,227 L933,-1760 L910,-1759Z"/><path d="M986,3 L1082,-1757 L1058,-1758Z"/><path d="M1003,4 L1160,-1751 L1131,-1754Z"/><path d="M1050,32 L1374,-1722 L1352,-1726Z"/><path d="M1065,78 L1478,-1701 L1458,-1706Z"/><path d="M1042,215 L1534,-1687 L1511,-1693Z"/><path d="M1059,241 L1694,-1640 L1673,-1647Z"/><path d="M1118,137 L1810,-1597 L1787,-1606Z"/><path d="M1131,179 L1954,-1534 L1931,-1545Z"/><path d="M1164,140 L2012,-1505 L1996,-1513Z"/><path d="M1177,186 L2174,-1414 L2149,-1429Z"/><path d="M1215,139 L2206,-1393 L2182,-1409Z"/><path d="M1197,221 L2336,-1303 L2328,-1309Z"/><path d="M1216,223 L2415,-1241 L2395,-1257Z"/><path d="M1339,133 L2534,-1137 L2521,-1149Z"/><path d="M1274,222 L2586,-1086 L2569,-1104Z"/><path d="M1218,295 L2634,-1038 L2626,-1046Z"/><path d="M1251,299 L2741,-915 L2723,-937Z"/><path d="M1393,213 L2801,-839 L2792,-850Z"/><path d="M1419,230 L2869,-743 L2864,-751Z"/><path d="M1245,367 L2927,-652 L2922,-660Z"/><path d="M1275,377 L3005,-513 L3000,-523Z"/><path d="M1394,331 L3035,-452 L3031,-460Z"/><path d="M1375,373 L3099,-306 L3089,-331Z"/><path d="M1422,395 L3158,-139 L3151,-161Z"/><path d="M1466,414 L3193,-10 L3191,-21Z"/><path d="M1409,432 L3198,11 L3194,-8Z"/><path d="M1457,462 L3233,189 L3231,177Z"/><path d="M1369,502 L3251,336 L3249,319Z"/><path d="M1332,515 L3255,395 L3254,374Z"/></svg>
+        <div id="s2-pd" class="ch" style="left:1140px;top:210px;width:700px;height:735px;"><div id="s2-pd-in" class="fill" style="transform-origin:50% 100%;"><svg viewBox="0 0 400 420" width="100%" height="100%" overflow="visible">
+  <defs>
+    <radialGradient id="s2-pdp-g" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#FFA94D"/><stop offset=".55" stop-color="#F08A2B"/><stop offset="1" stop-color="#D86E1C"/></radialGradient>
+    <clipPath id="s2-pdp-bladeclip"><rect x="160" y="10" width="80" height="262" rx="14"/></clipPath>
+  </defs>
+  <g id="s2-pdp-body">
+    <g id="s2-pdp-tail"><path d="M350,300 C392,300 396,340 372,352" stroke="#3A1C0B" stroke-width="6" fill="none"/>
+      <rect x="356" y="344" width="40" height="16" rx="8" fill="#2B2B2E"/></g>
+    <g id="s2-pdp-legs" fill="#D86E1C" stroke="#3A1C0B" stroke-width="6">
+      <rect x="112" y="318" width="54" height="72" rx="24"/><rect x="234" y="318" width="54" height="72" rx="24"/></g>
+    <path d="M30,215 C30,105 105,52 200,52 C295,52 370,105 370,215 C370,318 298,362 200,362 C102,362 30,318 30,215Z" fill="url(#s2-pdp-g)" stroke="#3A1C0B" stroke-width="7"/>
+    <path d="M70,300 C110,345 290,345 330,300" stroke="#D86E1C" stroke-width="10" fill="none" opacity=".6" stroke-linecap="round"/>
+    <rect x="150" y="2" width="100" height="40" rx="12" fill="#2B2B2E" stroke="#3A1C0B" stroke-width="5"/>
+    <g clip-path="url(#s2-pdp-bladeclip)"><g id="s2-pdp-teeth" fill="#2B2B2E"><path d="M188,34 l-11,8 l11,8Z"/><path d="M188,50 l-11,8 l11,8Z"/><path d="M188,66 l-11,8 l11,8Z"/><path d="M188,82 l-11,8 l11,8Z"/><path d="M188,98 l-11,8 l11,8Z"/><path d="M188,114 l-11,8 l11,8Z"/><path d="M188,130 l-11,8 l11,8Z"/><path d="M188,146 l-11,8 l11,8Z"/><path d="M188,162 l-11,8 l11,8Z"/><path d="M188,178 l-11,8 l11,8Z"/><path d="M188,194 l-11,8 l11,8Z"/><path d="M188,210 l-11,8 l11,8Z"/><path d="M188,226 l-11,8 l11,8Z"/><path d="M188,242 l-11,8 l11,8Z"/><path d="M188,258 l-11,8 l11,8Z"/><path d="M188,274 l-11,8 l11,8Z"/><path d="M212,34 l11,8 l-11,8Z"/><path d="M212,50 l11,8 l-11,8Z"/><path d="M212,66 l11,8 l-11,8Z"/><path d="M212,82 l11,8 l-11,8Z"/><path d="M212,98 l11,8 l-11,8Z"/><path d="M212,114 l11,8 l-11,8Z"/><path d="M212,130 l11,8 l-11,8Z"/><path d="M212,146 l11,8 l-11,8Z"/><path d="M212,162 l11,8 l-11,8Z"/><path d="M212,178 l11,8 l-11,8Z"/><path d="M212,194 l11,8 l-11,8Z"/><path d="M212,210 l11,8 l-11,8Z"/><path d="M212,226 l11,8 l-11,8Z"/><path d="M212,242 l11,8 l-11,8Z"/><path d="M212,258 l11,8 l-11,8Z"/><path d="M212,274 l11,8 l-11,8Z"/></g></g>
+    <rect x="186" y="30" width="28" height="238" rx="14" fill="#5B5B5E" stroke="#3A1C0B" stroke-width="5"/>
+    <line x1="200" y1="44" x2="200" y2="254" stroke="#8C8C90" stroke-width="4"/>
+    <g id="s2-pdp-eyes"><circle cx="115" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="115" cy="185" r="33" fill="#B3121E"/><circle cx="103" cy="172" r="8" fill="#FFFFFF" opacity=".85"/><circle cx="285" cy="185" r="46" fill="#FFFFFF" stroke="#3A1C0B" stroke-width="6"/><circle cx="285" cy="185" r="33" fill="#B3121E"/><circle cx="273" cy="172" r="8" fill="#FFFFFF" opacity=".85"/></g><path d="M66,130 L160,158" stroke="#3A1C0B" stroke-width="14" stroke-linecap="round"/><path d="M334,130 L240,158" stroke="#3A1C0B" stroke-width="14" stroke-linecap="round"/>
+    <path d="M140,250 C150,284 182,290 196,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M260,250 C250,284 218,290 204,262" stroke="#3A1C0B" stroke-width="7" fill="none" stroke-linecap="round"/>
+  </g>
+</svg></div></div>
+        <h1 class="big" style="left:110px;top:330px;font-size:150px;color:#F3F1EC;-webkit-text-stroke:5px #111111;line-height:1;">¡No te dejes<br>engañar!</h1>
+      </div>
+      <div id="s2-imp" class="pn full" style="background:#F3F1EC;"></div>
     </div>
   </div>
   <script>
 
 const tl = gsap.timeline({ paused: true });
-const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.08 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
-const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.6 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.28, ease: "back.out(2.2)" }, t);
+const slam = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 1.12 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.2, ease: "expo.out" }, t);
+const pop = (s, t, f) => tl.fromTo(s, Object.assign({ opacity: 0, scale: 0.4 }, f || {}), { opacity: 1, scale: 1, x: 0, y: 0, rotation: 0, duration: 0.32, ease: "back.out(2.4)" }, t);
+const slideIn = (s, t, dx, dy) => tl.fromTo(s, { opacity: 0, x: dx || 0, y: dy || 0, rotation: (dx || 0) > 0 ? 4 : -4 }, { opacity: 1, x: 0, y: 0, rotation: 0, duration: 0.42, ease: "back.out(1.6)" }, t);
 const on = (s, t) => tl.set(s, { opacity: 1 }, t);
 const off = (s, t) => tl.set(s, { opacity: 0 }, t);
-const shake = (s, t, a) => { a = a || 18; const p = [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]]; p.forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
-const chain = (s, t, d) => tl.fromTo(s, { x: 0 }, { x: -40, duration: 0.1, ease: "none", repeat: Math.max(1, Math.round(d / 0.1) - 1) }, t);
+const shake = (s, t, a) => { a = a || 18; [[1,-.6],[-.8,.9],[.7,.4],[-.5,-.8],[.4,.6],[-.3,-.2],[.15,.2]].forEach((q, i) => tl.set(s, { x: q[0]*a, y: q[1]*a }, t + i / 30)); tl.set(s, { x: 0, y: 0 }, t + 7 / 30); };
+const punch = (s, t, k, d) => tl.fromTo(s, { scale: 1 }, { scale: k || 1.15, duration: 0.12, ease: "power3.out" }, t).to(s, { scale: 1, duration: (d || 0.9), ease: "power2.inOut" }, t + 0.5);
+const chain = (s, t, d, ax) => { const big = ax === "y40"; if (big) ax = "y"; const o = {}; o[ax || "x"] = 0; const e = {}; e[ax || "x"] = big ? 40 : (ax === "y" ? 16 : -40); tl.fromTo(s, o, Object.assign(e, { duration: 0.08, ease: "none", repeat: Math.max(1, Math.round(d / 0.08) - 1) }), t); };
+const breathe = (s, t, d) => tl.fromTo(s, { scaleY: 1, scaleX: 1 }, { scaleY: 1.018, scaleX: 0.995, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.floor(d / 0.9)) }, t);
+const blink = (s, ts) => ts.forEach(t => { tl.to(s, { scaleY: 0.08, duration: 0.05, ease: "power2.in", transformOrigin: "50% 50%" }, t); tl.to(s, { scaleY: 1, duration: 0.08, ease: "power2.out" }, t + 0.08); });
+const hop = (s, t, n, hgt) => { hgt = hgt || 70; for (let i = 0; i < n; i++) { const b = t + i * 0.5;
+  tl.to(s, { scaleY: 0.86, scaleX: 1.1, duration: 0.07, ease: "power2.out" }, b);
+  tl.to(s, { y: -hgt, scaleY: 1.1, scaleX: 0.93, duration: 0.18, ease: "power2.out" }, b + 0.07);
+  tl.to(s, { y: 0, scaleY: 1, scaleX: 1, duration: 0.18, ease: "power2.in" }, b + 0.25);
+  tl.to(s, { scaleY: 0.9, scaleX: 1.07, duration: 0.05 }, b + 0.43); tl.to(s, { scaleY: 1, scaleX: 1, duration: 0.07 }, b + 0.48); } };
+const wag = (s, t, d) => tl.fromTo(s, { rotation: -14 }, { rotation: 14, duration: 0.14, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round(d / 0.14)), transformOrigin: "0% 0%" }, t);
+const sway = (s, t, d, a) => tl.fromTo(s, { rotation: -(a || 3) }, { rotation: (a || 3), duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: Math.max(1, Math.round(d / 0.6)) }, t);
+const impact = (s, t) => { tl.set(s, { opacity: 1 }, t); tl.set(s, { opacity: 0 }, t + 2 / 30); tl.set(s, { opacity: 1 }, t + 4 / 30); tl.set(s, { opacity: 0 }, t + 6 / 30); };
 
-tl.fromTo("#s2-cam", { scale: 1 }, { scale: 1.04, duration: 13.33, ease: "none" }, 0);
+tl.fromTo("#s2-cam", { scale: 1 }, { scale: 1.035, duration: 12.79, ease: "none" }, 0);
 
-slam("#s2-a", 0.6); slam("#s2-b", 3.185, { x: 60 }); on("#s2-f", 5.39);
-slam("#s2-c", 6.632, { y: 60 }); tl.fromTo("#s2-em", { rotation: -6 }, { rotation: 6, duration: 0.5, ease: "sine.inOut", repeat: 5, yoyo: true }, 6.9319999999999995);
-slam("#s2-no", 10.883, { scale: 1.6 }); shake("#s2-cam", 10.933, 10);
+slam("#s2-a", 0.45); pop("#s2-p", 0.75, { y: 200 }); blink("#s2-pp-eyes", [1.05, 3.35, 5.65, 7.95]);
+slideIn("#s2-b", 2.874, 300);
+slideIn("#s2-c", 6.05, 0, 300); wag("#s2-pp-tail", 7.14, 2.3500000000000005); sway("#s2-p-in", 6.05, 3.4400000000000004, 6); pop("#s2-bone", 7.14);
+on("#s2-d", 9.49); off("#s2-a,#s2-b,#s2-c", 9.540000000000001); impact("#s2-imp", 9.49); punch("#s2-d", 9.51, 1.12); shake("#s2-cam", 9.540000000000001, 22); chain("#s2-pdp-teeth", 9.49, 3.299999999999999, "y");
 
 window.__timelines["s2"] = tl;
   </script>
